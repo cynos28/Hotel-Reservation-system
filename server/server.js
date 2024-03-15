@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     cors({
-        origin: ["http://localhost:3000", "https://primelodge.vercel.app"],
+        origin: ["http://localhost:3001", "https://primelodge.vercel.app"],
         credentials: true
     })
 );
@@ -37,9 +37,9 @@ const PORT = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
+        console.log('MongoDB connected successfully');
         app.listen(PORT, () => {
             console.log(`Server Running on ${PORT}`);
         });
     })
     .catch((err) => console.error("MongoDB Connection Error:", err));
-
