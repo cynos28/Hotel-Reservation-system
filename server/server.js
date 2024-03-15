@@ -16,4 +16,30 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     cors({
-        origin: ["htt
+        origin: ["http://localhost:3000", "https://primelodge.vercel.app"],
+        credentials: true
+    })
+);
+
+// Routes
+app.use("/api/users", userRoute); 
+
+
+app.get("/", (req, res) => {
+    res.send("Home Page");
+});
+
+
+//Error Handler
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 3001;
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server Running on ${PORT}`);
+        });
+    })
+    .catch((err) => console.error("MongoDB Connection Error:", err));
+
