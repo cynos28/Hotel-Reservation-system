@@ -6,8 +6,7 @@ const { generateToken, hashToken } = require("../utils");
 var parser = require('ua-parser-js');
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
-
-const crypto = require('crypto-js');
+const crypto = require('crypto');
 const Cryptr = require('cryptr');
 
 const cryptr = new Cryptr(process.env.CRYPT_KEY);
