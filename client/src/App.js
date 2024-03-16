@@ -10,6 +10,7 @@ import Reset from './pages/Auth/Reset'
 import LoginAuth from './pages/Auth/LoginAuth';
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
+import Events from './pages/events/events';
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
+
+          {/* events */}
+          <Route path='/events' element={<Events/>}/>
           
 
           <Route path="/profile" element={
