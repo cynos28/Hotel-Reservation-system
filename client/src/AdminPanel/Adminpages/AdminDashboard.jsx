@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-//import "../styles/dashboard.css";
+import "../styles/dashboard.css";
 import SingleCard from "../AdminComponents/reuseable/SingleCard";
 import MileChart from "../charts/MileChart";
 import CarStatsChart from "../charts/CarStatsChart";
