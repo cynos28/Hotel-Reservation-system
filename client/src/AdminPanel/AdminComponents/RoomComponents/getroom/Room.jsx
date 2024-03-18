@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
-import "./room.css";
+//import "./room.css";
 
 
 const GetRoom = () => {

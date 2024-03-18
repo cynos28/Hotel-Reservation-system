@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
+
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
 import Register from './pages/Auth/Register';
@@ -22,6 +22,8 @@ import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
 import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
 import Router from './AdminPanel/routes/Router';
 
+
+
 function App() {
   return (
     
@@ -34,6 +36,7 @@ function App() {
           </Layout>
           } />
 
+          {/* Authentication */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />

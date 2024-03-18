@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import './PasswordInput.css'; // Assuming the correct path to your CSS file
+import './PasswordInput.css';
 
 function PasswordInput({ placeholder, value, onChange, name, onPaste, strength }) {
   const [showPassword, setShowPassword] = useState(false);
