@@ -60,6 +60,9 @@ function App() {
             <Layout> <ChangePassword /> </Layout>
           } />
 
+           {/* food page */}
+           <Route path="/foodpage" element={<FoodPage/>}/>
+           <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
         
 
         </Routes>
