@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
+
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
 import Register from './pages/Auth/Register';
@@ -14,16 +14,30 @@ import Events from './pages/events/events';
 import FoodPage from './pages/FoodPage/FoodPage';
 
 
+
+// import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
+// import 'remixicon/fonts/remixicon.css';
+// import AddRoom from './AdminPanel/AdminComponents/RoomComponents/addroom/Add';
+// import GetRoom from './AdminPanel/Adminpages/AdminDashboard';
+// import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
+// import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
+// import Router from './AdminPanel/routes/Router';
+
+
+
 function App() {
   return (
+    
     <div>
       <BrowserRouter>
         <Routes>
+
           <Route path="/" element={<Layout>
             <Home />
           </Layout>
           } />
 
+          {/* Authentication */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
@@ -33,6 +47,10 @@ function App() {
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           
+          {/* <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/>
+           */}
+             
 
           <Route path="/profile" element={
             <Layout> <Profile /> </Layout>
@@ -42,14 +60,23 @@ function App() {
             <Layout> <ChangePassword /> </Layout>
           } />
 
-           {/* food page */}
-           <Route path="/foodpage" element={<FoodPage/>}/>
-           <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
+        
 
         </Routes>
+        
       </BrowserRouter>
+
+      
+
+    
     </div>
-  );   
+    
+
+
+  );
+
 }
+
+
 
 export default App;
