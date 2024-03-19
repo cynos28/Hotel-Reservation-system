@@ -48,8 +48,8 @@ function App() {
           <Route path='/events' element={<Events/>}/>
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
-           */}
+          <Route path='/addroom' element={<AddRoom/>}/> */}
+          
              
 
           <Route path="/profile" element={

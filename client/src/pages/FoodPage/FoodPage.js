@@ -3,6 +3,8 @@ import { getAll, search } from '../../service/foodService';
 import FoodThumbnail from '../../components/FoodThumbnails/FoodThumbnail.js';
 import { useParams } from 'react-router-dom';
 import Search from '../../components/Search/Search.js';
+import Header from '../../components/header/header.js';
+import Footer from '../../components/footer/Footer.js';
 
 const initiallState = { foods : []};
 
@@ -27,8 +29,11 @@ export default function FoodPage() {
   },[searchTerm]);
 
   return <>
+
+      <Header/>
       <Search  />
       <FoodThumbnail foods = {foods} />
+      <Footer/>
   </>;
   
 }
