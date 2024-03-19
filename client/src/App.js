@@ -11,6 +11,7 @@ import LoginAuth from './pages/Auth/LoginAuth';
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';
+import FoodPage from './pages/FoodPage/FoodPage';
 
 
 function App() {
@@ -41,10 +42,14 @@ function App() {
             <Layout> <ChangePassword /> </Layout>
           } />
 
+           {/* food page */}
+           <Route path="/foodpage" element={<FoodPage/>}/>
+           <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
+
         </Routes>
       </BrowserRouter>
     </div>
-  );
+  );   
 }
 
 export default App;
