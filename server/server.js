@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRoute = require("./routes/userRoute.js");
+const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
 const errorHandler = require("./middleware/middleware.js");
 
 const app = express();
@@ -22,7 +23,8 @@ app.use(
 );
 
 // Routes
-app.use("/api/users", userRoute); 
+app.use("/api/users", userRoute);
+app.use("/api/event",eventRouter); //Kaveesha's route
 
 
 app.get("/", (req, res) => {
