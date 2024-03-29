@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Search from '../../components/Search/Search.js';
 import Header from '../../components/header/header.js';
 import Footer from '../../components/footer/Footer.js';
+import FoodTags from '../../components/FoodTags/FoodTags.js';
 
 const initiallState = { foods : []};
 
@@ -32,6 +33,7 @@ export default function FoodPage() {
 
       <Header/>
       <Search  />
+      <FoodTags/>
       <FoodThumbnail foods = {foods} />
       <Footer/>
   </>;

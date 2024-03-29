@@ -7,3 +7,7 @@ export const search = async searchTerm =>
     sample_foods.filter(item =>
         item.F_name.toLowerCase().includes(searchTerm.toLowerCase())
         );
+
+//tags 
+
+    export const getAllTags = async () => sample_tags;
