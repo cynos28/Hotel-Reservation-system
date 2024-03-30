@@ -122,11 +122,11 @@ export const sample_foods = [
 
 export const sample_tags = [
     { name: 'All', count: 10},
-    { name: 'Fast Food', count: 4},
+    { name: 'FastFood', count: 4},
     { name: 'Pizza', count: 2},
     { name: 'Lunch', count: 5},
-    { name: 'Slow Food', count: 6},
+    { name: 'SlowFood', count: 6},
     { name: 'Hamburger', count: 1},
-    { name: 'Fry', count: 6},
-    { name: 'Soup', count: 6},
+    { name: 'Fry', count: 1},
+    { name: 'Soup', count: 1},
 ];

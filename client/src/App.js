@@ -63,7 +63,7 @@ function App() {
            {/* food page */}
            <Route path="/foodpage" element={<FoodPage/>}/>
            <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
-        
+           <Route path="/foodpage/tag/:tag" element={<FoodPage/>}/>
 
         </Routes>
         
