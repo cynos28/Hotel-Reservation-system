@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRoute = require("./routes/userRoute.js");
 const errorHandler = require("./middleware/middleware.js");
-const route = require("./routes/roomRoute.js");
 
 const app = express();
 
@@ -16,12 +15,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
-    cors()
+    cors({
+        origin: ["http://localhost:3001", "https://primelodge.vercel.app"],
+        credentials: true
+    })
 );
 
 // Routes
 app.use("/api/users", userRoute); 
-app.use("/api", route);
 
 
 app.get("/", (req, res) => {
