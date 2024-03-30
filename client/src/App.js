@@ -55,15 +55,6 @@ function App() {
           <Route path='/addroom' element={<AddRoom />} />
 
 
-
-          
-          <Route path='/events' element={<Events/>}/>
-          
-          <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
-
-
-
           {/* food page */}
           <Route path="/foodpage" element={<FoodPage />} />
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
