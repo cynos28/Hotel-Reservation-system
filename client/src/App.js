@@ -27,7 +27,7 @@ import Router from './AdminPanel/routes/Router';
 
 function App() {
   return (
-    
+
     <div>
       <BrowserRouter>
         <Routes>
@@ -43,42 +43,37 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
+          <Route path="/profile" element={
+          <Layout> <Profile /> </Layout>} />
+
+          <Route path="/ChangePassword" element={
+          <Layout> <ChangePassword /> </Layout>} />
 
           {/* events */}
-          <Route path='/events' element={<Events/>}/>
-          
-<<<<<<< HEAD
-          {/* <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/> */}
-=======
-           <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
->>>>>>> main
-          
-             
+          <Route path='/events' element={<Events />} />
 
-          <Route path="/profile" element={
-            <Layout> <Profile /> </Layout>
-          } />
-          
-           <Route path="/ChangePassword" element={
-            <Layout> <ChangePassword /> </Layout>
-          } />
 
-           {/* food page */}
-           <Route path="/foodpage" element={<FoodPage/>}/>
-           <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
-           <Route path="/foodpage/tag/:tag" element={<FoodPage/>}/>
+          <Route path='/dashboard' element={<GetRoom />} />
+          <Route path='/addroom' element={<AddRoom />} />
+
+
+
+          
+
+          {/* food page */}
+          <Route path="/foodpage" element={<FoodPage />} />
+          <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
+          <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
 
         </Routes>
-        
+
       </BrowserRouter>
 
-      
 
-    
+
+
     </div>
-    
+
 
 
   );
