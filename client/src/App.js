@@ -50,8 +50,8 @@ function App() {
           
 
 
-           <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
+            <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/> 
 
           
              
