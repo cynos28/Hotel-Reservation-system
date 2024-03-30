@@ -57,9 +57,6 @@ function App() {
           <Route path='/addroom' element={<AddRoom />} />
 
 
-
-          
-
           {/* food page */}
           <Route path="/foodpage" element={<FoodPage />} />
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
