@@ -10,6 +10,7 @@ export const search = async searchTerm =>
 
 //tags 
 
+
     export const getAllTags = async () => sample_tags;
 
     export const getAllByTag = async tag =>{
