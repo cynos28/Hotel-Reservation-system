@@ -47,8 +47,13 @@ function App() {
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           
+<<<<<<< HEAD
+          {/* <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/> */}
+=======
            <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>
+>>>>>>> main
           
              
 
@@ -63,7 +68,7 @@ function App() {
            {/* food page */}
            <Route path="/foodpage" element={<FoodPage/>}/>
            <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
-        
+           <Route path="/foodpage/tag/:tag" element={<FoodPage/>}/>
 
         </Routes>
         
