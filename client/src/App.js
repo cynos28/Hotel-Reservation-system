@@ -22,6 +22,7 @@ import GetRoom from './AdminPanel/Adminpages/AdminDashboard';
 import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
 import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
 import Router from './AdminPanel/routes/Router';
+import OneFood from './pages/OneFood/OneFood';
 
 
 
@@ -47,13 +48,11 @@ function App() {
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           
-<<<<<<< HEAD
-          {/* <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/> */}
-=======
+
+
            <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>
->>>>>>> main
+
           
              
 
@@ -69,7 +68,7 @@ function App() {
            <Route path="/foodpage" element={<FoodPage/>}/>
            <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
            <Route path="/foodpage/tag/:tag" element={<FoodPage/>}/>
-
+           <Route path="/foodpage/food/:id" element={<OneFood/>}></Route>
         </Routes>
         
       </BrowserRouter>
