@@ -60,10 +60,29 @@ function App() {
 
           
 
+
           {/* food page */}
           <Route path="/foodpage" element={<FoodPage />} />
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
+
+          {/* <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/> */}
+           <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/>
+
+          
+             
+
+          <Route path="/profile" element={
+            <Layout> <Profile /> </Layout>
+          } />
+          
+           <Route path="/ChangePassword" element={
+            <Layout> <ChangePassword /> </Layout>
+          } />
+
+       
 
         </Routes>
 
