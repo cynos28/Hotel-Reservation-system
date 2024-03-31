@@ -2,15 +2,17 @@
 
 /* Table styles */
 .roomTable {
-    margin-top: 95px;
+    margin-top: 95px; /* Adjust top margin as needed */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    margin-left: 275px;
+    
+  }
+  
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 20px;
@@ -89,3 +91,4 @@ th {
 .add-room-button:hover {
     opacity: 0.8;
 }
+

@@ -4,6 +4,10 @@ import toast from 'react-hot-toast';
 import { Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import "./room.css"; // Import CSS file
+import Header from '../../header/header.js';
+import Footer from '../../footer/Footer.js';
+
+
 
 const GetRoom = () => {
   const [rooms, setRooms] = useState([]);
@@ -23,6 +27,8 @@ const GetRoom = () => {
   }, []);
 
   return (
+    <div>
+      <Header />
     <div className="room-container"> {/* Container with room-container class */}
       <Row justify={'center'} gutter={16}>
         {rooms.map((room, index) => (
@@ -42,6 +48,8 @@ const GetRoom = () => {
           </Col>
         ))}
       </Row>
+    </div>
+   <Footer />
     </div>
   );
 };

@@ -4,6 +4,8 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import './Roomtable.css'; // Import custom CSS
+import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
+import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 
 const RoomTable = () => {
     const [rooms, setRooms] = useState([]);
@@ -48,6 +50,12 @@ const RoomTable = () => {
     const filteredRooms = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()) && (filterValue === '' || room.rentperday > parseInt(filterValue)));
 
     return (
+
+        <div>
+    <TopNav />
+    <Sidebar />
+
+    <div className="RoomtableContainer">
         <div className='roomTable'>
             <div className="filter-container">
                 <select onChange={(e) => setFilterValue(e.target.value)} className="form-select form-select-sm">
@@ -65,36 +73,47 @@ const RoomTable = () => {
                     <tr>
                         <th scope="col">S.No.</th>
                         <th scope="col">Room name</th>
-                        <th scope="col">Room Rent per day</th>
-                        <th scope="col">Maxcount</th>
+                        <th scope="col">Rent per Night</th>
+                        <th scope="col">Number of Beds</th>
                         <th scope="col">Room type</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">AC Availability</th>
+                        <th scope="col">wifiAvailability</th>
+                        <th scope="col">Description</th>
+                        
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        filteredRooms.map((room, index) => (
-                            <tr key={room._id}>
-                                <td>{index + 1}</td>
-                                <td>{room.name}</td>
-                                <td>{room.rentperday}</td>
-                                <td>{room.maxcount}</td>
-                                <td>{room.type}</td>
-                                <td className='actionButtons'>
-                                    <button onClick={() => deleteRoom(room._id)}>
-                                        Delete
-                                    </button>
-                                    <Link to={'/edit/' + room._id}>
-                                        Edit
-                                    </Link>
-                                </td>
-                            </tr>
-                        ))
-                    }
+                {
+    filteredRooms.map((room, index) => (
+        <tr key={room._id}>
+            <td>{index + 1}</td>
+            <td>{room.name}</td>
+            <td>{room.rentPerNight}</td>
+            <td>{room.numberOfBeds}</td>
+            <td>{room.roomType}</td>
+            <td>{room.acAvailability ? "Available" : "Not Available"}</td>
+            <td>{room.wifiAvailability ? "Available" : "Not Available"}</td>
+            <td>{room.roomDescription}</td>
+            <td className='actionButtons'>
+                <button onClick={() => deleteRoom(room._id)}>
+                    Delete
+                </button>
+                <Link to={'/edit/' + room._id}>
+                    Edit
+                </Link>
+            </td>
+        </tr>
+    ))
+}
+
                 </tbody>
             </table>
             <Link to={"/addroom"} className='add-room-button'>Add Room</Link>
         </div>
+        </div> </div>
+            
+    
     );
 };
 
