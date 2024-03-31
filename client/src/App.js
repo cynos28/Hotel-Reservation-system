@@ -87,14 +87,6 @@ function App() {
               <Route path="/roomtable" element={<RoomTable />} />
               <Route path="/edit" element={<Edit />} />
 
-
-          
-           <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
-
-          
-             
-
           <Route path="/profile" element={
             <Layout> <Profile /> </Layout>
           } />
