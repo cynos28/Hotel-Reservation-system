@@ -13,14 +13,17 @@ import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';
 import FoodPage from './pages/FoodPage/FoodPage';
 
-
+import AddRoom from './components/RoomComponents/addroom/Add';
+import GetRoom from './components/RoomComponents/getroom/Room';
+import RoomTable from './components/RoomComponents/getroom/Roomtable';
+import Edit from './components/RoomComponents/updateroom/Edit';
 
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
 import 'remixicon/fonts/remixicon.css';
-import AddRoom from './AdminPanel/AdminComponents/RoomComponents/addroom/Add';
-import GetRoom from './AdminPanel/Adminpages/AdminDashboard';
-import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
-import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
+// import AddRoom from './AdminPanel/AdminComponents/RoomComponents/addroom/Add';
+// import GetRoom from './AdminPanel/Adminpages/AdminDashboard';
+// import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
+// import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
 import Router from './AdminPanel/routes/Router';
 
 
@@ -43,11 +46,13 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
-          <Route path="/profile" element={
-          <Layout> <Profile /> </Layout>} />
 
+          <Route path="/profile" element={
+            <Layout> <Profile /> </Layout>} />
           <Route path="/ChangePassword" element={
-          <Layout> <ChangePassword /> </Layout>} />
+            <Layout> <ChangePassword /> </Layout>} />
+
+
 
           {/* events */}
           <Route path='/events' element={<Events />} />
@@ -61,6 +66,15 @@ function App() {
           <Route path="/foodpage" element={<FoodPage />} />
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
+
+          <Route path="/getroom" element={<GetRoom />} />
+          <Route path="/addroom" element={<AddRoom />} />
+          <Route path="/roomtable" element={<RoomTable />} />
+          <Route path="/edit" element={<Edit />} />
+
+
+
+
 
         </Routes>
 
