@@ -23,7 +23,7 @@
 
 body {
   font-family: "DM Sans", sans-serif;
-  background: var(--body-bg);
+  /*background: var(--body-bg);*/
 }
 
 ul {

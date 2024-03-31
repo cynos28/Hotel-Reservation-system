@@ -18,6 +18,8 @@ import GetRoom from './components/RoomComponents/getroom/Room';
 import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
 
+import AdminDash from './AdminPanel/Adminpages/AdminDashboard';
+
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
 import 'remixicon/fonts/remixicon.css';
 // import AddRoom from './AdminPanel/AdminComponents/RoomComponents/addroom/Add';
@@ -58,8 +60,8 @@ function App() {
           <Route path='/events' element={<Events />} />
 
 
-          <Route path='/dashboard' element={<GetRoom />} />
-          <Route path='/addroom' element={<AddRoom />} />
+          <Route path='/dashboard' element={<AdminDash />} />
+       
 
 
           {/* food page */}
@@ -70,7 +72,9 @@ function App() {
           <Route path="/getroom" element={<GetRoom />} />
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+
+
 
 
 
