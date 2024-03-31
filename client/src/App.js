@@ -12,6 +12,9 @@ import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';
 import FoodPage from './pages/FoodPage/FoodPage';
+import RegisterEvent from './pages/events/RegisterEvent.js';
+
+
 
 
 
@@ -46,6 +49,7 @@ function App() {
 
           {/* events */}
           <Route path='/events' element={<Events/>}/>
+          <Route path='/registerEvent' element={<RegisterEvent />}/>
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>

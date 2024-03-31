@@ -15,12 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(
-    cors({
-        origin: ["http://localhost:3001", "https://primelodge.vercel.app"],
-        credentials: true
-    })
-);
+app.use(cors());
 
 // Routes
 app.use("/api/users", userRoute);

@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const eventSchema = new Schema({
+    userId:{
+        type: String,
+        required: true
+    },
     name:{
         type: String,
         required: true
@@ -20,6 +24,7 @@ const eventSchema = new Schema({
     },
     etype:{
         type: String,
+        default: "Personal",
         required: true
     },
     venue:{
@@ -33,7 +38,22 @@ const eventSchema = new Schema({
     reason:{
         type: String,
         default: "ok",
-    }//duration,uId,photo
+    },
+    photo:{
+        type: String,
+    },
+    sTime:{
+        type: String,
+        required: true
+    },
+    eTime:{
+        type: String,
+        required: true
+    },
+    cost:{
+        type: Number,
+        required: true
+    }
 },{timestamps: true})
 
 module.exports = mongoose.model('Event',eventSchema)

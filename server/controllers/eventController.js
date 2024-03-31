@@ -31,31 +31,55 @@ const getEvent = async(req,res) => {
 
 //post an event
 const createEvent = async(req,res) => {
-    const {name,cap,date,desc,etype,venue,estatus,reason} = req.body
+    const {userId,name,cap,date,desc,etype,venue,photo,sTime,eTime,cost} = req.body
+
+    console.log(req.body);
 
     let emptyFields = []
 
+    // return null;
+
+    if(!userId){
+        emptyFields.push('userId')
+    }
     if(!name)
     emptyFields.push('name')
     if(!cap){
         emptyFields.push('cap')
     }
+
     if(!date){
         emptyFields.push('date')
     }
-    if(!etype){
-        emptyFields.push('etype')
-    }
+    // if(!desc){
+    //     emptyFields.push('desc')
+    // }
+    // if(!etype){
+    //     emptyFields.push('etype')
+    // }
     if(!venue){
         emptyFields.push('venue')
     }
+    if(!photo){
+        emptyFields.push('photo')
+    }
+    if(!sTime){
+        emptyFields.push('sTime')
+    }
+    if(!eTime){
+        emptyFields.push('eTime')
+    }
+    if(!cost){
+        emptyFields.push('cost')
+    }
+
     
     if(emptyFields.length > 0){
         return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
     }
     
     try{
-        const event = await Event.create({name,cap,date,desc,etype,venue,estatus,reason})
+        const event = await Event.create({userId,name,cap,date,desc,etype,venue,photo,sTime,eTime,cost})
         res.status(200).json(event)
     }catch(error){
         res.status(400).json({error: error.message})
