@@ -68,3 +68,33 @@
     transform: translateY(-200px);
     opacity: 0;
 }
+/* External CSS for sorting bar */
+.sorting-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+  }
+  
+  .sorting-dropdown {
+    width: 150px;
+  }
+  
+
+  /* External CSS for search bar */
+.search-input {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(1, 13, 25, 0.5); /* Add box shadow on focus */
+  }
+  
