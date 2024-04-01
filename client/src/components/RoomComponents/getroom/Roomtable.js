@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import './Roomtable.css'; // Import custom CSS
 import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
 import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
+import { Trash, PencilSquare } from 'react-bootstrap-icons'; // Import Bootstrap Icons
 
 const RoomTable = () => {
     const [rooms, setRooms] = useState([]);
@@ -96,13 +97,13 @@ const RoomTable = () => {
             <td>{room.wifiAvailability ? "Available" : "Not Available"}</td>
             <td>{room.roomDescription}</td>
             <td className='actionButtons'>
-                <button onClick={() => deleteRoom(room._id)}>
-                    Delete
-                </button>
-                <Link to={'/edit/' + room._id}>
-                    Edit
-                </Link>
-            </td>
+                                    <button className="btn btn-outline-danger" onClick={() => deleteRoom(room._id)}>
+                                        <Trash /> Delete
+                                    </button>
+                                    <Link to={'/edit/' + room._id} className="btn btn-outline-primary">
+                                        <PencilSquare /> Edit
+                                    </Link>
+                                </td>
         </tr>
     ))
 }
