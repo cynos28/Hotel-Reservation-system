@@ -62,6 +62,8 @@ function Register() {
     setPasswordStrength("Include uppercase letters");
   }
 
+  
+
   };
 
   return (
@@ -104,7 +106,15 @@ function Register() {
               required
               value={password2}
               onChange={handleInputChange}
+              onPaste={(e) => {
+                e.preventDefault();
+                toast.error("Cannot paste into input field");
+                return false;
+
+              } }
+
             />
+
             <p className="page-link"></p>
             <button type="submit" className="form-btn">
               Sign up
