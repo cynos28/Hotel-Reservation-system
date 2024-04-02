@@ -28,6 +28,11 @@ import 'remixicon/fonts/remixicon.css';
 // import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
 import Router from './AdminPanel/routes/Router';
 
+import axios from "axios"
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+axios.defaults.withCredentials=true;
 
 
 function App() {
@@ -35,6 +40,7 @@ function App() {
 
     <div>
       <BrowserRouter>
+      <ToastContainer />
         <Routes>
 
           <Route path="/" element={<Layout>
