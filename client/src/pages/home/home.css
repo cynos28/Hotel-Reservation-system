@@ -7,7 +7,9 @@
   max-height:fit-content;
   max-width: fit-content;
 }
-
+html {
+  font-size: 10px;
+}
 .hero-text {
   margin-left: 30px;
   width: 50%;
