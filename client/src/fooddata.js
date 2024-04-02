@@ -117,5 +117,16 @@ export const sample_foods = [
         F_stars: 4.0,
         F_imageUrl: 'food-10.jpg',
         F_tags: ['SlowFood', 'Rice', 'Dinner'],
-    },
+    }
+];
+
+export const sample_tags = [
+    { name: 'All', count: 10},
+    { name: 'FastFood', count: 4},
+    { name: 'Pizza', count: 2},
+    { name: 'Lunch', count: 5},
+    { name: 'SlowFood', count: 6},
+    { name: 'Hamburger', count: 1},
+    { name: 'Fry', count: 1},
+    { name: 'Soup', count: 1},
 ];

@@ -397,8 +397,8 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,  // Rename 'name' to avoid conflict
-        userEmail: user.email, // Rename 'email' to avoid conflict
+        userName: user.name,  
+        userEmail: user.email, 
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
@@ -453,7 +453,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
 // Get Login Status
 const loginStatus = asyncHandler(async (req, res) => {
-  const token = req.cookies.token; // Use req.cookies.token to access the token from cookies
+  const token = req.cookies.token; 
 
   if (!token) {
     return res.json(false);

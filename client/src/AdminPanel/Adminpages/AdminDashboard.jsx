@@ -10,7 +10,7 @@ import Sidebar from '../AdminComponents/Sidebar/Sidebar';
 import TopNav from '../AdminComponents/TopNav/TopNav';
 import recommendCarsData from "../assets/dummy-data/recommendCars";
 
-const GetRoom = () => {
+const AdminDash = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -93,4 +93,4 @@ const GetRoom = () => {
   );
 };
 
-export default GetRoom;
+export default AdminDash;

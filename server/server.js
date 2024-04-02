@@ -5,9 +5,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRoute = require("./routes/userRoute.js");
-const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
 const errorHandler = require("./middleware/middleware.js");
-
+const route = require("./routes/roomRoute.js");
 const app = express();
 
 // Middlewares
@@ -19,14 +18,12 @@ app.use(cors());
 
 
 // Routes
-app.use("/api/users", userRoute);
-app.use("/api/event",eventRouter); //Kaveesha's route
-
+app.use("/api/users", userRoute); 
+app.use("/api", route);
 
 app.get("/", (req, res) => {
     res.send("Home Page");
 });
-
 
 //Error Handler
 app.use(errorHandler);

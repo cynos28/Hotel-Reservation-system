@@ -3,13 +3,14 @@ import Header from '../../components/header/header'
 import Footer from '../../components/footer/Footer'
 import "../home/home.css"
 import HeroImage from "../../assets/hero.jpg"
+import { Link } from 'react-router-dom';
 
 
 
 function home() {
   return (
     <div>
-     
+
       <section className='hero'>
         <div className="hero-text">
           <h1>Your Stay, Our Passion – Where Comfort Meets Luxury!</h1>
@@ -26,22 +27,22 @@ function home() {
             Indulge in the perfect blend of comfort and sophistication, where your satisfaction is our ultimate commitment.
           </p>
           <div className="hero-buttons">
-            <button className="button-login">
-              
+            <Link to="/login"> <button className="button-login">
+
               <span className="label"> Login </span>
-            </button>
-            <button className="button-register">
+            </button> </Link>
+            <Link to="/register"> <button className="button-register">
 
               <span className="label"> Register </span>
-            </button>
+            </button></Link>
           </div>
         </div>
         <div className="hero-image">
-          <img src={HeroImage} alt="Hero Image"/>
+          <img src={HeroImage} alt="Hero Image" />
         </div>
 
       </section>
-    
+
     </div>
 
   )

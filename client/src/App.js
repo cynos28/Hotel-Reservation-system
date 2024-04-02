@@ -16,23 +16,30 @@ import RegisterEvent from './pages/events/RegisterEvent.js';
 
 
 
+import AddRoom from './components/RoomComponents/addroom/Add';
+import GetRoom from './components/RoomComponents/getroom/Room';
+import RoomTable from './components/RoomComponents/getroom/Roomtable';
+import Edit from './components/RoomComponents/updateroom/Edit';
 
+import AdminDash from './AdminPanel/Adminpages/AdminDashboard';
 
-// import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
-// import 'remixicon/fonts/remixicon.css';
-// import AddRoom from './AdminPanel/AdminComponents/RoomComponents/addroom/Add';
-// import GetRoom from './AdminPanel/Adminpages/AdminDashboard';
-// import Edit from './AdminPanel/AdminComponents/RoomComponents/updateroom/Edit';
-// import RoomTable from './AdminPanel/AdminComponents/RoomComponents/getroom/Roomtable';
-// import Router from './AdminPanel/routes/Router';
+import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
+import 'remixicon/fonts/remixicon.css';
+import Router from './AdminPanel/routes/Router';
 
+import axios from "axios"
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+axios.defaults.withCredentials=true;
 
 
 function App() {
   return (
-    
+
     <div>
       <BrowserRouter>
+      <ToastContainer />
         <Routes>
 
           <Route path="/" element={<Layout>
@@ -46,7 +53,6 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
-
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/registerEvent' element={<RegisterEvent />}/>
@@ -55,29 +61,40 @@ function App() {
           <Route path='/addroom' element={<AddRoom/>}/>
            */}
              
-
           <Route path="/profile" element={
-            <Layout> <Profile /> </Layout>
-          } />
-          
-           <Route path="/ChangePassword" element={
-            <Layout> <ChangePassword /> </Layout>
-          } />
+            <Layout> <Profile /> </Layout>} />
+          <Route path="/ChangePassword" element={
+            <Layout> <ChangePassword /> </Layout>} />
 
-           {/* food page */}
-           <Route path="/foodpage" element={<FoodPage/>}/>
-           <Route path="/foodpage/search/:searchTerm" element={<FoodPage/>}/>
-        
+
+
+          {/* events */}
+          <Route path='/events' element={<Events />} />
+          <Route path='/dashboard' element={<AdminDash />} />
+       
+
+
+          {/* food page */}
+          <Route path="/foodpage" element={<FoodPage />} />
+          <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
+          <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
+
+          <Route path="/getroom" element={<GetRoom />} />
+          <Route path="/addroom" element={<AddRoom />} />
+          <Route path="/roomtable" element={<RoomTable />} />
+          <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+
+
 
         </Routes>
-        
+
       </BrowserRouter>
 
-      
 
-    
+
+
     </div>
-    
+
 
 
   );

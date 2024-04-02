@@ -37,6 +37,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": [
+    
+
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -51,7 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-env": "^7.23.9", 
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^1.7.0"
   },
