@@ -51,12 +51,7 @@ const createEvent = async(req,res) => {
     if(!date){
         emptyFields.push('date')
     }
-    // if(!desc){
-    //     emptyFields.push('desc')
-    // }
-    // if(!etype){
-    //     emptyFields.push('etype')
-    // }
+    
     if(!venue){
         emptyFields.push('venue')
     }
@@ -115,14 +110,16 @@ const updateEvent = async (req,res) => {
         return res.status(404).json({error: 'No such event'})
     }
 
-    const event = await Event.findOneAndUpdate({_id: id},{...req.body})
+    const updatedEvent = await Event.findOneAndUpdate({_id: id}, {$set: req.body}, {new: true})
 
-    if(!event){
+    if(!updatedEvent){
         return res.status(404).json({error: 'No such event'})
     }
 
-    res.status(200).json(event)
+    res.status(200).json(updatedEvent)
 }
+
+
 
 
 

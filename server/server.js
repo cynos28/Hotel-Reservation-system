@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 
+
 // Routes
 app.use("/api/users", userRoute);
 app.use("/api/event",eventRouter); //Kaveesha's route
