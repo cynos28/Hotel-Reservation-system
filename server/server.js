@@ -14,21 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(
-    cors()
-);
+app.use(cors());
 
 
 // Routes
 app.use("/api/users", userRoute); 
 app.use("/api", route);
 
-
 app.get("/", (req, res) => {
     res.send("Home Page");
 });
-
-
 
 //Error Handler
 app.use(errorHandler);

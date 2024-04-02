@@ -12,6 +12,9 @@ import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';
 import FoodPage from './pages/FoodPage/FoodPage';
+import RegisterEvent from './pages/events/RegisterEvent.js';
+
+
 
 import AddRoom from './components/RoomComponents/addroom/Add';
 import GetRoom from './components/RoomComponents/getroom/Room';
@@ -50,7 +53,14 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
-
+          {/* events */}
+          <Route path='/events' element={<Events/>}/>
+          <Route path='/registerEvent' element={<RegisterEvent />}/>
+          
+          {/* <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/>
+           */}
+             
           <Route path="/profile" element={
             <Layout> <Profile /> </Layout>} />
           <Route path="/ChangePassword" element={
