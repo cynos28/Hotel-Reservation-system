@@ -26,7 +26,7 @@ const roomSchema = new mongoose.Schema({
         required: true
     },
     numberOfBeds: {
-        type: String,
+        type: Number,
         required: true
     },
     roomType: {

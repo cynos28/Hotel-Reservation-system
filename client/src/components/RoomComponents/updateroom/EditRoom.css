@@ -1,0 +1,78 @@
+/* Container styling */
+.editContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f9f9f9; /* Light gray background */
+    background-image: url('https://i.pinimg.com/564x/c4/99/e4/c499e4b69db8ff199ecd93099cf814c6.jpg');
+  }
+  
+  /* Link back styling */
+  .editLinkBack {
+    margin-top: 20px;
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Heading styling */
+  .editHeading {
+    font-size: 38px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #9689d5; /* Dark gray color */
+    font-weight: bold;
+    margin-left: 200px;
+  }
+  
+  /* Form container styling */
+  .editFormContainer {
+    background-color: #cdcfe6; /* White background */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(245, 188, 3, 0.762); /* Shadow effect */
+    width: 600px; /* Fixed width */
+    max-width: 90%; /* Maximum width */
+    margin-left: 250px;
+  }
+  
+  /* Form label styling */
+  .editFormLabel {
+    font-size: 18px;
+    color: #555555; /* Gray color */
+    margin-bottom: 10px;
+  }
+  
+  /* Form input styling */
+  .editFormInput {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd; /* Light gray border */
+    border-radius: 15px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Submit button styling */
+  .editBtnSubmit {
+    width: 50%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff; /* Blue color */
+    color: #ffffff; /* White color */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    display: block; /* Change display property to block */
+    margin: 0 auto; /* Set left and right margins to auto */
+  }
+  
+  
+  .editBtnSubmit:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  

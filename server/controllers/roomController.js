@@ -1,6 +1,5 @@
 const Room = require("../models/roomModel.js");
 
-
 exports.create = async(req, res)=>{
     try {
 
