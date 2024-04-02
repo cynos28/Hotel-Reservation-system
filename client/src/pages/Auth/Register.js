@@ -5,6 +5,8 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/Footer';
 import { Link } from 'react-router-dom';
 import PasswordInput from '../../components/passwordInput/PasswordInput';
+import {toast} from 'react-toastify';
+import {} from "../../redux/features/auth/authService"
 
 const initialState = {
   name: '',
@@ -30,6 +32,24 @@ function Register() {
   const registerUser = (e) => {
     e.preventDefault(); // Prevent the default form submission
     console.log('Registering...', { name, email, password, password2 });
+
+    if(!name || !email || !password || !password2){
+      return toast.error("All fields are required");
+    }
+
+    if (password!== password2) {
+      return toast.error("Passwords do not match");
+    }
+
+    if (password.length < 8) {
+      return toast.error("Password must be at least 8 characters");
+    }
+
+    const userData = {
+      name,email,password
+    }
+
+    console.log(userData);
   };
 
   // Password Strength Calculation
@@ -38,6 +58,7 @@ function Register() {
   if (password.length < 8) {
     setPasswordStrength("Password is too short");
     return;
+
   }
 
   // Uppercase letters
@@ -48,7 +69,7 @@ function Register() {
       if (/\d/.test(password)) {
         // Special characters
         if (/[^A-Za-z0-9]/.test(password)) {
-          setPasswordStrength("Strong password!");
+          return toast.success("Strong password!");
         } else {
           setPasswordStrength("Include special characters");
         }
@@ -62,7 +83,7 @@ function Register() {
     setPasswordStrength("Include uppercase letters");
   }
 
-  
+
 
   };
 
