@@ -1,10 +1,7 @@
-import React from "react";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/Footer";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/Footer";
 import "../events/events.css"; // Import the CSS file
 import birthday1 from "./eventPhotos/birthday1.jpg";
 import dance from "./eventPhotos/dance.jpg";
