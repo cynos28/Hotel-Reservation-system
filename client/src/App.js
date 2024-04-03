@@ -31,6 +31,7 @@ import axios from "axios"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+axios.defaults.withCredentials = true;
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
 
+           {/* Room page */}
           <Route path="/getroom" element={<GetRoom />} />
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />
