@@ -5,7 +5,7 @@ const API_URL = `${BACKEND_URL}/api/users/`
 
 //Register user
 const register = async (userData) =>{
-    const response = await axios.post(APU_URL + "register",userData);
+    const response = await axios.post(API_URL + "register",userData);
     return response.data;
 };
 
