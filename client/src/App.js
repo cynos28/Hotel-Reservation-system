@@ -10,13 +10,14 @@ import Reset from './pages/Auth/Reset'
 import LoginAuth from './pages/Auth/LoginAuth';
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
-import Events from './pages/events/events';
+import Events from './pages/events/events';//kaveesha's
 import FoodPage from './pages/FoodPage/FoodPage';
-import RegisterEvent from './pages/events/RegisterEvent.js';
+import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's
 
 
 
 import AddRoom from './components/RoomComponents/addroom/Add';
+import AddEvent from './components/eventTable/addEvent/EventAdd.js';  //kaveesha's
 import GetRoom from './components/RoomComponents/getroom/Room';
 import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
@@ -55,6 +56,7 @@ function App() {
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
+          <Route path='/addEvent' element={<AddEvent/>}/>
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>

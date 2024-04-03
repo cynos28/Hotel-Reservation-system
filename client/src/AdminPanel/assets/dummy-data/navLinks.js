@@ -19,6 +19,7 @@ const navLinks = [
     icon: "ri-settings-2-line",
     display: "Settings",
   },
+
 ];
 
 export default navLinks;
