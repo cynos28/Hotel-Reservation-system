@@ -120,9 +120,6 @@ const updateEvent = async (req,res) => {
 }
 
 
-
-
-
 module.exports = {
     getEvents,
     getEvent,
