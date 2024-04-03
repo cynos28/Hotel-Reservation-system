@@ -39,7 +39,7 @@ const RegisterEvent = () => {
 
   useEffect(() => {
     let photoLink = "";
-    if (formData.name == "Party") {
+    if (formData.name == "Anniversary") {
       photoLink = "./eventPhotos/party1.jpg";
       setFormData({ ...formData, photo: photoLink });
     } else if (formData.name == "Wedding") {
@@ -51,7 +51,7 @@ const RegisterEvent = () => {
     } else if (formData.name == "Get-togethers") {
       photoLink = "./eventPhotos/GetT.jpg";
       setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Other") {
+    } else if (formData.name == "Other-Party") {
       photoLink = "./eventPhotos/dance.jpg";
       setFormData({ ...formData, photo: photoLink });
     }
@@ -122,11 +122,11 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
             >
-              <option value="Party">Party</option>
+              <option value="Anniversary">Anniversary</option>
               <option value="Wedding">Wedding</option>
               <option value="Birthday">Birthday</option>
               <option value="Get-togethers">Get-togethers</option>
-              <option value="Other">Other</option>
+              <option value="Other-Party">Other-Party</option>
             </select>
           </label>
           <label>
