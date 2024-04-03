@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import "./room.css"; // Import CSS file
 import Header from '../../header/header.js';
 import Footer from '../../footer/Footer.js';
+import Search from '../../Search/Search.js';
+import { SearchOutlined } from '@ant-design/icons';
+
 
 
 const { Option } = Select;
@@ -74,11 +77,15 @@ const GetRoom = () => {
          
         </Select>
         <Input
+        
           className="search-input" // Add custom class for styling
           placeholder="Search by room type" // Placeholder text
           onChange={handleSearch} // Handle search input change
           value={searchQuery} // Bind input value to search query state
+         // Add search icon as prefix// Add search icon as prefix
         />
+   
+        
       </div>
       <div className="room-container">
         <Row justify={'center'} gutter={16}>
