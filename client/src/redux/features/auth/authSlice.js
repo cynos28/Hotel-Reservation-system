@@ -13,17 +13,44 @@ const initialState = {
     message: "",
 };
 
+// Register User
 export const register = createAsyncThunk(
-    "auth/register",
-    async (userData, thunkAPI) => {
-        try {
-            return await authService.register(userData);
-        } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue(message);
-        }
+  "auth/register",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.register(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
     }
+  }
 );
+
+
+// Login User
+export const login = createAsyncThunk(
+  "auth/login",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.login(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 
 const authSlice = createSlice({
     name: "auth",

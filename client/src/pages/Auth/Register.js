@@ -8,7 +8,7 @@ import PasswordInput from '../../components/passwordInput/PasswordInput';
 import { toast } from 'react-toastify';
 import { register, RESET } from "../../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import Loader from '../../components/loader/Loader';
 
 const initialState = {
   name: '',
@@ -37,7 +37,7 @@ function Register() {
   };
 
   const registerUser = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); 
     console.log('Registering...', { name, email, password, password2 });
 
     if (!name || !email || !password || !password2) {
@@ -102,10 +102,8 @@ function Register() {
     <>
       <Header />
       <div className={`container ${Styles.auth}`}>
-      
-      
+        {isLoading && <Loader />}
         <Card>
-
           <p className="title">Create an account</p>
           <form className="form" onSubmit={registerUser}>
             <input
@@ -134,7 +132,6 @@ function Register() {
               onChange={handleInputChange}
               strength={passwordStrength}
             />
-
             <PasswordInput
               placeholder="Confirm password"
               name="password2"
@@ -146,7 +143,6 @@ function Register() {
                 toast.error("Cannot paste into input field");
               }}
             />
-
             <p className="page-link"></p>
             <button type="submit" className="form-btn">
               Sign up
