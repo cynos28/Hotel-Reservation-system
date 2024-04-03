@@ -17,7 +17,7 @@ function Header() {
         <header className='header'>
             <nav>
                 <div className="logo" onClick={goHome}>
-                    <FaHotel size={35} color='#17D7A0'/> <span>PrimeLodge</span>
+                    <FaHotel size={35} color='#17D7A0'/> <span>The Heritage</span>
                 </div>
 
                 <ul className="home-links">

@@ -18,7 +18,5 @@ router.patch("/resetpassword/:resetToken", resetPassword);
 router.patch("/changePassword",protect, changePassword); 
 router.post("/sendLoginCode/:email",sendLoginCode); 
 router.post("/LoginWithCode/:email",loginWithCode); 
-
-  
   
 module.exports = router; 
