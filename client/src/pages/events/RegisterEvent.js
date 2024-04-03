@@ -83,7 +83,7 @@ const RegisterEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const eventData = {
       userId: "user_1234",
       name: formData.name,
@@ -94,8 +94,8 @@ const RegisterEvent = () => {
       sTime: formData.startTime,
       eTime: formData.endingTime,
       cost: formData.estimatedCost
-  };
-
+    };
+  
     axios
       .post("http://localhost:3001/api/event", eventData)
       .then((response) => {
@@ -107,6 +107,7 @@ const RegisterEvent = () => {
         // Handle error if needed
       });
   };
+  
 
   return (
     <div>

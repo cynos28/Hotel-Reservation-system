@@ -55,7 +55,7 @@ function App() {
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
           {/* events */}
           <Route path='/events' element={<Events/>}/>
-          <Route path='/registerEvent' element={<RegisterEvent />}/>
+          <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>
