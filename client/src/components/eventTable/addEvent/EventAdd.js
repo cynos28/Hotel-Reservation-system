@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/Footer";
-import "./RegisterEvent.css"; // Import CSS file
+import "./EventAdd.css"; // Import CSS file
 import axios from "axios"
+import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
+import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 
-const RegisterEvent = () => {
+
+const AddEvent = () => {
   const [formData, setFormData] = useState({
     name: "",
     capacity: "",
     date: "",
+    etype: "Public",
     venue: "",
     photo: "",
     eventStatus: "Pending",
     startTime: "",
     endingTime: "",
+    desc:"",
     estimatedCost: 0,
   });
+
+  
 
   const [recommendationMessage, setRecommendationMessage] = useState("");
 
@@ -37,40 +42,40 @@ const RegisterEvent = () => {
     setRecommendationMessage(message);
   };
 
-  useEffect(() => {
-    let photoLink = "";
-    if (formData.name == "Anniversary") {
-      photoLink = "./eventPhotos/party1.jpg";
-      setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Wedding") {
-      photoLink = "./eventPhotos/wedding1.jpg";
-      setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Birthday") {
-      photoLink = "./eventPhotos/birthday1.jpg";
-      setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Get-togethers") {
-      photoLink = "./eventPhotos/GetT.jpg";
-      setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Other-Party") {
-      photoLink = "./eventPhotos/dance.jpg";
-      setFormData({ ...formData, photo: photoLink });
-    }
-  }, [formData.name]);
+//   useEffect(() => {
+//     let photoLink = "";
+//     if (formData.name == "Anniversary") {
+//       photoLink = "./eventPhotos/party1.jpg";
+//       setFormData({ ...formData, photo: photoLink });
+//     } else if (formData.name == "Wedding") {
+//       photoLink = "./eventPhotos/wedding1.jpg";
+//       setFormData({ ...formData, photo: photoLink });
+//     } else if (formData.name == "Birthday") {
+//       photoLink = "./eventPhotos/birthday1.jpg";
+//       setFormData({ ...formData, photo: photoLink });
+//     } else if (formData.name == "Get-togethers") {
+//       photoLink = "./eventPhotos/GetT.jpg";
+//       setFormData({ ...formData, photo: photoLink });
+//     } else if (formData.name == "Other-Party") {
+//       photoLink = "./eventPhotos/dance.jpg";
+//       setFormData({ ...formData, photo: photoLink });
+//     }
+//   }, [formData.name]);
 
-  useEffect(() => {
-    const hourlyRates = {
-      "Forevermore Grand Hall": 10000,
-      "Golden Glade Banquet Hall": 15000,
-      "Enchanted Gardens Wedding Hall": 20000,
-    };
+//   useEffect(() => {
+//     const hourlyRates = {
+//       "Forevermore Grand Hall": 10000,
+//       "Golden Glade Banquet Hall": 15000,
+//       "Enchanted Gardens Wedding Hall": 20000,
+//     };
 
-    const { venue, startTime, endingTime } = formData;
-    const start = new Date(`01/01/2000 ${startTime}`);
-    const end = new Date(`01/01/2000 ${endingTime}`);
-    const durationInHours = (end - start) / (1000 * 60 * 60);
-    const price = hourlyRates[venue] * durationInHours;
-    setFormData({ ...formData, estimatedCost: price });
-  }, [formData.venue, formData.startTime, formData.endingTime]);
+//     const { venue, startTime, endingTime } = formData;
+//     const start = new Date(`01/01/2000 ${startTime}`);
+//     const end = new Date(`01/01/2000 ${endingTime}`);
+//     const durationInHours = (end - start) / (1000 * 60 * 60);
+//     const price = hourlyRates[venue] * durationInHours;
+//     setFormData({ ...formData, estimatedCost: price });
+//   }, [formData.venue, formData.startTime, formData.endingTime]);
 
   // console.log(formData.name);
   // console.log(formData.capacity);
@@ -89,10 +94,12 @@ const RegisterEvent = () => {
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,
+      etype:formData.etype,
       venue: formData.venue,
       photo: formData.photo,
       sTime: formData.startTime,
       eTime: formData.endingTime,
+      desc : formData.desc,
       cost: formData.estimatedCost
     };
   
@@ -111,24 +118,20 @@ const RegisterEvent = () => {
 
   return (
     <div>
-      <Header />
+    <TopNav />
+    <Sidebar />
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <select
-              name="name"
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-            >
-              <option value="Anniversary">Anniversary</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Get-togethers">Get-togethers</option>
-              <option value="Other-Party">Other-Party</option>
-            </select>
-          </label>
+        <label>
+  Name:
+  <input
+    type="text"
+    name="name"
+    value={formData.name}
+    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+  />
+</label>
+
           <label>
             Capacity:
             <input
@@ -166,7 +169,7 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, venue: e.target.value })
               }
             >
-              <option>---- SELECT ----</option> 
+               <option>---- SELECT ----</option> 
               <option value="Forevermore Grand Hall">
                 Forevermore Grand Hall
               </option>
@@ -200,17 +203,35 @@ const RegisterEvent = () => {
               }
             />
           </label>
+          <label>
+  Photo:
+  <input
+    type="text"
+    name="photo"
+    value={formData.photo}
+    onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
+  />
+</label>
+          <label>
+  Description:
+  <input
+    type="text"
+    name="desc"
+    value={formData.desc}
+    onChange={(e) => setFormData({ ...formData, desc: e.target.value })}
+  />
+</label>
           <label className="status-label">Event Status:</label>
           <div className="status-message">{formData.eventStatus}</div>
-          <div className="cost-label">
+          {/* <div className="cost-label">
             Estimated Cost: Rs. {formData.estimatedCost}
-          </div>
-          <button  className="kc6" type="submit">Confirm Booking</button>
+          </div> */}
+          <button className="kb1" type="submit">Confirm Event</button>
         </form>
       </div>
-      <Footer />
+    
     </div>
   );
 };
 
-export default RegisterEvent;
+export default AddEvent;

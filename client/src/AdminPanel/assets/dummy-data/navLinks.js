@@ -29,6 +29,7 @@ const navLinks = [
     icon: "ri-calendar-event-line",
     display: "Events",
   },
+
 ];
 
 export default navLinks;
