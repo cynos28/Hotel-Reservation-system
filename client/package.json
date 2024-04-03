@@ -38,10 +38,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-    
-
-    ]
+    "extends": []
   },
   "browserslist": {
     "production": [
@@ -57,8 +54,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9", 
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "@babel/preset-env": "^7.23.9",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "sass": "^1.72.0"
   },
   "exports": {
     "import": "./dist/redux-toolkit.esm.mjs",

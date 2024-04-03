@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from '../Auth/auth.module.css';
 import Card from '../../components/card/CardR';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/Footer';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 import PasswordInput from '../../components/passwordInput/PasswordInput';
 import {toast} from 'react-toastify';
 import {} from "../../redux/features/auth/authService"
+import {
+  register,
+  RESET,
+  sendVerificationEmail,
+} from "../../redux/features/auth/authSlice";
+import {useDispatch,useSelector} from "react-redux";
+import Loader from '../../components/loader/Loader';
 
 const initialState = {
   name: '',
@@ -21,6 +28,13 @@ function Register() {
 
   const { name, email, password, password2 } = formData;
 
+  const dispatch = useDispatch( )
+  const navigate = useNavigate( )
+
+  const {isLoading,isLoggedIn,isSuccess, message}  = useSelector((state) => state.auth )
+
+
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'password') {
@@ -29,7 +43,7 @@ function Register() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault(); // Prevent the default form submission
     console.log('Registering...', { name, email, password, password2 });
 
@@ -49,9 +63,22 @@ function Register() {
       name,email,password
     }
 
-    console.log(userData);
+    //console.log(userData);
+    await dispatch(register(userData))
+
+
   };
 
+  useEffect(() => {
+    if (isSuccess && isLoggedIn) {
+      navigate('/profile');
+    }
+
+    dispatch(RESET())
+  }, [isLoggedIn, isSuccess, dispatch, navigate]);
+  
+  
+  
   // Password Strength Calculation
   const calculatePasswordStrength = (password) => {
    // Check length
@@ -91,6 +118,7 @@ function Register() {
     <>
       <Header />
       <div className={`container ${Styles.auth}`}>
+        {isLoading && <Loader/>}
         <Card>
           <p className="title">Create an account</p>
           <form className="form" onSubmit={registerUser}>
