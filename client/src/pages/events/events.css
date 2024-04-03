@@ -25,7 +25,7 @@
 }
 
 .event-card {
-  background-color: #f0f0f0;
+  background-color: #f6faef;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
@@ -78,6 +78,6 @@
 }
 
 .book-event-button:hover {
-  background-color: #25b1836e;
+  background-color: #25b12e6e;
   text-decoration: underline;
 }
