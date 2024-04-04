@@ -31,7 +31,7 @@ const getEvent = async(req,res) => {
 
 //post an event
 const createEvent = async(req,res) => {
-    const {userId,name,cap,date,desc,etype,venue,photo,sTime,eTime,cost} = req.body
+    const {userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost} = req.body
 
     console.log(req.body);
 
@@ -42,8 +42,9 @@ const createEvent = async(req,res) => {
     if(!userId){
         emptyFields.push('userId')
     }
-    if(!name)
+    if(!name){
     emptyFields.push('name')
+    }
     if(!cap){
         emptyFields.push('cap')
     }
@@ -72,9 +73,10 @@ const createEvent = async(req,res) => {
     if(emptyFields.length > 0){
         return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
     }
-    
+    console.log(emptyFields.length);
     try{
-        const event = await Event.create({userId,name,cap,date,desc,etype,venue,photo,sTime,eTime,cost})
+        console.log(userId);
+        const event = await Event.create({userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost})
         res.status(200).json(event)
     }catch(error){
         res.status(400).json({error: error.message})

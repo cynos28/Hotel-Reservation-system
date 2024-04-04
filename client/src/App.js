@@ -32,6 +32,7 @@ import axios from "axios"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 axios.defaults.withCredentials = true;
 
 
@@ -58,6 +59,7 @@ function App() {
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           <Route path='/addEvent' element={<AddEvent/>}/>
+        
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>

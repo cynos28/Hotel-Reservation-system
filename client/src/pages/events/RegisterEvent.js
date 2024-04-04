@@ -112,10 +112,11 @@ const RegisterEvent = () => {
   return (
     <div>
       <Header />
-      <div className="container">
+      <div className="register-container">
         <form onSubmit={handleSubmit}>
           <label>
             Name:
+            </label>
             <select
               name="name"
               onChange={(e) =>
@@ -128,9 +129,10 @@ const RegisterEvent = () => {
               <option value="Get-togethers">Get-togethers</option>
               <option value="Other-Party">Other-Party</option>
             </select>
-          </label>
+          
           <label>
             Capacity:
+            </label>
             <input
               type="number"
               name="capacity"
@@ -146,9 +148,12 @@ const RegisterEvent = () => {
             >
               {recommendationMessage}
             </p>
-          </label>
+            <br/>
+            <br/>
+          
           <label>
             Date:
+            </label>
             <input
               type="date"
               name="date"
@@ -157,9 +162,10 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, date: e.target.value })
               }
             />
-          </label>
+          
           <label>
             Venue:
+            </label>
             <select
               name="venue"
               onChange={(e) =>
@@ -177,9 +183,10 @@ const RegisterEvent = () => {
                 Enchanted Gardens Wedding Hall
               </option>
             </select>
-          </label>
+          
           <label>
             Start Time:
+            </label>
             <input
               type="time"
               name="startTime"
@@ -188,9 +195,10 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, startTime: e.target.value })
               }
             />
-          </label>
+          
           <label>
             Ending Time:
+            </label>
             <input
               type="time"
               name="endingTime"
@@ -199,7 +207,7 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, endingTime: e.target.value })
               }
             />
-          </label>
+          
           <label className="status-label">Event Status:</label>
           <div className="status-message">{formData.eventStatus}</div>
           <div className="cost-label">
