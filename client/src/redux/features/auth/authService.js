@@ -167,6 +167,25 @@ const login = async (userData) => {
     }
   };
   
+  // Login With Code
+  const loginWithCode = async (code, email) => {
+    try {
+      const response = await axios.post(`${API_URL}loginWithCode/${email}`, code);
+      return response.data;
+    } catch (error) {
+      throw error.response.data.message;
+    }
+  };
+  
+  // Login With Google
+  const loginWithGoogle = async (userToken) => {
+    try {
+      const response = await axios.post(`${API_URL}google/callback`, userToken);
+      return response.data;
+    } catch (error) {
+      throw error.response.data.message;
+    }
+  };
   
 
 const authService = {
