@@ -58,6 +58,7 @@ function App() {
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           <Route path='/addEvent' element={<AddEvent/>}/>
+        
           
           {/* <Route path='/dashboard' element={<GetRoom/>}/>
           <Route path='/addroom' element={<AddRoom/>}/>
