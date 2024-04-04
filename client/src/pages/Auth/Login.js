@@ -9,6 +9,7 @@ import { RESET, login } from '../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateEmail } from '../../redux/features/auth/authService';
+import Loader from '../../components/loader/Loader';
 
 const initialState = {
   email: '',
@@ -22,7 +23,7 @@ function Login() {
   const navigate = useNavigate();
   const { isLoading, isLoggedIn, isSuccess } = useSelector((state) => state.auth);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = async(e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
