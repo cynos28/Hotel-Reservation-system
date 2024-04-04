@@ -31,8 +31,14 @@
   margin: 10px;
   width: 200px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 }
 
+.event-card:hover{
+  transform: scale(1.03);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+}
 .event-card h3 {
   margin: 0;
 }

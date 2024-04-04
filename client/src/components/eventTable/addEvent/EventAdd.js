@@ -7,6 +7,7 @@ import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 
 const AddEvent = () => {
   const [formData, setFormData] = useState({
+    userId: "user_1234",
     name: "",
     capacity: "",
     date: "",
@@ -17,7 +18,7 @@ const AddEvent = () => {
     startTime: "",
     endingTime: "",
     desc:"",
-    estimatedCost: 0,
+    estimatedCost: -1,
   });
 
   
@@ -90,13 +91,14 @@ const AddEvent = () => {
     e.preventDefault();
   
     const eventData = {
-      userId: "user_1234",
+      userId: formData.userId,
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,
       etype:formData.etype,
       venue: formData.venue,
       photo: formData.photo,
+      estatus:formData.eventStatus,
       sTime: formData.startTime,
       eTime: formData.endingTime,
       desc : formData.desc,
@@ -120,20 +122,22 @@ const AddEvent = () => {
     <div>
     <TopNav />
     <Sidebar />
-      <div className="container">
+      <div className="AdminEvent-container">
         <form onSubmit={handleSubmit}>
         <label>
   Name:
+  </label>
   <input
     type="text"
     name="name"
     value={formData.name}
     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
   />
-</label>
+
 
           <label>
             Capacity:
+            </label>
             <input
               type="number"
               name="capacity"
@@ -149,9 +153,11 @@ const AddEvent = () => {
             >
               {recommendationMessage}
             </p>
-          </label>
+            <br/>
+          
           <label>
             Date:
+            </label>
             <input
               type="date"
               name="date"
@@ -160,9 +166,10 @@ const AddEvent = () => {
                 setFormData({ ...formData, date: e.target.value })
               }
             />
-          </label>
+          
           <label>
             Venue:
+            </label>
             <select
               name="venue"
               onChange={(e) =>
@@ -180,9 +187,10 @@ const AddEvent = () => {
                 Enchanted Gardens Wedding Hall
               </option>
             </select>
-          </label>
+          
           <label>
             Start Time:
+            </label>
             <input
               type="time"
               name="startTime"
@@ -191,9 +199,10 @@ const AddEvent = () => {
                 setFormData({ ...formData, startTime: e.target.value })
               }
             />
-          </label>
+          
           <label>
             Ending Time:
+            </label>
             <input
               type="time"
               name="endingTime"
@@ -202,25 +211,27 @@ const AddEvent = () => {
                 setFormData({ ...formData, endingTime: e.target.value })
               }
             />
-          </label>
+          
           <label>
   Photo:
+  </label>
   <input
     type="text"
     name="photo"
     value={formData.photo}
     onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
   />
-</label>
+
           <label>
   Description:
+  </label>
   <input
     type="text"
     name="desc"
     value={formData.desc}
     onChange={(e) => setFormData({ ...formData, desc: e.target.value })}
   />
-</label>
+
           <label className="status-label">Event Status:</label>
           <div className="status-message">{formData.eventStatus}</div>
           {/* <div className="cost-label">
