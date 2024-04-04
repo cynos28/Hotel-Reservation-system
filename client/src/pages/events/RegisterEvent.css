@@ -48,6 +48,7 @@ select {
 button[type="submit"] {
   padding: 10px 20px;
   margin-top: 20px; /* Add margin-bottom to create space */
+  width: 700px;
   border: none;
   border-radius: 5px;
   background-color: #03c987e6;
@@ -59,6 +60,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #03c987;
+  text-decoration: underline;
 }
 
 /* Status label styles */
