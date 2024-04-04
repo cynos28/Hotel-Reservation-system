@@ -8,24 +8,38 @@
     align-items: center; /* Center horizontally */
     justify-content: center; /* Center vertically */
     margin-left: 275px;
+   
+    
+    
     
   }
   
 table {
-    width: 90%;
+    width: 91%;
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 20px;
+   
+   
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #031852;
     padding: 8px;
     text-align: left;
+    font-size: 14px;
+   
+
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #031852;
+    font-size: 15px;
+    font-weight: bold;
+    color: #d2e3f0;
+    
+    
+   
 }
 
 /* Filter and search container styles */
@@ -68,7 +82,7 @@ th {
 }
 
 .actionButtons a {
-    background-color: #0e2d4e;
+    background-color: #295889;
     color: #fff;
     text-decoration: none;
     width: fit-content;

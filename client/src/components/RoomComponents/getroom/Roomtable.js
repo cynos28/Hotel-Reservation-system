@@ -52,10 +52,10 @@ const RoomTable = () => {
 
     return (
 
-        <div>
+        <div >
     <TopNav />
     <Sidebar />
-
+  
     <div className="RoomtableContainer">
         <div className='roomTable'>
             <div className="filter-container">

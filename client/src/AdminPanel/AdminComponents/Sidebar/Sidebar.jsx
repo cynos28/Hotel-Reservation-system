@@ -10,11 +10,11 @@ const Sidebar = () => {
       <div className="sidebar__top">
         <h2>
           <span>
-            <i class="ri-taxi-line"></i>
+            <i class="ri-hotel-fill"></i>
           </span>{" "}
-          PrimeLodge
+           Heritage
         </h2>
-      </div>
+      </div>  
 
       <div className="sidebar__content">
         <div className="menu">

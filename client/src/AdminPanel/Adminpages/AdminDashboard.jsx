@@ -16,7 +16,7 @@ const AdminDash = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3500/api/getall');
+        const response = await axios.get('http://localhost:3001/api/getall');
         setRooms(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -72,7 +72,7 @@ const AdminDash = () => {
           </div>
           <div className="statics">
             <div className="stats">
-              <h3 className="stats__title">Room Rent Distribution</h3>
+              <h3 className="stats__title">Room Type Distribution</h3>
               <MileChart />
             </div>
             <div className="stats">
