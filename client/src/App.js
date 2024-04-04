@@ -10,10 +10,14 @@ import Reset from './pages/Auth/Reset'
 import LoginAuth from './pages/Auth/LoginAuth';
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
-import Events from './pages/events/events';
+import Events from './pages/events/events';//kaveesha's
 import FoodPage from './pages/FoodPage/FoodPage';
+import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's
+
+
 
 import AddRoom from './components/RoomComponents/addroom/Add';
+import AddEvent from './components/eventTable/addEvent/EventAdd.js';  //kaveesha's
 import GetRoom from './components/RoomComponents/getroom/Room';
 import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
@@ -28,8 +32,14 @@ import axios from "axios"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+<<<<<<< HEAD
 
 axios.defaults.withCredentials=true;
+||||||| 6784a8b8
+axios.defaults.withCredentials=true;
+=======
+axios.defaults.withCredentials = true;
+>>>>>>> main
 
 
 function App() {
@@ -51,7 +61,15 @@ function App() {
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
-
+          {/* events */}
+          <Route path='/events' element={<Events/>}/>
+          <Route path='/RegisterEvent' element={<RegisterEvent />}/>
+          <Route path='/addEvent' element={<AddEvent/>}/>
+          
+          {/* <Route path='/dashboard' element={<GetRoom/>}/>
+          <Route path='/addroom' element={<AddRoom/>}/>
+           */}
+             
           <Route path="/profile" element={
             <Layout> <Profile /> </Layout>} />
           <Route path="/ChangePassword" element={
@@ -70,6 +88,7 @@ function App() {
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
 
+           {/* Room page */}
           <Route path="/getroom" element={<GetRoom />} />
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />

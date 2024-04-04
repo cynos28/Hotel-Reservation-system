@@ -134,16 +134,18 @@ const AddRoom = () => {
             />
           </div>
           <div className="addRoomFormGroup">
-            <label className="addRoomLabel">Room Type</label>
-            <input
-              type="text"
-              className="addRoomInput"
-              onChange={inputHandler}
-              placeholder="Enter room type"
-              name="roomType"
-              required
-            />
-          </div>
+  <label className="addRoomLabel">Room Type</label>
+  <select className="addRoomInput" onChange={inputHandler} name="roomType" required>
+    <option value="">Select room type</option>
+    <option value="Standard">Standard</option>
+    <option value="Deluxe Room">Deluxe Room</option>
+    <option value="Suite">Suite</option>
+    <option value="Family Room">Family Room</option>
+    <option value="Luxury">Luxury</option>
+    <option value="Villa">Villa</option>
+  </select>
+</div>
+
           <div className="addRoomTextCenter addRoomMarginTop">
             <button type="submit" className="addRoomSubmitButton">Add Room</button>
           </div>

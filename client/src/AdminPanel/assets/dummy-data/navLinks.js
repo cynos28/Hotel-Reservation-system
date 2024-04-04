@@ -10,15 +10,26 @@ const navLinks = [
     display: "Add Rooms",
   },
   {
+    path: "",
+    icon: "ri-user-3-fill",
+    display: "Users",
+  },
+  {
     path: "/getroom",
     icon: "ri-building-4-fill",
     display: "Current Rooms",
   },
   {
     path: "/roomtable",
-    icon: "ri-settings-2-line",
-    display: "Settings",
+    icon: "ri-building-4-fill",
+    display: "Room Info",
   },
+ {
+    path: "",
+    icon: "ri-calendar-event-line",
+    display: "Events",
+  },
+
 ];
 
 export default navLinks;
