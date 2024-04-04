@@ -225,8 +225,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: "Incorrect login code. Please try again." });
   }
 
-  // Perform login actions here if the login code is correct
-  // For example, generate JWT token and set cookie
+  
 
   res.status(200).json({ message: "Login successful" });
 

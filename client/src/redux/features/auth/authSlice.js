@@ -31,7 +31,6 @@ export const register = createAsyncThunk(
   }
 );
 
-
 // Login User
 export const login = createAsyncThunk(
   "auth/login",
@@ -85,8 +84,8 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
-      // Login User
-      .addCase(login.pending, (state) => {
+       // Login User
+       .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
@@ -107,6 +106,10 @@ const authSlice = createSlice({
           state.twoFactor = true;
         }
       })
+
+
+
+      
   }
 });
 
