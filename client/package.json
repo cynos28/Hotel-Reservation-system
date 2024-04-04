@@ -55,18 +55,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
-<<<<<<< HEAD
-    "@babel/preset-env": "^7.23.9",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "sass": "^1.72.0"
-||||||| 6784a8b8
-    "@babel/preset-env": "^7.23.9", 
-    "eslint-plugin-react-hooks": "^1.7.0"
-=======
     "@babel/preset-env": "^7.23.9",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^1.7.0"
->>>>>>> main
   },
   "exports": {
     "import": "./dist/redux-toolkit.esm.mjs",
