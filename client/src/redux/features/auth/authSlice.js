@@ -102,11 +102,10 @@ const authSlice = createSlice({
         state.message = action.payload;
         state.user = null;
         toast.error(action.payload);
-        if (action.payload.includes("New browser")) {
+        if (action.payload && action.payload.includes("New browser")) {
           state.twoFactor = true;
         }
-      })
-
+    })
 
 
       

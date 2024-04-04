@@ -73,27 +73,27 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // Login user
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
   // Validation
   if (!email || !password) {
-    res.status(400);
-    return res.json({ error: "Please add email and password." });
+    res.status(400).json({ error: "Please provide email and password." });
+    return;
   }
 
   const user = await User.findOne({ email });
+
   if (!user) {
-    res.status(400);
-    return res.json({ error: "User Not found, please signup." });
+    res.status(404).json({ error: "User not found. Please sign up." });
+    return;
   }
 
   const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
   if (!passwordIsCorrect) {
-    res.status(400);
-    return res.json({ error: "Invalid email or password." });
+    res.status(400).json({ error: "Invalid email or password." });
+    return;
   }
-
 
   // Trigger 2FA validation
   const ua = parser(req.headers["user-agent"]);
@@ -157,7 +157,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-//>>>>>>>>>>>>>>>>>>>>>>>> Send login Code>>
+
 // Send login code to user's email
 const sendLoginCode = asyncHandler(async (req, res) => {
   const { email: userEmail } = req.params;
