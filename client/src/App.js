@@ -32,14 +32,7 @@ import axios from "axios"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-<<<<<<< HEAD
-
-axios.defaults.withCredentials=true;
-||||||| 6784a8b8
-axios.defaults.withCredentials=true;
-=======
 axios.defaults.withCredentials = true;
->>>>>>> main
 
 
 function App() {
