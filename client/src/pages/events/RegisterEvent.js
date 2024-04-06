@@ -115,7 +115,7 @@ const RegisterEvent = () => {
       <div className="register-container">
         <form onSubmit={handleSubmit}>
           <label>
-            Name:
+            Type of the Event:
             </label>
             <select
               name="name"

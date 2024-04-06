@@ -25,7 +25,7 @@ const navLinks = [
     display: "Room Info",
   },
  {
-    path: "",
+    path: "/EventTable",
     icon: "ri-calendar-event-line",
     display: "Events",
   },

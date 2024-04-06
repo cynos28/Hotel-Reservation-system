@@ -3,7 +3,8 @@ import "./EventAdd.css"; // Import CSS file
 import axios from "axios"
 import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
 import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
-
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const AddEvent = () => {
   const [formData, setFormData] = useState({
@@ -108,7 +109,16 @@ const AddEvent = () => {
     axios
       .post("http://localhost:3001/api/event", eventData)
       .then((response) => {
+        
         console.log("Event created successfully:", response.data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Event Added successfully!',
+          showConfirmButton: false,
+          timer: 1500,
+      });
+      toast.success(response.data.msg, { position: 'top-right' });
         // Do something with the response if needed
       })
       .catch((error) => {
