@@ -17,10 +17,12 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 
+
 app.use(cors({
     origin: "http://localhost:3000", // Allow requests from localhost:3000
     credentials: true // Allow sending cookies from frontend to backend
   }));
+
 
 
 // Routes
