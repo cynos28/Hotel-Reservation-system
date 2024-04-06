@@ -56,8 +56,11 @@
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
+    "autoprefixer": "^10.4.19",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   },
   "exports": {
     "import": "./dist/redux-toolkit.esm.mjs",

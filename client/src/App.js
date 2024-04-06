@@ -12,7 +12,8 @@ import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';//kaveesha's
 import FoodPage from './pages/FoodPage/FoodPage';
-import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's
+import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
+import EventTable from './components/eventTable/addEvent/EventTable.js';
 
 
 
@@ -58,11 +59,9 @@ function App() {
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           <Route path='/addEvent' element={<AddEvent/>}/>
-        
+          <Route path='/EventTable' element={<EventTable/>}/>
           
-          {/* <Route path='/dashboard' element={<GetRoom/>}/>
-          <Route path='/addroom' element={<AddRoom/>}/>
-           */}
+
              
           <Route path="/profile" element={
             <Layout> <Profile /> </Layout>} />
