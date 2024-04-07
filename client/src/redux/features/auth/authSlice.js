@@ -80,6 +80,18 @@ export const getLoginStatus = createAsyncThunk(
   }
 );
 
+// Get User
+export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
+  try {
+    return await authService.getUser();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
 
 // sendLoginCode
 export const sendLoginCode = createAsyncThunk(
@@ -210,6 +222,22 @@ const authSlice = createSlice({
           console.log(action.payload);
         })
 
+        // Get User
+      .addCase(getUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
 
   }
 });
@@ -217,5 +245,6 @@ const authSlice = createSlice({
 export const { RESET } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectUser = (state) => state.auth.user;
 
 export default authSlice.reducer;
