@@ -516,4 +516,8 @@ a:hover {
   background-color: #fff;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
