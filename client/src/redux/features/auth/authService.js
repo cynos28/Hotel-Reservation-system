@@ -8,7 +8,7 @@ export const validateEmail = (email) => {
     return email.match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
-  };
+};
 
 // Register user
 const register = async (userData) => {
@@ -16,7 +16,7 @@ const register = async (userData) => {
         const response = await axios.post(`${API_URL}/register`, userData);
         return response.data;
     } catch (error) {
-        if (error.response &&  "User already exists with this email.") {
+        if (error.response && error.response.data.error === "User already exists with this email.") {
             // Handle specific error for existing user
             throw new Error("User already exists with this email.");
         } else {
@@ -30,12 +30,14 @@ const register = async (userData) => {
 // Login User
 const login = async (userData) => {
     try {
-      const response = await axios.post(`${API_URL}login`, userData);
-      return response.data;
+        const response = await axios.post(`${API_URL}/login`, userData);
+        return response.data;
     } catch (error) {
-      throw error.response.data.message;
+        // Handle login error
+        console.error("Error logging in:", error);
+        throw new Error("Login failed. Please check your credentials and try again.");
     }
-  };
+};
   
   // Logout User
   const logout = async () => {
