@@ -109,7 +109,7 @@ function CardDetail() {
                 <td className="tble_card_details_th">{payment.amount}</td>
                 <td className="tble_card_details_th">
                   <Link
-                    to={`/updatepayment/${payment._id}`}
+                    to={`/card-details/update-payment/${payment._id}`}
                     className="updtbtn"
                   >
                     Update

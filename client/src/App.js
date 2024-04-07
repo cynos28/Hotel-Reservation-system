@@ -38,6 +38,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //Payments 
 import AddPayment from './pages/Payments/AddPayment';
 import CardDetails from './pages/Payments/CardDetails';
+import UpdatePayment from './pages/Payments/UpdatePayment';
 
 axios.defaults.withCredentials = true;
 
@@ -96,6 +97,7 @@ function App() {
           {/* Payments page */}
           <Route path="/add-payment" element={<AddPayment />} />
           <Route path="/card-details" element={<CardDetails />} />
+          <Route path="/card-details/update-payment/:id" element={<UpdatePayment/>} />
 
 
 
