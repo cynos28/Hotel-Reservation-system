@@ -8,6 +8,7 @@ import dance from "./eventPhotos/dance.jpg";
 import GetT from "./eventPhotos/GetT.jpg";
 import party1 from "./eventPhotos/party1.jpg";
 import wedding1 from "./eventPhotos/wedding1.jpg";
+import { Link } from 'react-router-dom';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -98,7 +99,7 @@ const Events = () => {
         </div>
       </div>
       {/* Book Event Button */}
-      <div className="book-event-button">Book Event</div>
+      <Link to={"/RegisterEvent"} className='book-event-button'>Add Event</Link>
 
       <Footer />
     </div>
