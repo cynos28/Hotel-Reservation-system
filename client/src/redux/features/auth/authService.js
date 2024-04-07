@@ -27,12 +27,23 @@ const register = async (userData) => {
     }
 };
 
-
 // Login User
 const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/login`, userData);
-  return response.data;
+    try {
+        const response = await axios.post(`${API_URL}/login`, userData);
+        return response.data;
+    } catch (error) {
+        // Handle login error
+        console.error("Error logging in:", error);
+       
+    }
 };
+
+// // Login User
+// const login = async (userData) => {
+//   const response = await axios.post(`${API_URL}/login`, userData);
+//   return response.data;
+// };
   
   // Logout User
   const logout = async () => {
