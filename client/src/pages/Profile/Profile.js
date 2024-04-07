@@ -4,9 +4,10 @@ import Card from '../../components/card/Card';
 
 import './Profile.css';
 import PageMenu from '../../components/pageMenu/PageMenu';
+import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 
 const initialState = {
-  name: 'Shehan',
+  name: '',
   email: 'shedul0000@gmail.com',
   phone: '',
   bio: '',
@@ -16,6 +17,7 @@ const initialState = {
 };
 
 function Profile() {
+  // useRedirectLoggedOutUser("/login");
   const [profile, setProfile] = useState(initialState);
 
   const handleInputChange = (e) => {
