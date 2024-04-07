@@ -9,7 +9,7 @@ import { RESET, login } from '../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateEmail } from '../../redux/features/auth/authService';
-import Loader from '../../components/loader/Loader';
+//import Loader from '../../components/loader/Loader';
 
 const initialState = {
   email: '',
@@ -52,7 +52,7 @@ function Login() {
 
     <>  <Header />
         <div className={`container ${Styles.auth}`}>
-        {isLoading && <Loader />}
+        {/* {isLoading && <Loader />} */}
             <Card>
                 <p className="title">Welcome back</p>
 
