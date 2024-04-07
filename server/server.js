@@ -8,8 +8,11 @@ const userRoute = require("./routes/userRoute.js");
 const errorHandler = require("./middleware/middleware.js");
 const route = require("./routes/roomRoute.js");
 const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
-const taskroute = require("./routes/taskRoute.js")
+const taskroute = require("./routes/taskRoute.js");
+const paymentRoute = require("./routes/paymentRoute.js"); 
 const app = express();
+
+
 
 // Middlewares
 app.use(express.json());
@@ -31,6 +34,7 @@ app.use("/api/users", userRoute);
 app.use("/api", route);
 app.use("/api/event",eventRouter); //Kaveesha's route
 app.use("/api", taskroute);//room tasks Routes
+app.use("/api/payment",paymentRoute);
 
 
 app.get("/", (req, res) => {
