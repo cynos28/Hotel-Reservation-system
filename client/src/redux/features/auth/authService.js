@@ -46,14 +46,16 @@ const login = async (userData) => {
 // };
   
   // Logout User
-  const logout = async () => {
-    try {
-      const response = await axios.get(`${API_URL}logout`);
-      return response.data.message;
-    } catch (error) {
-      throw error.response.data.message;
-    }
-  };
+const logout= async () => {
+  try {
+    const response = await axios.get(`${API_URL}/logout`);
+    toast.success(response.data.message); 
+    return response.data.message;
+  } catch (error) {
+    toast.error(error.response.data.message); 
+    throw error.response.data.message;
+  }
+};
   
   // Get Login Status
   const getLoginStatus = async () => {

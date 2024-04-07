@@ -183,10 +183,10 @@ const sendLoginCode = asyncHandler(async (req, res) => {
   );
 
   // Send login code to user's email
-  const subject = "Login Access Code - PrimeLodge";
+  const subject = "Login Access Code - The Heritage";
   const sendTo = userEmail;
   const sentFrom = process.env.EMAIL_USER;
-  const replyTo = "noreply@primelodge.com";
+  const replyTo = "noreply@heritage.com";
   const template = "loginCode";
   const name = user.name;
 
@@ -386,6 +386,8 @@ const logoutUser = asyncHandler(async (req, res) => {
     message: "Successfully logged out"
   });
 });
+
+
 
 // Get User
 const getUser = async (req, res, next) => {
