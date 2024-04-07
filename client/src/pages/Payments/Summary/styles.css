@@ -1,0 +1,36 @@
+.summery_full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  font-family: "Roboto", sans-serif;
+}
+.summery_full_box {
+  width: 400px;
+  border: 2px solid #65a4da;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.sumary_title {
+  font-size: 23px;
+}
+.remov_mrgn {
+  margin-top: 0;
+}
+.pdf_btn {
+  background-color: #65a4da;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}

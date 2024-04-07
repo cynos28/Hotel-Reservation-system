@@ -36,7 +36,7 @@ function AddPayment() {
     console.log(inputs);
     await sendRequest();
     window.alert("Payment successfully!");
-    navigate(`/ordersummery/payid/${inputs.payid}`); 
+    navigate(`/add-payment/order-summary/${inputs.payid}`); 
   };
   
   const sendRequest = async () => {
