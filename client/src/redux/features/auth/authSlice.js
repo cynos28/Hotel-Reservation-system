@@ -50,6 +50,25 @@ export const login = createAsyncThunk(
 );
 
 
+// sendLoginCode
+export const sendLoginCode = createAsyncThunk(
+  "auth/sendLoginCode",
+  async (email, thunkAPI) => {
+    try {
+      return await authService.sendLoginCode(email);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 
 const authSlice = createSlice({
   name: "auth",
@@ -84,8 +103,8 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
-       // Login User
-       .addCase(login.pending, (state) => {
+      // Login User
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
@@ -105,10 +124,25 @@ const authSlice = createSlice({
         if (action.payload && action.payload.includes("New browser")) {
           state.twoFactor = true;
         }
-    })
+      })
+      // send Login Code
+      .addCase(sendLoginCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendLoginCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+        toast.success(action.payload);
+      })
+      .addCase(sendLoginCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
 
 
-      
   }
 });
 

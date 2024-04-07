@@ -27,16 +27,11 @@ const register = async (userData) => {
     }
 };
 
+
 // Login User
 const login = async (userData) => {
-    try {
-        const response = await axios.post(`${API_URL}/login`, userData);
-        return response.data;
-    } catch (error) {
-        // Handle login error
-        console.error("Error logging in:", error);
-        throw new Error("Login failed. Please check your credentials and try again.");
-    }
+  const response = await axios.post(`${API_URL}/login`, userData);
+  return response.data;
 };
   
   // Logout User
