@@ -1,0 +1,96 @@
+.find_full {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+}
+
+.find_form {
+  width: 400px;
+  border: 2px solid #65a4da;
+  padding: 25px;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.find_full_box_label {
+  font-size: 20px;
+  font-weight: bold;
+}
+.find_full_box_input {
+  width: 98%;
+  padding: 2px 4px;
+  margin: 8px 0;
+  font-size: 20px;
+  border: 2px solid #65a4da;
+}
+.subpara_card {
+  font-size: 15px;
+  padding: 0 20%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.main_book_topic_card {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+  font-size: 40px;
+}
+.btn_find {
+  background-color: #65a4da;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}
+.tble_card_details_main {
+  padding: 50px 10%;
+}
+.tble_card_details {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  border: 2px solid #65a4da;
+}
+
+.tble_card_details_th {
+  border: 2px solid #65a4da;
+  margin: 0;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.updtbtn{
+    background-color: #65a4da;
+    border: 2px solid #65a4da;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    margin-right: 25px;
+    text-decoration: none;
+}
+.dltbtn{
+    background-color: #ed1313;
+    border: 2px solid #ed1313;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+}

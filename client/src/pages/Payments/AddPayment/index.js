@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import "./addpayment.css";
+import "./styles.css";
 import axios from "axios";
 import bookimg from "./img/bkbokinfrom.png";
 import { useParams } from "react-router-dom";
