@@ -62,6 +62,24 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   }
 });
 
+// Get Login Status
+export const getLoginStatus = createAsyncThunk(
+  "auth/getLoginStatus",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.getLoginStatus();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 
 // sendLoginCode
 export const sendLoginCode = createAsyncThunk(
@@ -138,7 +156,7 @@ const authSlice = createSlice({
           state.twoFactor = true;
         }
       })
-      
+
        // Logout User
        .addCase(logout.pending, (state) => {
         state.isLoading = true;
@@ -157,6 +175,7 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
+
       // send Login Code
       .addCase(sendLoginCode.pending, (state) => {
         state.isLoading = true;
@@ -173,6 +192,23 @@ const authSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload);
       })
+
+        // Get Login Status
+        .addCase(getLoginStatus.pending, (state) => {
+          state.isLoading = true;
+        })
+        .addCase(getLoginStatus.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isSuccess = true;
+          state.isLoggedIn = action.payload;
+          console.log(action.payload);
+        })
+        .addCase(getLoginStatus.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+          console.log(action.payload);
+        })
 
 
   }

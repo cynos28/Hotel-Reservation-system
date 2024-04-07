@@ -3,16 +3,24 @@ import "./header.css";
 import { FaHotel } from "react-icons/fa6";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { RESET, logout } from '../../redux/features/auth/authSlice';
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "");
 
 function Header() {
     const navigate = useNavigate();
+    const dispatch = useNavigate();
 
     const goHome = () => {
         navigate("/");
     };
 
+
+ const logoutUser = async () =>{
+    dispatch(RESET());
+    await dispatch (logout());
+    navigate("/login");
+ }
     return (
         <header className='header'>
             <nav>
@@ -47,7 +55,7 @@ function Header() {
                     </li>
 
                     <li>
-                        <button className='button-logout'>
+                        <button onClick={logoutUser} className='button-logout'>
                             Logout
                         </button>
                     </li>
