@@ -1,0 +1,133 @@
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(210, 209, 209); /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #65a4da; /* Color of the scrollbar handle */
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #65a4da; /* Color of the scrollbar handle on hover */
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.main_book_topic{
+    text-align: center;
+    font-size: 40px;
+}
+.sub_book_topic{
+    color: #65a4da;
+}
+.pay_now_box {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  margin-top: 25px;
+}
+.payment_form_pay {
+  width: 750px;
+  font-family: "Roboto", sans-serif;
+  border: 2px solid #65a4da;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+.payment_lable {
+  font-weight: bold;
+  font-size: 18px;
+}
+.payment_form_pay_box {
+  display: flex;
+}
+
+.payment_form_pay_left {
+  flex: 1;
+  padding: 0 30px 0 0;
+}
+
+.payment_form_pay_right {
+  flex: 1;
+}
+.payment_input {
+  width: 100%;
+  border: 1.8px solid #65a3da91;
+  font-size: 18px;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 5px 5px;
+}
+.payment_input_id {
+  width: 172px;
+  border: 1.8px solid #65a3da91;
+  font-size: 18px;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 5px 5px;
+}
+.card_topic {
+  font-size: 23px;
+  margin: 0 0 20px 0;
+  color: #65a4da;
+}
+.genarate_id_btn {
+  background-color: #65a4da;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}
+.pay_now_btn {
+  background-color: #65a4da;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}
+.pay_now_btn:hover {
+  background-color: white;
+  border: 2px solid #65a4da;
+  color: #65a4da;
+}
+.formimg_book_full {
+  width: 315px;
+  padding: 10px;
+  height: 175px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #65a3da4b;
+}
+.formimg_book {
+  width: 100%;
+  height: 175px;
+}

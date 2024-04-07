@@ -17,6 +17,7 @@ import EventTable from './components/eventTable/addEvent/EventTable.js';
 
 
 
+
 import AddRoom from './components/RoomComponents/addroom/Add';
 import AddEvent from './components/eventTable/addEvent/EventAdd.js';  //kaveesha's
 import GetRoom from './components/RoomComponents/getroom/Room';
@@ -33,6 +34,9 @@ import axios from "axios"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+//Payments 
+import AddPayment from './pages/Payments/AddPayment/index.js';
 
 axios.defaults.withCredentials = true;
 
@@ -88,6 +92,8 @@ function App() {
           <Route path="/roomtable" element={<RoomTable />} />
           <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
 
+          {/* Payments page */}
+          <Route path="/add-payment" element={<AddPayment />} />
 
 
         </Routes>
