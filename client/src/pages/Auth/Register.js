@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { register, RESET } from "../../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from '../../components/loader/Loader';
+import { validateEmail } from "../../redux/features/auth/authService";
 
 const initialState = {
   name: '',
@@ -43,6 +44,10 @@ function Register() {
     if (!name || !email || !password || !password2) {
       return toast.error("All fields are required");
     }
+
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email"); }
+
 
     if (password !== password2) {
       return toast.error("Passwords do not match");

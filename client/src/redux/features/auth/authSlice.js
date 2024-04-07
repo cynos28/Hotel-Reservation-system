@@ -3,14 +3,14 @@ import { toast } from "react-toastify";
 import authService from './authService';
 
 const initialState = {
-    isLoggedIn: false,
-    user: null,
-    users: [],
-    twoFactor: false,
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
-    message: "",
+  isLoggedIn: false,
+  user: null,
+  users: [],
+  twoFactor: false,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
 };
 
 // Register User
@@ -30,7 +30,6 @@ export const register = createAsyncThunk(
     }
   }
 );
-
 
 // Login User
 export const login = createAsyncThunk(
@@ -53,38 +52,64 @@ export const login = createAsyncThunk(
 
 
 const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {
-        RESET(state) {
-            state.twoFactor = false;
-            state.isError = false; // Correct typo
-            state.isSuccess = false;
-            state.isLoading = false;
-            state.message = "";
-        }
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(register.pending, (state) => {
-                state.isLoading = true;
-            })
-            .addCase(register.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isSuccess = true;
-                state.isLoggedIn = true;
-                state.user = action.payload;
-                console.log(action.payload);
-                toast.success("Registered Successfully");
-            })
-            .addCase(register.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isError = true;
-                state.message = action.payload;
-                state.user = null;
-                toast.error(action.payload);
-            });
+  name: "auth",
+  initialState,
+  reducers: {
+    RESET(state) {
+      state.twoFactor = false;
+      state.isError = false; // Correct typo
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        console.log(action.payload);
+        toast.success("Registered Successfully");
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+      })
+
+       // Login User
+       .addCase(login.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("Login Successful");
+        console.log(action.payload);
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+        if (action.payload && action.payload.includes("New browser")) {
+          state.twoFactor = true;
+        }
+    })
+
+
+      
+  }
 });
 
 export const { RESET } = authSlice.actions;
