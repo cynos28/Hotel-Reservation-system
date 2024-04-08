@@ -73,7 +73,7 @@ const createRegisterEvent = (req, res) => {
         return res.status(500).json({ message: "Error uploading file" });
       }
   
-      Event.create({ userId:req.body.userID, name: req.body.name, date: req.body.date, cap: req.body.capacity, photo:req.body.photo, etype: req.body.eType, venue: req.body.venue, estatus:req.body.eventStatus, sTime: req.body.startTime, eTime: req.body.endingTime, cost: req.body.desc })
+      Event.create({ userId:req.body.userID, name: req.body.name, date: req.body.date, cap: req.body.cap, photo:req.body.photo, etype: req.body.eType, venue: req.body.venue, estatus:req.body.eventStatus, sTime: req.body.sTime, eTime: req.body.eTime, cost: req.body.cost })
         .then((result) => res.json(result))
         .catch((err) => {
           console.log(err);
