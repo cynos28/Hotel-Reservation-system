@@ -5,7 +5,8 @@ import axios from "axios";
 import bookimg from "./img/bkbokinfrom.png";
 import { useParams } from "react-router-dom";
 import { BACKEND_URL } from "../../../constants";
-
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 
 function AddPayment() {
   const navigate = useNavigate();
@@ -56,6 +57,8 @@ function AddPayment() {
 
   return (
     <div>
+      <Header/>
+      <div className="payment_container">
       <div className="pay_now_box">
        <h1 className="main_book_topic">Booking <span className="sub_book_topic">Now..!</span></h1>
         <form className="payment_form_pay" onSubmit={handleSubmit}>
@@ -204,6 +207,8 @@ function AddPayment() {
           </button>
         </form>
       </div>
+      </div>
+      <Footer/>
     </div>
   );
 }
