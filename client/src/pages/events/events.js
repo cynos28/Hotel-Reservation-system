@@ -57,8 +57,8 @@ const Events = () => {
               .map((event) => (
                 <div key={event._id} className="event-card">
                   <img
-                    src={event.image}
-                    alt={event.name}
+                    src={"http://localhost:3001/events/" + event.image}
+                    alt={event.image}
                     className="event-image"
                   />
                   <h3>{event.name}</h3>
@@ -71,6 +71,8 @@ const Events = () => {
 
         <div className="personal-events">
           <h2 className="to1">Personal Events</h2>
+          <div className="line"></div>
+          <Link to={"/RegisterEvent"} className='book-event-button'>Add Event</Link>
           <div className="events-container">
             {events
               .filter((event) => event.etype === "Personal")
@@ -81,7 +83,7 @@ const Events = () => {
                     alt={event.name}
                     className="event-image"
                   />
-                  <h3>{event.name}</h3>
+                  <h4>{event.name}</h4>
                   <p>Date: {event.date}</p>
                   <p>Status:</p>
                   <div
@@ -99,7 +101,7 @@ const Events = () => {
         </div>
       </div>
       {/* Book Event Button */}
-      <Link to={"/RegisterEvent"} className='book-event-button'>Add Event</Link>
+     
 
       <Footer />
     </div>

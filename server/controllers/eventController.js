@@ -1,6 +1,9 @@
 const Event = require('../models/eventModel')
 const mongoose = require('mongoose')
 
+const multer = require('multer');
+const path = require('path');
+
 
 //Get All Events
 const getEvents = async(req,res) => {
@@ -28,60 +31,56 @@ const getEvent = async(req,res) => {
     res.status(200).json(event)
 }
 
+// Define storage for the images
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "public/events");
+    },
+    filename: (req, file, cb) => {
+      cb(
+        null,
+        file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+      );
+    },
+  });
+  
+  // Create multer instance with defined storage
+  const upload = multer({ storage: storage });
+
 
 //post an event
-const createEvent = async(req,res) => {
-    const {userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost} = req.body
+const createEvent = (req, res) => {
+    upload.single("file")(req, res, (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Error uploading file" });
+      }
+  
+      Event.create({ userId:req.body.userID, name: req.body.name, image: req.file.filename, date: req.body.date, cap: req.body.capacity, etype: req.body.eType, venue: req.body.venue, estatus:req.body.eventStatus, sTime: req.body.startTime, eTime: req.body.endingTime, cost: req.body.desc })
+        .then((result) => res.json(result))
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).json({ message: "Error creating category" });
+        });
+    });
+  };
 
-    console.log(req.body);
-
-    let emptyFields = []
-
-    // return null;
-
-    if(!userId){
-        emptyFields.push('userId')
-    }
-    if(!name){
-    emptyFields.push('name')
-    }
-    if(!cap){
-        emptyFields.push('cap')
-    }
-
-    if(!date){
-        emptyFields.push('date')
-    }
-    
-    if(!venue){
-        emptyFields.push('venue')
-    }
-    if(!photo){
-        emptyFields.push('photo')
-    }
-    if(!sTime){
-        emptyFields.push('sTime')
-    }
-    if(!eTime){
-        emptyFields.push('eTime')
-    }
-    if(!cost){
-        emptyFields.push('cost')
-    }
-
-    
-    if(emptyFields.length > 0){
-        return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
-    }
-    console.log(emptyFields.length);
-    try{
-        console.log(userId);
-        const event = await Event.create({userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost})
-        res.status(200).json(event)
-    }catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
+//post an event
+const createRegisterEvent = (req, res) => {
+    upload.single("file")(req, res, (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Error uploading file" });
+      }
+  
+      Event.create({ userId:req.body.userID, name: req.body.name, date: req.body.date, cap: req.body.capacity, photo:req.body.photo, etype: req.body.eType, venue: req.body.venue, estatus:req.body.eventStatus, sTime: req.body.startTime, eTime: req.body.endingTime, cost: req.body.desc })
+        .then((result) => res.json(result))
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).json({ message: "Error creating category" });
+        });
+    });
+  };
 
 //Delete event
 const deleteEvent = async(req,res) =>{
@@ -127,5 +126,6 @@ module.exports = {
     getEvent,
     createEvent,
     deleteEvent,
-    updateEvent
+    updateEvent,
+    createRegisterEvent
    }
