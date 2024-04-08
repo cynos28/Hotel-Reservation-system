@@ -97,7 +97,7 @@ const RegisterEvent = () => {
     };
   
     axios
-      .post("http://localhost:3001/api/event", eventData)
+      .post("http://localhost:3001/api/event/register", eventData)
       .then((response) => {
         console.log("Event created successfully:", response.data);
         // Do something with the response if needed

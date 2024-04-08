@@ -16,8 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-
-
+app.use(express.static("public"))
 
 app.use(cors({
     origin: "http://localhost:3000", // Allow requests from localhost:3000
@@ -30,6 +29,7 @@ app.use(cors({
 app.use("/api/users", userRoute); 
 app.use("/api", route);
 app.use("/api/event",eventRouter); //Kaveesha's route
+app.use("/api/event/register",eventRouter); //Kaveesha's route
 app.use("/api", taskroute);//room tasks Routes
 
 
