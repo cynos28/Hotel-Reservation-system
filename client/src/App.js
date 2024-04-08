@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {useDispatch} from 'react-redux';
 
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
@@ -25,20 +26,25 @@ import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
 
 import AdminDash from './AdminPanel/Adminpages/AdminDashboard';
-
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
 import 'remixicon/fonts/remixicon.css';
 import Router from './AdminPanel/routes/Router';
-
 import axios from "axios"
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getLoginStatus } from './redux/features/auth/authSlice.js';
 
 axios.defaults.withCredentials = true;
 
 
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch (getLoginStatus());
+  }, [dispatch]);
   return (
 
     <div>
