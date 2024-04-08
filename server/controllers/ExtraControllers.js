@@ -1,4 +1,4 @@
-const Extra = require("../Models/ExtraModel");
+const Extra = require("../models/ExtraModel");
 
 const getAllExtra = async (req, res, next) => {
   let extra;
