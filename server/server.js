@@ -9,7 +9,7 @@ const errorHandler = require("./middleware/middleware.js");
 const route = require("./routes/roomRoute.js");
 const eventRouter = require("./routes/eventRoute.js"); //Kaveesha's route import
 const taskroute = require("./routes/taskRoute.js");
-const ExtraRoute = require("./Routes/ExtraRoute"); //Dilshan
+const ExtraRoute = require("./routes/ExtraRoute.js"); //Dilshan
 const app = express();
 
 // Middlewares
