@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileImgs from '../../assets/avatarr.png';
 import Card from '../../components/card/Card';
-import { getUser } from '../../redux/features/auth/authSlice'; // Import your action creator
+import {
+  getUser,
+  selectUser,
+  updateUser,
+} from "../../redux/features/auth/authSlice";
+
 import './Profile.css';
 import PageMenu from '../../components/pageMenu/PageMenu';
 import { toast } from "react-toastify";
+
+
+const cloud_name = process.env.REACT_APP_CLOUD_NAME;
+const upload_preset = process.env.REACT_APP_CLOUD_PRESET;
+
 
 export const shortenText = (text, n) => {
   if (text.length > n) {
@@ -49,8 +59,64 @@ function Profile() {
   const handleImageChange = (e) => {
     setProfileImage(e.target.files[0]);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
-  
+
   };
+
+  const saveProfile = async (e) => {
+    e.preventDefault();
+    let imageURL;
+    
+    try {
+      if (
+        profileImage !== null &&
+        (profileImage.type === "image/jpeg" ||
+          profileImage.type === "image/jpg" ||
+          profileImage.type === "image/png")
+      ) {
+        const image = new FormData();
+        image.append("file", profileImage);
+        image.append("cloud_name", cloud_name);
+        image.append("upload_preset", upload_preset);
+
+        // Save image to Cloudinary
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/dpxlo6pw/image/upload",
+          { method: "post", body: image }
+        );
+        const imgData = await response.json();
+        console.log(imgData);
+        imageURL = imgData.url.toString();
+      }
+
+      // Save profile to MongoDB
+      const userData = {
+        name: profile.name,
+        phone: profile.phone,
+        bio: profile.bio,
+        photo: profileImage ? imageURL : profile.photo,
+      };
+
+      dispatch(updateUser(userData));
+    } catch (error) {
+      toast.error(error.message);
+    }
+
+  };
+
+  useLayoutEffect(() => {
+    if (user) {
+      setProfile({
+        ...profile,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        photo: user.photo,
+        bio: user.bio,
+        role: user.role,
+        isVerified: user.isVerified,
+      });
+    }
+  }, [user]);
 
   return (
     <>
@@ -64,10 +130,10 @@ function Profile() {
                 <div className="profile-photo">
                   <div>
                     <img src={imagePreview === null ? user?.photo : imagePreview} alt="Profile Image" />
-                    <h3>Role : {user?.role } </h3>
+                    <h3>Role : {user?.role} </h3>
                   </div>
                 </div>
-                <form>
+                <form onSubmit={saveProfile}>
                   <p>
                     <label>Change Photo :</label>
                     <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -100,6 +166,15 @@ function Profile() {
       </section>
     </>
   );
-}
+};
+
+export const UserName = () => {
+  const user = useSelector(selectUser);
+
+  const username = user?.name || "...";
+
+  return <p className="--color-white">Hi, {shortenText(username, 9)} |</p>;
+};
+
 
 export default Profile;
