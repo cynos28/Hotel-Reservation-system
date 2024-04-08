@@ -23,15 +23,18 @@ function Profile() {
     (state) => state.auth);
 
   // Initialize profile state
-  const [profile, setProfile] = useState({
-    name: user?.name || '',
-    email: user?.email || '',
-    phone: user?.phone || '',
-    bio: user?.bio || '',
-    profileImage: user?.photo || '',
-    role: user?.role || '',
+  const initialState = {
+    name: user?.name || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    bio: user?.bio || "",
+    photo: user?.photo || "",
+    role: user?.role || "",
     isVerified: user?.isVerified || false,
-  });
+  };
+  const [profile, setProfile] = useState(initialState);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     // Fetch user data when component mounts
@@ -44,9 +47,9 @@ function Profile() {
   };
 
   const handleImageChange = (e) => {
-    // Assuming update the profileImage property
-    const selectedImage = e.target.files[0];
-    setProfile({ ...profile, profileImage: selectedImage });
+    setProfileImage(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  
   };
 
   return (
@@ -60,7 +63,7 @@ function Profile() {
               <>
                 <div className="profile-photo">
                   <div>
-                    <img src={profile?.photo || ProfileImgs} alt="Profile Image" />
+                    <img src={imagePreview === null ? user?.photo : imagePreview} alt="Profile Image" />
                     <h3>Role : {user?.role } </h3>
                   </div>
                 </div>
