@@ -15,6 +15,7 @@ import Events from './pages/events/events';//kaveesha's
 import FoodPage from './pages/FoodPage/FoodPage';
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
 import EventTable from './components/eventTable/addEvent/EventTable.js';
+import EditEvent from './components/eventTable/addEvent/EditEvent.js';
 
 
 
@@ -67,6 +68,7 @@ function App() {
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           <Route path='/addEvent' element={<AddEvent/>}/>
           <Route path='/EventTable' element={<EventTable/>}/>
+          <Route path='/EventTable/EditEvent/:id' element={<EditEvent/>}/>
           
 
              

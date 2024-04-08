@@ -39,7 +39,12 @@ const eventSchema = new Schema({
     },
     cost: {
       type: String,
+      default: "-1"
     },
+    description: {
+      type: String,
+      default: "Ok"
+    }
    
   },{timestamps: true})
 
