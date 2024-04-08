@@ -50,7 +50,7 @@ function Header() {
                     <li className='user'>
                         <FaCircleUser size={30} />
                         <p className="user-name">
-                            Hi Shehan
+                        
                         </p>
                     </li>
                     

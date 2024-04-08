@@ -19,8 +19,10 @@ const initialState = {
 function Login() {
   const [formData, setFormData] = useState(initialState);
   const { email, password } = formData;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const { isLoading, isLoggedIn, isSuccess } = useSelector((state) => state.auth);
 
   const handleInputChange = async(e) => {
