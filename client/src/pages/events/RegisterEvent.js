@@ -123,6 +123,7 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
             >
+              <option ></option>
               <option value="Anniversary">Anniversary</option>
               <option value="Wedding">Wedding</option>
               <option value="Birthday">Birthday</option>
