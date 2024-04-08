@@ -72,20 +72,11 @@ const RegisterEvent = () => {
     setFormData({ ...formData, estimatedCost: price });
   }, [formData.venue, formData.startTime, formData.endingTime]);
 
-  // console.log(formData.name);
-  // console.log(formData.capacity);
-  // console.log(formData.date);
-  // console.log(formData.venue);
-  // console.log(formData.startTime);
-  // console.log(formData.endingTime);
-  // console.log(formData.photo);
-  // console.log(formData.estimatedCost)
-
   const handleSubmit = (e) => {
     e.preventDefault();
   
     const eventData = {
-      userId: "user_1234",
+      userID: "user_1234",
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,
