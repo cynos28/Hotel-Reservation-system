@@ -11,6 +11,7 @@ import {
 import './Profile.css';
 import PageMenu from '../../components/pageMenu/PageMenu';
 import { toast } from "react-toastify";
+import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 
 
 const cloud_name = process.env.REACT_APP_CLOUD_NAME;
@@ -26,6 +27,8 @@ export const shortenText = (text, n) => {
 };
 
 function Profile() {
+
+  // useRedirectLoggedOutUser("/login");
   const dispatch = useDispatch();
 
   // Fetch user data from Redux state
@@ -62,47 +65,41 @@ function Profile() {
 
   };
 
+  //save data MongoDB
   const saveProfile = async (e) => {
     e.preventDefault();
     let imageURL;
     
     try {
-      if (
-        profileImage !== null &&
-        (profileImage.type === "image/jpeg" ||
-          profileImage.type === "image/jpg" ||
-          profileImage.type === "image/png")
-      ) {
-        const image = new FormData();
-        image.append("file", profileImage);
-        image.append("cloud_name", cloud_name);
-        image.append("upload_preset", upload_preset);
-
-        // Save image to Cloudinary
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dpxlo6pw/image/upload",
-          { method: "post", body: image }
-        );
+      if (profileImage !== null && (profileImage.type === "image/jpeg" || profileImage.type === "image/jpg" || profileImage.type === "image/png")) {
+        const formData = new FormData();
+        formData.append("file", profileImage);
+        formData.append("upload_preset", upload_preset); // Using the preset from .env
+        formData.append("cloud_name", cloud_name); // Using the cloud name from .env
+    
+        // Upload image to Cloudinary
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
+          method: "POST",
+          body: formData
+        });
         const imgData = await response.json();
         console.log(imgData);
         imageURL = imgData.url.toString();
       }
-
-      // Save profile to MongoDB
+    
+      // Save profile to MongoDB with image URL
       const userData = {
         name: profile.name,
         phone: profile.phone,
         bio: profile.bio,
         photo: profileImage ? imageURL : profile.photo,
       };
-
+    
       dispatch(updateUser(userData));
     } catch (error) {
       toast.error(error.message);
     }
-
   };
-
   useLayoutEffect(() => {
     if (user) {
       setProfile({
@@ -173,7 +170,7 @@ export const UserName = () => {
 
   const username = user?.name || "...";
 
-  return <p className="--color-white">Hi, {shortenText(username, 9)} |</p>;
+  return <p className="--color-black">Hi, {shortenText(username, 9)} |</p>;
 };
 
 
