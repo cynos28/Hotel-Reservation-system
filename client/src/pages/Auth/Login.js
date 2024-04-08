@@ -19,8 +19,10 @@ const initialState = {
 function Login() {
   const [formData, setFormData] = useState(initialState);
   const { email, password } = formData;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const { isLoading, isLoggedIn, isSuccess } = useSelector((state) => state.auth);
 
   const handleInputChange = async(e) => {
@@ -96,7 +98,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
                         </svg>
                         <span>Log in with Google</span>
 
-                    </div>
+                    </div> 
                     <Link to="/" >Home</Link>
                 </div>
             </Card>

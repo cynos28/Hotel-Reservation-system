@@ -3,16 +3,25 @@ import "./header.css";
 import { FaHotel } from "react-icons/fa6";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { RESET, logout } from '../../redux/features/auth/authSlice';
+import { ShowOnLogin, ShowOnLogout } from '../protect/hiddenLink';
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "");
 
 function Header() {
     const navigate = useNavigate();
+    const dispatch = useNavigate();
 
     const goHome = () => {
         navigate("/");
     };
 
+
+ const logoutUser = async () =>{
+    dispatch(RESET());
+    await dispatch (logout());
+    navigate("/login");
+ }
     return (
         <header className='header'>
             <nav>
@@ -21,6 +30,7 @@ function Header() {
                 </div>
 
                 <ul className="home-links">
+                   <ShowOnLogout>
                     <li>
                         <Link to="/login" >
                             <button className="button-login">
@@ -34,23 +44,30 @@ function Header() {
                             </button>
                         </Link>
                     </li>
+                    </ShowOnLogout>
 
+                    <ShowOnLogin>
                     <li className='user'>
                         <FaCircleUser size={30} />
                         <p className="user-name">
-                            Hi Shehan
+                        
                         </p>
                     </li>
+                    
+
 
                     <li className='profile-button'>
                         <NavLink to="/profile" activeClassName={activeLink}>Profile</NavLink>
                     </li>
+                    </ShowOnLogin>
 
+                    <ShowOnLogin>
                     <li>
-                        <button className='button-logout'>
+                        <button onClick={logoutUser} className='button-logout'>
                             Logout
                         </button>
                     </li>
+                    </ShowOnLogin>
                 </ul>
             </nav>
         </header>
