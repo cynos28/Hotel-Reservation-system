@@ -66,6 +66,8 @@ const logout= async () => {
       throw error.response.data.message;
     }
   };
+
+  
   
   // GetUser
   const getUser = async () => {
@@ -80,7 +82,7 @@ const logout= async () => {
   // Update profile
   const updateUser = async (userData) => {
     try {
-      const response = await axios.patch(`${API_URL}updateUser`, userData);
+      const response = await axios.patch(`${API_URL}/updateUser`, userData);
       return response.data;
     } catch (error) {
       throw error.response.data.message;

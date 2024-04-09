@@ -5,10 +5,17 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import PasswordInput from '../../components/passwordInput/PasswordInput';
-import { RESET, login } from '../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateEmail } from '../../redux/features/auth/authService';
+
+import {
+  login,
+  loginWithGoogle,
+  RESET,
+  sendLoginCode,
+} from "../../redux/features/auth/authSlice";
+
 //import Loader from '../../components/loader/Loader';
 
 const initialState = {
@@ -20,15 +27,16 @@ function Login() {
   const [formData, setFormData] = useState(initialState);
   const { email, password } = formData;
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
-  const { isLoading, isLoggedIn, isSuccess } = useSelector((state) => state.auth);
-
   const handleInputChange = async(e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const { isLoading, isLoggedIn, isSuccess, message, isError, twoFactor } =
+  useSelector((state) => state.auth);
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -44,10 +52,17 @@ function Login() {
 
   useEffect(() => {
     if (isSuccess && isLoggedIn) {
-      navigate('/profile');
+      navigate("/profile");
     }
+
+    if (isError && twoFactor) {
+      dispatch(sendLoginCode(email));
+      navigate(`/loginWithCode/${email}`);
+    }
+
     dispatch(RESET());
-  }, [isLoggedIn, isSuccess, dispatch, navigate]);
+  }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor, email]);
+  
 
   return (
 

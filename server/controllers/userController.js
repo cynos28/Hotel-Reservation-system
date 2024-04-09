@@ -269,13 +269,12 @@ const loginWithCode = asyncHandler(async (req, res) => {
 
 
 
-//>>>>>>>>>>>>>>>>>>>>>>>> Send verification email
-
+// Send Verification Email
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {
-    res.status(400);
+    res.status(404);
     throw new Error("User not found");
   }
 
@@ -284,38 +283,36 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     throw new Error("User already verified");
   }
 
-  // Delete token if it exists
+  // Delete Token if it exists in DB
   let token = await Token.findOne({ userId: user._id });
   if (token) {
     await token.deleteOne();
   }
 
-  // Create verification token and save
+  //   Create Verification Token and Save
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(verificationToken);
 
-  //Hash token and save  
+  // Hash token and save
   const hashedToken = hashToken(verificationToken);
   await new Token({
     userId: user._id,
-    verificationToken: hashedToken,
+    vToken: hashedToken,
     createdAt: Date.now(),
-    expiredAt: Date.now() + 3600 * 60 //1hr
-
+    expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
   }).save();
 
-  //Construct Verification URL
-  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`
-
+  // Construct Verification URL
+  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
   //Send  Verification email
 
-  const subject = "Verify Your Account - PrimeLodge"
-  const send_to = user.email
-  const sent_from = process.env.EMAIL_USER
-  const reply_to = "noreply@primelodge.com"
-  const template = "verifyEmail"
-  const name = user.name
-  const link = verificationUrl
+  const subject = "Verify Your Account - PrimeLodge";
+  const send_to = user.email;
+  const sent_from = process.env.EMAIL_USER;
+  const reply_to = "noreply@primelodge.com";
+  const template = "verifyEmail";
+  const name = user.name;
+  const link = verificationUrl;
 
   try {
     await sendEmail(
@@ -670,6 +667,6 @@ module.exports = {
   resetPassword,
   changePassword,
   sendLoginCode,
-  loginWithCode
+  loginWithCode,
 
 };
