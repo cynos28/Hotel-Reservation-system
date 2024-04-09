@@ -95,6 +95,7 @@ const GetRoom = () => {
               <Col lg={5} sm={24} xs={24} key={index}>
                 <div className='room p-2 bs1 mt-30'>
                   <img src={room.image} className='roomimg' />
+         
                   <div className='room-content dflex align-items-center justify-content-between'>
                     <div>
                       <p>{room.name}</p>

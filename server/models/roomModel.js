@@ -7,7 +7,6 @@ const roomSchema = new mongoose.Schema({
     },
     image: {
         type: String, // Assuming the image is stored as a URL
-        required: true
     },
     rentPerNight: {
         type: Number,

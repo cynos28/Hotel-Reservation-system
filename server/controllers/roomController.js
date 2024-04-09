@@ -1,21 +1,46 @@
 const Room = require("../models/roomModel.js");
+const multer = require("multer");
+const path = require("path");
 
-exports.create = async(req, res)=>{
-    try {
 
-        const roomData = new Room(req.body);
+// Multer setup for file upload
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/rooms"); // Save files to the uploads directory
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + "_" + Date.now() + path.extname(file.originalname)); // Set unique file name
+  },
+});
 
-        if(!roomData){
-            return res.status(404).json({msg: "Room data not found"});
-        }
+const upload = multer({ storage: storage }).single("image");
 
-        await roomData.save();
-        res.status(200).json({msg: "Room created successfully"});
+exports.create = async (req, res) => {
+  try {
+    upload(req, res, async function (err) {
+      if (err instanceof multer.MulterError) {
+        // A Multer error occurred when uploading
+        return res.status(500).json({ error: err });
+      } else if (err) {
+        // An unknown error occurred when uploading
+        return res.status(500).json({ error: err });
+      }
 
-    } catch (error) {
-        res.status(500).json({error: error});
-    }
-}
+      // File upload successful, proceed to create room
+      const roomData = new Room({
+        ...req.body,
+        image: req.file.path, // Save file path instead of URL
+      });
+
+      await roomData.save();
+      res.status(200).json({ msg: "Room created successfully" });
+    });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+};
+
+// Other CRUD functions remain the same
 
 
 exports.getAll = async(req, res) =>{
