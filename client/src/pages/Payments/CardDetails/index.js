@@ -3,6 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { BACKEND_URL } from "../../../constants";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
+
 function CardDetail() {
   const [payment, setPayment] = useState([]);
   const [gmail, setGmail] = useState("");
@@ -49,11 +52,12 @@ function CardDetail() {
   };
   return (
     <div>
+      <Header/>
       <div className="find_full">
         <h1 className="main_book_topic_card">
           Your Card <span className="sub_book_topic">Details..!</span>
         </h1>
-        <p className="subpara_card">
+        <p className="subPara_card">
           "To ensure the security of your card details, we kindly request your
           cooperation in verifying your identity. Please provide your Gmail
           address below and click on the "Check" button. Upon validation, you

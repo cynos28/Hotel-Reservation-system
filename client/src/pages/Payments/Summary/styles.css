@@ -12,6 +12,9 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+.main_book_topic{
+  color: #65a4da;
+}
 .sumary_title {
   font-size: 23px;
 }

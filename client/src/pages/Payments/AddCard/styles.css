@@ -1,0 +1,113 @@
+.card_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6; 
+    background-image: url('./img/bg2.png');
+    background-size:cover; /* Zoom out the image to fit within the container */
+    background-repeat:no-repeat ; /* Ensure the image doesn't repeat */
+    background-position: center; /* Center the background image */
+  
+  }
+
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: rgb(210, 209, 209); /* Color of the track */
+ }
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #65a4da; /* Color of the scrollbar handle */
+    border-radius: 8px;
+}
+  
+ /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #65a4da;  /*Color of the scrollbar handle on hover */
+}
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+ }
+.main_topic{
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+}
+.card_box{
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    margin-top: 20px;
+  }
+.card_form {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 500px;
+    font-family: "Roboto", sans-serif;
+    border: 2px solid #65a4da;
+    border-radius: 5px;
+    padding: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    margin-bottom: 20px;
+  }
+.card_lable {
+    font-weight: bold;
+    font-size: 18px;
+  }
+.card_form_box { /*white box*/
+    display:flex;
+  }
+.add_card_input{
+    width: 100%;
+    border: 1.8px solid #65a3da91;
+    font-size: 18px;
+    border-radius: 2px;
+    margin: 10px 0;
+    padding: 5px 5px;
+  }
+  .card_form_topic {
+    font-size: 20px;
+    font-weight:bold ;
+    margin: 0px 0 20px 0;
+    color: #023765;
+  }
+  .save_btn {
+    background-color: #65a4da;
+    border: 2px solid #65a4da;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    margin-bottom: 0px;
+  }
+  .save_btn {
+    background-color: white;
+    border: 2px solid #65a4da;
+    color: #65a4da;
+  }
+  /* .card_forming_book {
+    width: 315px;
+    padding: 10px;
+    height: 175px;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    background-color: #65a3da4b;
+  } */

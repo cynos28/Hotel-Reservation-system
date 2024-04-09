@@ -208,7 +208,6 @@ function AddPayment() {
         </form>
       </div>
       </div>
-      <Footer/>
     </div>
   );
 }

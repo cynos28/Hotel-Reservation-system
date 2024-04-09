@@ -40,6 +40,7 @@ import AddPayment from './pages/Payments/AddPayment';
 import CardDetails from './pages/Payments/CardDetails';
 import UpdatePayment from './pages/Payments/UpdatePayment';
 import OrderSummary from './pages/Payments/Summary';
+import AddCard from './pages/Payments/AddCard';
 
 axios.defaults.withCredentials = true;
 
@@ -100,7 +101,7 @@ function App() {
           <Route path="/add-payment/order-summary/:payId" element={<OrderSummary/>} />
           <Route path="/card-details" element={<CardDetails />} />
           <Route path="/card-details/update-payment/:id" element={<UpdatePayment/>} />
-          
+          <Route path="/add-card" element={<AddCard/>}/>
 
 
 
