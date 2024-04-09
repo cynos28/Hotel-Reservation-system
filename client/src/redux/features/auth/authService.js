@@ -72,13 +72,13 @@ const logout= async () => {
   // GetUser
   const getUser = async () => {
     try {
-      const response = await axios.get(`${API_URL}getUser`); // meke / dammama aul ynw
+      const response = await axios.get(`${API_URL}getUser`);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
     }
   };
-  
+
   // Update profile
   const updateUser = async (userData) => {
     try {

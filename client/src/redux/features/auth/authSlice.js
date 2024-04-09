@@ -93,6 +93,7 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
   }
 });
 
+
 // sendLoginCode
 export const sendLoginCode = createAsyncThunk(
   "auth/sendLoginCode",
@@ -165,7 +166,23 @@ export const verifyUser = createAsyncThunk(
   }
 );
 
-
+// change Password
+export const changePassword = createAsyncThunk(
+  "auth/changePassword",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.changePassword(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 
 const authSlice = createSlice({
@@ -182,6 +199,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      // Register User
       .addCase(register.pending, (state) => {
         state.isLoading = true;
       })
@@ -275,21 +294,20 @@ const authSlice = createSlice({
         })
 
         // Get User
-      .addCase(getUser.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.isLoggedIn = true;
-        state.user = action.payload;
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-        toast.error(action.payload);
-      })
+        .addCase(getUser.pending, (state) => {
+          state.isLoading = true;
+        })
+        .addCase(getUser.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.isSuccess = true;
+          state.user = action.payload;
+        })
+        .addCase(getUser.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+          toast.error(action.payload); // Show error message using toast
+        })
 
       // Update user
       .addCase(updateUser.pending, (state) => {
@@ -342,6 +360,23 @@ const authSlice = createSlice({
             state.message = action.payload;
             toast.error(action.payload);
           })
+
+          // change Password
+      .addCase(changePassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(changePassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+        toast.success(action.payload);
+      })
+      .addCase(changePassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
 
 
   }
