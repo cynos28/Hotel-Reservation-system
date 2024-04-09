@@ -73,6 +73,7 @@ function Profile() {
     try {
       if (profileImage !== null && (profileImage.type === "image/jpeg" || profileImage.type === "image/jpg" || profileImage.type === "image/png")) {
         const formData = new FormData();
+        
         formData.append("file", profileImage);
         formData.append("upload_preset", upload_preset); // Using the preset from .env
         formData.append("cloud_name", cloud_name); // Using the cloud name from .env

@@ -165,28 +165,28 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
-      // Login User
-      .addCase(login.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.isLoggedIn = true;
-        state.user = action.payload;
-        toast.success("Login Successful");
-        console.log(action.payload);
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-        state.user = null;
-        toast.error(action.payload);
-        if (action.payload && action.payload.includes("New browser")) {
-          state.twoFactor = true;
-        }
-      })
+    // Login User
+    .addCase(login.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(login.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.isLoggedIn = true;
+      state.user = action.payload;
+      toast.success("Login Successful");
+      console.log(action.payload);
+    })
+    .addCase(login.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
+      state.user = null;
+      toast.error(action.payload);
+      if (action.payload.includes("New browser")) {
+        state.twoFactor = true;
+      }
+    })
 
        // Logout User
        .addCase(logout.pending, (state) => {
@@ -230,15 +230,12 @@ const authSlice = createSlice({
         })
         .addCase(getLoginStatus.fulfilled, (state, action) => {
           state.isLoading = false;
-          state.isSuccess = true;
           state.isLoggedIn = action.payload;
-          console.log(action.payload);
         })
         .addCase(getLoginStatus.rejected, (state, action) => {
           state.isLoading = false;
           state.isError = true;
           state.message = action.payload;
-          console.log(action.payload);
         })
 
         // Get User

@@ -36,6 +36,7 @@ import {
   selectIsLoggedIn,
   selectUser,
 } from "./redux/features/auth/authSlice";
+import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 
 axios.defaults.withCredentials = true;
 
@@ -52,6 +53,8 @@ function App() {
       dispatch(getUser());
     }
   }, [dispatch, isLoggedIn, user]);
+
+  
   return (
 
     <div>
@@ -65,11 +68,13 @@ function App() {
           } />
 
           {/* Authentication */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
+          
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>

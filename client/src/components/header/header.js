@@ -5,6 +5,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RESET, logout } from '../../redux/features/auth/authSlice';
 import { ShowOnLogin, ShowOnLogout } from '../protect/hiddenLink';
+import { UserName } from '../../pages/Profile/Profile';
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "");
 
@@ -49,9 +50,9 @@ function Header() {
                     <ShowOnLogin>
                     <li className='user'>
                         <FaCircleUser size={30} />
-                        <p className="user-name">
+                       <UserName />
                         
-                        </p>
+                        
                     </li>
                     
 
