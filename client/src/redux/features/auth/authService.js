@@ -60,7 +60,7 @@ const logout= async () => {
   // Get Login Status
   const getLoginStatus = async () => {
     try {
-      const response = await axios.get(`${API_URL}loginStatus`);
+      const response = await axios.get(`${API_URL}/loginStatus`);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -72,7 +72,7 @@ const logout= async () => {
   // GetUser
   const getUser = async () => {
     try {
-      const response = await axios.get(`${API_URL}getUser`);
+      const response = await axios.get(`${API_URL}getUser`); // meke / dammama aul ynw
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -92,7 +92,7 @@ const logout= async () => {
   // Send Verification Email
   const sendVerificationEmail = async () => {
     try {
-      const response = await axios.post(`${API_URL}sendVerificationEmail`);
+      const response = await axios.post(`${API_URL}/sendVerificationEmail`);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -102,7 +102,7 @@ const logout= async () => {
   // Verify User
   const verifyUser = async (verificationToken) => {
     try {
-      const response = await axios.patch(`${API_URL}verifyUser/${verificationToken}`);
+      const response = await axios.patch(`${API_URL}/verifyUser/${verificationToken}`);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -112,7 +112,7 @@ const logout= async () => {
   // Change Password
   const changePassword = async (userData) => {
     try {
-      const response = await axios.patch(`${API_URL}changePassword`, userData);
+      const response = await axios.patch(`${API_URL}/changePassword`, userData);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -122,7 +122,7 @@ const logout= async () => {
   // Reset Password
   const resetPassword = async (userData, resetToken) => {
     try {
-      const response = await axios.patch(`${API_URL}resetPassword/${resetToken}`, userData);
+      const response = await axios.patch(`${API_URL}/resetPassword/${resetToken}`, userData);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -132,7 +132,7 @@ const logout= async () => {
   // Forgot Password
   const forgotPassword = async (userData) => {
     try {
-      const response = await axios.post(`${API_URL}forgotPassword`, userData);
+      const response = await axios.post(`${API_URL}/forgotPassword`, userData);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -142,7 +142,7 @@ const logout= async () => {
   // Get Users
   const getUsers = async () => {
     try {
-      const response = await axios.get(`${API_URL}getUsers`);
+      const response = await axios.get(`${API_URL}/getUsers`);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -162,7 +162,7 @@ const logout= async () => {
   // Upgrade User
   const upgradeUser = async (userData) => {
     try {
-      const response = await axios.post(`${API_URL}upgradeUser`, userData);
+      const response = await axios.post(`${API_URL}/upgradeUser`, userData);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -172,7 +172,7 @@ const logout= async () => {
   // Send Login Code
   const sendLoginCode = async (email) => {
     try {
-      const response = await axios.post(`${API_URL}sendLoginCode/${email}`);
+      const response = await axios.post(`${API_URL}/sendLoginCode/${email}`);
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
@@ -182,7 +182,7 @@ const logout= async () => {
   // Login With Code
   const loginWithCode = async (code, email) => {
     try {
-      const response = await axios.post(`${API_URL}loginWithCode/${email}`, code);
+      const response = await axios.post(`${API_URL}/loginWithCode/${email}`, code);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -192,7 +192,7 @@ const logout= async () => {
   // Login With Google
   const loginWithGoogle = async (userToken) => {
     try {
-      const response = await axios.post(`${API_URL}google/callback`, userToken);
+      const response = await axios.post(`${API_URL}/google/callback`, userToken);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
