@@ -66,6 +66,8 @@ const logout= async () => {
       throw error.response.data.message;
     }
   };
+
+  
   
   // GetUser
   const getUser = async () => {
