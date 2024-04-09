@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
-const Token = require("../models/tokenModel");  
+const Token = require("../models/tokenModel");
 const bcrypt = require("bcryptjs");
 const { generateToken, hashToken } = require("../utils");
 var parser = require('ua-parser-js');
@@ -71,30 +71,31 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Login user
+// Login User
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
-  // Validation
+  //   Validation
   if (!email || !password) {
     res.status(400);
-    return res.json({ error: "Please add email and password." });
+    throw new Error("Please add email and password");
   }
 
   const user = await User.findOne({ email });
+
   if (!user) {
-    res.status(400);
-    return res.json({ error: "User Not found, please signup." });
+    res.status(404);
+    throw new Error("User not found, please signup");
   }
 
   const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
   if (!passwordIsCorrect) {
     res.status(400);
-    return res.json({ error: "Invalid email or password." });
+    throw new Error("Invalid email or password");
   }
 
-  
+
   // Trigger 2FA validation
   const ua = parser(req.headers["user-agent"]);
   const thisUserAgent = ua.ua;
@@ -157,82 +158,79 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-//>>>>>>>>>>>>>>>>>>>>>>>> Send login Code>>
 
-
+// Send login code to user's email
 const sendLoginCode = asyncHandler(async (req, res) => {
   const { email: userEmail } = req.params;
   const user = await User.findOne({ email: userEmail });
 
   if (!user) {
-    return res.status(404).json({ error: "User Not found, please signup." });
+    return res.status(404).json({ error: "User not found. Please sign up." });
   }
 
-  // Find Login Code
-  let userToken = await Token.findOne({
-    userId: user._id,
-    expiredAt: { $gt: Date.now() }
-  });
+  // Generate a 6-digit login code
+  const loginCode = Math.floor(100000 + Math.random() * 900000).toString();
+  console.log("Generated login code:", loginCode);
 
-  if (!userToken) {
-    return res.status(404).json({ error: "Invalid or Expired token, please login again" });
-  }
+  // Encrypt login code before saving to DB
+  const encryptedLoginCode = cryptr.encrypt(loginCode);
 
-  const loginCode = userToken.loginToken;
-  const decryptedLoginCode = cryptr.decrypt(loginCode);
+  // Store login token in the database
+  await Token.findOneAndUpdate(
+    { userId: user._id },
+    { loginToken: encryptedLoginCode, expiredAt: Date.now() + 3600 * 60 }, // Set token expiry
+    { upsert: true } // Create new token if not found
+  );
 
-  // Send Login Code
-  const subject = "Login Access Code - PrimeLodge";
-  const send_to = userEmail;
-  const sent_from = process.env.EMAIL_USER;
-  const reply_to = "noreply@primelodge.com";
+  // Send login code to user's email
+  const subject = "Login Access Code - The Heritage";
+  const sendTo = userEmail;
+  const sentFrom = process.env.EMAIL_USER;
+  const replyTo = "noreply@heritage.com";
   const template = "loginCode";
   const name = user.name;
-  const link = decryptedLoginCode;
 
   try {
-    await sendEmail(
-      subject,
-      send_to,
-      sent_from,
-      reply_to,
-      template,
-      name,
-      link
-    );
+    await sendEmail(subject, sendTo, sentFrom, replyTo, template, name, loginCode);
     res.status(200).json({ message: "Access code sent to your email" });
   } catch (error) {
-    console.error(error); // Log the error
-    res.status(500).json({ error: "Email not sent, please try again" });
+    console.error(error);
+    res.status(500).json({ error: "Email not sent. Please try again." });
   }
 });
 
-
-//>>>>>>>>>>>>>>>>>>>>>>>> Login with code
+// Login with code
 const loginWithCode = asyncHandler(async (req, res) => {
   const { email: userEmail } = req.params;
   const { loginCode } = req.body;
 
   const user = await User.findOne({ email: userEmail });
   if (!user) {
-    return res.status(404).json({ error: "User Not found, please signup." });
+    return res.status(404).json({ error: "User not found. Please sign up." });
   }
 
-  // Find User Login token
+  // Find the user's login token
   const userToken = await Token.findOne({
     userId: user._id,
     expiredAt: { $gt: Date.now() }
   });
 
   if (!userToken) {
-    return res.status(404).json({ error: "Invalid or Expired Token,Please login again" });
+    return res.status(404).json({ error: "Invalid or expired token. Please login again." });
   }
 
+  // Decrypt the login code from the token
   const decryptedLoginCode = cryptr.decrypt(userToken.loginToken);
 
   if (loginCode !== decryptedLoginCode) {
-    return res.status(404).json({ error: "Incorrect login code, Please try again" });
+    return res.status(404).json({ error: "Incorrect login code. Please try again." });
   }
+
+  
+
+  res.status(200).json({ message: "Login successful" });
+
+
 
   // Register user agent
   const ua = parser(req.headers["user-agent"]);
@@ -271,13 +269,12 @@ const loginWithCode = asyncHandler(async (req, res) => {
 
 
 
-//>>>>>>>>>>>>>>>>>>>>>>>> Send verification email
-
+// Send Verification Email
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {
-    res.status(400);
+    res.status(404);
     throw new Error("User not found");
   }
 
@@ -286,38 +283,36 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     throw new Error("User already verified");
   }
 
-  // Delete token if it exists
+  // Delete Token if it exists in DB
   let token = await Token.findOne({ userId: user._id });
   if (token) {
     await token.deleteOne();
   }
 
-  // Create verification token and save
+  //   Create Verification Token and Save
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(verificationToken);
 
-  //Hash token and save  
+  // Hash token and save
   const hashedToken = hashToken(verificationToken);
   await new Token({
     userId: user._id,
-    verificationToken: hashedToken,
+    vToken: hashedToken,
     createdAt: Date.now(),
-    expiredAt: Date.now() + 3600 * 60 //1hr
-
+    expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
   }).save();
 
-  //Construct Verification URL
-  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`
-
+  // Construct Verification URL
+  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
   //Send  Verification email
 
-  const subject = "Verify Your Account - PrimeLodge"
-  const send_to = user.email
-  const sent_from = process.env.EMAIL_USER
-  const reply_to = "noreply@primelodge.com"
-  const template = "verifyEmail"
-  const name = user.name
-  const link = verificationUrl
+  const subject = "Verify Your Account - PrimeLodge";
+  const send_to = user.email;
+  const sent_from = process.env.EMAIL_USER;
+  const reply_to = "noreply@primelodge.com";
+  const template = "verifyEmail";
+  const name = user.name;
+  const link = verificationUrl;
 
   try {
     await sendEmail(
@@ -389,6 +384,8 @@ const logoutUser = asyncHandler(async (req, res) => {
   });
 });
 
+
+
 // Get User
 const getUser = async (req, res, next) => {
   try {
@@ -397,8 +394,8 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,  
-        userEmail: user.email, 
+        userName: user.name,
+        userEmail: user.email,
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
@@ -453,7 +450,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
 // Get Login Status
 const loginStatus = asyncHandler(async (req, res) => {
-  const token = req.cookies.token; 
+  const token = req.cookies.token;
 
   if (!token) {
     return res.json(false);
@@ -670,6 +667,6 @@ module.exports = {
   resetPassword,
   changePassword,
   sendLoginCode,
-  loginWithCode
+  loginWithCode,
 
 };

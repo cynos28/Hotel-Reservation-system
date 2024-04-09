@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
 import Register from './pages/Auth/Register';
@@ -14,6 +14,7 @@ import Events from './pages/events/events';//kaveesha's
 import FoodPage from './pages/FoodPage/FoodPage';
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
 import EventTable from './components/eventTable/addEvent/EventTable.js';
+import EditEvent from './components/eventTable/addEvent/EditEvent.js';
 
 
 
@@ -24,20 +25,37 @@ import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
 
 import AdminDash from './AdminPanel/Adminpages/AdminDashboard';
-
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
 import 'remixicon/fonts/remixicon.css';
 import Router from './AdminPanel/routes/Router';
-
 import axios from "axios"
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  getLoginStatus,
+  getUser,
+  selectIsLoggedIn,
+  selectUser,
+} from "./redux/features/auth/authSlice";
+import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 
 axios.defaults.withCredentials = true;
 
 
+
 function App() {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    dispatch(getLoginStatus());
+    if (isLoggedIn && user === null) {
+      dispatch(getUser());
+    }
+  }, [dispatch, isLoggedIn, user]);
+
+  
   return (
 
     <div>
@@ -51,16 +69,19 @@ function App() {
           } />
 
           {/* Authentication */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
+          
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>
           <Route path='/addEvent' element={<AddEvent/>}/>
           <Route path='/EventTable' element={<EventTable/>}/>
+          <Route path='/EventTable/EditEvent/:id' element={<EditEvent/>}/>
           
 
              
