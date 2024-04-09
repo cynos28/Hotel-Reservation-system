@@ -226,7 +226,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: "Incorrect login code. Please try again." });
   }
 
-  
+
 
   res.status(200).json({ message: "Login successful" });
 
@@ -268,13 +268,11 @@ const loginWithCode = asyncHandler(async (req, res) => {
 
 
 
-
-// Send Verification Email
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {
-    res.status(404);
+    res.status(400);
     throw new Error("User not found");
   }
 
@@ -283,36 +281,38 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     throw new Error("User already verified");
   }
 
-  // Delete Token if it exists in DB
+  // Delete token if it exists
   let token = await Token.findOne({ userId: user._id });
   if (token) {
     await token.deleteOne();
   }
 
-  //   Create Verification Token and Save
+  // Create verification token and save
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(verificationToken);
 
-  // Hash token and save
+  //Hash token and save  
   const hashedToken = hashToken(verificationToken);
   await new Token({
     userId: user._id,
-    vToken: hashedToken,
+    verificationToken: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
+    expiredAt: Date.now() + 3600 * 60 //1hr
+
   }).save();
 
-  // Construct Verification URL
-  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+  //Construct Verification URL
+  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`
+
   //Send  Verification email
 
-  const subject = "Verify Your Account - PrimeLodge";
-  const send_to = user.email;
-  const sent_from = process.env.EMAIL_USER;
-  const reply_to = "noreply@primelodge.com";
-  const template = "verifyEmail";
-  const name = user.name;
-  const link = verificationUrl;
+  const subject = "Verify Your Account - PrimeLodge"
+  const send_to = user.email
+  const sent_from = process.env.EMAIL_USER
+  const reply_to = "noreply@primelodge.com"
+  const template = "verifyEmail"
+  const name = user.name
+  const link = verificationUrl
 
   try {
     await sendEmail(
@@ -358,7 +358,6 @@ const verifyUser = asyncHandler(async (req, res) => {
     throw new Error("User is already Verified ");
 
   }
-
   //Now Verify User
   user.isVerified = true;
   await user.save();
@@ -394,8 +393,8 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,
-        userEmail: user.email,
+        userName: user.name,  // Rename 'name' to avoid conflict
+        userEmail: user.email, // Rename 'email' to avoid conflict
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
