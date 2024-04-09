@@ -12,6 +12,7 @@ import './Profile.css';
 import PageMenu from '../../components/pageMenu/PageMenu';
 import { toast } from "react-toastify";
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
+import Notification from '../../components/notification/Notification';
 
 
 const cloud_name = process.env.REACT_APP_CLOUD_NAME;
@@ -28,9 +29,11 @@ export const shortenText = (text, n) => {
 
 function Profile() {
 
-  // useRedirectLoggedOutUser("/login");
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  //useRedirectLoggedOutUser("/login");
+
+  
   // Fetch user data from Redux state
   const { isLoading, isLoggedIn, isSuccess, user } = useSelector(
     (state) => state.auth);
@@ -48,6 +51,8 @@ function Profile() {
   const [profile, setProfile] = useState(initialState);
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+
 
   useEffect(() => {
     // Fetch user data when component mounts
@@ -118,6 +123,8 @@ function Profile() {
 
   return (
     <>
+    {!profile.isVerified && <Notification />}
+    
       <section>
         <PageMenu />
         <div className="container">
