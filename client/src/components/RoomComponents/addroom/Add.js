@@ -10,7 +10,7 @@ import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 const AddRoom = () => {
   const [room, setRoom] = useState({
     name: '',
-    image: null, // Change to accept file
+    image: '',
     rentPerNight: 0,
     acAvailability: false,
     wifiAvailability: false,
@@ -26,27 +26,10 @@ const AddRoom = () => {
     setRoom({ ...room, [name]: value });
   };
 
-  const fileChangeHandler = (e) => {
-    setRoom({ ...room, image: e.target.files[0] });
-  };
-
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append('name', room.name);
-      formData.append('image', room.image);
-      formData.append('rentPerNight', room.rentPerNight);
-      formData.append('acAvailability', room.acAvailability);
-      formData.append('wifiAvailability', room.wifiAvailability);
-      formData.append('roomDescription', room.roomDescription);
-      formData.append('numberOfBeds', room.numberOfBeds);
-      formData.append('roomType', room.roomType);
-
-      const response = await axios.post('http://localhost:3001/api/create', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
+      const response = await axios.post('http://localhost:3001/api/create', room);
       toast.success(response.data.msg, { position: 'top-right' });
 
       // Display SweetAlert after successful addition
@@ -65,110 +48,110 @@ const AddRoom = () => {
 
   return (
     <div>
-      <TopNav />
-      <Sidebar />
-      <div className="addRoomContainer">
-        <div className="addRoomForm">
-          <Link to="/">Back</Link>
-          <h3 className="addRoomHeading">Add New Room</h3>
-          <form onSubmit={submitForm}>
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Room Name</label>
-              <input
-                type="text"
-                className="addRoomInput"
-                onChange={inputHandler}
-                placeholder="Enter room name"
-                name="name"
-                required
-              />
-            </div>
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Image</label>
-              <input
-                type="file" // Change to accept file
-                className="addRoomInput"
-                onChange={fileChangeHandler}
-                required
-              />
-            </div>
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Rent per Night ($)</label>
-              <input
-                type="number"
-                className="addRoomInput"
-                onChange={inputHandler}
-                placeholder="Enter rent per night"
-                name="rentPerNight"
-                required
-              />
-            </div>
-            <div className="availabilityFormGroup">
-              <label className="addRoomLabel">AC Availability</label>
-              <select
-                className="availabilitySelect"
-                value={room.acAvailability ? 'Available' : 'Not Available'}
-                onChange={(e) => setRoom({ ...room, acAvailability: e.target.value === 'Available' })}
-              >
-                <option value="Available">Available</option>
-                <option value="Not Available">Not Available</option>
-              </select>
-            </div>
+    <TopNav />
+    <Sidebar />
+    <div className="addRoomContainer">
+      <div className="addRoomForm">
+        <Link to="/">Back</Link>
+        <h3 className="addRoomHeading">Add New Room</h3>
+        <form onSubmit={submitForm}>
+          <div className="addRoomFormGroup">
+            <label className="addRoomLabel">Room Name</label>
+            <input
+              type="text"
+              className="addRoomInput"
+              onChange={inputHandler}
+              placeholder="Enter room name"
+              name="name"
+              required
+            />
+          </div>
+          <div className="addRoomFormGroup">
+            <label className="addRoomLabel">Image URL</label>
+            <input
+              type="text"
+              className="addRoomInput"
+              onChange={inputHandler}
+              placeholder="Enter image URL"
+              name="image"
+              required
+            />
+          </div>
+          <div className="addRoomFormGroup">
+            <label className="addRoomLabel">Rent per Night ($)</label>
+            <input
+              type="number"
+              className="addRoomInput"
+              onChange={inputHandler}
+              placeholder="Enter rent per night"
+              name="rentPerNight"
+              required
+            />
+          </div>
+          <div className="availabilityFormGroup">
+  <label className="addRoomLabel">AC Availability</label>
+  <select
+    className="availabilitySelect"
+    value={room.acAvailability ? 'Available' : 'Not Available'}
+    onChange={(e) => setRoom({ ...room, acAvailability: e.target.value === 'Available' })}
+  >
+    <option value="Available">Available</option>
+    <option value="Not Available">Not Available</option>
+  </select>
+</div>
 
-            <div className="availabilityFormGroup">
-              <label className="addRoomLabel">WiFi Availability</label>
-              <select
-                className="availabilitySelect"
-                value={room.wifiAvailability ? 'Available' : 'Not Available'}
-                onChange={(e) => setRoom({ ...room, wifiAvailability: e.target.value === 'Available' })}
-              >
-                <option value="Available">Available</option>
-                <option value="Not Available">Not Available</option>
-              </select>
-            </div>
+<div className="availabilityFormGroup">
+  <label className="addRoomLabel">WiFi Availability</label>
+  <select
+    className="availabilitySelect"
+    value={room.wifiAvailability ? 'Available' : 'Not Available'}
+    onChange={(e) => setRoom({ ...room, wifiAvailability: e.target.value === 'Available' })}
+  >
+    <option value="Available">Available</option>
+    <option value="Not Available">Not Available</option>
+  </select>
+</div>
 
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Room Description</label>
-              <textarea
-                className="addRoomTextarea"
-                onChange={inputHandler}
-                placeholder="Enter room description"
-                name="roomDescription"
-                required
-              ></textarea>
-            </div>
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Number of Beds</label>
-              <input
-                type="text"
-                className="addRoomInput"
-                onChange={inputHandler}
-                placeholder="Enter number of beds"
-                name="numberOfBeds"
-                required
-              />
-            </div>
-            <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Room Type</label>
-              <select className="addRoomInput" onChange={inputHandler} name="roomType" required>
-                <option value="">Select room type</option>
-                <option value="Standard">Standard</option>
-                <option value="Deluxe Room">Deluxe Room</option>
-                <option value="Suite">Suite</option>
-                <option value="Family Room">Family Room</option>
-                <option value="Luxury">Luxury</option>
-                <option value="Villa">Villa</option>
-              </select>
-            </div>
+          <div className="addRoomFormGroup">
+            <label className="addRoomLabel">Room Description</label>
+            <textarea
+              className="addRoomTextarea"
+              onChange={inputHandler}
+              placeholder="Enter room description"
+              name="roomDescription"
+              required
+            ></textarea>
+          </div>
+          <div className="addRoomFormGroup">
+            <label className="addRoomLabel">Number of Beds</label>
+            <input
+              type="text"
+              className="addRoomInput"
+              onChange={inputHandler}
+              placeholder="Enter number of beds"
+              name="numberOfBeds"
+              required
+            />
+          </div>
+          <div className="addRoomFormGroup">
+  <label className="addRoomLabel">Room Type</label>
+  <select className="addRoomInput" onChange={inputHandler} name="roomType" required>
+    <option value="">Select room type</option>
+    <option value="Standard">Standard</option>
+    <option value="Deluxe Room">Deluxe Room</option>
+    <option value="Suite">Suite</option>
+    <option value="Family Room">Family Room</option>
+    <option value="Luxury">Luxury</option>
+    <option value="Villa">Villa</option>
+  </select>
+</div>
 
-            <div className="addRoomTextCenter addRoomMarginTop">
-              <button type="submit" className="addRoomSubmitButton">
-                Add Room
-              </button>
-            </div>
-          </form>
-        </div>
+          <div className="addRoomTextCenter addRoomMarginTop">
+            <button type="submit" className="addRoomSubmitButton">Add Room</button>
+          </div>
+        </form>
       </div>
+    </div>
     </div>
   );
 };
