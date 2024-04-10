@@ -1,7 +1,6 @@
 import React, { Component, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {useDispatch} from 'react-redux';
-
+import { useDispatch, useSelector } from "react-redux";
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
 import Register from './pages/Auth/Register';
@@ -32,19 +31,31 @@ import Router from './AdminPanel/routes/Router';
 import axios from "axios"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getLoginStatus } from './redux/features/auth/authSlice.js';
+import {
+  getLoginStatus,
+  getUser,
+  selectIsLoggedIn,
+  selectUser,
+} from "./redux/features/auth/authSlice";
+import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 
 axios.defaults.withCredentials = true;
 
 
 
 function App() {
-
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    dispatch (getLoginStatus());
-  }, [dispatch]);
+    dispatch(getLoginStatus());
+    if (isLoggedIn && user === null) {
+      dispatch(getUser());
+    }
+  }, [dispatch, isLoggedIn, user]);
+
+  
   return (
 
     <div>
@@ -58,11 +69,13 @@ function App() {
           } />
 
           {/* Authentication */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/resetPassword/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
+          
           {/* events */}
           <Route path='/events' element={<Events/>}/>
           <Route path='/RegisterEvent' element={<RegisterEvent />}/>

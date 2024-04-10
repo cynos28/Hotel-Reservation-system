@@ -226,7 +226,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: "Incorrect login code. Please try again." });
   }
 
-  
+
 
   res.status(200).json({ message: "Login successful" });
 
@@ -267,9 +267,6 @@ const loginWithCode = asyncHandler(async (req, res) => {
 });
 
 
-
-
-//>>>>>>>>>>>>>>>>>>>>>>>> Send verification email
 
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -361,7 +358,6 @@ const verifyUser = asyncHandler(async (req, res) => {
     throw new Error("User is already Verified ");
 
   }
-
   //Now Verify User
   user.isVerified = true;
   await user.save();
@@ -397,8 +393,8 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,
-        userEmail: user.email,
+        userName: user.name,  // Rename 'name' to avoid conflict
+        userEmail: user.email, // Rename 'email' to avoid conflict
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
@@ -670,6 +666,6 @@ module.exports = {
   resetPassword,
   changePassword,
   sendLoginCode,
-  loginWithCode
+  loginWithCode,
 
 };
