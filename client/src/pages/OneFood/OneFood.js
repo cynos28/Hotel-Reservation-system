@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import classes from './onefood.module.css';
 import { getById } from '../../service/foodService.js';
 import StarRating from '../../components/FoodStarRating/StarRating.js';
-import { Tags } from 'react-bootstrap-icons';
+import FoodTags from '../../components/FoodTags/FoodTags.js';
+
 
 
 
@@ -44,10 +45,17 @@ export default function OneFood() {
 
             <div className={classes.tags}>
               {food.F_tags && (
-                <Tags tags={food.F_tags.map(tag => ({name:tag}))}
+                <FoodTags
+                tags={food.F_tags.map(tag => ({name:tag}))}
                 forFoodPage ={true} />
               )}
 
+            </div>
+
+            <div className = {classes.cook_time}>
+              <span>
+                Time to cook about <strong>{food.cook_time}</strong> minutes
+              </span>
             </div>
         </div>
         </div>
