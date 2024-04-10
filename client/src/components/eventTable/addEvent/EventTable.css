@@ -17,7 +17,8 @@
 .EventTableContainer table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 80%; /* Adjust width as needed */
+    width: 80%;
+    height: 20%; /* Adjust width as needed */
 }
 
 /* Search container styles */
@@ -41,6 +42,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 150px;
 }
 
 /* Action buttons styles */
@@ -50,18 +52,22 @@
     padding: 6px 12px;
     border-radius: 5px;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 .EventTableContainer .actionButtons button {
-    background-color: #88010e;
+    background-color: #aa1120;
     color: #fff;
     border: none;
 }
 
 .EventTableContainer .actionButtons a {
-    background-color: #295889;
+    background-color: #292f89;
     color: #fff;
     text-decoration: none;
+    width: 80px;
+    height: 45px;
 }
 
 .EventTableContainer .actionButtons button:hover,
