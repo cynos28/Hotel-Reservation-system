@@ -17,9 +17,7 @@ export default function FoodThumbnail({ foods }) {
           </Link>
           <div className={classes.content}>
             <div className={classes.name}>{food.F_name}</div>
-            <span className={`${classes.favorite} ${food.F_favourite ? '' : classes.not}`}>
-              ❤︎
-            </span>
+         
             <div className={classes.stars}>
               <StarRating stars={food.F_stars} />
             </div>
