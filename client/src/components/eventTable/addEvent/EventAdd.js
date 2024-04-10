@@ -5,7 +5,7 @@ import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 
 const AddEvent = () => {
-  const [userID, setuserID] = useState("User_123");
+  const [userId, setuserID] = useState("User_123");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -22,7 +22,7 @@ const AddEvent = () => {
   // send files to the server // learn from my other video
   const handleUpload = async (e) => {
     const formdata = new FormData();
-    formdata.append("userID", userID);
+    formdata.append("userId", userId);
     formdata.append("name", name);
     formdata.append("file", files[0]);
     formdata.append("date", date);
