@@ -15,7 +15,7 @@ import FoodPage from './pages/FoodPage/FoodPage';
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
 import EventTable from './components/eventTable/addEvent/EventTable.js';
 import EditEvent from './components/eventTable/addEvent/EditEvent.js';
-
+import Verify from "./pages/Auth/Verify.js";
 
 
 import AddRoom from './components/RoomComponents/addroom/Add';
@@ -56,12 +56,12 @@ function App() {
     }
   }, [dispatch, isLoggedIn, user]);
 
-  
+
   return (
 
     <div>
       <BrowserRouter>
-      <ToastContainer />
+        <ToastContainer />
         <Routes>
 
           <Route path="/" element={<Layout>
@@ -74,29 +74,30 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
-          <Route path="/resetPassword/:resetToken" element={<Reset />} />
+          <Route path="/reset/:resetToken" element={<Reset />} />
           <Route path="/loginAuth/:email" element={<LoginAuth />} />
-          
-          {/* events */}
-          <Route path='/events' element={<Events/>}/>
-          <Route path='/RegisterEvent' element={<RegisterEvent />}/>
-          <Route path='/addEvent' element={<AddEvent/>}/>
-          <Route path='/EventTable' element={<EventTable/>}/>
-          <Route path='/EventTable/EditEvent/:id' element={<EditEvent/>}/>
-          
+          <Route path="/profile" element={<Layout> <Profile /> </Layout>} />
+          <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
+          <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>
 
-             
-          <Route path="/profile" element={
-            <Layout> <Profile /> </Layout>} />
-          <Route path="/ChangePassword" element={
-            <Layout> <ChangePassword /> </Layout>} />
+
+          {/* events */}
+          <Route path='/events' element={<Events />} />
+          <Route path='/RegisterEvent' element={<RegisterEvent />} />
+          <Route path='/addEvent' element={<AddEvent />} />
+          <Route path='/EventTable' element={<EventTable />} />
+          <Route path='/EventTable/EditEvent/:id' element={<EditEvent />} />
+
+
+
+         
 
 
 
           {/* events */}
           <Route path='/events' element={<Events />} />
           <Route path='/dashboard' element={<AdminDash />} />
-       
+
 
 
           {/* food page */}
@@ -104,7 +105,7 @@ function App() {
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
 
-           {/* Room page */}
+          {/* Room page */}
           <Route path="/getroom" element={<GetRoom />} />
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />

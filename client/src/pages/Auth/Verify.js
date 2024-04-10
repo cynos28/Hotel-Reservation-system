@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams ,useNavigate } from "react-router-dom";
 // import Loader from "../../components/loader/Loader";
 import { RESET, verifyUser } from "../../redux/features/auth/authSlice";
 
 const Verify = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { verificationToken } = useParams();
 
-  const { isLoading } = useSelector((state) => state.auth);
+  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   const verifyAccount = async () => {
     await dispatch(verifyUser(verificationToken));
-    await dispatch(RESET());
+    
   };
+
+  useEffect(() => {
+    if (isSuccess && message.includes("Verification Successful")) {
+      navigate("/profile");
+    }
+
+  }, [dispatch, navigate, message, isSuccess]);
 
   return (
     <section>
