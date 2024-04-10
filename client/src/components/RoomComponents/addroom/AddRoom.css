@@ -1,39 +1,153 @@
-/* AddRoom.css */
+/* Container styling */
+.addRoomContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6; /* Light gray background */
+  background-image: url('https://i.pinimg.com/564x/d9/44/52/d94452ec1bdffc04d205ea24934cd14a.jpg');
+  background-size: contain; /* Zoom out the image to fit within the container */
+  background-repeat: repeat; /* Ensure the image doesn't repeat */
+  background-position: center; /* Center the background image */
+}
 
-container {
-    max-width: 600px;
-    margin: auto;
-  }
+
+/* Form container styling */
+.addRoomForm {
+  background-color:#cdcfe6; /* White background */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgb(25, 6, 233); /* Shadow effect */
+  width: 600px; /* Fixed width */
+  max-width: 90%; /* Maximum width */
+  margin: 100px auto 0; /* Center horizontally with top margin */
+  margin-right: 330px;
   
-  addUser {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input[type='text'],
-  input[type='number'] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  text-center {
-    text-align: center;
-  }
-  
-  my-3 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
+}
+/* Hover effect */
+.addRoomForm:hover {
+  box-shadow: 0 0 20px rgba(87, 165, 225, 0.8); /* Lighter shadow on hover */
+}
+
+/* Heading styling */
+.addRoomHeading {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #00008d; /* Dark gray color */
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* Form group styling */
+.addRoomFormGroup {
+  margin-bottom: 25px;
+}
+
+/* Label styling */
+.addRoomLabel {
+  font-size: 20px;
+  color: #000000; /* Gray color */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Input and textarea styling */
+.addRoomInput,
+.addRoomTextarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.addRoomInput:focus,
+.addRoomTextarea:focus {
+  border-color: #00025b; /* Blue border color on focus */
+}
+
+/* Checkbox group styling */
+/* Checkbox group styling */
+.addRoomCheckboxGroup {
+  display: block;
+  align-items: self-start;  
+}
+
+.addRoomCheckboxGroup input[type="checkbox"] {
+  margin-right: 10px;
+  width: 24px; /* Increase the width */
+  height: 24px; /* Increase the height */
+}
+
+/* Button styling */
+.addRoomSubmitButton {
+  width: 50%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #6366f1; /* Blue color */
+  color: #ffffff; /* White color */
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.35s ease; /* Smooth transition */
+  margin: 0 auto; /* Center horizontally */
+  display: block; /* Ensure it takes full width */
+}
+.addRoomSubmitButton:hover {
+  background-color: #04002d; /* Darker blue color on hover */
+}
+
+
+.availabilityFormGroup {
+  margin-bottom: 20px;
+}
+
+
+
+.availabilitySelect {
+  width: 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-left: 10px;
+
+}
+
+
+
+
+.addRoomFormGroup {
+  margin-bottom: 20px;
+}
+
+.addRoomLabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.addRoomInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aa3838;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Styling for select dropdown arrow */
+.addRoomInput::-ms-expand {
+  display: none;
+}
+
+.addRoomInput {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%;
+  background-size: 14px 14px;
+}

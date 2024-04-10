@@ -10,13 +10,13 @@ import Sidebar from '../AdminComponents/Sidebar/Sidebar';
 import TopNav from '../AdminComponents/TopNav/TopNav';
 import recommendCarsData from "../assets/dummy-data/recommendCars";
 
-const GetRoom = () => {
+const AdminDash = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3500/api/getall');
+        const response = await axios.get('http://localhost:3001/api/getall');
         setRooms(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -72,7 +72,7 @@ const GetRoom = () => {
           </div>
           <div className="statics">
             <div className="stats">
-              <h3 className="stats__title">Room Rent Distribution</h3>
+              <h3 className="stats__title">Room Type Distribution</h3>
               <MileChart />
             </div>
             <div className="stats">
@@ -93,4 +93,4 @@ const GetRoom = () => {
   );
 };
 
-export default GetRoom;
+export default AdminDash;

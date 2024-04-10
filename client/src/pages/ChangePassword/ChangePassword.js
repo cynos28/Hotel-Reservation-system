@@ -4,6 +4,14 @@ import Card from '../../components/card/Card';
 import PasswordInput from '../../components/passwordInput/PasswordInput';
 import './ChangePassword.css';
 import PageMenu from '../../components/pageMenu/PageMenu';
+import { changePassword, RESET, logout } from '../../redux/features/auth/authSlice';
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
+//import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
 
 const initialState = {
     oldPassword: '',
@@ -12,27 +20,66 @@ const initialState = {
 };
 
 function ChangePassword() {
+    //useRedirectLoggedOutUser("/login");
     const [formData, setFormData] = useState(initialState);
-
     const { oldPassword, password, password2 } = formData;
+
+    const { isLoading, user } = useSelector((state) => state.auth);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         // You should update the state here based on the input changes
         const { name, value } = e.target;
-        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+        setFormData({ ...formData, [name]: value });
     };
-
+    const updatePassword = async (e) => {
+        e.preventDefault();
+    
+        if (!oldPassword || !password || !password2) {
+            return toast.error("All fields are required");
+        }
+    
+        if (password !== password2) {
+            return toast.error("Passwords do not match");
+        }
+    
+        const userData = {
+            oldPassword,
+            password,
+        };
+    
+        const emailData = {
+            subject: "Password Changed - The Heritage",
+            send_to: user.email,
+            reply_to: "noreply@heritage.com",
+            template: "changePassword",
+            url: "/forgot",
+        };
+    
+        // Update the password
+        await dispatch(changePassword(userData));
+        
+        // Send automated email
+        await dispatch(sendAutomatedEmail(emailData));
+        
+        // After updating password and sending email, clear the form and navigate to login page
+        setFormData(initialState); // Reset the form fields
+        await dispatch(logout()); // Logout the user
+        navigate("/login"); // Navigate to login page
+    };
     return (
         <>
             <section>
                 <PageMenu />
-                
-                    <h2 style={{marginLeft:"300px"}}>Change Password</h2>
-                    <div className="container " style={{width:"500px",marginTop:"20px",justifyContent:"center"}}>
+
+                <h2 style={{ marginLeft: "300px" }}>Change Password</h2>
+                <div className="container " style={{ width: "500px", marginTop: "20px", justifyContent: "center" }}>
                     <div className="profile">
                         <Card cardClass={'card'} style={{}}>
                             <>
-                                <form style={{marginLeft:"-30px"}}>
+                                <form style={{ marginLeft: "-30px" }} onSubmit={updatePassword}>
                                     <p>
                                         <label>Current Password:</label>
                                         <PasswordInput
@@ -67,11 +114,11 @@ function ChangePassword() {
                                     </p>
 
                                     <button
-    className="form-btn"
-    style={{ display: 'block', marginLeft: '40px', width: '280px' }}
->
-    Update
-</button>
+                                        className="form-btn"
+                                        style={{ display: 'block', marginLeft: '40px', width: '280px' }}
+                                    >
+                                        Update
+                                    </button>
                                 </form>
                             </>
                         </Card>

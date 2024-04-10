@@ -1,0 +1,92 @@
+/* EventTable.css */
+
+/* Table container styles */
+.EventTableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 260px; /* Adjust based on the width of your sidebar */
+    margin-top: 70px; /* Adjust to make sure it's below the top nav bar */
+}
+
+/* Event table styles */
+.EventTableContainer .EventTable {
+    margin-top: 20px; /* Adjust top margin as needed */
+}
+
+.EventTableContainer table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 80%;
+    height: 20%; /* Adjust width as needed */
+}
+
+/* Search container styles */
+.EventTableContainer .search-container {
+    margin-bottom: 20px;
+    width: 80%; /* Match table width */
+    display: flex;
+    justify-content: center; /* Align search bar to center */
+}
+
+.EventTableContainer .search-container input {
+    padding: 8px;
+    width: 50%; /* Adjust width of search input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Action buttons container styles */
+.EventTableContainer .actionButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+/* Action buttons styles */
+.EventTableContainer .actionButtons button,
+.EventTableContainer .actionButtons a {
+    margin-right: 5px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.EventTableContainer .actionButtons button {
+    background-color: #aa1120;
+    color: #fff;
+    border: none;
+}
+
+.EventTableContainer .actionButtons a {
+    background-color: #292f89;
+    color: #fff;
+    text-decoration: none;
+    width: 80px;
+    height: 45px;
+}
+
+.EventTableContainer .actionButtons button:hover,
+.EventTableContainer .actionButtons a:hover {
+    opacity: 0.8;
+}
+
+/* Add Event button styles */
+.add-Event-button {
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    margin: 20px auto 0; /* Center the button horizontally and add top margin */
+}
+.add-Event-button:hover {
+    opacity: 0.8;
+}
+
