@@ -1,131 +1,153 @@
-const Event = require('../models/eventModel')
-const mongoose = require('mongoose')
+const Event = require("../models/eventModel");
+const mongoose = require("mongoose");
 
+const multer = require("multer");
+const path = require("path");
 
 //Get All Events
-const getEvents = async(req,res) => {
-    const events =  await Event.find({}).sort({createdAt: -1})
+const getEvents = async (req, res) => {
+  const events = await Event.find({}).sort({ createdAt: -1 });
 
-
-    res.status(200).json(events)
-}
+  res.status(200).json(events);
+};
 
 //Get a Single Events
-const getEvent = async(req,res) => {
-    const {id} = req.params
+const getEvent = async (req, res) => {
+  const { id } = req.params;
 
-    //checking if the ID is valid
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such Event'})
-    }
+  //checking if the ID is valid
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such Event" });
+  }
 
-    const event = await Event.findById(id)
+  const event = await Event.findById(id);
 
-    if(!event){
-        return res.status(404).json({error: 'No such event'})
-    }
+  if (!event) {
+    return res.status(404).json({ error: "No such event" });
+  }
 
-    res.status(200).json(event)
-}
+  res.status(200).json(event);
+};
 
+// Define storage for the images
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/events");
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+// Create multer instance with defined storage
+const upload = multer({ storage: storage });
 
 //post an event
-const createEvent = async(req,res) => {
-    const {userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost} = req.body
-
-    console.log(req.body);
-
-    let emptyFields = []
-
-    // return null;
-
-    if(!userId){
-        emptyFields.push('userId')
-    }
-    if(!name){
-    emptyFields.push('name')
-    }
-    if(!cap){
-        emptyFields.push('cap')
+const createEvent = (req, res) => {
+  upload.single("file")(req, res, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Error uploading file" });
     }
 
-    if(!date){
-        emptyFields.push('date')
-    }
-    
-    if(!venue){
-        emptyFields.push('venue')
-    }
-    if(!photo){
-        emptyFields.push('photo')
-    }
-    if(!sTime){
-        emptyFields.push('sTime')
-    }
-    if(!eTime){
-        emptyFields.push('eTime')
-    }
-    if(!cost){
-        emptyFields.push('cost')
+    Event.create({
+      userId: req.body.userID,
+      name: req.body.name,
+      image: req.file.filename,
+      date: req.body.date,
+      cap: req.body.capacity,
+      etype: req.body.eType,
+      venue: req.body.venue,
+      estatus: req.body.eventStatus,
+      sTime: req.body.startTime,
+      eTime: req.body.endingTime,
+      description: req.body.desc,
+    })
+      .then((result) => res.json(result))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json({ message: "Error creating category" });
+      });
+  });
+};
+
+//post an event
+const createRegisterEvent = (req, res) => {
+  upload.single("file")(req, res, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Error uploading file" });
     }
 
-    
-    if(emptyFields.length > 0){
-        return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
-    }
-    console.log(emptyFields.length);
-    try{
-        console.log(userId);
-        const event = await Event.create({userId,name,cap,date,desc,etype,venue,estatus,reason,photo,sTime,eTime,cost})
-        res.status(200).json(event)
-    }catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
+    Event.create({
+      userId: req.body.userID,
+      name: req.body.name,
+      date: req.body.date,
+      cap: req.body.cap,
+      photo: req.body.photo,
+      etype: req.body.eType,
+      venue: req.body.venue,
+      estatus: req.body.eventStatus,
+      sTime: req.body.sTime,
+      eTime: req.body.eTime,
+      cost: req.body.cost,
+    })
+      .then((result) => res.json(result))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json({ message: "Error creating category" });
+      });
+  });
+};
 
 //Delete event
-const deleteEvent = async(req,res) =>{
-    const {id} = req.params
-    
-    //checking if the ID is valid
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such event'})
-    }
+const deleteEvent = async (req, res) => {
+  const { id } = req.params;
 
-    const event = await Event.findOneAndDelete({_id: id})
+  //checking if the ID is valid
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such event" });
+  }
 
-    if(!event){
-        return res.status(404).json({error: 'No such event'})
-    }
+  const event = await Event.findOneAndDelete({ _id: id });
 
-    res.status(200).json(event)
+  if (!event) {
+    return res.status(404).json({ error: "No such event" });
+  }
 
-}
-
+  res.status(200).json(event);
+};
 
 //Update event
 
-const updateEvent = async (req,res) => {
-    const {id} = req.params
+const updateEvent = async (req, res) => {
+  const { id } = req.params;
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such event'})
-    }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such event" });
+  }
 
-    const updatedEvent = await Event.findOneAndUpdate({_id: id}, {$set: req.body}, {new: true})
+  const updatedEvent = await Event.findOneAndUpdate(
+    { _id: id },
+    { $set: req.body },
+    { new: true }
+  );
 
-    if(!updatedEvent){
-        return res.status(404).json({error: 'No such event'})
-    }
+  if (!updatedEvent) {
+    return res.status(404).json({ error: "No such event" });
+  }
 
-    res.status(200).json(updatedEvent)
-}
-
+  res.status(200).json(updatedEvent);
+};
 
 module.exports = {
-    getEvents,
-    getEvent,
-    createEvent,
-    deleteEvent,
-    updateEvent
-   }
+  getEvents,
+  getEvent,
+  createEvent,
+  deleteEvent,
+  updateEvent,
+  createRegisterEvent,
+};
