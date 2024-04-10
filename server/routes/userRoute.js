@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { registerUser ,loginUser, logoutUser, getUser, updateUser, loginStatus, sendAutomatedEmail, sendVerificationEmail, verifyUser, forgotPassword, resetPassword, changePassword, sendLoginCode, loginWithCode, } = require("../controllers/userController");
-const { protect } = require('../middleware/authMiddleware');
+const {  protect,
+    adminOnly,
+    authorOnly, } = require('../middleware/authMiddleware');
 
 
 router.post("/register", registerUser);
@@ -19,6 +21,4 @@ router.patch("/changePassword",protect, changePassword);
 router.post("/sendLoginCode/:email",sendLoginCode); 
 router.post("/LoginWithCode/:email",loginWithCode); 
 
-  
-  
 module.exports = router; 

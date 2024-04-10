@@ -6,7 +6,7 @@ function Footer() {
     <div>
       
         <div className="footer">
-            All Rights Reserved &copy; 2024 - PrimeLodge.
+            All Rights Reserved &copy; 2024 - The Heritage.
 
         </div>
 
