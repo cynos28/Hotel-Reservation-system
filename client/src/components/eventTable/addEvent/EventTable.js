@@ -109,6 +109,9 @@ const EventTable = () => {
               <th scope="col" style={{ width: "200px" }}>
                 Description
               </th>
+              <th scope="col" style={{ width: "200px" }}>
+                Reason
+              </th>
 
               <th scope="col" className="col1">
                 Action
@@ -129,6 +132,7 @@ const EventTable = () => {
                 <td className="col1">{event.eTime}</td>
                 <td>{event.cost}</td>
                 <td className="col1">{event.description}</td>
+                <td className="col1">{event.reason}</td>
                 <td className="actionButtons">
                   <button
                     className="btn btn-outline-danger"
@@ -140,7 +144,7 @@ const EventTable = () => {
                     to={`/EventTable/EditEvent/${event._id}`}
                     className="btn btn-outline-primary"
                   >
-                    <PencilSquare /> Edit
+                    <PencilSquare /><br/> Edit
                   </Link>
                 </td>
               </tr>
