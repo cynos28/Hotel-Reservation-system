@@ -361,7 +361,7 @@ const authSlice = createSlice({
             toast.error(action.payload);
           })
 
-          // change Password
+      // change Password
       .addCase(changePassword.pending, (state) => {
         state.isLoading = true;
       })
