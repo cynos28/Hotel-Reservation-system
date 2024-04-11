@@ -38,6 +38,7 @@ import {
   selectUser,
 } from "./redux/features/auth/authSlice";
 import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
+import UserList from './pages/userList/UserList.js';
 
 
 axios.defaults.withCredentials = true;
@@ -79,7 +80,7 @@ function App() {
           <Route path="/profile" element={<Layout> <Profile /> </Layout>} />
           <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
           <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>
-
+          <Route path="/users" element={ <Layout> <UserList /> </Layout> }/>
 
           {/* events */}
           <Route path='/events' element={<Events />} />
