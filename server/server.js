@@ -8,6 +8,7 @@ const userRoute = require("./routes/userRoute.js");
 const errorHandler = require("./middleware/middleware.js");
 const route = require("./routes/roomRoute.js");
 const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
+const RateRoute = require("./Routes/RateRoute.js")//Charuka's route import
 const taskroute = require("./routes/taskRoute.js")
 const app = express();
 
