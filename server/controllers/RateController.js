@@ -53,50 +53,9 @@ const getById = async (req, res, next) => {
   return res.status(200).json({ rate });
 };
 
-//Update rate Details
-const updateRate = async (req, res, next) => {
-  const id = req.params.id;
-  const { date, name, gmail, ratestar, comment } = req.body;
 
-  let rates;
-
-  try {
-    rates = await Rate.findByIdAndUpdate(id, {
-      date: date,
-      name: name,
-      gmail: gmail,
-      ratestar: ratestar,
-      comment: comment,
-    });
-    rates = await rates.save();
-  } catch (err) {
-    console.log(err);
-  }
-  if (!rates) {
-    return res.status(404).json({ message: "Unable to Update rate Details" });
-  }
-  return res.status(200).json({ rates });
-};
-
-//Delete rate Details
-const deleteRate = async (req, res, next) => {
-  const id = req.params.id;
-
-  let rate;
-
-  try {
-    rate = await Rate.findByIdAndDelete(id);
-  } catch (err) {
-    console.log(err);
-  }
-  if (!rate) {
-    return res.status(404).json({ message: "Unable to Delete rate Details" });
-  }
-  return res.status(200).json({ rate });
-};
 
 exports.getAllRate = getAllRate;
 exports.addRate = addRate;
 exports.getById = getById;
-exports.updateRate = updateRate;
-exports.deleteRate = deleteRate;
+
