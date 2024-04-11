@@ -31,6 +31,7 @@ app.use("/api", route);
 app.use("/api/event",eventRouter); //Kaveesha's route
 app.use("/api/event/register",eventRouter); //Kaveesha's route
 app.use("/api", taskroute);//room tasks Routes
+app.use('/rates', RateRoute);//Charuka's route
 
 
 app.get("/", (req, res) => {
