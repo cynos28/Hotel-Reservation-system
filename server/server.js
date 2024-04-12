@@ -10,7 +10,13 @@ const route = require("./routes/roomRoute.js");
 const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
 const RateRoute = require("./Routes/RateRoute.js");//Charuka's route import
 const taskroute = require("./routes/taskRoute.js");
+const dotenv = require("dotenv");
 
+const foodRouter = require("./Routes/FoodRoute"); //Kavish's route import
+const cartRouter = require("./Routes/CartRoute"); //Kavish's route import
+const deliveryRouter = require("./Routes/DeliveryRoute"); //Kavish's route import
+
+dotenv.config();
 const app = express();
 
 // Middlewares
@@ -34,6 +40,10 @@ app.use("/api/event",eventRouter); //Kaveesha's route
 app.use("/api/event/register",eventRouter); //Kaveesha's route
 app.use("/api", taskroute);//room tasks Routes
 app.use("/rates", RateRoute);//Charuka's route
+
+app.use("/foods", foodRouter); // localhost:5000/foods kavish's 
+app.use("/carts", cartRouter); // localhost:5000/carts kavish's  
+app.use("/deliveries", deliveryRouter); // kavish's 
 
 
 app.get("/", (req, res) => {
