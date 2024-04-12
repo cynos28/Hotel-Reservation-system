@@ -8,6 +8,8 @@ import Header from '../../header/header.js';
 import Footer from '../../footer/Footer.js';
 import Search from '../../Search/Search.js';
 import { SearchOutlined } from '@ant-design/icons';
+import { FaSearch } from 'react-icons/fa';
+
 
 const { Option } = Select;
 
@@ -73,26 +75,37 @@ const GetRoom = () => {
     <div>
       <Header />
       <div className="sorting-bar-container">
-        <Select className="sorting-dropdown" defaultValue="rentPerNightAscending" onChange={handleSortChange}>
-          <Option value="rentPerNightAscending">Rent Per Night (Low to High)</Option>
-          <Option value="rentPerNightDescending">Rent Per Night (High to Low)</Option>
-        </Select>
-        <Input
-          className="search-input"
-          placeholder="Search by room type"
-          onChange={handleSearch}
-          value={searchQuery}
-        />
-        <Select className="sorting-dropdown" defaultValue="" onChange={handleRoomTypeFilterChange}>
-          <Option value="">All Room Types</Option>
-          <Option value="Standard">Standard</Option>
-          <Option value="Deluxe Room">Deluxe Room</Option>
-          <Option value="Suite">Suite</Option>
-          <Option value="Family Room">Family Room</Option>
-          <Option value="Luxury">Luxury</Option>
-          <Option value="Villa">Villa</Option>
-        </Select>
-      </div>
+  <div className="sorting-dropdown-container">
+    <Select className="sorting-dropdown" defaultValue="rentPerNightAscending" onChange={handleSortChange}>
+      <Option value="rentPerNightAscending">Rent Per Night (Low to High)</Option>
+      <Option value="rentPerNightDescending">Rent Per Night (High to Low)</Option>
+    </Select>
+  </div>
+
+  <div className="RoomSearchcontainer">
+    <Input
+      className="search-input"
+      placeholder="Search by room type"
+      onChange={handleSearch}
+      value={searchQuery}
+    />
+    <button className="search-button">Search</button>
+  </div>
+
+  <div className="sorting-dropdown-container">
+    <Select className="sorting-dropdown" defaultValue="" onChange={handleRoomTypeFilterChange}>
+      <Option value="">All Room Types</Option>
+      <Option value="Standard">Standard</Option>
+      <Option value="Deluxe Room">Deluxe Room</Option>
+      <Option value="Suite">Suite</Option>
+      <Option value="Family Room">Family Room</Option>
+      <Option value="Luxury">Luxury</Option>
+      <Option value="Villa">Villa</Option>
+    </Select>
+  </div>
+</div>
+
+
       <div className="room-container">
         <Row justify={'center'} gutter={16}>
           {filteredRooms.map((room, index) => (
