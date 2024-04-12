@@ -17,6 +17,8 @@ import {
   selectUsers,
 } from "../../redux/features/auth/filterSlice";
 import ReactPaginate from "react-paginate";
+import Sidebar from "../../AdminPanel/AdminComponents/Sidebar/Sidebar";
+import TopNav from "../../AdminPanel/AdminComponents/TopNav/TopNav";
 
 
 const UserList = () => {
@@ -78,8 +80,9 @@ const UserList = () => {
 
   return (
     <section>
-      <div className="container">
-        
+      <div className="container" >
+      <Sidebar />
+      <TopNav />
         <UserStats />
 
         <div className="user-list">

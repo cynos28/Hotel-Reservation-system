@@ -149,15 +149,15 @@ const logout= async () => {
     }
   };
   
-  // Delete User
   const deleteUser = async (id) => {
     try {
-      const response = await axios.delete(`${API_URL}${id}`);
+      const response = await axios.delete(`${API_URL}/users/${id}`); // Corrected URL construction
       return response.data.message;
     } catch (error) {
       throw error.response.data.message;
     }
   };
+  
   
   // Upgrade User
   const upgradeUser = async (userData) => {

@@ -3,12 +3,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from './pages/home/home';
 import Layout from './components/layout/Layout';
+
+
 import Register from './pages/Auth/Register';
 import Forgot from './pages/Auth/Forgot';
 import Login from './pages/Auth/Login';
 import Reset from './pages/Auth/Reset'
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
+
+
 import Events from './pages/events/events';//kaveesha's
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
 import EventTable from './components/eventTable/addEvent/EventTable.js';
@@ -87,6 +91,9 @@ function App() {
           <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
           <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>
           <Route path="/users" element={ <Layout> <UserList /> </Layout> }/>
+          <Route path="/contactUs" element={<Contactus />  }/>
+
+
 
           {/* events */}
           <Route path='/events' element={<Events />} />
