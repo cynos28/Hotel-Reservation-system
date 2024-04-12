@@ -92,4 +92,4 @@ function contactus() {
     )
 }
 
-export default contactus
+export default contactus;
