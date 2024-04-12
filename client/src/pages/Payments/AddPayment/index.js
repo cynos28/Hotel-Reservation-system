@@ -1,212 +1,286 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import "./styles.css";
-import axios from "axios";
-import bookimg from "./img/bkbokinfrom.png";
-import { useParams } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { BACKEND_URL } from "../../../constants";
 import Header from "../../../components/header/header";
-import Footer from "../../../components/footer/Footer";
+import axios from "axios";
+import bookimg from "./img/bkbokinfrom.png";
 
 function AddPayment() {
   const navigate = useNavigate();
-  // const { _id } = useParams(); 
-  const [inputs, setInputs] = useState({
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  // const { bookingId } = useParams();
+
+  const userId = "124"; // get the user id from the logged in user
+  const bookingId = "100"; // get the booking id from the url params
+
+  const [userState, setUserState] = useState({
+    id: "",
     name: "",
-    gmail: "",
+    email: "",
     phone: "",
-    cardno: "",
-    cardname: "",
-    expdate: "",
-    cvv: "",
-    payid: "",
+  });
+  const [bookingState, setBookingState] = useState({
+    id: "",
     type: "",
     amount: "",
   });
 
-  const handleChange = (e) => {
-    setInputs((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+  const [userCards, setUserCards] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const getUserDetails = async () => {
+    // TODO: Get user details from the logged in user by using userId
+    setUserState({
+      id: userId,
+      name: "Ishara Sewwandi",
+      email: "ishara@melorahaknathi.com",
+      phone: "0712345678",
+    });
   };
 
+  const getBookingDetails = async () => {
+    //TODO: Get booking details by bookingId
+    setBookingState({
+      id: bookingId,
+      type: "Hotel Booking",
+      amount: "5000",
+    });
+  };
+
+  const getUserCards = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/users/${userId}/cards`
+      );
+      const userCards = response.data.data;
+      setUserCards(userCards);
+    } catch (error) {
+      console.log("getUserCards error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserDetails();
+    getBookingDetails();
+    getUserCards();
+  }, []);
+
+  const onSelectCard = (e) => {
+    const selectedCardId = e.target.value;
+    const selectedCard = userCards.find((card) => card._id === selectedCardId);
+    if (selectedCard) {
+      setSelectedCard(selectedCard);
+    } else {
+      setSelectedCard(null);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    await sendRequest();
-    window.alert("Payment successfully!");
-    navigate(`/add-payment/order-summary/${inputs.payid}`); 
-  };
-  
-  const sendRequest = async () => {
-    await axios.post(`${BACKEND_URL}/api/payment`, inputs); 
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/bookings/${bookingId}/payments`,
+        {
+          user: {
+            id: userState.id,
+            name: userState.name,
+            email: userState.email,
+            phone: userState.phone,
+          },
+          booking: {
+            id: bookingState.id,
+            type: bookingState.type,
+            amount: bookingState.amount,
+          },
+          card: {
+            id: selectedCard._id,
+          },
+        }
+      );
+      window.alert("Payment successfully!");
+      const orderId = response.data.data.paymentId;
+      navigate(`${currentPath}/summary/${orderId}`);
+    } catch (error) {
+      console.log("handleSubmit error", error);
+    }
   };
 
   const generateRandomId = () => {
     const prefix = "ID";
-    const digits = Math.floor(10000 + Math.random() * 90000); 
+    const digits = Math.floor(10000 + Math.random() * 90000);
     return prefix + digits;
   };
 
-  const handleGenerateId = () => {
-    const randomId = generateRandomId();
-    setInputs({ ...inputs, payid: randomId });
+  const onNavigateToAddCard = () => {
+    navigate(`/add-card`);
   };
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div className="payment_container">
-      <div className="pay_now_box">
-       <h1 className="main_book_topic">Booking <span className="sub_book_topic">Now..!</span></h1>
-        <form className="payment_form_pay" onSubmit={handleSubmit}>
-          <div className="payment_form_pay_box">
-            <div className="payment_form_pay_left">
-              <div className="formimg_book_full">
-                <img src={bookimg} alt="formimg" className="formimg_book" />
+        <div className="pay_now_box">
+          <h1 className="main_book_topic">
+            Booking <span className="sub_book_topic">Now..!</span>
+          </h1>
+          <form className="payment_form_pay" onSubmit={handleSubmit}>
+            <div className="payment_form_pay_box">
+              <div className="payment_form_pay_left">
+                <div className="formimg_book_full">
+                  <img src={bookimg} alt="formimg" className="formimg_book" />
+                </div>
+                <h4 className="card_topic">Personal Details..</h4>
+                <hr></hr>
+                <label className="payment_lable">Full Name</label>
+                <br />
+                <input
+                  className="payment_input"
+                  disabled
+                  value={userState.name}
+                  type="text"
+                  name="name"
+                />
+                <br />
+                <label className="payment_lable">Gmail</label>
+                <br />
+                <input
+                  className="payment_input"
+                  value={userState.email}
+                  disabled
+                  type="email"
+                  name="gmail"
+                />
+                <br />
+                <label className="payment_lable">Phone</label>
+                <br />
+                <input
+                  className="payment_input"
+                  value={userState.phone}
+                  disabled
+                  type="tel"
+                  name="phone"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  title="Please enter a 10-digit phone number"
+                />
+                <br />
               </div>
-              <h4 className="card_topic">Personal Details..</h4>
-              <hr></hr>
-              <label className="payment_lable">Full Name</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.name}
-                onChange={handleChange}
-                required
-                type="text"
-                name="name"
-              />
-              <br />
-              <label className="payment_lable">Gmail</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.gmail}
-                onChange={handleChange}
-                required
-                type="email"
-                name="gmail"
-              />
-              <br />
-              <label className="payment_lable">Payment ID</label>
-              <br />
-              <input
-                className="payment_input_id"
-                value={inputs.payid}
-                onChange={handleChange}
-                readOnly
-                required
-                type="text"
-                name="payid"
-              />
-              <button className="genarate_id_btn" onClick={handleGenerateId}>
-                Generate ID
-              </button>
-              <br />
-              <label className="payment_lable">Phone</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.phone}
-                onChange={handleChange}
-                required
-                type="tel"
-                name="phone"
-                pattern="[0-9]{10}"
-                maxLength={10}
-                title="Please enter a 10-digit phone number"
-              />
-              <br />
-            </div>
-            <div className="payment_form_pay_left">
-              <h4 className="card_topic">Booking Details..</h4>
-              <hr></hr>
-              <label className="payment_lable">Booking Services</label>
-              <br />
+              <div className="payment_form_pay_left">
+                <h4 className="card_topic">Booking Details..</h4>
+                <hr></hr>
+                <label className="payment_lable">Booking Type</label>
+                <br />
+                <input
+                  className="payment_input"
+                  value={bookingState.type}
+                  disabled
+                  type="text"
+                  name="type"
+                />
 
-              <select
-                class="payment_input"
-                required
-                value={inputs.type}
-                onChange={handleChange}
-                name="type"
-              >
-                <option value="">Select Your Services</option>
-                <option value="rooms">Rooms</option>
-                <option value="pool">Pool</option>
-                <option value="bar">Bar</option>
-              </select>
+                <br />
+                <label className="payment_lable">Amount (LKR)</label>
+                <br />
+                <input
+                  className="payment_input"
+                  value={bookingState.amount}
+                  disabled
+                  type="text"
+                  name="amount"
+                />
 
-              <br />
-              <label className="payment_lable">Amount (Rs.)</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.amount}
-                onChange={handleChange}
-                required
-                type="text"
-                name="amount"
-              />
-              <h4 className="card_topic">Card Details..</h4>
-              <hr></hr>
-              <label className="payment_lable">Card Number</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.cardno}
-                onChange={handleChange}
-                required
-                id="crdNo"
-                type="number"
-                name="cardno"
-                maxLength={18}
-              />
-              <br />
-              <label className="payment_lable">Cardholder Name</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.cardname}
-                onChange={handleChange}
-                required
-                type="text"
-                name="cardname"
-              />
-              <br />
-              <label className="payment_lable">Exp Date</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.expdate}
-                onChange={handleChange}
-                required
-                type="date"
-                name="expdate"
-              />
-              <br />
-              <label className="payment_lable">CVV</label>
-              <br />
-              <input
-                className="payment_input"
-                value={inputs.cvv}
-                onChange={handleChange}
-                required
-                type="text"
-                name="cvv"
-                maxLength={3}
-              />
-              <br />
+                <h4 className="card_topic">Card Details..</h4>
+                <hr></hr>
+                <div>
+                  <select
+                    class="payment_input"
+                    required
+                    value={selectedCard?._id}
+                    onChange={onSelectCard}
+                    name="type"
+                  >
+                    <option value="">Select Your Card</option>
+                    {/* TODO: Add proper styles to options */}
+                    {userCards.map((card) => (
+                      <option key={card._id} value={card._id}>
+                        <div>{card.cardName}</div>
+                        <div>{card.cardNo}</div>
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    className="pay_now_btn"
+                    onClick={onNavigateToAddCard}
+                    type="submit"
+                  >
+                    Add new card
+                  </button>
+                </div>
+                {selectedCard ? (
+                  <>
+                    <br />
+                    <label className="payment_lable">Card Number</label>
+                    <br />
+                    <input
+                      className="payment_input"
+                      value={selectedCard.cardNo}
+                      disabled
+                      required
+                      id="crdNo"
+                      type="number"
+                      name="cardno"
+                      maxLength={18}
+                    />
+                    <br />
+                    <label className="payment_lable">Cardholder Name</label>
+                    <br />
+                    <input
+                      className="payment_input"
+                      value={selectedCard.cardName}
+                      disabled
+                      required
+                      type="text"
+                      name="cardname"
+                    />
+                    <br />
+                    <label className="payment_lable">Exp Date</label>
+                    <br />
+                    <input
+                      className="payment_input"
+                      value={selectedCard.expDate}
+                      disabled
+                      required
+                      type="date"
+                      name="expdate"
+                    />
+                    <br />
+                    <label className="payment_lable">CVV</label>
+                    <br />
+                    <input
+                      className="payment_input"
+                      value={selectedCard.cvv}
+                      disabled
+                      required
+                      type="text"
+                      name="cvv"
+                      maxLength={3}
+                    />
+                    <br />
+                  </>
+                ) : null}
+              </div>
             </div>
-          </div>
-          <button className="pay_now_btn" type="submit">
-            Pay Now
-          </button>
-        </form>
-      </div>
+
+            <button className="pay_now_btn" type="submit">
+              Pay Now
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
