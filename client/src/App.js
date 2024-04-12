@@ -75,61 +75,61 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<Layout>
-            <Home />
-          </Layout>
-          } />
+            <Route path="/" element={<Layout>
+              <Home />
+            </Layout>
+            } />
 
-          {/* Authentication */}
+            {/* Authentication */}
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot" element={<Forgot />} />
-          <Route path="/reset/:resetToken" element={<Reset />} />
-          <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
-          <Route path="/profile" element={<Layout> <Profile /> </Layout>} />
-          <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
-          <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>
-          <Route path="/users" element={ <Layout> <UserList /> </Layout> }/>
-          <Route path="/contactUs" element={<Contactus />  }/>
-          <Route path="/gallery" element={<Gallery />  }/>
-
-
-
-          {/* events */}
-          <Route path='/events' element={<Events />} />
-          <Route path='/RegisterEvent' element={<RegisterEvent />} />
-          <Route path='/addEvent' element={<AddEvent />} />
-          <Route path='/EventTable' element={<EventTable />} />
-          <Route path='/EventTable/EditEvent/:id' element={<EditEvent />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgot" element={<Forgot />} />
+            <Route path="/reset/:resetToken" element={<Reset />} />
+            <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
+            <Route path="/profile" element={<Layout> <Profile /> </Layout>} />
+            <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
+            <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>} />
+            <Route path="/users" element={<Layout> <UserList /> </Layout>} />
+            <Route path="/contactUs" element={<Contactus />} />
+            <Route path="/gallery" element={<Gallery />} />
 
 
 
-         
-
-
-
-          {/* events */}
-          <Route path='/events' element={<Events />} />
-          <Route path='/dashboard' element={<AdminDash />} />
+            {/* events */}
+            <Route path='/events' element={<Events />} />
+            <Route path='/RegisterEvent' element={<RegisterEvent />} />
+            <Route path='/addEvent' element={<AddEvent />} />
+            <Route path='/EventTable' element={<EventTable />} />
+            <Route path='/EventTable/EditEvent/:id' element={<EditEvent />} />
 
 
 
 
-       
-
-           {/* Room page */}
-
-          <Route path="/getroom" element={<GetRoom />} />
-          <Route path="/addroom" element={<AddRoom />} />
-          <Route path="/roomtable" element={<RoomTable />} />
-          <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
 
 
 
-        </Routes> 
+            {/* events */}
+            <Route path='/events' element={<Events />} />
+            <Route path='/dashboard' element={<AdminDash />} />
+
+
+
+
+
+
+            {/* Room page */}
+
+            <Route path="/getroom" element={<GetRoom />} />
+            <Route path="/addroom" element={<AddRoom />} />
+            <Route path="/roomtable" element={<RoomTable />} />
+            <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+
+
+
+          </Routes>
         </GoogleOAuthProvider>
 
       </BrowserRouter>

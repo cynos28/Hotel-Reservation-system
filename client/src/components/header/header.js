@@ -34,7 +34,7 @@ function Header() {
                 <ul className="home-links">
                     
                 <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Home</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Rooms</span> </Link></div>
+                <div style={{ marginTop: "-10px" }}> <Link to="/getroom" > <span>Rooms</span> </Link></div>
                 <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Services</span> </Link></div>
                 <div style={{ marginTop: "-10px" }}> <Link to="/Gallery" > <span>Gallery</span> </Link></div>
                 <div style={{ marginTop: "-10px" }}> <Link to="/contactUs" > <span>Contact Us</span> </Link></div>
