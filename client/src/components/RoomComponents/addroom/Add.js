@@ -11,27 +11,56 @@ const AddRoom = () => {
   const [room, setRoom] = useState({
     name: '',
     image: null, // Change to accept file
-    rentPerNight: 0,
+    rentPerNight: '',
     acAvailability: false,
     wifiAvailability: false,
     roomDescription: '',
     numberOfBeds: '',
     roomType: '',
   });
-
+  const [nameError, setNameError] = useState('');
+  const [rentError, setRentError] = useState('');
   const navigate = useNavigate();
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setRoom({ ...room, [name]: value });
+    // Clear the error message if input is corrected
+    if (name === 'name' && nameError) {
+      setNameError('');
+    }
+    if (name === 'rentPerNight' && rentError) {
+      setRentError('');
+    }
   };
 
   const fileChangeHandler = (e) => {
     setRoom({ ...room, image: e.target.files[0] });
   };
 
+  const validateName = (name) => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (!name.trim() || !nameRegex.test(name)) {
+      setNameError('Room name should contain only letters and spaces');
+      return false;
+    }
+    return true;
+  };
+
+  const validateRent = (rent) => {
+    const rentRegex = /^\d+$/;
+    if (!rent.trim() || !rentRegex.test(rent)) {
+      setRentError('Rent per night should contain only numbers');
+      return false;
+    }
+    return true;
+  };
+
   const submitForm = async (e) => {
     e.preventDefault();
+    if (!validateName(room.name) || !validateRent(room.rentPerNight)) {
+      return;
+    }
     try {
       const formData = new FormData();
       formData.append('name', room.name);
@@ -82,26 +111,28 @@ const AddRoom = () => {
                 name="name"
                 required
               />
+              {nameError && <div className="error-message">{nameError}</div>}
             </div>
             <div className="addRoomFormGroup">
               <label className="addRoomLabel">Image</label>
               <input
-                type="file" // Change to accept file
+                type="file"
                 className="addRoomInput"
                 onChange={fileChangeHandler}
                 required
               />
             </div>
             <div className="addRoomFormGroup">
-              <label className="addRoomLabel">Rent per Night ($)</label>
+              <label className="addRoomLabel">Rent per Night (Rs)</label>
               <input
-                type="number"
+                type="text"
                 className="addRoomInput"
                 onChange={inputHandler}
                 placeholder="Enter rent per night"
                 name="rentPerNight"
                 required
               />
+              {rentError && <div className="error-message">{rentError}</div>}
             </div>
             <div className="availabilityFormGroup">
               <label className="addRoomLabel">AC Availability</label>

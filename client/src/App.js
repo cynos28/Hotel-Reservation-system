@@ -10,18 +10,23 @@ import Reset from './pages/Auth/Reset'
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';//kaveesha's
-import FoodPage from './pages/FoodPage/FoodPage';
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
 import EventTable from './components/eventTable/addEvent/EventTable.js';
 import EditEvent from './components/eventTable/addEvent/EditEvent.js';
+
 import Verify from "./pages/Auth/Verify.js";
 
 
+
 import AddRoom from './components/RoomComponents/addroom/Add';
-import AddEvent from './components/eventTable/addEvent/EventAdd.js';  //kaveesha's
 import GetRoom from './components/RoomComponents/getroom/Room';
 import RoomTable from './components/RoomComponents/getroom/Roomtable';
 import Edit from './components/RoomComponents/updateroom/Edit';
+
+
+
+import AddEvent from './components/eventTable/addEvent/EventAdd.js';  //kaveesha's
+
 
 import AdminDash from './AdminPanel/Adminpages/AdminDashboard';
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
@@ -102,12 +107,16 @@ function App() {
 
 
 
+
           {/* food page */}
           <Route path="/foodpage" element={<FoodPage />} />
           <Route path="/foodpage/search/:searchTerm" element={<FoodPage />} />
           <Route path="/foodpage/tag/:tag" element={<FoodPage />} />
 
           {/* Room page */}
+
+           {/* Room page */}
+
           <Route path="/getroom" element={<GetRoom />} />
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />

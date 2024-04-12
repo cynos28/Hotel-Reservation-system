@@ -1,7 +1,7 @@
 const express = require("express");
 const rate_router = express.Router();
 //Insert Model
-const Rate = require("../Model/RateModel");
+const Rate = require("../models/RateModel");
 
 
 //Insert User Controller
