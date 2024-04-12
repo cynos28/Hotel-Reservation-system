@@ -1,28 +1,28 @@
-const mongoose = require("mongoose"); //kalin wage mongoos add karanna
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema; //schema set karanna
+const Schema = mongoose.Schema; 
 
 const RateSchema = new Schema({
   date: {
-    type: String, //type
+    type: String, 
     required: true,
   },
   name: {
-    type: String, //type
+    type: String, 
     required: true,
   },
   gmail: {
-    type: String, //type
+    type: String, 
     required: true,
   },
   ratestar: {
-    type: String, //type
+    type: String, 
     required: true,
   },
   comment: {
-    type: String, //type
+    type: String, 
     required: true,
   },
 });
 
-module.exports = mongoose.model("Rate", RateSchema); //schema eka send karanna
+module.exports = mongoose.model("Rate", RateSchema); 
