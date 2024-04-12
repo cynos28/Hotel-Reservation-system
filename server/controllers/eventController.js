@@ -54,7 +54,7 @@ const createEvent = (req, res) => {
     }
 
     Event.create({
-      userId: req.body.userID,
+      userId: req.body.userId,
       name: req.body.name,
       image: req.file.filename,
       date: req.body.date,
@@ -83,7 +83,7 @@ const createRegisterEvent = (req, res) => {
     }
 
     Event.create({
-      userId: req.body.userID,
+      userId: req.body.userId,
       name: req.body.name,
       date: req.body.date,
       cap: req.body.cap,

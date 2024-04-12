@@ -45,6 +45,11 @@ const eventSchema = new Schema({
       type: String,
       default: "Ok"
     }
+    ,
+    reason: {
+      type: String,
+      default: "Ok"
+    }
    
   },{timestamps: true})
 

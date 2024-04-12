@@ -27,23 +27,23 @@ const register = async (userData) => {
     }
 };
 
-// Login User
-const login = async (userData) => {
-    try {
-        const response = await axios.post(`${API_URL}/login`, userData);
-        return response.data;
-    } catch (error) {
-        // Handle login error
-        console.error("Error logging in:", error);
-       
-    }
-};
-
 // // Login User
 // const login = async (userData) => {
-//   const response = await axios.post(`${API_URL}/login`, userData);
-//   return response.data;
+//     try {
+//         const response = await axios.post(`${API_URL}/login`, userData);
+//         return response.data;
+//     } catch (error) {
+//         // Handle login error
+//         console.error("Error logging in:", error);
+       
+//     }
 // };
+
+// Login User
+const login = async (userData) => {
+  const response = await axios.post(`${API_URL}/login`, userData);
+  return response.data;
+};
   
   // Logout User
 const logout= async () => {
@@ -72,13 +72,13 @@ const logout= async () => {
   // GetUser
   const getUser = async () => {
     try {
-      const response = await axios.get(`${API_URL}getUser`); // meke / dammama aul ynw
+      const response = await axios.get(`${API_URL}getUser`);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
     }
   };
-  
+
   // Update profile
   const updateUser = async (userData) => {
     try {
