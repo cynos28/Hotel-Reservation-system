@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+
+const {  protect,
+    adminOnly,
+    authorOnly, } = require('../middleware/authMiddleware');
+    
 const { registerUser,
     loginUser,
     logoutUser,
@@ -20,9 +25,7 @@ const { registerUser,
     loginWithCode,
     loginWithGoogle,
  } = require("../controllers/userController");
-const {  protect,
-    adminOnly,
-    authorOnly, } = require('../middleware/authMiddleware');
+
 
 
 router.post("/register", registerUser);

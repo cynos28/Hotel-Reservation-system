@@ -39,7 +39,7 @@ import {
 import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 import UserList from './pages/userList/UserList.js';
 import LoginWithCode from './pages/Auth/LoginWithCode.js';
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 axios.defaults.withCredentials = true;
 
@@ -63,6 +63,7 @@ function App() {
     <div>
       <BrowserRouter>
         <ToastContainer />
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <Routes>
 
           <Route path="/" element={<Layout>
@@ -114,7 +115,8 @@ function App() {
 
 
 
-        </Routes>
+        </Routes> 
+        </GoogleOAuthProvider>
 
       </BrowserRouter>
 

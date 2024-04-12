@@ -132,6 +132,25 @@ export const loginWithCode = createAsyncThunk(
   }
 );
 
+// loginWithGoogle
+export const loginWithGoogle = createAsyncThunk(
+  "auth/loginWithGoogle",
+  async (userToken, thunkAPI) => {
+    try {
+      return await authService.loginWithGoogle(userToken);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 // Update User
 export const updateUser = createAsyncThunk(
   "auth/updateUser",
@@ -437,6 +456,8 @@ const authSlice = createSlice({
       state.user = null;
       toast.error(action.payload);
     })
+
+    
       // Get Login Status
       .addCase(getLoginStatus.pending, (state) => {
         state.isLoading = true;
@@ -619,6 +640,25 @@ const authSlice = createSlice({
         state.message = action.payload;
         toast.error(action.payload);
       })
+
+       // loginWithGoogle
+       .addCase(loginWithGoogle.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("Login Successful");
+      })
+      .addCase(loginWithGoogle.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+      });
 
   }
 });
