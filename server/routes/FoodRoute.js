@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Food = require("../Model/Food");
+const Food = require("../models/Food");
 const foodController = require("../Controllers/FoodController");
 
 router.get("/", foodController.getAllFoods);
