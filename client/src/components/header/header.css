@@ -145,3 +145,25 @@ li {
   font-weight: 500;
   margin-top: -12px;
 }
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}

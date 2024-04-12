@@ -11,7 +11,8 @@ import Login from './pages/Auth/Login';
 import Reset from './pages/Auth/Reset'
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
-
+import Contactus from './pages/ContactUs/contactus.js';
+import Gallery from './pages/gallery/Gallery.js';
 
 import Events from './pages/events/events';//kaveesha's
 import RegisterEvent from './pages/events/RegisterEvent.js';//kaveesha's 
@@ -49,6 +50,7 @@ import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 import UserList from './pages/userList/UserList.js';
 import LoginWithCode from './pages/Auth/LoginWithCode.js';
 import { GoogleOAuthProvider } from "@react-oauth/google";
+
 
 axios.defaults.withCredentials = true;
 
@@ -92,6 +94,7 @@ function App() {
           <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>
           <Route path="/users" element={ <Layout> <UserList /> </Layout> }/>
           <Route path="/contactUs" element={<Contactus />  }/>
+          <Route path="/gallery" element={<Gallery />  }/>
 
 
 
