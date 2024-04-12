@@ -7,7 +7,6 @@ import Register from './pages/Auth/Register';
 import Forgot from './pages/Auth/Forgot';
 import Login from './pages/Auth/Login';
 import Reset from './pages/Auth/Reset'
-import LoginAuth from './pages/Auth/LoginAuth';
 import Profile from './pages/Profile/Profile';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 import Events from './pages/events/events';//kaveesha's
@@ -39,6 +38,7 @@ import {
 } from "./redux/features/auth/authSlice";
 import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 import UserList from './pages/userList/UserList.js';
+import LoginWithCode from './pages/Auth/LoginWithCode.js';
 
 
 axios.defaults.withCredentials = true;
@@ -76,7 +76,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/reset/:resetToken" element={<Reset />} />
-          <Route path="/loginAuth/:email" element={<LoginAuth />} />
+          <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
           <Route path="/profile" element={<Layout> <Profile /> </Layout>} />
           <Route path="/ChangePassword" element={<Layout> <ChangePassword /> </Layout>} />
           <Route path="/verify/:verificationToken" element={<Layout><Verify /></Layout>}/>

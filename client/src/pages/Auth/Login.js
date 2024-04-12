@@ -40,6 +40,7 @@ function Login() {
 
   const loginUser = async (e) => {
     e.preventDefault();
+
     if (!email || !password) {
       return toast.error('All fields are required');
     }
@@ -63,6 +64,12 @@ function Login() {
     dispatch(RESET());
   }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor, email]);
   
+  const googleLogin = async (credentialResponse) => {
+    console.log(credentialResponse);
+    await dispatch(
+      loginWithGoogle({ userToken: credentialResponse.credential })
+    );
+  };
 
   return (
 

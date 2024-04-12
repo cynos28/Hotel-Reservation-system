@@ -26,9 +26,9 @@ const ChangeRole = ({ _id, email }) => {
     };
 
     const emailData = {
-      subject: "Account Role Changed - AUTH:Z",
+      subject: "Account Role Changed - The Heritage",
       send_to: email,
-      reply_to: "noreply@zino",
+      reply_to: "noreply@Heritage",
       template: "changeRole",
       url: "/login",
     };

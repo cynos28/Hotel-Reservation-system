@@ -114,6 +114,24 @@ export const sendLoginCode = createAsyncThunk(
   }
 );
 
+// loginWithCode
+export const loginWithCode = createAsyncThunk(
+  "auth/loginWithCode",
+  async ({ code, email }, thunkAPI) => {
+    try {
+      return await authService.loginWithCode(code, email);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Update User
 export const updateUser = createAsyncThunk(
   "auth/updateUser",
@@ -383,23 +401,42 @@ const authSlice = createSlice({
       })
 
 
-      // send Login Code
-      .addCase(sendLoginCode.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(sendLoginCode.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.message = action.payload;
-        toast.success(action.payload);
-      })
-      .addCase(sendLoginCode.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-        toast.error(action.payload);
-      })
+     // send Login Code
+     .addCase(sendLoginCode.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(sendLoginCode.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.message = action.payload;
+      toast.success(action.payload);
+    })
+    .addCase(sendLoginCode.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
+      toast.error(action.payload);
+    })
 
+    // loginWithCode
+    .addCase(loginWithCode.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(loginWithCode.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.isLoggedIn = true;
+      state.twoFactor = false;
+      state.user = action.payload;
+      toast.success(action.payload);
+    })
+    .addCase(loginWithCode.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
+      state.user = null;
+      toast.error(action.payload);
+    })
       // Get Login Status
       .addCase(getLoginStatus.pending, (state) => {
         state.isLoading = true;
