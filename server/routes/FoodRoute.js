@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Food = require("../models/Food");
-const foodController = require("../Controllers/FoodController");
+const foodController = require("../controllers/FoodController");
 
 router.get("/", foodController.getAllFoods);
 router.post("/", foodController.addFood);

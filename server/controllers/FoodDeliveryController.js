@@ -1,4 +1,4 @@
-const Delivery = require("../Model/Delivery");
+const Delivery = require("../models/FoodDelivery");
 
 const getAllDeliveries = async (req, res, next) => {
   try {
