@@ -1,13 +1,12 @@
 const express = require("express");
-const router = express.Router();
-const PaymentController = require("../controllers/paymentControler");
+const router = express.Router({ mergeParams: true });
+const PaymentController = require("../controllers/paymentController");
 
-router.get("/", PaymentController.getAllPayment);
 router.post("/", PaymentController.addPayment);
-router.get("/:id", PaymentController.getById); 
-router.put("/:id", PaymentController.updatePayment);
+router.get("/:id", PaymentController.getPayment);
+
+// for Admin
+router.get("/", PaymentController.getAllPaymentsByBookingType);
 router.delete("/:id", PaymentController.deletePayment);
-router.get("/payId/:payId", PaymentController.getByPayId);
 
 module.exports = router;
-   
