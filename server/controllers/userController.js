@@ -10,6 +10,7 @@ const crypto = require('crypto');
 const Cryptr = require('cryptr');
 
 const cryptr = new Cryptr(process.env.CRYPT_KEY);
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 
 
@@ -619,6 +620,51 @@ const resetPassword = asyncHandler(async (req, res) => {
 
 })
 
+// Delete User
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  await user.remove();
+  res.status(200).json({
+    message: "User deleted successfully",
+  });
+});
+
+// Get Users
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().sort("-createdAt").select("-password");
+  if (!users) {
+    res.status(500);
+    throw new Error("Something went wrong");
+  }
+  res.status(200).json(users);
+});
+
+//upgradeuser
+
+const upgradeUser = asyncHandler(async (req, res) => {
+  const { role, id } = req.body;
+
+  const user = await User.findById(id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  user.role = role;
+  await user.save();
+
+  res.status(200).json({
+    message: `User role updated to ${role}`,
+  });
+});
+
 //Change Password
 const changePassword = asyncHandler(async (req, res) => {
   const { oldPassword, password } = req.body
@@ -667,5 +713,8 @@ module.exports = {
   changePassword,
   sendLoginCode,
   loginWithCode,
+  deleteUser,
+  getUsers,
+  upgradeUser,
 
 };

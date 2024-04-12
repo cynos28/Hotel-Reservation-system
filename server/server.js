@@ -28,6 +28,8 @@ app.use(cors({
 // Routes
 app.use("/api/users", userRoute); 
 app.use("/api", route);
+
+
 app.use("/api/event",eventRouter); //Kaveesha's route
 app.use("/api/event/register",eventRouter); //Kaveesha's route
 app.use("/api", taskroute);//room tasks Routes

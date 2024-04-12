@@ -17,15 +17,17 @@ const icon4 = <BiUserX size={40} color="#fff" />;
 
 const UserStats = () => {
   const dispatch = useDispatch();
-  const { users, verifiedUsers, suspendedUsers } = useSelector(
+  const { users } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+   // dispatch(CALC_VERIFIED_USER()); // Dispatch the action directly
+    //dispatch(CALC_SUSPENDED_USER()); // Dispatch the action directly
+  }, [dispatch, users]);
+
+  const { verifiedUsers, suspendedUsers } = useSelector(
     (state) => state.auth
   );
   const unverifiedUsers = users.length - verifiedUsers;
-
-  useEffect(() => {
-    dispatch(CALC_VERIFIED_USER());
-    dispatch(CALC_SUSPENDED_USER());
-  }, [dispatch, users]);
 
   return (
     <div className="user-summary">

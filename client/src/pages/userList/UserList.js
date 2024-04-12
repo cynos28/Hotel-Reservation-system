@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeRole from "../../components/changeRole/ChangeRole";
-//import { Spinner } from "../../components/loader/Loader";
+
 import PageMenu from "../../components/pageMenu/PageMenu";
-import Search from "../../components/Search/Search";
+import Search from "../../components/searchUser/Search";
 import UserStats from "../../components/userStats/UserStats";
-//import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
 import { deleteUser, getUsers } from "../../redux/features/auth/authSlice";
 //import { shortenText } from "../profile/Profile";
 import "./UserList.css";
@@ -18,8 +18,9 @@ import {
 } from "../../redux/features/auth/filterSlice";
 import ReactPaginate from "react-paginate";
 
+
 const UserList = () => {
-  //useRedirectLoggedOutUser("/login");
+  // useRedirectLoggedOutUser("/login");
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
@@ -78,8 +79,7 @@ const UserList = () => {
   return (
     <section>
       <div className="container">
-        <PageMenu />
-       
+        
         <UserStats />
 
         <div className="user-list">
@@ -118,7 +118,7 @@ const UserList = () => {
                     return (
                       <tr key={_id}>
                         <td>{index + 1}</td>
-                        <td>{shortenText(name, 8)}</td>
+                        <td>{(name, 8)}</td>
                         <td>{email}</td>
                         <td>{role}</td>
                         <td>
