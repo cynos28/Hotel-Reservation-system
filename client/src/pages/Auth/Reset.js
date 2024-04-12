@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from '../Auth/auth.module.css';
 import Card from '../../components/card/Card';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import PasswordInput from '../../components/passwordInput/PasswordInput';
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { RESET, resetPassword } from "../../redux/features/auth/authSlice";
+
 
 const initialState = {
   password: '',
@@ -13,14 +18,20 @@ const initialState = {
 
 function Reset() {
   const [formData, setFormData] = useState(initialState);
-  const [passwordStrength, setPasswordStrength] = useState('');
-
   const { password, password2 } = formData;
+  const { resetToken } = useParams();
+  console.log(resetToken);
+
+  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    calculatePasswordStrength(value);
   };
 
   // Password Strength Calculation
@@ -55,13 +66,31 @@ function Reset() {
  
    };
 
+   const reset = async (e) => {
+    e.preventDefault();
 
+    if (password.length < 6) {
+      return toast.error("Password must be up to 6 characters");
+    }
+    if (password !== password2) {
+      return toast.error("Passwords do not match");
+    }
 
+    const userData = {
+      password,
+    };
 
-  const resetPassword = () => {
-    // Add your password reset logic here
-    console.log('Resetting password...', { password, password2 });
+    await dispatch(resetPassword({ userData, resetToken }));
   };
+
+  useEffect(() => {
+    if (isSuccess && message.includes("Reset Successful")) {
+      navigate("/login");
+    }
+
+    dispatch(RESET());
+  }, [dispatch, navigate, message, isSuccess]);
+   
 
   return (
     <>
@@ -70,14 +99,14 @@ function Reset() {
         <Card>
           <p className="title">Reset Password</p>
 
-          <form className="form" onSubmit={resetPassword}>
+          <form className="form" onSubmit={reset}>
             <PasswordInput
               placeholder="New Password"
               name="password"
               required
               value={password}
               onChange={handleInputChange}
-              strength={passwordStrength}
+              
             />
 
             <PasswordInput
