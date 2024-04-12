@@ -18,7 +18,7 @@ const { registerUser,
     changePassword,
     sendLoginCode,
     loginWithCode,
-    loginWithGoogle
+    loginWithGoogle,
  } = require("../controllers/userController");
 const {  protect,
     adminOnly,

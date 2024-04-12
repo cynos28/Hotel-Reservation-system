@@ -10,7 +10,7 @@ const crypto = require('crypto');
 const Cryptr = require('cryptr');
 
 const cryptr = new Cryptr(process.env.CRYPT_KEY);
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+//const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 
 
@@ -693,9 +693,12 @@ const changePassword = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "Old password is incorrect!" });
   }
 }
+);
 
-
-)
+const loginWithGoogle = asyncHandler(async (req, res) => {
+  const { userToken } = req.body;
+  console.log(userToken);
+});
 
 
 module.exports = {
@@ -716,5 +719,6 @@ module.exports = {
   deleteUser,
   getUsers,
   upgradeUser,
+  loginWithGoogle,
 
 };
