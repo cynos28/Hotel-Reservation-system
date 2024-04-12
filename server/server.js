@@ -12,9 +12,9 @@ const RateRoute = require("./Routes/RateRoute.js");//Charuka's route import
 const taskroute = require("./routes/taskRoute.js");
 const dotenv = require("dotenv");
 
-const foodRouter = require("./Routes/FoodRoute"); //Kavish's route import
-const cartRouter = require("./Routes/CartRoute"); //Kavish's route import
-const deliveryRouter = require("./Routes/DeliveryRoute"); //Kavish's route import
+const foodRouter = require("./routes/FoodRoute.js"); //Kavish's route import
+const cartRouter = require("./routes/FoodCartRoute.js"); //Kavish's route import
+const deliveryRouter = require("./routes/FoodDeliveryRoute.js"); //Kavish's route import
 
 dotenv.config();
 const app = express();
