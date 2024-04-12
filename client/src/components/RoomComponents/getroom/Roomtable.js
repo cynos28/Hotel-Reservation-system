@@ -58,17 +58,16 @@ const RoomTable = () => {
   
     <div className="RoomtableContainer">
         <div className='roomTable'>
-            <div className="filter-container">
-                <select onChange={(e) => setFilterValue(e.target.value)} className="form-select form-select-sm">
-                    <option value=''>Rent per day</option>
-                    <option value={100}>Above 100</option>
-                    <option value={200}>Above 200</option>
-                    <option value={300}>Above 300</option>
-                </select>
-            </div>
-            <div className="search-container">
-                <input type="text" placeholder="Search by room name" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-            </div>
+        <div className="search-container">
+  <input 
+    type="text" 
+    placeholder="Search by room name" 
+    value={searchTerm} 
+    onChange={(e) => setSearchTerm(e.target.value)} 
+    className="search-input" // Add a class for styling
+  />
+</div>
+
             <table>
                 <thead>
                     <tr>
