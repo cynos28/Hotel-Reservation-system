@@ -6,14 +6,19 @@ import { useNavigate, useParams } from "react-router";
 import { BACKEND_URL } from "../../../constants";
 import Header from "../../../components/header/header";
 import axios from "axios";
+import { useSelector } from "react-redux"; /*** */
+import { Link } from "react-router-dom";
 
 function AddCard() {
   const navigate = useNavigate();
   const params = useParams();
 
+  // Fetch user data from Redux state
+  const { user } = useSelector((state) => state.auth); //*** */
+
   const isUpdateOperation = params?.cardId ? true : false;
 
-  const userId = "123"; // get the user id from the logged in user
+  const userId = user?._id; // get the user id from the logged in user //** */
 
   const [isLoadingCard, setIsLoadingCard] = useState(false); // only use if isUpdateOperation is true
   const [inputs, setInputs] = useState({
@@ -163,6 +168,12 @@ function AddCard() {
                 <button className="card_save_btn" type="submit">
                   {isUpdateOperation ? "Update" : "Save"}
                 </button>
+                {/* Temp button add */}
+                <Link to="/add-payment">
+                  <button className="temp_btn" type="submit">
+                    Temp Add payment
+                  </button>
+                </Link>
               </>
             )}
           </form>

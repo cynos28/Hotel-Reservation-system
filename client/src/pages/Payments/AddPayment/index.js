@@ -7,6 +7,7 @@ import { BACKEND_URL } from "../../../constants";
 import Header from "../../../components/header/header";
 import axios from "axios";
 import bookimg from "./img/bkbokinfrom.png";
+import { useSelector } from "react-redux";
 
 function AddPayment() {
   const navigate = useNavigate();
@@ -15,15 +16,11 @@ function AddPayment() {
 
   // const { bookingId } = useParams();
 
-  const userId = "124"; // get the user id from the logged in user
+  const { user } = useSelector((state) => state.auth);
+
+  const userId = user?._id; // get the user id from the logged in user
   const bookingId = "100"; // get the booking id from the url params
 
-  const [userState, setUserState] = useState({
-    id: "",
-    name: "",
-    email: "",
-    phone: "",
-  });
   const [bookingState, setBookingState] = useState({
     id: "",
     type: "",
@@ -32,16 +29,6 @@ function AddPayment() {
 
   const [userCards, setUserCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
-
-  const getUserDetails = async () => {
-    // TODO: Get user details from the logged in user by using userId
-    setUserState({
-      id: userId,
-      name: "Ishara Sewwandi",
-      email: "ishara@50.com",
-      phone: "0712345678",
-    });
-  };
 
   const getBookingDetails = async () => {
     //TODO: Get booking details by bookingId
@@ -65,7 +52,6 @@ function AddPayment() {
   };
 
   useEffect(() => {
-    getUserDetails();
     getBookingDetails();
     getUserCards();
   }, []);
@@ -87,10 +73,10 @@ function AddPayment() {
         `${BACKEND_URL}/api/bookings/${bookingId}/payments`,
         {
           user: {
-            id: userState.id,
-            name: userState.name,
-            email: userState.email,
-            phone: userState.phone,
+            id: user?._id,
+            name: user?.name,
+            email: user?.email,
+            phone: user?.phone,
           },
           booking: {
             id: bookingState.id,
@@ -108,12 +94,6 @@ function AddPayment() {
     } catch (error) {
       console.log("handleSubmit error", error);
     }
-  };
-
-  const generateRandomId = () => {
-    const prefix = "ID";
-    const digits = Math.floor(10000 + Math.random() * 90000);
-    return prefix + digits;
   };
 
   const onNavigateToAddCard = () => {
@@ -141,7 +121,7 @@ function AddPayment() {
                 <input
                   className="payment_input"
                   disabled
-                  value={userState.name}
+                  value={user?.name}
                   type="text"
                   name="name"
                 />
@@ -150,7 +130,7 @@ function AddPayment() {
                 <br />
                 <input
                   className="payment_input"
-                  value={userState.email}
+                  value={user?.email}
                   disabled
                   type="email"
                   name="gmail"
@@ -160,7 +140,7 @@ function AddPayment() {
                 <br />
                 <input
                   className="payment_input"
-                  value={userState.phone}
+                  value={user?.phone}
                   disabled
                   type="tel"
                   name="phone"

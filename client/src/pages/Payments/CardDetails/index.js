@@ -8,9 +8,11 @@ import Header from "../../../components/header/header";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function CardDetail() {
-  const userId = "123"; // get the user id from the logged in user
+  const { user } = useSelector((state) => state.auth);
+  const userId = user?._id; // get the user id from the logged in user
 
   const navigate = useNavigate();
 
