@@ -76,7 +76,7 @@ function PaymentSummary() {
         </div>
       </div>
       {!isLoadingPayment && (
-        <button className="save_btn" onClick={handlePrint}>
+        <button className="sum_save_btn" onClick={handlePrint}>
           Download Receipt
         </button>
       )}

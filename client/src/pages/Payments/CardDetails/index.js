@@ -72,7 +72,7 @@ function CardDetail() {
         </h1>
         <button
           onClick={onNavigateToAddCard}
-          className="save_btn"
+          className="detail_save_btn"
           type="submit"
         >
           Add New Card

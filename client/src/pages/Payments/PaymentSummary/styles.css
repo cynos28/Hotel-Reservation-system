@@ -12,7 +12,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.main_book_topic{
+.main_book_topic {
   color: #65a4da;
 }
 .sumary_title {
@@ -36,4 +36,29 @@
   text-decoration: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 4px 10px;
+}
+.sum_save_btn {
+  background: linear-gradient(45deg, #65a4da, rgb(14, 7, 200));
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s linear;
+  border: 2px solid #65a4da;
+  font-weight: bold;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+  margin-bottom: 25px;
+}
+.sum_save_btn:hover {
+  letter-spacing: 2px;
+  opacity: 0.8;
 }

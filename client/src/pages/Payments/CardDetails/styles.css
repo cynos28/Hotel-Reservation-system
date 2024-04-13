@@ -33,9 +33,8 @@
   padding-bottom: 0px;
   text-align: center;
   font-size: 40px;
-  
 }
-.sub_book_topic{
+.sub_book_topic {
   color: #65a4da;
 }
 .btn_find {
@@ -70,31 +69,56 @@
   padding: 5px 0;
 }
 
-.updtbtn{
-    background-color: #65a4da;
-    border: 2px solid #65a4da;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 3px;
-    cursor: pointer;
-    text-transform: capitalize;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 4px 10px;
-    margin-right: 25px;
-    text-decoration: none;
+.updtbtn {
+  background-color: #65a4da;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+  margin-right: 25px;
+  text-decoration: none;
 }
-.dltbtn{
-    background-color: #ed1313;
-    border: 2px solid #ed1313;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 3px;
-    cursor: pointer;
-    text-transform: capitalize;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 4px 10px;
+.dltbtn {
+  background-color: #ed1313;
+  border: 2px solid #ed1313;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}
+.detail_save_btn {
+  background: linear-gradient(45deg, #65a4da, rgb(14, 7, 200));
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s linear;
+  border: 2px solid #65a4da;
+  font-weight: bold;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+  margin-bottom: 25px;
+}
+.detail_save_btn:hover {
+  letter-spacing: 2px;
+  opacity: 0.8;
 }

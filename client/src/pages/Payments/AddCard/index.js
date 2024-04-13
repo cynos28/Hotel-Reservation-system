@@ -160,7 +160,7 @@ function AddCard() {
                     <br />
                   </div>
                 </div>
-                <button className="save_btn" type="submit">
+                <button className="card_save_btn" type="submit">
                   {isUpdateOperation ? "Update" : "Save"}
                 </button>
               </>

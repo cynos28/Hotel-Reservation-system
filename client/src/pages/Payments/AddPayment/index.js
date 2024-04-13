@@ -38,7 +38,7 @@ function AddPayment() {
     setUserState({
       id: userId,
       name: "Ishara Sewwandi",
-      email: "ishara@melorahaknathi.com",
+      email: "ishara@50.com",
       phone: "0712345678",
     });
   };
