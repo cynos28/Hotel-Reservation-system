@@ -1,0 +1,64 @@
+.AdminEvent-containers {
+    margin: 90px auto 20px; /* Centering the form horizontally */
+    padding: 40px; /* Increased padding for larger form size */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    max-width: 600px; /* Maximum width for better readability */
+    margin-left: 40%; /* Adjusted margin-left to move form more to the right */
+  }
+  
+    
+    .AdminEvent-containers label {
+      font-weight: bold;
+      margin-bottom: 15px; /* Increased margin-bottom for spacing */
+      font-size: 18px; /* Increased font size for labels */
+    }
+    
+    .AdminEvent-containers input[type="text"],
+    .AdminEvent-containers input[type="number"],
+    .AdminEvent-containers input[type="date"],
+    .AdminEvent-containers input[type="time"],
+    .AdminEvent-containers select,
+    .AdminEvent-containers textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px; /* Increased border-radius for rounded corners */
+      margin-bottom: 25px; /* Increased margin-bottom for spacing */
+      background-color: #f1f1f1;
+      transition: background-color 0.3s ease;
+      font-size: 16px; /* Increased font size for input fields */
+    }
+    
+    .AdminEvent-containers input[type="text"]:hover,
+    .AdminEvent-containers input[type="number"]:hover,
+    .AdminEvent-containers input[type="date"]:hover,
+    .AdminEvent-containers input[type="time"]:hover,
+    .AdminEvent-containers select:hover,
+    .AdminEvent-containers textarea:hover {
+      background-color: #eaeaea;
+    }
+    
+    .AdminEvent-containers button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #26cc3d;
+      color: #fff;
+      font-size: 18px; /* Increased font size for button */
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .AdminEvent-containers button:hover {
+      background-color: #26cc3d;
+      text-decoration: underline;
+    }
+    
+    /* Additional Custom Styles */
+    /* Add your custom styles here */
+    

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
-//import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
+import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
 
 const initialState = {
     oldPassword: '',
@@ -20,7 +20,7 @@ const initialState = {
 };
 
 function ChangePassword() {
-    //useRedirectLoggedOutUser("/login");
+    useRedirectLoggedOutUser("/login");
     const [formData, setFormData] = useState(initialState);
     const { oldPassword, password, password2 } = formData;
 
@@ -36,20 +36,20 @@ function ChangePassword() {
     };
     const updatePassword = async (e) => {
         e.preventDefault();
-    
+
         if (!oldPassword || !password || !password2) {
             return toast.error("All fields are required");
         }
-    
+
         if (password !== password2) {
             return toast.error("Passwords do not match");
         }
-    
+
         const userData = {
             oldPassword,
             password,
         };
-    
+
         const emailData = {
             subject: "Password Changed - The Heritage",
             send_to: user.email,
@@ -57,17 +57,14 @@ function ChangePassword() {
             template: "changePassword",
             url: "/forgot",
         };
-    
-        // Update the password
-        await dispatch(changePassword(userData));
-        
-        // Send automated email
-        await dispatch(sendAutomatedEmail(emailData));
-        
+
+
         // After updating password and sending email, clear the form and navigate to login page
-        setFormData(initialState); // Reset the form fields
-        await dispatch(logout()); // Logout the user
-        navigate("/login"); // Navigate to login page
+        await dispatch(changePassword(userData));
+        await dispatch(sendAutomatedEmail(emailData));
+        await dispatch(logout());
+        await dispatch(RESET(userData));
+        navigate("/login");
     };
     return (
         <>
@@ -114,6 +111,7 @@ function ChangePassword() {
                                     </p>
 
                                     <button
+                                        type="submit"
                                         className="form-btn"
                                         style={{ display: 'block', marginLeft: '40px', width: '280px' }}
                                     >

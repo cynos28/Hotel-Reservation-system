@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "./EventAdd.css"; // Import CSS file
+import "./EditEvent.css"; // Import CSS file
 import axios from "axios";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
