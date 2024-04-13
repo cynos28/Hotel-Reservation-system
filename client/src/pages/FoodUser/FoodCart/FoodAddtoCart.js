@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../User.css";
+import "../user.css";
 const AddToCart = () => {
   const history = useNavigate();
   const location = useLocation();

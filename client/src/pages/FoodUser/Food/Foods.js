@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoMdCart } from "react-icons/io";
-import "../User.css";
+import "../user.css";
 
 const Food = ({ food }) => {
   const { _id, name, image, time, price, tag } = food;
@@ -103,7 +103,7 @@ const Foods = () => {
         <div className="tags_container">
           <button
             className="filterbtn"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = "/food")}
           >
             all
           </button>
