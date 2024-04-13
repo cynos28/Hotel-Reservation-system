@@ -5,6 +5,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { BACKEND_URL } from "../../../constants";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
+import Sidebar from "../../AdminComponents/Sidebar/Sidebar";
+import TopNav from "../../AdminComponents/TopNav/TopNav";
 
 const ROOM_PAYMENT_TYPE = "Hotel Booking";
 const BAR_PAYMENT_TYPE = "Bar Booking";
@@ -70,6 +72,8 @@ function AdminDash() {
   });
   return (
     <div className="admin_full">
+      <Sidebar />
+      <TopNav />
       <div>
         <h1 className="main_book_topic">
           Payment <span className="sub_book_topic">Details..!</span>
