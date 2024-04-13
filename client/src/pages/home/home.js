@@ -13,6 +13,7 @@ function home() {
 
       <section className='hero'>
         <div className="hero-text">
+          
           <h1>Your Stay, Our Passion – Where Comfort Meets Luxury!</h1>
 
           <p>
@@ -48,4 +49,4 @@ function home() {
   )
 }
 
-export default home
+export default home;

@@ -8,6 +8,7 @@ import dance from "./eventPhotos/dance.jpg";
 import GetT from "./eventPhotos/GetT.jpg";
 import party1 from "./eventPhotos/party1.jpg";
 import wedding1 from "./eventPhotos/wedding1.jpg";
+import { Link } from 'react-router-dom';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -56,8 +57,8 @@ const Events = () => {
               .map((event) => (
                 <div key={event._id} className="event-card">
                   <img
-                    src={event.image}
-                    alt={event.name}
+                    src={"http://localhost:3001/events/" + event.image}
+                    alt={event.image}
                     className="event-image"
                   />
                   <h3>{event.name}</h3>
@@ -70,6 +71,8 @@ const Events = () => {
 
         <div className="personal-events">
           <h2 className="to1">Personal Events</h2>
+          <div className="line"></div>
+          <Link to={"/RegisterEvent"} className='book-event-button'>Add Event</Link>
           <div className="events-container">
             {events
               .filter((event) => event.etype === "Personal")
@@ -80,7 +83,7 @@ const Events = () => {
                     alt={event.name}
                     className="event-image"
                   />
-                  <h3>{event.name}</h3>
+                  <h4>{event.name}</h4>
                   <p>Date: {event.date}</p>
                   <p>Status:</p>
                   <div
@@ -98,7 +101,7 @@ const Events = () => {
         </div>
       </div>
       {/* Book Event Button */}
-      <div className="book-event-button">Book Event</div>
+     
 
       <Footer />
     </div>

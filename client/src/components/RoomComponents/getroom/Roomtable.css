@@ -110,3 +110,9 @@ th {
     opacity: 0.8;
 }
 
+
+  .search-input:focus {
+    outline: none; /* Remove outline on focus */
+    border-color: #0c2d51; /* Change border color on focus */
+  }
+  
