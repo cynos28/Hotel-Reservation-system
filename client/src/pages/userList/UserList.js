@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeRole from "../../components/changeRole/ChangeRole";
@@ -19,6 +19,7 @@ import {
 import ReactPaginate from "react-paginate";
 import Sidebar from "../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import TopNav from "../../AdminPanel/AdminComponents/TopNav/TopNav";
+import { useReactToPrint } from "react-to-print";
 
 
 const UserList = () => {
@@ -76,73 +77,87 @@ const UserList = () => {
     setItemOffset(newOffset);
   };
 
+  /*PDF---------- */
+
+  const summaryRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => summaryRef.current,
+    documentTitle: "User Document",
+    onAfterPrint: () => alert("Document Successfully Downloaded!"),
+  });
+
   // End Pagination
 
   return (
     <section>
-      <div className="container" >
-      <Sidebar />
-      <TopNav />
+      <div className="containerUser" >
+        <Sidebar />
+        <TopNav />
         <UserStats />
+       
+          <div className="user-list">
 
-        <div className="user-list">
-          {/* {isLoading && <Spinner />} */}
-          <div className="table">
-            <div className="--flex-between">
-              <span>
-                <h3>All Users</h3>
-              </span>
-              <span>
-                <Search
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </span>
+            {/* {isLoading && <Spinner />} */}
+            <div className="table">
+              <div className="--flex-between">
+                <span>
+                  <h3>All Users</h3>
+                </span>
+                <span>
+                  <Search
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </span>
+              </div>
+              <div ref={summaryRef}>
+              {/* Table */}
+              {!isLoading && users.length === 0 ? (
+                <p>No user found...</p>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>s/n</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Change Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentItems.map((user, index) => {
+                      const { _id, name, email, role } = user;
+
+                      return (
+                        <tr key={_id}>
+                          <td>{index + 1}</td>
+                          <td>{(name, 8)}</td>
+                          <td>{email}</td>
+                          <td>{role}</td>
+                          <td>
+                            <ChangeRole _id={_id} email={email} />
+                          </td>
+                          <td>
+                            <span>
+                              <FaTrashAlt
+                                size={20}
+                                color="red"
+                                onClick={() => confirmDelete(_id)}
+                              />
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
+              <hr />
             </div>
-            {/* Table */}
-            {!isLoading && users.length === 0 ? (
-              <p>No user found...</p>
-            ) : (
-              <table>
-                <thead>
-                  <tr>
-                    <th>s/n</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Change Role</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((user, index) => {
-                    const { _id, name, email, role } = user;
-
-                    return (
-                      <tr key={_id}>
-                        <td>{index + 1}</td>
-                        <td>{(name, 8)}</td>
-                        <td>{email}</td>
-                        <td>{role}</td>
-                        <td>
-                          <ChangeRole _id={_id} email={email} />
-                        </td>
-                        <td>
-                          <span>
-                            <FaTrashAlt
-                              size={20}
-                              color="red"
-                              onClick={() => confirmDelete(_id)}
-                            />
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
-            <hr />
+            
           </div>
           <ReactPaginate
             breakLabel="..."
@@ -158,7 +173,12 @@ const UserList = () => {
             nextLinkClassName="page-num"
             activeLinkClassName="activePage"
           />
-        </div>
+
+          <button onClick={handlePrint} className="serchbtn" style={{ float: 'right' }}>
+            Download Report
+          </button>
+        
+      </div>
       </div>
     </section>
   );

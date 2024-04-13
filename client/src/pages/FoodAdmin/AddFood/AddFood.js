@@ -25,7 +25,7 @@ const AddStock = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/foods/", inputs);
+      await axios.post("http://localhost:3001/foods/", inputs);
       alert("Food item added successfully.");
       history("/admin-foods"); // Navigate to foods page after successful submission
     } catch (error) {

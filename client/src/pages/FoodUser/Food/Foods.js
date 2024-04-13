@@ -44,7 +44,7 @@ const Foods = () => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/foods");
+        const response = await axios.get("http://localhost:3001/foods");
         setFoods(response.data.foods);
         // Extract tags from foods
         const allTags = response.data.foods.map((food) => food.tag);
