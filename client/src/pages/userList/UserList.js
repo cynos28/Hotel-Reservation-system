@@ -91,7 +91,7 @@ const UserList = () => {
 
   return (
     <section>
-      <div className="container" >
+      <div className="containerUser" >
         <Sidebar />
         <TopNav />
         <UserStats />
