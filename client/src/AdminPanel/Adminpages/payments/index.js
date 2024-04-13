@@ -70,7 +70,9 @@ function AdminDash() {
     documentTitle: "Payment Document",
     onAfterPrint: () => alert("Doc Successfully Downloaded!"),
   });
+
   return (
+    
     <div className="admin_full">
       <Sidebar />
       <TopNav />
