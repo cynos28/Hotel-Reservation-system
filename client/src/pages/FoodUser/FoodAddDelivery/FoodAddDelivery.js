@@ -28,7 +28,7 @@ function AddDelivery() {
     window.location.reload();
   };
   const sendRequest = async () => {
-    await axios.post("http://localhost:8080/deliveries", {
+    await axios.post("http://localhost:3001/deliveries", {
       name: inputs.name,
       phone: inputs.phone,
       time: inputs.time,

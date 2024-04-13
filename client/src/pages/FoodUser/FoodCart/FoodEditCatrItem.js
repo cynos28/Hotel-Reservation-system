@@ -49,7 +49,7 @@ const EditCartItem = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/carts/${id}`, item);
+      await axios.put(`http://localhost:3001/carts/${id}`, item);
       alert("Cart item updated successfully.");
       history("/view-cart");
     } catch (error) {

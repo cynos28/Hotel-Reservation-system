@@ -11,7 +11,7 @@ const Carts = () => {
   useEffect(() => {
     const fetchCarts = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/carts/");
+        const response = await axios.get("http://localhost:3001/carts/");
         setCarts(response.data.carts);
         setLoading(false);
       } catch (error) {
@@ -48,7 +48,7 @@ const Carts = () => {
       <h2 className="carts-header">Cart Details</h2>
       <div className="button-container">
         <button
-          onClick={() => (window.location.href = "/")}
+          onClick={() => (window.location.href = "/food")}
           className="add-new-button"
         >
           Add New
