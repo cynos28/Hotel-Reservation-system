@@ -153,7 +153,7 @@ const AddEvent = () => {
           ref={inputRef}
         />
         <button type="button" onClick={() => inputRef.current.click()}>
-          Select Files
+          Add Image
         </button>
         {files && (
           <div className="uploads">

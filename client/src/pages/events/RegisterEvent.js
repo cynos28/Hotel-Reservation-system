@@ -6,6 +6,7 @@ import axios from "axios"
 
 const RegisterEvent = () => {
   const [formData, setFormData] = useState({
+    userId: "user_1234",
     name: "",
     capacity: "",
     date: "",
@@ -76,7 +77,7 @@ const RegisterEvent = () => {
     e.preventDefault();
   
     const eventData = {
-      userID: "user_1234",
+      userId: "user_1234",
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,
