@@ -17,6 +17,7 @@
   padding: 8px; /* Adjust padding to desired value */
   text-align: center; /* Align text to the left */
 }
+
 .btn_set {
   display: flex;
   justify-content: space-between;
