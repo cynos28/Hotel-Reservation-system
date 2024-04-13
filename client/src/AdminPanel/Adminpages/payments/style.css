@@ -1,0 +1,45 @@
+.admin_full {
+  padding: 25px 12%;
+  font-family: "Roboto", sans-serif;
+}
+.admin_tble {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.details_admin_tble_col {
+  border: 2px solid #65a4da;
+  padding: 8px; /* Adjust padding to desired value */
+  text-align: center; /* Align text to the left */
+}
+.btn_set {
+  display: flex;
+  justify-content: space-between;
+}
+.serch_ipt {
+  width: 250px;
+  border: 2px solid #65a4da;
+  font-size: 15px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-right: 25px;
+}
+.serchbtn {
+  background-color: #65a4da;
+  padding: 5px 10px;
+  border: 2px solid #65a4da;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.type-section {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border: 1px solid #65a3da89;
+  border-radius: 4px;
+  padding: 25px;
+}
