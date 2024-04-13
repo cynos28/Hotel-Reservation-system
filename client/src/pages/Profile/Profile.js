@@ -32,7 +32,7 @@ function Profile() {
 
 
   const dispatch = useDispatch();
-  //useRedirectLoggedOutUser("/login");
+  useRedirectLoggedOutUser("/login");
 
   
   // Fetch user data from Redux state
