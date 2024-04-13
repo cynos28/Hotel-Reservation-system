@@ -39,8 +39,6 @@ function Header() {
                 <div style={{ marginTop: "-10px" }}> <Link to="/Gallery" > <span>Gallery</span> </Link></div>
                 <div style={{ marginTop: "-10px" }}> <Link to="/contactUs" > <span>Contact Us</span> </Link></div>
                 
-
-
                     <ShowOnLogout>
                         <li>
                             <Link to="/login" >
