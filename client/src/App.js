@@ -22,6 +22,14 @@ import EditEvent from './components/eventTable/addEvent/EditEvent.js';
 import Verify from "./pages/Auth/Verify.js";
 
 
+import AddFood from "./pages/FoodAdmin/AddFood/AddFood.js"
+import FoodTable from "./pages/FoodAdmin/FoodTable/FoodTable.js";
+import Foods from "./pages/FoodUser/Food/Foods.js"
+import FoodDetails from "./pages/FoodUser/Food/FoodDetails.js"
+import AddToCart from "./pages/FoodUser/FoodCart/FoodAddtoCart.js"
+import FoodCarts from "./pages/FoodUser/FoodCart/FoodCarts.js"
+import FoodAddDelivery from "./pages/FoodUser/FoodAddDelivery/FoodAddDelivery.js"
+import FoodEditCartItem from "./pages/FoodUser/FoodCart/FoodEditCatrItem.js"
 
 import AddRoom from './components/RoomComponents/addroom/Add';
 import GetRoom from './components/RoomComponents/getroom/Room';
@@ -50,6 +58,7 @@ import useRedirectLoggedOutUser from './customHook/useRedirectLoggedOutUser.js';
 import UserList from './pages/userList/UserList.js';
 import LoginWithCode from './pages/Auth/LoginWithCode.js';
 import { GoogleOAuthProvider } from "@react-oauth/google";
+
 
 
 axios.defaults.withCredentials = true;
@@ -127,6 +136,21 @@ function App() {
             <Route path="/roomtable" element={<RoomTable />} />
             <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
 
+
+
+            {/* Food Ordering Kavish*/}
+
+              {/* Admin-Food Adding */}
+          <Route exact path="/add-food" element={<AddFood />} />
+          <Route exact path="/admin-foods" element={<FoodTable />} />
+
+          {/* User-Food Display,Order */}
+          <Route exact path="/food" element={<Foods />} />
+          <Route exact path="/food-details/:id" element={<FoodDetails />} />
+          <Route exact path="/add-to-cart" element={<AddToCart />} />
+          <Route exact path="/view-cart" element={<FoodCarts />} />
+          <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
+          <Route path="/update-cart/:id" element={<FoodEditCartItem />} /> 
 
 
           </Routes>
