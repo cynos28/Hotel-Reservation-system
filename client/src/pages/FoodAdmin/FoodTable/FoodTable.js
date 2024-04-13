@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "../admin.css";
+import './foodtable.css';
 import { useReactToPrint } from "react-to-print";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;

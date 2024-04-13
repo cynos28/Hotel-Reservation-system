@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import './AddStock.css'; // Import your CSS file
+import './addfood..css';
 
 const AddStock = () => {
   const history = useNavigate();
