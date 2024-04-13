@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeRole from "../../components/changeRole/ChangeRole";
@@ -19,6 +19,7 @@ import {
 import ReactPaginate from "react-paginate";
 import Sidebar from "../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import TopNav from "../../AdminPanel/AdminComponents/TopNav/TopNav";
+import { useReactToPrint } from "react-to-print";
 
 
 const UserList = () => {
@@ -75,17 +76,24 @@ const UserList = () => {
     const newOffset = (event.selected * itemsPerPage) % filteredUsers.length;
     setItemOffset(newOffset);
   };
-
+  /*PDF---------- */
+  const summaryRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => summaryRef.current,
+    documentTitle: "User Document",
+    onAfterPrint: () => alert("Document Successfully Downloaded!"),
+  });
   // End Pagination
 
   return (
     <section>
       <div className="container" >
-      <Sidebar />
-      <TopNav />
+        <Sidebar />
+        <TopNav />
         <UserStats />
 
         <div className="user-list">
+          
           {/* {isLoading && <Spinner />} */}
           <div className="table">
             <div className="--flex-between">
@@ -158,6 +166,10 @@ const UserList = () => {
             nextLinkClassName="page-num"
             activeLinkClassName="activePage"
           />
+
+          <button onClick={handlePrint} className="serchbtn">
+            Download Report
+          </button>
         </div>
       </div>
     </section>
