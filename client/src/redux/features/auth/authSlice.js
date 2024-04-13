@@ -1,10 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+import authService from "./authService";
 import { toast } from "react-toastify";
-import authService from './authService';
+
+const userInitialState = {
+  _id: "",
+  bio: "",
+  email: "",
+  isVerified: false,
+  name: "",
+  phone: "",
+  role: "",
+  token: "",
+};
 
 const initialState = {
   isLoggedIn: false,
-  user: null,
+  user: userInitialState,
   users: [],
   twoFactor: false,
   isError: false,
@@ -95,7 +107,6 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
   }
 });
 
-
 // sendLoginCode
 export const sendLoginCode = createAsyncThunk(
   "auth/sendLoginCode",
@@ -149,7 +160,6 @@ export const loginWithGoogle = createAsyncThunk(
     }
   }
 );
-
 
 // Update User
 export const updateUser = createAsyncThunk(
@@ -323,7 +333,7 @@ const authSlice = createSlice({
       state.isSuccess = false;
       state.isLoading = false;
       state.message = "";
-    }
+    },
   },
 
   CALC_VERIFIED_USER(state, action) {
@@ -409,7 +419,6 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isLoggedIn = false;
-        state.user = null;
         toast.success(action.payload);
       })
       .addCase(logout.rejected, (state, action) => {
@@ -419,45 +428,43 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
+      // send Login Code
+      .addCase(sendLoginCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendLoginCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+        toast.success(action.payload);
+      })
+      .addCase(sendLoginCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
 
-     // send Login Code
-     .addCase(sendLoginCode.pending, (state) => {
-      state.isLoading = true;
-    })
-    .addCase(sendLoginCode.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSuccess = true;
-      state.message = action.payload;
-      toast.success(action.payload);
-    })
-    .addCase(sendLoginCode.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload;
-      toast.error(action.payload);
-    })
+      // loginWithCode
+      .addCase(loginWithCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(loginWithCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.twoFactor = false;
+        state.user = action.payload;
+        toast.success(action.payload);
+      })
+      .addCase(loginWithCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+      })
 
-    // loginWithCode
-    .addCase(loginWithCode.pending, (state) => {
-      state.isLoading = true;
-    })
-    .addCase(loginWithCode.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSuccess = true;
-      state.isLoggedIn = true;
-      state.twoFactor = false;
-      state.user = action.payload;
-      toast.success(action.payload);
-    })
-    .addCase(loginWithCode.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload;
-      state.user = null;
-      toast.error(action.payload);
-    })
-
-    
       // Get Login Status
       .addCase(getLoginStatus.pending, (state) => {
         state.isLoading = true;
@@ -607,24 +614,24 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
-        // deleteUser
-        .addCase(deleteUser.pending, (state) => {
-          state.isLoading = true;
-        })
-        .addCase(deleteUser.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.isSuccess = true;
-          state.message = action.payload;
-          toast.success(action.payload);
-        })
-        .addCase(deleteUser.rejected, (state, action) => {
-          state.isLoading = false;
-          state.isError = true;
-          state.message = action.payload;
-          toast.error(action.payload);
-        })
+      // deleteUser
+      .addCase(deleteUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+        toast.success(action.payload);
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
 
-        // upgradeUser
+      // upgradeUser
       .addCase(upgradeUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -641,8 +648,8 @@ const authSlice = createSlice({
         toast.error(action.payload);
       })
 
-       // loginWithGoogle
-       .addCase(loginWithGoogle.pending, (state) => {
+      // loginWithGoogle
+      .addCase(loginWithGoogle.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(loginWithGoogle.fulfilled, (state, action) => {
@@ -659,13 +666,11 @@ const authSlice = createSlice({
         state.user = null;
         toast.error(action.payload);
       });
-
-  }
+  },
 });
 
 export const { RESET, CALC_VERIFIED_USER, CALC_SUSPENDED_USER } =
   authSlice.actions;
-  
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
