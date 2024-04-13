@@ -25,7 +25,18 @@ import GetRoom from "./components/RoomComponents/getroom/Room";
 import RoomTable from "./components/RoomComponents/getroom/Roomtable";
 import Edit from "./components/RoomComponents/updateroom/Edit";
 
+
 import AddEvent from "./components/eventTable/addEvent/EventAdd.js"; //kaveesha's
+
+import AddFood from "./pages/FoodAdmin/AddFood/AddFood.js"
+import FoodTable from "./pages/FoodAdmin/FoodTable/FoodTable.js";
+import Foods from "./pages/FoodUser/Food/Foods.js"
+import FoodDetails from "./pages/FoodUser/Food/FoodDetails.js"
+import AddToCart from "./pages/FoodUser/FoodCart/FoodAddtoCart.js"
+import FoodCarts from "./pages/FoodUser/FoodCart/FoodCarts.js"
+import FoodAddDelivery from "./pages/FoodUser/FoodAddDelivery/FoodAddDelivery.js"
+import FoodEditCartItem from "./pages/FoodUser/FoodCart/FoodEditCatrItem.js"
+
 
 import AdminDash from "./AdminPanel/Adminpages/AdminDashboard";
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
@@ -50,6 +61,7 @@ import AddCard from "./pages/Payments/AddCard";
 import AddPayment from "./pages/Payments/AddPayment";
 import CardDetails from "./pages/Payments/CardDetails";
 import PaymentSummary from "./pages/Payments/PaymentSummary";
+
 
 axios.defaults.withCredentials = true;
 
@@ -141,6 +153,7 @@ function App() {
             <Route path="/getroom" element={<GetRoom />} />
             <Route path="/addroom" element={<AddRoom />} />
             <Route path="/roomtable" element={<RoomTable />} />
+
             <Route path="/edit/:id" element={<Edit />} />
             {/* Add the missing closing parenthesis */}
 
@@ -156,6 +169,26 @@ function App() {
             <Route path="/add-payment" element={<AddPayment />} />
 
             {/* This path should be updated as bookings/:bookingId/add-payment */}
+
+            <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+
+
+
+            {/* Food Ordering Kavish*/}
+
+              {/* Admin-Food Adding */}
+          <Route exact path="/add-food" element={<AddFood />} />
+          <Route exact path="/admin-foods" element={<FoodTable />} />
+
+          {/* User-Food Display,Order */}
+          <Route exact path="/food" element={<Foods />} />
+          <Route exact path="/food-details/:id" element={<FoodDetails />} />
+          <Route exact path="/add-to-cart" element={<AddToCart />} />
+          <Route exact path="/view-cart" element={<FoodCarts />} />
+          <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
+          <Route path="/update-cart/:id" element={<FoodEditCartItem />} /> 
+
+
           </Routes>
         </GoogleOAuthProvider>
       </BrowserRouter>
