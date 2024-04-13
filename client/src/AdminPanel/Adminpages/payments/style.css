@@ -1,8 +1,13 @@
+
 .admin_full {
+  margin-top: 70px;
+  margin-left: 250px;
   padding: 25px 12%;
   font-family: "Roboto", sans-serif;
 }
 .admin_tble {
+
+  margin-left: 0px;
   border-collapse: collapse;
   width: 100%;
 }
@@ -37,6 +42,9 @@
 }
 
 .type-section {
+
+
+  width: 100%;
   margin-bottom: 30px;
   margin-top: 30px;
   border: 1px solid #65a3da89;
