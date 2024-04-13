@@ -24,6 +24,7 @@ import AddRoom from "./components/RoomComponents/addroom/Add";
 import GetRoom from "./components/RoomComponents/getroom/Room";
 import RoomTable from "./components/RoomComponents/getroom/Roomtable";
 import Edit from "./components/RoomComponents/updateroom/Edit";
+import RoomDetails from "./components/RoomComponents/getroom/RoomDetails.js";
 
 
 import AddEvent from "./components/eventTable/addEvent/EventAdd.js"; //kaveesha's
@@ -154,6 +155,8 @@ function App() {
             <Route path="/getroom" element={<GetRoom />} />
             <Route path="/addroom" element={<AddRoom />} />
             <Route path="/roomtable" element={<RoomTable />} />
+            <Route exact path="/room-details/:id" element={<RoomDetails />} />
+            
 
             <Route path="/edit/:id" element={<Edit />} />
             {/* Add the missing closing parenthesis */}
