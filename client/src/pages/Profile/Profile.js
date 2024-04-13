@@ -13,6 +13,7 @@ import PageMenu from '../../components/pageMenu/PageMenu';
 import { toast } from "react-toastify";
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 import Notification from '../../components/notification/Notification';
+import { Link } from 'react-router-dom';
 
 
 const cloud_name = process.env.REACT_APP_CLOUD_NAME;
@@ -162,7 +163,12 @@ function Profile() {
                     <label>Bio:</label>
                     <textarea name="bio" cols={30} rows={10} value={profile?.bio} onChange={handleInputChange} />
                   </p>
-                  <button className="form-btn " style={{ display: 'block', marginLeft: '40px', width: '340px' }}>Update</button>
+                  <div className='btnflexs'>
+                  <button className="form-btn " style={{ display: 'block', marginLeft: '40px', width: '170px' }}>Update</button>
+                  <Link to="/">
+                  <button className="form-btn" style={{ display: 'block', marginLeft: '40px', width: '170px', backgroundColor: 'black' }}>Card Info</button>
+                  </Link>
+                  </div>
                 </form>
               </>
             </Card>
@@ -178,7 +184,7 @@ export const UserName = () => {
 
   const username = user?.name || "...";
 
-  return <p className="--color-black">Hi, {shortenText(username, 9)} |</p>;
+  return <p className="--color-black"> Hi, {shortenText(username, 9)} |</p>;
 };
 
 

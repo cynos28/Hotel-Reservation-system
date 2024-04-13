@@ -1,6 +1,6 @@
 header {
 
-  gap: 10px;
+ 
   background-color: aliceblue;
   border-radius: 0rem 0rem 1.5rem 1.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -9,7 +9,7 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  
   padding: 5px;
   margin-top: -7px;
 }
@@ -34,7 +34,8 @@ nav {
 .home-links {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  gap: 25px;
+
 }
 
 .user {
@@ -43,6 +44,7 @@ nav {
   color: #206a5d;
   padding-left: 10px;
   margin-top: -13px;
+  
 }
 .user-name {
   display: flex;
@@ -142,4 +144,26 @@ li {
   display: flex;
   font-weight: 500;
   margin-top: -12px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
 }
