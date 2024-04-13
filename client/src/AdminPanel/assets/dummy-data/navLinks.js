@@ -29,6 +29,11 @@ const navLinks = [
     icon: "ri-calendar-event-line",
     display: "Events",
   },
+  {
+    path: "/",
+    icon: "ri-bank-card-fill",
+    display: "Payments",
+  },
 
 ];
 
