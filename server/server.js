@@ -59,7 +59,6 @@ app.use("/api/bookings/:bookingId/payments", paymentRoute);
 app.use("/api/payments", paymentRoute);
 
 
-const booking = require("./Models/UserDetails") ;
 app.get("/", (req, res) => {
   res.send("Home Page");
 });
