@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/Footer";
 import "./RegisterEvent.css"; // Import CSS file
 import axios from "axios"
+import toast from "react-hot-toast";
+import Swal from "sweetalert2"; // Import SweetAlert library
 
 const RegisterEvent = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userId: "user_1234",
     name: "",
@@ -92,7 +96,17 @@ const RegisterEvent = () => {
       .post("http://localhost:3001/api/event/register", eventData)
       .then((response) => {
         console.log("Event created successfully:", response.data);
-        // Do something with the response if needed
+      toast.success(response.data.msg, { position: "top-right" });
+
+      // Display SweetAlert after successful adding
+      Swal.fire({
+        icon: "success",
+        title: "Event Added Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      navigate("/events");
       })
       .catch((error) => {
         console.error("Error creating event:", error);

@@ -93,7 +93,7 @@
 /* Example color classes */
 .red { background-color: red; }
 .orange { background-color: orange; }
-.green { background-color: green; }
+.green { background-color: rgb(6, 156, 6); }
 
 /* Book Event Button */
 .book-event-button {
