@@ -76,13 +76,17 @@ const UserList = () => {
     const newOffset = (event.selected * itemsPerPage) % filteredUsers.length;
     setItemOffset(newOffset);
   };
+
   /*PDF---------- */
+
   const summaryRef = useRef();
+
   const handlePrint = useReactToPrint({
     content: () => summaryRef.current,
     documentTitle: "User Document",
     onAfterPrint: () => alert("Document Successfully Downloaded!"),
   });
+
   // End Pagination
 
   return (
@@ -91,66 +95,69 @@ const UserList = () => {
         <Sidebar />
         <TopNav />
         <UserStats />
+       
+          <div className="user-list">
 
-        <div className="user-list">
-          
-          {/* {isLoading && <Spinner />} */}
-          <div className="table">
-            <div className="--flex-between">
-              <span>
-                <h3>All Users</h3>
-              </span>
-              <span>
-                <Search
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </span>
+            {/* {isLoading && <Spinner />} */}
+            <div className="table">
+              <div className="--flex-between">
+                <span>
+                  <h3>All Users</h3>
+                </span>
+                <span>
+                  <Search
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </span>
+              </div>
+              <div ref={summaryRef}>
+              {/* Table */}
+              {!isLoading && users.length === 0 ? (
+                <p>No user found...</p>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>s/n</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Change Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentItems.map((user, index) => {
+                      const { _id, name, email, role } = user;
+
+                      return (
+                        <tr key={_id}>
+                          <td>{index + 1}</td>
+                          <td>{(name, 8)}</td>
+                          <td>{email}</td>
+                          <td>{role}</td>
+                          <td>
+                            <ChangeRole _id={_id} email={email} />
+                          </td>
+                          <td>
+                            <span>
+                              <FaTrashAlt
+                                size={20}
+                                color="red"
+                                onClick={() => confirmDelete(_id)}
+                              />
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
+              <hr />
             </div>
-            {/* Table */}
-            {!isLoading && users.length === 0 ? (
-              <p>No user found...</p>
-            ) : (
-              <table>
-                <thead>
-                  <tr>
-                    <th>s/n</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Change Role</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((user, index) => {
-                    const { _id, name, email, role } = user;
-
-                    return (
-                      <tr key={_id}>
-                        <td>{index + 1}</td>
-                        <td>{(name, 8)}</td>
-                        <td>{email}</td>
-                        <td>{role}</td>
-                        <td>
-                          <ChangeRole _id={_id} email={email} />
-                        </td>
-                        <td>
-                          <span>
-                            <FaTrashAlt
-                              size={20}
-                              color="red"
-                              onClick={() => confirmDelete(_id)}
-                            />
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
-            <hr />
+            
           </div>
           <ReactPaginate
             breakLabel="..."
@@ -167,10 +174,11 @@ const UserList = () => {
             activeLinkClassName="activePage"
           />
 
-          <button onClick={handlePrint} className="serchbtn">
+          <button onClick={handlePrint} className="serchbtn" style={{ float: 'right' }}>
             Download Report
           </button>
-        </div>
+        
+      </div>
       </div>
     </section>
   );
