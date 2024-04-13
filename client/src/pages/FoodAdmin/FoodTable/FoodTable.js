@@ -11,7 +11,7 @@ const Food = ({ food, onDelete }) => {
     );
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:8080/foods/${_id}`);
+        await axios.delete(`http://localhost:3001/foods/${_id}`);
         onDelete(_id);
         alert("Food item deleted successfully.");
         window.location.reload();
@@ -51,7 +51,7 @@ const Foods = () => {
 
   const fetchFoods = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/foods");
+      const response = await axios.get("http://localhost:3001/foods");
       setFoods(response.data.foods);
     } catch (error) {
       setAlertMessage("Error fetching food items."); // Display error message to the user
@@ -60,7 +60,7 @@ const Foods = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/foods/${id}`);
+      await axios.delete(`http://localhost:3001/foods/${id}`);
       setFoods((prevFoods) => prevFoods.filter((food) => food._id !== id));
       alert("Food item deleted successfully.");
     } catch (error) {

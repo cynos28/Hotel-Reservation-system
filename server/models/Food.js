@@ -22,15 +22,7 @@ const foodSchema = new Schema({
   tag: {
     type: String,
     required: true,
-  },
-  name: {
-    type: Number,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
+  }
 });
 
 module.exports = mongoose.model("Food", foodSchema);

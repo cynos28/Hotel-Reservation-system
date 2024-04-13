@@ -11,7 +11,7 @@ const FoodDetails = () => {
   useEffect(() => {
     const fetchFoodDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/foods/${id}`);
+        const response = await axios.get(`http://localhost:3001/foods/${id}`);
         setFood(response.data.food);
       } catch (error) {
         console.error("Error fetching food details:", error);
