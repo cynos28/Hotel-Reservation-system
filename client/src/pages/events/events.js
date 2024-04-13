@@ -1,15 +1,17 @@
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/Footer";
+// Import necessary libraries
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../events/events.css"; // Import the CSS file
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/Footer";
+import { Link } from 'react-router-dom';
 import birthday1 from "./eventPhotos/birthday1.jpg";
 import dance from "./eventPhotos/dance.jpg";
 import GetT from "./eventPhotos/GetT.jpg";
 import party1 from "./eventPhotos/party1.jpg";
 import wedding1 from "./eventPhotos/wedding1.jpg";
-import { Link } from 'react-router-dom';
 
+// Define component
 const Events = () => {
   const [events, setEvents] = useState([]);
 
@@ -25,6 +27,7 @@ const Events = () => {
       });
   }, []);
 
+  // Define image map
   const imageMap = {
     "./eventPhotos/birthday1.jpg": birthday1,
     "./eventPhotos/dance.jpg": dance,
@@ -33,6 +36,13 @@ const Events = () => {
     "./eventPhotos/wedding1.jpg": wedding1,
   };
 
+  // Function to format date as "YYYY/MM/DD"
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+  };
+
+  // Function to get status color
   const getStatusColor = (status) => {
     switch (status) {
       case "Declined":
@@ -45,6 +55,8 @@ const Events = () => {
         return "gray"; // Default color for unknown status values
     }
   };
+
+  // Render component
   return (
     <div>
       <Header />
@@ -62,7 +74,7 @@ const Events = () => {
                     className="event-image"
                   />
                   <h3>{event.name}</h3>
-                  <p>Date: {event.date}</p>
+                  <p>Date: {formatDate(event.date)}</p>
                   <p>Venue: {event.venue}</p>
                 </div>
               ))}
@@ -84,7 +96,7 @@ const Events = () => {
                     className="event-image"
                   />
                   <h4>{event.name}</h4>
-                  <p>Date: {event.date}</p>
+                  <p>Date: {formatDate(event.date)}</p>
                   <p>Status:</p>
                   <div
                     className="status-box"
@@ -100,9 +112,6 @@ const Events = () => {
           </div>
         </div>
       </div>
-      {/* Book Event Button */}
-     
-
       <Footer />
     </div>
   );

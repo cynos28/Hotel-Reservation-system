@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./EventAdd.css"; // Import CSS file
 import axios from "axios";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2"; // Import SweetAlert library
+
 
 const AddEvent = () => {
+  const navigate = useNavigate();
   const [userId, setuserID] = useState("User_123");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -45,7 +50,18 @@ const AddEvent = () => {
         }
       );
       console.log(response);
-      alert(JSON.stringify(response.data, null, 2));
+      toast.success(response.data.msg, { position: "top-right" });
+
+      // Display SweetAlert after successful adding
+      Swal.fire({
+        icon: "success",
+        title: "Event Added Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      navigate("/EventTable");
+      // alert(JSON.stringify(response.data, null, 2));
     } catch (error) {
       console.error("Error adding category:", error);
     }
