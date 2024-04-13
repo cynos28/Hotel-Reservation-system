@@ -44,6 +44,11 @@ const navLinks = [
     icon: "ri-bowl-line",
     display: "Add Foods",
   },
+  {
+    path: "",
+    icon: "ri-bookmark-fill",
+    display: "Room Bookings",
+  },
 
 ];
 
