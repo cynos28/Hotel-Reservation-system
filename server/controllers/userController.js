@@ -8,8 +8,10 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require('crypto');
 const Cryptr = require('cryptr');
+const { OAuth2Client } = require("google-auth-library");
 
 const cryptr = new Cryptr(process.env.CRYPT_KEY);
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 
 
@@ -183,10 +185,10 @@ const sendLoginCode = asyncHandler(async (req, res) => {
   );
 
   // Send login code to user's email
-  const subject = "Login Access Code - PrimeLodge";
+  const subject = "Login Access Code - The Heritage";
   const sendTo = userEmail;
   const sentFrom = process.env.EMAIL_USER;
-  const replyTo = "noreply@primelodge.com";
+  const replyTo = "noreply@heritage.com";
   const template = "loginCode";
   const name = user.name;
 
@@ -226,7 +228,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: "Incorrect login code. Please try again." });
   }
 
-  
+
 
   res.status(200).json({ message: "Login successful" });
 
@@ -267,9 +269,6 @@ const loginWithCode = asyncHandler(async (req, res) => {
 });
 
 
-
-
-//>>>>>>>>>>>>>>>>>>>>>>>> Send verification email
 
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -361,7 +360,6 @@ const verifyUser = asyncHandler(async (req, res) => {
     throw new Error("User is already Verified ");
 
   }
-
   //Now Verify User
   user.isVerified = true;
   await user.save();
@@ -387,6 +385,8 @@ const logoutUser = asyncHandler(async (req, res) => {
   });
 });
 
+
+
 // Get User
 const getUser = async (req, res, next) => {
   try {
@@ -395,8 +395,8 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,
-        userEmail: user.email,
+        userName: user.name,  // Rename 'name' to avoid conflict
+        userEmail: user.email, // Rename 'email' to avoid conflict
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
@@ -621,6 +621,51 @@ const resetPassword = asyncHandler(async (req, res) => {
 
 })
 
+// Delete User
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  await user.remove();
+  res.status(200).json({
+    message: "User deleted successfully",
+  });
+});
+
+// Get Users
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().sort("-createdAt").select("-password");
+  if (!users) {
+    res.status(500);
+    throw new Error("Something went wrong");
+  }
+  res.status(200).json(users);
+});
+
+//upgradeuser
+
+const upgradeUser = asyncHandler(async (req, res) => {
+  const { role, id } = req.body;
+
+  const user = await User.findById(id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  user.role = role;
+  await user.save();
+
+  res.status(200).json({
+    message: `User role updated to ${role}`,
+  });
+});
+
 //Change Password
 const changePassword = asyncHandler(async (req, res) => {
   const { oldPassword, password } = req.body
@@ -649,10 +694,95 @@ const changePassword = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "Old password is incorrect!" });
   }
 }
+);
 
+//Google Login
+const loginWithGoogle = asyncHandler(async (req, res) => {
+  const { userToken } = req.body;
+  const ticket = await client.verifyIdToken({
+    idToken: userToken,
+    audience: process.env.GOOGLE_CLIENT_ID,
+  });
 
-)
+  const payload = ticket.getPayload();
+  const { name, email, picture, sub } = payload;
+  const password = Date.now() + sub;
 
+  // Get UserAgent
+  const ua = parser(req.headers["user-agent"]);
+  const userAgent = [ua.ua];
+
+  // Check if user exists
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    //   Create new user
+    const newUser = await User.create({
+      name,
+      email,
+      password,
+      photo: picture,
+      isVerified: true,
+      userAgent,
+    });
+
+    if (newUser) {
+      // Generate Token
+      const token = generateToken(newUser._id);
+
+      // Send HTTP-only cookie
+      res.cookie("token", token, {
+        path: "/",
+        httpOnly: true,
+        expires: new Date(Date.now() + 1000 * 86400), // 1 day
+        sameSite: "none",
+        secure: true,
+      });
+
+      const { _id, name, email, phone, bio, photo, role, isVerified } = newUser;
+
+      res.status(201).json({
+        _id,
+        name,
+        email,
+        phone,
+        bio,
+        photo,
+        role,
+        isVerified,
+        token,
+      });
+    }
+  }
+
+  // User exists, login
+  if (user) {
+    const token = generateToken(user._id);
+
+    // Send HTTP-only cookie
+    res.cookie("token", token, {
+      path: "/",
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 86400), // 1 day
+      sameSite: "none",
+      secure: true,
+    });
+
+    const { _id, name, email, phone, bio, photo, role, isVerified } = user;
+
+    res.status(201).json({
+      _id,
+      name,
+      email,
+      phone,
+      bio,
+      photo,
+      role,
+      isVerified,
+      token,
+    });
+  }
+});
 
 module.exports = {
   registerUser,
@@ -668,6 +798,10 @@ module.exports = {
   resetPassword,
   changePassword,
   sendLoginCode,
-  loginWithCode
+  loginWithCode,
+  deleteUser,
+  getUsers,
+  upgradeUser,
+  loginWithGoogle,
 
 };

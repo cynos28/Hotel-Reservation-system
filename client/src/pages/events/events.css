@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* Events Page */
 .events-page {
   margin-top: 20px;
@@ -6,8 +8,11 @@
 .events-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  width: 1400px;
   margin-top: 10px;
+  border: 1px dolid black;
+  text-align: center;
+  margin-left: 80px;
 }
 
 .public-events {
@@ -21,17 +26,38 @@
 }
 
 .to1 {
-  text-decoration: underline;
+  font-family: "PT Sans", sans-serif;
+  font-weight: bold;
+  font-size: 26px;
+  height: 60px;
+  padding-top: 15px;
+  background-color: rgb(195, 195, 195);
+  border-radius: 8px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  margin-top: 40px;
+  width: 260px;
+  text-align: center;
+}
+
+.line {
+  border-bottom: 3px solid black;
+  margin-bottom: 30px;
+  margin: auto 50px;
+  width: 1435px;
 }
 
 .event-card {
-  background-color: #f6faef;
+  background-color: #e6dea8;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
+  margin-right: 70px;
   width: 200px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
+  border: 2px solid rgb(155, 134, 0);
+  margin-top: 30px;
 }
 
 .event-card:hover{
@@ -50,7 +76,7 @@
 .event-image {
   height: 45%;
   width: 100%;
-  border-radius: 10px 10px 0 0;
+  border-radius: 6px;
   background-size: cover;
 }
 
@@ -70,20 +96,24 @@
 
 /* Book Event Button */
 .book-event-button {
-  position: fixed;
+  position: absolute;
+  transform: translateY(-120%);
   bottom: 100px;
-  right: 20px;
+  right:100px;
   background-color: #03c9876e;
   color: rgb(0, 0, 0);
-  padding: 30px 60px;
+  padding: 20px ;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 100px;
-  margin-bottom: -50px;
+  margin-bottom: -30px;
+  width: 150px;
+  height: 60px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .book-event-button:hover {
   background-color: #25b12e6e;
-  text-decoration: underline;
 }

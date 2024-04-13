@@ -10,7 +10,7 @@ const navLinks = [
     display: "Add Rooms",
   },
   {
-    path: "",
+    path: "/users",
     icon: "ri-user-3-fill",
     display: "Users",
   },

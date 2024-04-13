@@ -72,20 +72,11 @@ const RegisterEvent = () => {
     setFormData({ ...formData, estimatedCost: price });
   }, [formData.venue, formData.startTime, formData.endingTime]);
 
-  // console.log(formData.name);
-  // console.log(formData.capacity);
-  // console.log(formData.date);
-  // console.log(formData.venue);
-  // console.log(formData.startTime);
-  // console.log(formData.endingTime);
-  // console.log(formData.photo);
-  // console.log(formData.estimatedCost)
-
   const handleSubmit = (e) => {
     e.preventDefault();
   
     const eventData = {
-      userId: "user_1234",
+      userID: "user_1234",
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,
@@ -97,7 +88,7 @@ const RegisterEvent = () => {
     };
   
     axios
-      .post("http://localhost:3001/api/event", eventData)
+      .post("http://localhost:3001/api/event/register", eventData)
       .then((response) => {
         console.log("Event created successfully:", response.data);
         // Do something with the response if needed
@@ -123,6 +114,7 @@ const RegisterEvent = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
             >
+              <option ></option>
               <option value="Anniversary">Anniversary</option>
               <option value="Wedding">Wedding</option>
               <option value="Birthday">Birthday</option>

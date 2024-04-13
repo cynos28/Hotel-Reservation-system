@@ -2,58 +2,55 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const eventSchema = new Schema({
-    userId:{
-        type: String,
-        required: true
+    userId: {
+      type: String,
     },
-    name:{
-        type: String,
-        required: true
+    name: {
+      type: String,
     },
-    cap:{
-        type: Number,
-        required: true
+    image: {
+      type: String,
     },
-    date:{
-        type: Date,  
-        required: true
+    date: {
+      type: Date,
     },
-    desc:{
-        type: String,
-        default: "null",
+    cap: {
+      type: Number,
     },
-    etype:{
-        type: String,
-        default: "Personal",
-        required: true
+    etype: {
+      type: String,
+      default: "Personal"
     },
-    venue:{
-        type: String,
-        required: true
+    venue: {
+      type: String,
     },
-    estatus:{
-        type: String,
-        default: "Pending",
+    estatus: {
+      type: String,
+      default: "Pending"
     },
-    reason:{
-        type: String,
-        default: "ok",
+    sTime: {
+      type: String,
     },
-    photo:{
-        type: String,
+    eTime: {
+      type: String,
+    },    
+    photo: {
+      type: String,
     },
-    sTime:{
-        type: String,
-        required: true
+    cost: {
+      type: String,
+      default: "-1"
     },
-    eTime:{
-        type: String,
-        required: true
-    },
-    cost:{
-        type: Number,
-        required: true
+    description: {
+      type: String,
+      default: "Ok"
     }
-},{timestamps: true})
+    ,
+    reason: {
+      type: String,
+      default: "Ok"
+    }
+   
+  },{timestamps: true})
 
-module.exports = mongoose.model('Event',eventSchema)
+module.exports = mongoose.model('Events',eventSchema)
