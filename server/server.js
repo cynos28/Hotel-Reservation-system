@@ -8,6 +8,7 @@ const userRoute = require("./routes/userRoute.js");
 const errorHandler = require("./middleware/middleware.js");
 const route = require("./routes/roomRoute.js");
 const eventRouter = require("./routes/eventRoute.js");//Kaveesha's route import
+const bookingRouter = require ("./routes/Reservationroutes.js");//Nilan,s Route import
 const app = express();
 
 // Middlewares
@@ -29,6 +30,7 @@ app.use(cors({
 app.use("/api/users", userRoute); 
 app.use("/api", route);
 app.use("/api/event",eventRouter); //Kaveesha's route
+app.use("/api/booking",bookingRouter);
 
 app.get("/", (req, res) => {
     res.send("Home Page");

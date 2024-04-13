@@ -1,21 +1,20 @@
 const Room = require("../models/roomModel.js");
 
-exports.create = async(req, res)=>{
+exports.createBooking = async (req, res) => {
     try {
+        let booking = new Booking(req.body);
 
-        const roomData = new Room(req.body);
-
-        if(!roomData){
-            return res.status(404).json({msg: "Room data not found"});
+        if (!booking) {
+            return res.status(404).json({ msg: "Booking data not found" });
         }
 
-        await roomData.save();
-        res.status(200).json({msg: "Room created successfully"});
-
+        let result = await booking.save();
+        res.status(200).json({ msg: "Booking created successfully", result });
     } catch (error) {
-        res.status(500).json({error: error});
+        res.status(500).json({ error: error.message });
     }
-}
+};
+
 
 
 exports.getAll = async(req, res) =>{

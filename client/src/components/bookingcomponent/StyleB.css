@@ -1,0 +1,105 @@
+
+.font{
+    font-size: 15px ;
+}
+
+.style{
+    
+    
+    padding-top: 8px;
+    padding-right: 3%;
+    padding-left: 3%;
+     border-width: 5xp;
+    width: 90%;
+    height: 2%;
+    margin-Right: auto;
+    margin-top: 20px;
+    
+}
+
+
+.container1 {
+    display: flex;
+    
+  }
+  
+  .booking-form1 {
+    margin-left: 7%; 
+    
+    margin-top: 3%;
+    flex: 1;
+  }
+
+  .booking-form2 {
+    margin-right: 0%;
+    margin-left: 15%;
+    margin-top: 15%;
+    flex: 1;
+  }
+  
+  .button{
+    margin-top: 2%;
+    margin-left: 60%;
+    margin-right: 2%;
+  }
+  .updatetitle{
+    text-align: center;
+  }
+  
+  .field{
+    width: 400px;
+  }
+  .radio{
+    margin-bottom: 50px;
+  }
+  .picture{
+  
+    
+  }
+  .containeri{
+    
+    margin-left: 0%;
+    margin-right: 0%;
+   
+  }
+.referance{
+    font-weight: 40;
+    font-size: large;
+    
+}
+.bottomright {
+    position: absolute;
+    bottom: 50px;
+    right: 260px;
+    font-size: 18px;
+  }
+ .datepicker{
+  text-align:left;
+  margin-top: 40px;
+ }
+
+ .date-picker-input1{
+  font-size: 20px;
+  background-color: rgb(89, 235, 255);
+  
+  margin-left: 20px;
+ }
+
+ .date{
+  font-size: 30px;
+  margin-left: 3%;
+  
+ }
+ .Ddate{
+  font-size: 30px;
+ }
+ 
+.deletebtn{
+  background-color: #f44336;
+}
+.updatebtn2{
+  background-color: #008CBA;
+}
+.table {
+  border-collapse: collapse;
+}

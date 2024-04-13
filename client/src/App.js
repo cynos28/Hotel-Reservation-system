@@ -34,6 +34,11 @@ import axios from "axios"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//Nilan Pages
+import BookingPage from './pages/booking/BookingPage.js';
+import Reservations from './pages/booking/Reservations.js';
+import UpdateDetails from './pages/booking/UpdateDetails.js';
+
 axios.defaults.withCredentials = true;
 
 
@@ -87,6 +92,11 @@ function App() {
           <Route path="/addroom" element={<AddRoom />} />
           <Route path="/roomtable" element={<RoomTable />} />
           <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+
+          {/*Booking page */}
+          <Route path="/booking" element={<BookingPage />}></Route>
+          <Route path="/reservations" element={<Reservations />}></Route>
+          <Route path="/updatedetails/:id" element={<UpdateDetails />}></Route>
 
 
 
