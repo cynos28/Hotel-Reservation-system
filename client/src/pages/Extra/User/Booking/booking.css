@@ -22,4 +22,21 @@
     margin-left: 50px;
     margin-bottom: 90px;
   }
+
+  .frontfont {
+    font-family: "PT Sans", sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    height: 60px;
+    padding-top: 15px;
+    background-color: rgb(195, 195, 195);
+    border-radius: 8px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    width: 260px;
+    text-align: center;
+  }
+
+
   
