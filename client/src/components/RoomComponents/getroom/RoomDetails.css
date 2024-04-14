@@ -1,0 +1,94 @@
+/* styles.css */
+.roomimg2 {
+    max-width: 100%; /* Set the maximum width of the image */
+    border-radius:     90px; /* Add border-radius for rounded corners */
+    box-shadow: 0 20px 40px rgba(188, 12, 12, 0.1); /* Add a box shadow for a subtle effect */
+    margin-top: 125px;
+
+  }
+  .roomimgDetails {
+
+    font-size: 20px; /* Example font size */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add padding */
+    margin-top: 2030px; /* Add margin at the top */
+  }
+
+  .RoomDetailscontainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 200px;
+  }
+  
+  .roomimgDetails {
+    /* Add your custom CSS styles here */
+  }
+
+
+
+  .RoomDetailscontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    box-shadow: 10px 10px 40px rgba(231, 203, 19, 0.1); /* Add box shadow */
+  }
+  
+  .roomDetailsCard {
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(249, 4, 4, 0.1);
+    background-color: azure;
+  }
+  
+  .roomDetailsCard p {
+    margin-bottom: 10px;
+  }
+  
+
+  .room-info-heading {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    text-align: center; /* Center the text horizontally */
+    font-size: 1.5rem; /* Adjust the font size */
+    color: hwb(225 0% 76%); /* Change the text color */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+  }
+
+
+  .room-details ul {
+    list-style-type: circle; /* Use disc bullets */
+    padding-left: 20px; /* Add some padding to the left */
+  }
+  
+  .room-details li {
+    margin-bottom: 10px; /* Add margin between each detail */
+  }
+
+  .RoomDetailsContainer {
+
+    background-color: #ccdaf6; /* Light gray background */
+
+
+  }
+  
+
+  .RoomDetbutton {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin-left: 178px;
+    
+  }
+  
+  .RoomDetbutton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  

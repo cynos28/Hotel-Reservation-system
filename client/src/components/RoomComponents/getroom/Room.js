@@ -118,7 +118,13 @@ const GetRoom = () => {
                     <p><h6>Max Count: {room.maxcount} <br/> Type: {room.roomType}</h6></p>
                   </div>
                   <div>
-                    <Button className='btnB1 mr-5'>Book Now</Button>
+             
+
+                    <Link className="btnLink" to={`/room-details/${room._id}`}>
+
+          <button className="Roomviewbtn">View</button>
+        </Link>
+     
                   </div>
                 </div>
               </div>

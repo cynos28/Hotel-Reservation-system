@@ -194,3 +194,22 @@
     padding: 0 1rem; /* Add padding to button */
   }
   
+
+
+  
+  .Roomviewbtn {
+    background-color: #000c66; /* Green background */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin-left:115px ;
+  }
+  
+  .Roomviewbtn:hover {
+    background-color: #080bc9; /* Darker green on hover */
+  }
+  
