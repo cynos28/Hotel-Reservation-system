@@ -1,7 +1,15 @@
 .extra{
     background-color: aliceblue;
     padding: 0cap;
-
-
 }
+
+.extra-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1400px;
+    margin-top: 10px;
+    border: 1px dolid black;
+    text-align: center;
+    margin-left: 80px;
+  }
 
