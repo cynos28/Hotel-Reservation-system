@@ -22,9 +22,10 @@
     font-size: 38px;
     margin-top: 20px;
     margin-bottom: 30px;
-    color: #9689d5; /* Dark gray color */
+    color: #00ff40; /* Dark gray color */
     font-weight: bold;
     margin-left: 200px;
+    font-weight: bold;
   }
   
   /* Form container styling */
@@ -61,7 +62,7 @@
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background-color: #007bff; /* Blue color */
+    background-color: #033061; /* Blue color */
     color: #ffffff; /* White color */
     font-size: 18px;
     font-weight: bold;

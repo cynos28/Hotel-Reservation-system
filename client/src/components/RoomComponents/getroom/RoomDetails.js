@@ -58,6 +58,7 @@ const RoomDetails = () => {
     <li><strong>Room Name:</strong>{room.name}</li>
     <li><strong>Room Type:</strong> {room.roomType}</li>
     <li><strong>Rent PerNight:</strong> {room.rentPerNight}</li>
+    <li><strong>Number Of Beds :</strong> {room.numberOfBeds}</li>
     <li><strong>WiFi Availability:</strong> {room.wifiAvailability ? "Available" : "Not Available"}</li>
     <li><strong>AC Availability:</strong> {room.acAvailability ? "Available" : "Not Available"}</li>
     <li><strong>Room Description:</strong> {room.roomDescription}</li>
