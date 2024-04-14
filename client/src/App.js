@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Componen, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 
@@ -33,6 +33,16 @@ import axios from "axios"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getLoginStatus } from './redux/features/auth/authSlice.js';
+
+//dilshan
+import AdminDash from "./pages/Extra/Admin/AdminDash";
+import ExtraHome from "./pages/Extra/User/Home/Home";
+import Booking from "./pages/Extra/User/Booking/Booking";
+import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
+import Category from "./pages/Extra/User/Category/Category";
+import Summary from "./pages/Extra/User/Summery/Summery";
+import UpdateBooking from "./pages/Extra/User/UpdateBooking/UpdateBooking";
+
 
 axios.defaults.withCredentials = true;
 
@@ -96,6 +106,17 @@ function App() {
           <Route path="/roomtable" element={<RoomTable />} />
           <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
 
+{/**dilshan */}
+
+ {/*User */}
+ <Route path="/extrahome" element={<ExtraHome />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/bookingvalidate" element={<BookValidate />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/summary/extraid/:extraid" element={<Summary />} />
+          <Route path="/updatebook/:id" element={<UpdateBooking />} />
+          {/*Admin */}
+          <Route path="/admindsh" element={<AdminDash />} />
 
 
         </Routes>
