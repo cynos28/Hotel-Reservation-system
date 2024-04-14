@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import './booking.css'
-import './color.css'
+import "./booking.css";
+import "./color.css";
 
 const priceMap = {
   gym: 250,
