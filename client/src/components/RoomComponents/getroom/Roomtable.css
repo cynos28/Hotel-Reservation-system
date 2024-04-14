@@ -96,19 +96,19 @@ th {
 }
 
 /* Add Room button style */
-.add-room-button {
+.generate-room-button {
     display: block;
     width: fit-content;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: #498eb9;
+    background-color: #007854;
     color: #fff;
     text-decoration: none;
-    margin-left: 950px;
+    margin-left: 900px;
     font-weight: bold;
 }
 
-.add-room-button:hover {
+.generate-room-button {
     opacity: 0.8;
 }
 

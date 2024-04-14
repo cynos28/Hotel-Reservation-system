@@ -86,7 +86,7 @@ const AddRoom = () => {
         timer: 1500,
       });
 
-      navigate('/');
+      navigate('/getroom');
     } catch (error) {
       console.log(error);
     }

@@ -85,7 +85,7 @@ const RoomTable = () => {
                         <button className="search-button" onClick={handleSearch}>Search</button>
                       
                     </div>
-                    <button onClick={handlePrint} className="add-room-button">
+                    <button onClick={handlePrint} className="generate-room-button">
                             Generate Report
                         </button>
 

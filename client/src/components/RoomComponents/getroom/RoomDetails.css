@@ -20,9 +20,7 @@
     margin-top: 200px;
   }
   
-  .roomimgDetails {
-    /* Add your custom CSS styles here */
-  }
+ 
 
 
 
@@ -31,15 +29,17 @@
     justify-content: center;
     align-items: center;
     margin-top: 250px;
-    box-shadow: 10px 10px 40px rgba(231, 203, 19, 0.1); /* Add box shadow */
+   
   }
   
   .roomDetailsCard {
     width: 80%;
+    height: 80%;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(249, 4, 4, 0.1);
-    background-color: azure;
+    border-radius: 100px;
+    box-shadow: 0 10px 18px #0a1270;
+    background-color:00b4d8;
+    border: #2a5a8f;
   }
   
   .roomDetailsCard p {
@@ -68,27 +68,24 @@
 
   .RoomDetailsContainer {
 
-    background-color: #ccdaf6; /* Light gray background */
+    background-color: azure; /* Light gray background */
 
 
   }
   
-
   .RoomDetbutton {
-    background-color: #007bff; /* Blue background */
-    color: white; /* White text color */
-    padding: 10px 20px; /* Padding */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style */
-    font-size: 16px; /* Font size */
-    transition: background-color 0.3s; /* Smooth transition */
-    margin-left: 178px;
-    
+    background-color: #062a50; /* Set background color */
+    color: rgb(242, 243, 255); /* Set text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+    font-size: 10px; /* Set font size */
+    font-weight: bold;
+    margin-left: 180px;
   }
   
   .RoomDetbutton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #ef9d9d; /* Change background color on hover */
   }
-  
   
