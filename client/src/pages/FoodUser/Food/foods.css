@@ -111,15 +111,3 @@
     color: #666;
   }
   
-  /* Responsive */
-  @media screen and (max-width: 768px) {
-    .tags_container {
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  
-    .filterbtn {
-      margin-right: 0;
-    }
-  }
-  
