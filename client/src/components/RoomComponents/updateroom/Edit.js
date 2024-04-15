@@ -14,6 +14,7 @@ const Edit = () => {
     numberOfBeds: 0,
     roomType: '',
     roomDescription:'',
+    image: '',
   };
 
   const { id } = useParams();
@@ -53,7 +54,7 @@ const Edit = () => {
         timer: 1500,
       });
 
-      navigate('/getroom');
+      navigate('/roomtable');
     } catch (error) {
       console.log(error);
     }
@@ -65,9 +66,11 @@ const Edit = () => {
     <TopNav />
     <Sidebar />
     <div className="editContainer">
-      <Link to="/getroom" className="editLinkBack">Back</Link>
+      <Link to="/roomtable" className="editLinkBack">Back</Link>
       <h3 className="editHeading">Update Room</h3>
       <form className="editFormContainer" onSubmit={submitForm}>
+
+
         <label className="editFormLabel" htmlFor="name">Room Name</label>
         <input
           className="editFormInput"

@@ -56,7 +56,7 @@
 }
 
 .room-container .room:hover {
-    height: 300px;
+    height: 275px;
 }
 
 .room-container .room:hover > .room-content {
@@ -75,10 +75,10 @@
     justify-content: center;
     margin-bottom: 20px;
     margin-top: 20px;
-    background-color: #5575ac;
+    background-color: #019065 ;
     margin-right: 2px;
     margin-left: 10px;
-    width: 152vh;
+    width: 151vh;
     border-radius: 20px;
 
     
@@ -179,13 +179,13 @@
   .sorting-bar-container {
     display: flex;
     justify-content: space-between; /* Distribute items evenly along the main axis */
-    margin-left: 112px;
+    margin-left: 115px;
   }
   
   .sorting-dropdown-container,
   .RoomSearchcontainer {
     flex: 1; /* Distribute available space evenly among the containers */
-    margin-right: 125px; /* Add some space between the containers */
+    margin-right: 100px; /* Add some space between the containers */
   }
   
   .search-button {
@@ -198,7 +198,7 @@
 
   
   .Roomviewbtn {
-    background-color: #000c66; /* Green background */
+    background-color: #018790; /* Green background */
     color: white; /* White text color */
     padding: 10px 20px; /* Padding */
     border: none; /* No border */
@@ -206,10 +206,27 @@
     cursor: pointer; /* Cursor style */
     font-size: 16px; /* Font size */
     transition: background-color 0.3s; /* Smooth transition */
-    margin-left:115px ;
+    margin-left:109px ;
   }
   
   .Roomviewbtn:hover {
-    background-color: #080bc9; /* Darker green on hover */
+    background-color: #135d9e; /* Darker green on hover */
   }
   
+
+
+  .room-name {
+    color: #19159b; /* Text color */
+    font-size: 20px; /* Font size */
+    font-weight: bold; /* Font weight */
+    margin-bottom: 0px; 
+    padding-left: 5px;/* Bottom margin */
+  }
+  .room-det ul {
+    list-style-type: circle; /* Use disc bullets */
+    padding-left: 5px; /* Add some padding to the left */
+  }
+  
+  .room-det li {
+    margin-bottom: 3px; /* Add margin between each detail */
+  }
