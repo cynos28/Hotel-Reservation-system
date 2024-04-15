@@ -261,7 +261,7 @@ function AddRate() {
           <div>
             <h1 className="rate-topic">
               Have You Been to Our{" "}
-              <span className="rate-us">Restaurant better ?</span>{" "}
+              <span className="rate-us">Hotel better ?</span>{" "}
             </h1>
             <div className="rate-full-box">
               <div>
