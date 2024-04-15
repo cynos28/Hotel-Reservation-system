@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import"./foodDetails.css";
 
 const FoodDetails = () => {
   const { id } = useParams();
