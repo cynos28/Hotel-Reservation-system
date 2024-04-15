@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "foodAddDelivery.css";
+import "./foodAddDelivery.css";
 
 function AddDelivery() {
   const navigate = useNavigate(); // Changed variable name to navigate
