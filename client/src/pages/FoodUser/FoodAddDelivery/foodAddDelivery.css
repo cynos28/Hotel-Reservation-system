@@ -8,9 +8,9 @@
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
-    gap: 20px; /* Spacing between columns */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to create rows */
+    gap: 20px; /* Spacing between items */
   }
   
   /* Header */
@@ -18,7 +18,14 @@
     text-align: center;
     color: #1b4850;
     margin-bottom: 20px;
-    grid-column: span 2; /* Make header span both columns */
+    width: 100%; /* Make header span full width */
+  }
+  
+  /* Form */
+  .cart-form {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%; /* Each form takes half of the container */
   }
   
   /* Label */
