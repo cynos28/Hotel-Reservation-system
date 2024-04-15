@@ -8,6 +8,9 @@
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    gap: 20px; /* Spacing between columns */
   }
   
   /* Header */
@@ -15,12 +18,7 @@
     text-align: center;
     color: #1b4850;
     margin-bottom: 20px;
-  }
-  
-  /* Form */
-  .cart-form {
-    display: flex;
-    flex-direction: column;
+    grid-column: span 2; /* Make header span both columns */
   }
   
   /* Label */
@@ -34,7 +32,6 @@
   .cart-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     box-sizing: border-box;
