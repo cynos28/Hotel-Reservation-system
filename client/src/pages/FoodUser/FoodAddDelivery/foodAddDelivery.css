@@ -1,0 +1,58 @@
+/* addDelivery.css */
+
+/* Container */
+.cart-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header */
+  .cart-header {
+    text-align: center;
+    color: #1b4850;
+    margin-bottom: 20px;
+  }
+  
+  /* Form */
+  .cart-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label */
+  .cart-label {
+    margin-bottom: 5px;
+    color: #1b4850;
+    font-weight: bold;
+  }
+  
+  /* Input */
+  .cart-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Button */
+  .viewbtn {
+    background-color: #1b4850;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .viewbtn:hover {
+    background-color: #0f3038;
+  }
+  
