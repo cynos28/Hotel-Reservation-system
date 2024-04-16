@@ -29,6 +29,32 @@ const navLinks = [
     icon: "ri-calendar-event-line",
     display: "Events",
   },
+  {
+    path: "",
+    icon: "ri-bank-card-fill",
+    display: "Payments",
+  },
+  {
+    path: "/admin-foods",
+    icon: "ri-bowl-fill",
+    display: "Foods",
+  },
+  {
+    path: "/add-food",
+    icon: "ri-bowl-line",
+    display: "Add Foods",
+  },
+  {
+    path: "/add-food",
+    icon: "ri-star-half-line",
+    display: "Reviews",
+  },
+  {
+    path: "/add-food",
+    icon: "ri-star-half-line",
+    display: "Reviews",
+  },
+  
 
 ];
 

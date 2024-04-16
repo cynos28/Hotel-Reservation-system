@@ -68,73 +68,80 @@ function CardDetail() {
   return (
     <div>
       <Header />
-      <div className="find_full">
-        <h1 className="main_book_topic_card">
-          Your Card <span className="sub_book_topic">Details..!</span>
-        </h1>
-        <button
-          onClick={onNavigateToAddCard}
-          className="detail_save_btn"
-          type="submit"
-        >
-          Add New Card
-        </button>
-        <label>Cardholder Name</label>
-        <br />
-        <input
-          value={searchText}
-          onChange={onSearchCard}
-          required
-          type="text"
-          name="cardName"
-        />
-        <br />
-        {isLoadingCards ? (
-          <>
-            <br />
-            <h4 className="main_book_topic_card">Loading...</h4>
-          </>
-        ) : cards.length === 0 ? (
-          <>
-            <br />
-            <p className="main_book_topic_card">No Cards found!</p>
-          </>
-        ) : (
-          <div className="tble_card_details_main">
-            <table className="tble_card_details">
-              <thead className="tble_card_details_hed">
-                <tr className="tble_card_details_tr">
-                  <th className="tble_card_details_th">Card Name</th>
-                  <th className="tble_card_details_th">Card Number</th>
-                  <th className="tble_card_details_th">Expiration Date</th>
-                  <th className="tble_card_details_th">Cvv</th>
-                  <th className="tble_card_details_th">Actions</th>
-                </tr>
-              </thead>
-              {searchedCards.map((card) => (
-                <tbody>
-                  <tr key={card._id}>
-                    <td className="tble_card_details_th">{card.cardName}</td>
-                    <td className="tble_card_details_th">{card.cardNo}</td>
-                    <td className="tble_card_details_th">{card.expDate}</td>
-                    <td className="tble_card_details_th">{card.cvv}</td>
-                    <td className="tble_card_details_th">
-                      <Link to={`/update-card/${card._id}`} className="updtbtn">
-                        Update
-                      </Link>
-                      <button
-                        className="dltbtn"
-                        onClick={() => onDeleteCard(card._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              ))}
-            </table>
+      <div className="card_details_container">
+        <div className="find_full">
+          <h1 className="main_book_topic_card">
+            Your Card <span className="sub_book_topic_card">Details..!</span>
+          </h1>
+          <button
+            onClick={onNavigateToAddCard}
+            className="detail_save_btn"
+            type="submit"
+          >
+            Add New Card
+          </button>
+          <div className="search_cardName">
+            <input
+              value={searchText}
+              onChange={onSearchCard}
+              required
+              type="text"
+              name="cardName"
+              className="search_cno"
+              placeholder="Cardholder Name.."
+            />
           </div>
-        )}
+          <br />
+          {isLoadingCards ? (
+            <>
+              <br />
+              <h4 className="main_book_topic_card">Loading...</h4>
+            </>
+          ) : cards.length === 0 ? (
+            <>
+              <br />
+              <p className="main_book_topic_card">No Cards found!</p>
+            </>
+          ) : (
+            <div className="tble_card_details_main">
+              <table className="tble_card_details">
+                <thead className="tble_card_details_hed">
+                  <tr className="tble_card_details_tr">
+                    <th className="tble_card_details_th">Card Name</th>
+                    <th className="tble_card_details_th">Card Number</th>
+                    <th className="tble_card_details_th">Expiration Date</th>
+                    <th className="tble_card_details_th">Cvv</th>
+                    <th className="tble_card_details_th">Actions</th>
+                  </tr>
+                </thead>
+                {searchedCards.map((card) => (
+                  <tbody>
+                    <tr key={card._id}>
+                      <td className="tble_card_details_th">{card.cardName}</td>
+                      <td className="tble_card_details_th">{card.cardNo}</td>
+                      <td className="tble_card_details_th">{card.expDate}</td>
+                      <td className="tble_card_details_th">{card.cvv}</td>
+                      <td className="tble_card_details_th">
+                        <Link
+                          to={`/update-card/${card._id}`}
+                          className="updtbtn"
+                        >
+                          Update
+                        </Link>
+                        <button
+                          className="dltbtn"
+                          onClick={() => onDeleteCard(card._id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

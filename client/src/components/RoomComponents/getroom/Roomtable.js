@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -7,6 +7,7 @@ import './Roomtable.css'; // Import custom CSS
 import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
 import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 import { Trash, PencilSquare } from 'react-bootstrap-icons'; // Import Bootstrap Icons
+import { useReactToPrint } from "react-to-print";
 
 const RoomTable = () => {
     const [rooms, setRooms] = useState([]);
@@ -48,72 +49,86 @@ const RoomTable = () => {
         }
     };
 
-    const filteredRooms = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()) && (filterValue === '' || room.rentperday > parseInt(filterValue)));
+    const handleSearch = () => {
+        // Perform search operation based on the searchTerm
+        // This function can be customized according to your search requirements
+        // For now, it filters rooms based on room name containing the search term
+        const filteredRooms = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        return filteredRooms;
+    };
+
+    const filteredRooms = handleSearch();
+
+    /* PDF Function */
+    const ComponentsRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => ComponentsRef.current,
+        DocumentTitle: "Room Details Report",
+        onAfterPrint: () => alert("Room Details Report Successfully Downloaded!"),
+    });
 
     return (
+        <div>
+            <TopNav />
+            <Sidebar />
 
-        <div >
-    <TopNav />
-    <Sidebar />
-  
-    <div className="RoomtableContainer">
-        <div className='roomTable'>
-        <div className="search-container">
-  <input 
-    type="text" 
-    placeholder="Search by room name" 
-    value={searchTerm} 
-    onChange={(e) => setSearchTerm(e.target.value)} 
-    className="search-input" // Add a class for styling
-  />
-</div>
+            <div className="RoomtableContainer">
+                <div className='roomTable'>
+                    <div className="RoomSearchcontainer">
+                        <input
+                            type="text"
+                            placeholder="Search by room name"
+                            className="search-input"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button className="search-button" onClick={handleSearch}>Search</button>
+                      
+                    </div>
+                    <button onClick={handlePrint} className="generate-room-button">
+                            Generate Report
+                        </button>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">S.No.</th>
-                        <th scope="col">Room name</th>
-                        <th scope="col">Rent per Night</th>
-                        <th scope="col">Number of Beds</th>
-                        <th scope="col">Room type</th>
-                        <th scope="col">AC Availability</th>
-                        <th scope="col">wifiAvailability</th>
-                        <th scope="col">Description</th>
-                        
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-    filteredRooms.map((room, index) => (
-        <tr key={room._id}>
-            <td>{index + 1}</td>
-            <td>{room.name}</td>
-            <td>{room.rentPerNight}</td>
-            <td>{room.numberOfBeds}</td>
-            <td>{room.roomType}</td>
-            <td>{room.acAvailability ? "Available" : "Not Available"}</td>
-            <td>{room.wifiAvailability ? "Available" : "Not Available"}</td>
-            <td>{room.roomDescription}</td>
-            <td className='actionButtons'>
-                                    <button className="btn btn-outline-danger" onClick={() => deleteRoom(room._id)}>
-                                        <Trash /> Delete
-                                    </button>
-                                    <Link to={'/edit/' + room._id} className="btn btn-outline-primary">
-                                        <PencilSquare /> Edit
-                                    </Link>
-                                </td>
-        </tr>
-    ))
-}
-
-                </tbody>
-            </table>
-            <Link to={"/addroom"} className='add-room-button'>Add Room</Link>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Room name</th>
+                                <th scope="col">Rent per Night</th>
+                                <th scope="col">Number of Beds</th>
+                                <th scope="col">Room type</th>
+                                <th scope="col">AC Availability</th>
+                                <th scope="col">WiFi Availability</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody ref={ComponentsRef}>
+                            {filteredRooms.map((room, index) => (
+                                <tr key={room._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{room.name}</td>
+                                    <td>{room.rentPerNight}</td>
+                                    <td>{room.numberOfBeds}</td>
+                                    <td>{room.roomType}</td>
+                                    <td>{room.acAvailability ? "Available" : "Not Available"}</td>
+                                    <td>{room.wifiAvailability ? "Available" : "Not Available"}</td>
+                                    <td>{room.roomDescription}</td>
+                                    <td className='actionButtons'>
+                                        <button className="btn btn-outline-danger" onClick={() => deleteRoom(room._id)}>
+                                            <Trash /> Delete
+                                        </button>
+                                        <Link to={'/edit/' + room._id} className="btn btn-outline-primary">
+                                            <PencilSquare /> Edit
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+              </div>
+            </div>
         </div>
-        </div> </div>
-            
-    
     );
 };
 

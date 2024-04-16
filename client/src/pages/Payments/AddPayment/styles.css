@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: #f3f4f6;
-  background-image: url("./img/bgImage.jpg");
+  background-image: url("./img/pay_bgimage1.jpg");
   background-size: cover; /* Zoom out the image to fit within the container */
   background-repeat: no-repeat; /* Ensure the image doesn't repeat */
   background-position: center; /* Center the background image */
@@ -21,13 +21,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #65a4da; /* Color of the scrollbar handle */
+  background: #26b59b; /* Color of the scrollbar handle */
   border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #65a4da; /* Color of the scrollbar handle on hover */
+  background: #26b59b; /* Color of the scrollbar handle on hover */
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -37,13 +37,13 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-.main_book_topic {
+.main_pay_topic {
   text-align: center;
   font-size: 40px;
-  color: #fdfdfd;
+  color: #26b59b;
 }
-.sub_book_topic {
-  color: #fdfdfd;
+.sub_pay_topic {
+  color: #26b59b;
 }
 .pay_now_box {
   width: 100%;
@@ -54,7 +54,7 @@ input[type="number"] {
   background-color: rgba(255, 255, 255, 0.7);
   width: 750px;
   font-family: "Roboto", sans-serif;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -79,7 +79,7 @@ input[type="number"] {
 }
 .payment_input {
   width: 100%;
-  border: 1.8px solid #65a3da91;
+  border: 1.8px solid #26b59b;
   font-size: 18px;
   border-radius: 2px;
   margin: 10px 0;
@@ -87,7 +87,7 @@ input[type="number"] {
 }
 .payment_input_id {
   width: 172px;
-  border: 1.8px solid #65a3da91;
+  border: 1.8px solid #26b59b;
   font-size: 18px;
   border-radius: 2px;
   margin: 10px 0;
@@ -97,25 +97,12 @@ input[type="number"] {
   font-size: 23px;
   font-weight: bold;
   margin: 0 0 20px 0;
-  color: #0659a1;
+  color: #036956;
 }
-.genarate_id_btn {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  text-transform: capitalize;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 4px 10px;
-}
+
 .pay_now_btn {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
+  background-color: #019365c7;
+  border: 2px solid #26b59b;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -132,8 +119,8 @@ input[type="number"] {
 }
 .pay_now_btn:hover {
   background-color: white;
-  border: 2px solid #65a4da;
-  color: #65a4da;
+  border: 2px solid #26b59b;
+  color: #015a1cd9;
 }
 .formimg_book_full {
   width: 315px;

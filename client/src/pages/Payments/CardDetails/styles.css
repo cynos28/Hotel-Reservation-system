@@ -1,3 +1,11 @@
+.card_details_container {
+  background-image: url("./img/card_detimage1.jpg");
+  background-size: cover; /* Zoom out the image to fit within the container */
+  background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+  background-position: center; /* Center the background image */
+  min-height: 650px;
+}
+
 .find_full {
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -5,7 +13,7 @@
 
 .find_form {
   width: 400px;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
   padding: 25px;
   margin: 0 auto;
   border-radius: 5px;
@@ -20,7 +28,7 @@
   padding: 2px 4px;
   margin: 8px 0;
   font-size: 20px;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
 }
 .subPara_card {
   font-size: 15px;
@@ -33,13 +41,14 @@
   padding-bottom: 0px;
   text-align: center;
   font-size: 40px;
+  color: #023f34;
 }
-.sub_book_topic {
-  color: #65a4da;
+.sub_book_topic_card {
+  color: #023f34;
 }
-.btn_find {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
+/* .btn_find {
+  background-color: #030569;
+  border: 2px solid #26b59b;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -52,26 +61,28 @@
   text-decoration: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 4px 10px;
-}
+} */
 .tble_card_details_main {
   padding: 50px 10%;
 }
 .tble_card_details {
   width: 100%;
   font-family: "Roboto", sans-serif;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
 }
 
 .tble_card_details_th {
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
   margin: 0;
   text-align: center;
   padding: 5px 0;
+  background-color: white;
+  color: black;
 }
 
 .updtbtn {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
+  background-color: #019365c7;
+  border: 2px solid #26b59b;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -83,6 +94,11 @@
   padding: 4px 10px;
   margin-right: 25px;
   text-decoration: none;
+}
+.updtbtn:hover {
+  background-color: white;
+  border: 2px solid #26b59b;
+  color: #015a1cd9;
 }
 .dltbtn {
   background-color: #ed1313;
@@ -98,14 +114,12 @@
   padding: 4px 10px;
 }
 .detail_save_btn {
-  background: linear-gradient(45deg, #65a4da, rgb(14, 7, 200));
-  margin-top: 20px;
-  padding: 10px;
+  background: linear-gradient(45deg, #26b59b, rgb(4, 146, 84));
   font-size: 20px;
   color: #ffffff;
   cursor: pointer;
   transition: 0.2s linear;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
   font-weight: bold;
   display: flex;
   margin: 0 auto;
@@ -121,4 +135,12 @@
 .detail_save_btn:hover {
   letter-spacing: 2px;
   opacity: 0.8;
+}
+.search_cno {
+  width: 250px;
+  border: 2px solid #26b59b;
+  font-size: 15px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-left: 150px;
 }

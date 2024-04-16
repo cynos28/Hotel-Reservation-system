@@ -114,11 +114,25 @@ const GetRoom = () => {
                 <img src={"http://localhost:3001/rooms/" + room.image} alt='' className="roomimg" />
                 <div className='room-content dflex align-items-center justify-content-between'>
                   <div>
-                    <p>{room.name}</p>
-                    <p><h6>Max Count: {room.maxcount} <br/> Type: {room.roomType}</h6></p>
+                  <h3 className="room-name">{room.name}</h3>
+
+                    
+      <div className="room-det">
+  <ul>
+    <li><strong>Room Type:</strong> {room.roomType}</li>
+    <li><strong>Rent PerNight:</strong> Rs {room.rentPerNight}</li>
+  
+  </ul>
+</div>
                   </div>
                   <div>
-                    <Button className='btnB1 mr-5'>Book Now</Button>
+             
+
+                    <Link className="btnLink" to={`/room-details/${room._id}`}>
+
+          <button className="Roomviewbtn">View</button>
+        </Link>
+     
                   </div>
                 </div>
               </div>

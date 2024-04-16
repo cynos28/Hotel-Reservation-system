@@ -24,7 +24,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #031852;
+    border: 2px solid #031852;
     padding: 8px;
     text-align: left;
     font-size: 14px;
@@ -33,7 +33,7 @@ th, td {
 }
 
 th {
-    background-color: #031852;
+    background-color: #015258;
     font-size: 15px;
     font-weight: bold;
     color: #d2e3f0;
@@ -96,17 +96,19 @@ th {
 }
 
 /* Add Room button style */
-.add-room-button {
+.generate-room-button {
     display: block;
     width: fit-content;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: #28a745;
+    background-color: #007854;
     color: #fff;
     text-decoration: none;
+    margin-left: 900px;
+    font-weight: bold;
 }
 
-.add-room-button:hover {
+.generate-room-button {
     opacity: 0.8;
 }
 
@@ -114,5 +116,45 @@ th {
   .search-input:focus {
     outline: none; /* Remove outline on focus */
     border-color: #0c2d51; /* Change border color on focus */
+  }
+  
+
+
+
+
+
+  /*Room Search CSS*/
+.RoomSearchcontainer {
+
+
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .RoomSearchcontainer input {
+    border-radius: 10rem 0 0 10rem;
+    height: 4rem;
+    width: 30rem;
+    background-color: azure;
+    padding: 1.2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    outline: none;
+    border-color: #020353;
+  }
+  
+  .RoomSearchcontainer button {
+    color: grey;
+    height: 4rem;
+    width: 8rem;
+    font-size: 2rem;
+    border-radius: 0 10rem 10rem 0;
+    border: none;
+    background-color: hsl(231, 100%, 15%);
+    color: white;
+    opacity: 0.8;
+    outline: none;
   }
   

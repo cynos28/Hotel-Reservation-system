@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/Footer";
 import "./RegisterEvent.css"; // Import CSS file
-import axios from "axios"
+import axios from "axios";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2"; // Import SweetAlert library
 
 const RegisterEvent = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userId: "user_1234",
     name: "",
@@ -19,6 +23,23 @@ const RegisterEvent = () => {
   });
 
   const [recommendationMessage, setRecommendationMessage] = useState("");
+  const [formErrors, setFormErrors] = useState({}); // State to track form errors
+
+  const validateForm = () => {
+    let valid = true;
+    const errors = {};
+
+    // Check if all fields are filled
+    for (const key in formData) {
+      if (formData[key] === "") {
+        errors[key] = "Please ";
+        valid = false;
+      }
+    }
+
+    setFormErrors(errors);
+    return valid;
+  };
 
   const handleCapacityChange = (e) => {
     const { value } = e.target;
@@ -40,19 +61,19 @@ const RegisterEvent = () => {
 
   useEffect(() => {
     let photoLink = "";
-    if (formData.name == "Anniversary") {
+    if (formData.name === "Anniversary") {
       photoLink = "./eventPhotos/party1.jpg";
       setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Wedding") {
+    } else if (formData.name === "Wedding") {
       photoLink = "./eventPhotos/wedding1.jpg";
       setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Birthday") {
+    } else if (formData.name === "Birthday") {
       photoLink = "./eventPhotos/birthday1.jpg";
       setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Get-togethers") {
+    } else if (formData.name === "Get-togethers") {
       photoLink = "./eventPhotos/GetT.jpg";
       setFormData({ ...formData, photo: photoLink });
-    } else if (formData.name == "Other-Party") {
+    } else if (formData.name === "Other-Party") {
       photoLink = "./eventPhotos/dance.jpg";
       setFormData({ ...formData, photo: photoLink });
     }
@@ -75,7 +96,12 @@ const RegisterEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
+    const isValid = validateForm();
+    if (!isValid) {
+      return;
+    }
+
     const eventData = {
       userId: "user_1234",
       name: formData.name,
@@ -85,128 +111,152 @@ const RegisterEvent = () => {
       photo: formData.photo,
       sTime: formData.startTime,
       eTime: formData.endingTime,
-      cost: formData.estimatedCost
+      cost: formData.estimatedCost,
     };
-  
+
     axios
       .post("http://localhost:3001/api/event/register", eventData)
       .then((response) => {
         console.log("Event created successfully:", response.data);
-        // Do something with the response if needed
+        toast.success(response.data.msg, { position: "top-right" });
+
+        // Display SweetAlert after successful adding
+        Swal.fire({
+          icon: "success",
+          title: "Event Added Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        navigate("/events");
       })
       .catch((error) => {
         console.error("Error creating event:", error);
         // Handle error if needed
       });
   };
-  
 
   return (
     <div>
       <Header />
       <div className="register-container">
         <form onSubmit={handleSubmit}>
-          <label>
-            Type of the Event:
-            </label>
-            <select
-              name="name"
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-            >
-              <option ></option>
-              <option value="Anniversary">Anniversary</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Get-togethers">Get-togethers</option>
-              <option value="Other-Party">Other-Party</option>
-            </select>
-          
-          <label>
-            Capacity:
-            </label>
-            <input
-              type="number"
-              name="capacity"
-              value={formData.capacity}
-              onBlur={handleCapacityChange} // Add onBlur event listener
-              onChange={(e) =>
-                setFormData({ ...formData, capacity: e.target.value })
-              }
-            />
-            <p
-              className="recommendation-message"
-              style={{ color: "#03c987e6" }}
-            >
-              {recommendationMessage}
+          <label>Type of the Event:</label>
+          <select
+            name="name"
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+          >
+            <option value=""></option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Get-togethers">Get-togethers</option>
+            <option value="Other-Party">Other-Party</option>
+          </select>
+          {formErrors.name && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.name}fill the Name
             </p>
-            <br/>
-            <br/>
-          
-          <label>
-            Date:
-            </label>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={(e) =>
-                setFormData({ ...formData, date: e.target.value })
-              }
-            />
-          
-          <label>
-            Venue:
-            </label>
-            <select
-              name="venue"
-              onChange={(e) =>
-                setFormData({ ...formData, venue: e.target.value })
-              }
-            >
-              <option>---- SELECT ----</option> 
-              <option value="Forevermore Grand Hall">
-                Forevermore Grand Hall
-              </option>
-              <option value="Golden Glade Banquet Hall">
-                Golden Glade Banquet Hall
-              </option>
-              <option value="Enchanted Gardens Wedding Hall">
-                Enchanted Gardens Wedding Hall
-              </option>
-            </select>
-          
-          <label>
-            Start Time:
-            </label>
-            <input
-              type="time"
-              name="startTime"
-              value={formData.startTime}
-              onChange={(e) =>
-                setFormData({ ...formData, startTime: e.target.value })
-              }
-            />
-          
-          <label>
-            Ending Time:
-            </label>
-            <input
-              type="time"
-              name="endingTime"
-              value={formData.endingTime}
-              onChange={(e) =>
-                setFormData({ ...formData, endingTime: e.target.value })
-              }
-            />
-          
+          )}
+
+          <label>Capacity:</label>
+          <input
+            type="number"
+            name="capacity"
+            value={formData.capacity}
+            onBlur={handleCapacityChange} // Add onBlur event listener
+            onChange={(e) =>
+              setFormData({ ...formData, capacity: e.target.value })
+            }
+          />
+          {formErrors.capacity && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.capacity}Enter the Capacity
+            </p>
+          )}
+          <p className="recommendation-message" style={{ color: "#03c987e6" }}>{recommendationMessage}</p>
+          <br />
+          <br />
+
+          <label>Date:</label>
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={(e) =>
+              setFormData({ ...formData, date: e.target.value })
+            }
+          />
+          {formErrors.date && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.date}Enter the Date
+            </p>
+          )}
+
+          <label>Venue:</label>
+          <select
+            name="venue"
+            onChange={(e) =>
+              setFormData({ ...formData, venue: e.target.value })
+            }
+          >
+            <option value="">---- SELECT ----</option>
+            <option value="Forevermore Grand Hall">
+              Forevermore Grand Hall
+            </option>
+            <option value="Golden Glade Banquet Hall">
+              Golden Glade Banquet Hall
+            </option>
+            <option value="Enchanted Gardens Wedding Hall">
+              Enchanted Gardens Wedding Hall
+            </option>
+          </select>
+          {formErrors.venue && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.venue}Select the Venue
+            </p>
+          )}
+
+          <label>Start Time:</label>
+          <input
+            type="time"
+            name="startTime"
+            value={formData.startTime}
+            onChange={(e) =>
+              setFormData({ ...formData, startTime: e.target.value })
+            }
+          />
+          {formErrors.startTime && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.startTime}Enter the Stating Time
+            </p>
+          )}
+
+          <label>Ending Time:</label>
+          <input
+            type="time"
+            name="endingTime"
+            value={formData.endingTime}
+            onChange={(e) =>
+              setFormData({ ...formData, endingTime: e.target.value })
+            }
+          />
+          {formErrors.endingTime && (
+            <p className="error-message" style={{ color: "red" }}>
+              {formErrors.endingTime}Enter the Ending Time
+            </p>
+          )}
+
           <label className="status-label">Event Status:</label>
           <div className="status-message">{formData.eventStatus}</div>
           <div className="cost-label">
             Estimated Cost: Rs. {formData.estimatedCost}
           </div>
-          <button  className="kc6" type="submit">Confirm Booking</button>
+          <button className="kc6" type="submit">
+            Confirm Booking
+          </button>
         </form>
       </div>
       <Footer />
