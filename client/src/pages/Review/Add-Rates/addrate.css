@@ -27,6 +27,7 @@
   align-items: center;
   width: 100%;
   gap: 30px;
+  
 }
 
 .rate_home_left_box {
@@ -81,6 +82,7 @@
 .colum_two_revi,
 .colum_thre_revi {
   flex: 1;
+  font-size: 20px;
 }
 
 .colum_two_revi {
@@ -179,6 +181,7 @@
 }
 .rate-us {
   color: #03c9876e;
+  
 }
 
 .rate_star_box{

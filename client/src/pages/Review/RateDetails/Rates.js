@@ -7,7 +7,7 @@ function Rates(props) {
 
   return (
     <div>
-      <Header/>
+      
       <div>
         <div>
           <div className="details_box_displya">
@@ -90,7 +90,7 @@ function Rates(props) {
           </div>
         </div>
       </div>
-      <Footer/>
+      
     </div>
   );
 }

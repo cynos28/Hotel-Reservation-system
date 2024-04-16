@@ -96,7 +96,7 @@ function AddRate() {
           </div>
         </div>
         <div>
-        <h1 className="main_topi_qa_new">Reviews ★ 5.0</h1>
+        <h1 className="main_topi_qa_new">Reviews ★ 4.7</h1>
           <div className="first_box_set_rate_home">
             <div className="rate_home_left_box">
               <div class="revi_row_rate">
