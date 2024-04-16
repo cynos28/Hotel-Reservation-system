@@ -16,7 +16,7 @@ function FindReview() {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `http://localhost:8080/rates?gmail=${gmail}`
+        `http://localhost:3001/rates?gmail=${gmail}`
       );
       console.log("Response:", response.data); // Log the response for debugging
 
@@ -43,7 +43,7 @@ function FindReview() {
 
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:8080/rates/${rateId}`);
+        await axios.delete(`http://localhost:3001/rates/${rateId}`);
         window.alert("rates details deleted successfully!");
         window.location.reload();
       } catch (error) {
