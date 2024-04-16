@@ -119,7 +119,7 @@ const RoomTable = () => {
                                             <Trash /> Delete
                                         </button>
                                         <Link to={'/edit/' + room._id} className="btn btn-outline-primary">
-                                            <PencilSquare /> Edit
+                                            <PencilSquare /><br/> Edit
                                         </Link>
                                     </td>
                                 </tr>
