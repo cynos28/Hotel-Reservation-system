@@ -189,7 +189,7 @@ function App() {
             <Route exact path="/admin-foods" element={<FoodTable />} />
 
             {/* User-Food Display,Order */}
-            <Route exact path="/food" element={<Foods />} />
+            <Route exact path="/foods" element={<Foods />} />
             <Route exact path="/food-details/:id" element={<FoodDetails />} />
             <Route exact path="/add-to-cart" element={<AddToCart />} />
             <Route exact path="/view-cart" element={<FoodCarts />} />

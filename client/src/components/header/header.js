@@ -41,7 +41,7 @@ function Header() {
                     <div class="paste-button">
                         <button class="button">Services </button>
                         <div class="dropdown-content">
-                            <a id="top" href="/food">Foods</a>
+                            <a id="top" href="/foods">Foods</a>
                             <a id="middle" href="/events">Events</a>
                             <a id="bottom" href="/extrafacilities">Extra Facilities</a>
                         </div>
