@@ -1,7 +1,7 @@
 import React from "react";
 import user from "../Add-Rates/img/user_logo.png";
 function Rates(props) {
-  const { _id, date, name, ratestar, comment } = props.rate;
+  const { _id, date , name, ratestar, comment } = props.rate;
 
   return (
     <div>
