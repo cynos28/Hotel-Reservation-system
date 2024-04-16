@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoMdCart } from "react-icons/io";
 import "./foods.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 
 const Food = ({ food }) => {
   const { _id, name, image, time, price, tag } = food;
@@ -77,16 +79,7 @@ const Foods = () => {
   };
   return (
     <div>
-      <div className="usernavbar">
-        <button onClick={() => (window.location.href = "/add-food")}>
-          Admin
-        </button>
-        <IoMdCart
-          className="cart_icon"
-          onClick={() => (window.location.href = "/view-cart")}
-        />
-      </div>
-    
+      <Header />
       <div className="pdn_itmdetil">
       <div>
         <input
@@ -123,6 +116,7 @@ const Foods = () => {
             : foods.map((food) => <Food key={food._id} food={food} />)}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
