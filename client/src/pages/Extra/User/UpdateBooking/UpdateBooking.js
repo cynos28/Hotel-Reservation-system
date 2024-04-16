@@ -12,7 +12,7 @@ function UpdateBooking() {
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
-        .get(`http://localhost:8080/extra/${_id}`)
+        .get(`http://localhost:3001/extra/${_id}`)
         .then((res) => res.data)
         .then((data) => setInputs(data.extra));
     };
@@ -21,7 +21,7 @@ function UpdateBooking() {
 
   const sendRequest = async () => {
     try {
-      await axios.put(`http://localhost:8080/extra/${_id}`, {
+      await axios.put(`http://localhost:3001/extra/${_id}`, {
         name: String(inputs.name),
         gmail: String(inputs.gmail),
         phone: String(inputs.phone),
@@ -61,55 +61,81 @@ function UpdateBooking() {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Full Name</label>
-        <br />
-        <input
-          required
-          value={inputs.name}
-          onChange={handleChange}
-          type="text"
-          name="name"
-        />
-        <br />
-        <label>Gmail</label>
-        <br />
-        <input
-          required
-          value={inputs.gmail}
-          onChange={handleChange}
-          type="email"
-          name="gmail"
-        />
-        <br />
-        <label>Phone</label>
-        <br />
-        <input
-          required
-          value={inputs.phone}
-          onChange={handleChange}
-          type="text"
-          name="phone"
-        />
-        <br />
-        <label>Your Facility</label>
-        <br></br>
-        {inputs.gym === "true" && <span>Gym</span>}
-        {inputs.pool === "true" && <span>Pool</span>}
-        {inputs.bar === "true" && <span>Bar</span>}
-        {inputs.spa === "true" && <span>Spa</span>}
-        {inputs.vehicle === "true" && <span>Vehicle</span>}
-        {inputs.dayplan === "true" && <span>Day Plan</span>}
-        {inputs.specialday === "true" && <span>Special Day</span>}
-        {inputs.petfriend === "true" && <span>Pet Friend</span>}
-        <br></br>
-        <label>Total</label>
-        <br />
-        {inputs.total}
+      <h1 className="topic_extra">
+        Update Your Booking<span className="sub_topic_extra"> Details..!</span>
+      </h1>
+      <div className="form_box_extra">
+        <form className="form_extra" onSubmit={handleSubmit}>
+          <label className="form_lable_extra">Full Name</label>
+          <br />
+          <input
+            className="form_input_extra"
+            required
+            value={inputs.name}
+            onChange={handleChange}
+            type="text"
+            name="name"
+          />
+          <br />
+          <label className="form_lable_extra">Gmail</label>
+          <br />
+          <input
+            className="form_input_extra"
+            required
+            value={inputs.gmail}
+            onChange={handleChange}
+            type="email"
+            name="gmail"
+          />
+          <br />
+          <label className="form_lable_extra">Phone</label>
+          <br />
+          <input
+            className="form_input_extra"
+            required
+            value={inputs.phone}
+            onChange={handleChange}
+            type="text"
+            name="phone"
+          />
+          <br />
+          <label className="form_lable_extra">Your Facility</label>
+          <br></br>
+          {inputs.gym === "true" && (
+            <span className="form_lable_extra_updt">Gym</span>
+          )}
+          {inputs.pool === "true" && (
+            <span className="form_lable_extra_updt">Pool</span>
+          )}
+          {inputs.bar === "true" && (
+            <span className="form_lable_extra_updt">Bar</span>
+          )}
+          {inputs.spa === "true" && (
+            <span className="form_lable_extra_updt">Spa</span>
+          )}
+          {inputs.vehicle === "true" && (
+            <span className="form_lable_extra_updt">Vehicle</span>
+          )}
+          {inputs.dayplan === "true" && (
+            <span className="form_lable_extra_updt">Day Plan</span>
+          )}
+          {inputs.specialday === "true" && (
+            <span className="form_lable_extra_updt">Special Day</span>
+          )}
+          {inputs.petfriend === "true" && (
+            <span className="form_lable_extra_updt">Pet Friend</span>
+          )}
+          <br></br>
+          <p className="sum_detil_extra tot">
+            <b>Total:</b>
+            Rs.{inputs.total}.00
+          </p>
 
-        <br />
-        <button type="submit">Update</button>
-      </form>
+          <button className="centerbtn_extra" type="submit">
+            Update
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

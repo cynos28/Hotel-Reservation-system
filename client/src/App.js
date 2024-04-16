@@ -35,7 +35,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getLoginStatus } from './redux/features/auth/authSlice.js';
 
 //dilshan
-import AdminDash from "./pages/Extra/Admin/AdminDash";
+import AdminDashExtra from "./pages/Extra/Admin/AdminDash";
 import ExtraHome from "./pages/Extra/User/Home/Home";
 import Booking from "./pages/Extra/User/Booking/Booking";
 import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
@@ -116,7 +116,7 @@ function App() {
           <Route path="/summary/extraid/:extraid" element={<Summary />} />
           <Route path="/updatebook/:id" element={<UpdateBooking />} />
           {/*Admin */}
-          <Route path="/admindsh" element={<AdminDash />} />
+          <Route path="/admindsh" element={<AdminDashExtra/>} />
 
 
         </Routes>

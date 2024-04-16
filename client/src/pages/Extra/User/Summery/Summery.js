@@ -10,7 +10,7 @@ function Summary() {
     const fetchPaymentDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/extra/extraid/${extraid}`
+          `http://localhost:3001/extra/extraid/${extraid}`
         ); // Use "id" instead of "payid"
         setBooking(response.data.extra);
       } catch (error) {
@@ -26,28 +26,47 @@ function Summary() {
   }
 
   return (
-    <div>
-      <h2>Summary</h2>
-      <p>Booking ID: {booking.extraid}</p>
-      <p>Name: {booking.name}</p>
-      <p>Gmail: {booking.gmail}</p>
-      <p>
-        Your Facility: {booking.gym === "true" && <span>Gym</span>}
-        {booking.pool === "true" && <span>Pool</span>}
-        {booking.bar === "true" && <span>Bar</span>}
-        {booking.spa === "true" && <span>Spa</span>}
-        {booking.vehicle === "true" && <span>Vehicle</span>}
-        {booking.dayplan === "true" && <span>Day Plan</span>}
-        {booking.specialday === "true" && <span>Special Day</span>}
-        {booking.petfriend === "true" && <span>Pet Friend</span>}
-      </p>
-      <p>Total: Rs {booking.total}.00</p>
-      {/* Add more booking details as needed */}
-      <button onClick={() => window.print()}>Download</button>
-      <button>Pay</button>
-      <button onClick={() => (window.location.href = "/bookingvalidate")}>
-        My Booking
-      </button>
+    <div className="bk_book_sum">
+    <div className="summry_div">
+      <div  className="summry_div_box">
+        <h2 className="sum_topic_extra">Summary</h2>
+        <p className="sum_detil_extra">
+          <b>Booking ID:</b> {booking.extraid}
+        </p>
+        <p className="sum_detil_extra">
+          <b>Name:</b> {booking.name}
+        </p>
+        <p className="sum_detil_extra">
+          <b>Gmail: </b>
+          {booking.gmail}
+        </p>
+        <p className="sum_detil_extra">
+          <b>Your Facility:</b> {booking.gym === "true" && <span>Gym</span>}
+          {booking.pool === "true" && <span>Pool</span>}
+          {booking.bar === "true" && <span>Bar</span>}
+          {booking.spa === "true" && <span>Spa</span>}
+          {booking.vehicle === "true" && <span>Vehicle</span>}
+          {booking.dayplan === "true" && <span>Day Plan</span>}
+          {booking.specialday === "true" && <span>Special Day</span>}
+          {booking.petfriend === "true" && <span>Pet Friend</span>}
+        </p>
+        <p className="sum_detil_extra tot">
+          <b>Total:</b>
+          Rs.{booking.total}.00
+        </p>
+        {/* Add more booking details as needed */}
+        <button className="booknow_btn" onClick={() => window.print()}>
+          Download
+        </button>
+        <button  onClick={() => (window.location.href = "/payment")} className="booknow_btn">Pay</button>
+        <button
+          className="booknow_btn"
+          onClick={() => (window.location.href = "/bookingvalidate")}
+        >
+          My Booking
+        </button>
+      </div>
+    </div>
     </div>
   );
 }
