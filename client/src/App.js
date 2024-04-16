@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div>
-        
+
       <BrowserRouter>
         <ToastContainer />
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -160,7 +160,7 @@ function App() {
             <Route path="/addroom" element={<AddRoom />} />
             <Route path="/roomtable" element={<RoomTable />} />
             <Route exact path="/room-details/:id" element={<RoomDetails />} />
-            
+
 
             <Route path="/edit/:id" element={<Edit />} />
             {/* Add the missing closing parenthesis */}
@@ -184,17 +184,17 @@ function App() {
 
             {/* Food Ordering Kavish*/}
 
-              {/* Admin-Food Adding */}
-          <Route exact path="/add-food" element={<AddFood />} />
-          <Route exact path="/admin-foods" element={<FoodTable />} />
+            {/* Admin-Food Adding */}
+            <Route exact path="/add-food" element={<AddFood />} />
+            <Route exact path="/admin-foods" element={<FoodTable />} />
 
-          {/* User-Food Display,Order */}
-          <Route exact path="/food" element={<Foods />} />
-          <Route exact path="/food-details/:id" element={<FoodDetails />} />
-          <Route exact path="/add-to-cart" element={<AddToCart />} />
-          <Route exact path="/view-cart" element={<FoodCarts />} />
-          <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
-          <Route path="/update-cart/:id" element={<FoodEditCartItem />} /> 
+            {/* User-Food Display,Order */}
+            <Route exact path="/food" element={<Foods />} />
+            <Route exact path="/food-details/:id" element={<FoodDetails />} />
+            <Route exact path="/add-to-cart" element={<AddToCart />} />
+            <Route exact path="/view-cart" element={<FoodCarts />} />
+            <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
+            <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
 
            {/* Add review charuka*/} 
            <Route path="/allrate" element={<RateDetails />} />

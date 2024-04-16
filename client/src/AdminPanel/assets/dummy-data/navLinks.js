@@ -44,6 +44,16 @@ const navLinks = [
     icon: "ri-bowl-line",
     display: "Add Foods",
   },
+  {
+    path: "/add-food",
+    icon: "ri-star-half-line",
+    display: "Reviews",
+  },
+  {
+    path: "/add-food",
+    icon: "ri-star-half-line",
+    display: "Reviews",
+  },
   
 
 ];
