@@ -192,7 +192,7 @@ function App() {
           <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
           <Route path="/update-cart/:id" element={<FoodEditCartItem />} /> 
 
-          <Route path="/addrates" element={<AddRate/>} /> 
+          <Route path="/addrate" element={<AddRate/>} /> 
 
           </Routes>
         </GoogleOAuthProvider>
