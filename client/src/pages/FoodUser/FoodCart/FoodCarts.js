@@ -34,7 +34,7 @@ const Carts = () => {
 
   const handleRemoveFromCart = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/carts/${id}`);
+      await axios.delete(`http://localhost:3001/carts/${id}`);
       setCarts((prevCarts) => prevCarts.filter((cart) => cart._id !== id));
       alert("Item removed from cart successfully.");
     } catch (error) {

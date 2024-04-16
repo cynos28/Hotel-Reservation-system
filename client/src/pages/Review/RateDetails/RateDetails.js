@@ -3,7 +3,7 @@ import axios from "axios";
 import Rateing from "./Rates";
 import { useReactToPrint } from "react-to-print";
 import "./rate.css";
-const URL = "http://localhost:8080/rates";
+const URL = "http://localhost:3001/rates";
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);

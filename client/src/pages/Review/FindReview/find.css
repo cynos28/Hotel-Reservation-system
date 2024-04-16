@@ -9,7 +9,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
     margin: 0 0 20px 0;
-    border: 1px solid #A14545;
+    border: 1px solid #03c9876e;
     padding: 10px;
     border-radius: 3px;
     cursor: pointer;
@@ -21,7 +21,7 @@
 }
 .rate_full_box_input{
     width: 100%;
-    border: 2px solid #A14545;
+    border: 2px solid #03c9876e;
     font-size: 16px;
     padding: 4px 10px;
     border-radius: 3px;

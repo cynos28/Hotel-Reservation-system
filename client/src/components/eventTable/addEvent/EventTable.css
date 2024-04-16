@@ -76,7 +76,7 @@
 }
 
 /* Add Event button styles */
-.add-Event-button {
+.EventTableContainer .add-Event-button {
     display: block;
     width: fit-content;
     padding: 10px 20px;
@@ -86,7 +86,53 @@
     text-decoration: none;
     margin: 20px auto 0; /* Center the button horizontally and add top margin */
 }
-.add-Event-button:hover {
+.EventTableContainer .add-Event-button:hover {
     opacity: 0.8;
 }
 
+.EventTableContainer .generate-event-button {
+    background-color: darkblue; /* Set the background color to blue */
+    color: white; /* Set the text color to white */
+    border: none; /* Remove border */
+    border-radius: 25px; /* Set border radius for curved corners */
+    padding: 10px 20px; /* Add padding for better appearance */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    margin-left: 900px;
+    margin-bottom: 30px;
+  }
+  
+  .EventTableContainer .generate-event-button:hover {
+    background-color: #292f89; /* Darken the background color on hover */
+    text-decoration: underline;
+  }
+
+  /* Style for the search container */
+  .EventTableContainer .search-container {
+    position: relative;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  /* Style for the search input */
+  .search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Style for the search input placeholder */
+  .search-container input[type="text"]::placeholder {
+    color: #999;
+  }
+  
+  /* Style for the search input when focused */
+  .search-container input[type="text"]:focus {
+    border-color: #007bff;
+  }
+  
+
+  
