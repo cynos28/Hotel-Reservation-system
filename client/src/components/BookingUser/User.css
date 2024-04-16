@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.booking_form {
+  width: 750px;
+  border-radius: 8px;
+
+  padding: 25px;
+  border: 2px solid white;
+  margin: 50px auto;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.form_box {
+  display: flex;
+}
+.left_box {
+  flex: 1;
+  padding: 0 20px 0 0;
+}
+.right_box {
+  flex: 1;
+}
+.booking_header {
+  font-size: 30px;
+  width: 90%;
+  padding-bottom: 25px;
+  margin-bottom: 12px;
+  border-bottom: 3px solid black;
+}
+.booking-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.booking-input {
+  padding: 3px 10px;
+  width: 90%;
+  margin: 5px 0;
+  border-radius: 3px;
+  font-size: 15px;
+  border: 1px solid gray;
+}
+.bookbtn {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  background-color: gray;
+  border: 2px solid gray;
+}
+.imgbox {
+  height: 200px;
+  width: 250px;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: gray;
+}
+.nameimg {
+  display: flex;
+  height: 200px;
+  font-weight: bold;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.bock_topic {
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+.sum_detail {
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+.box_sum {
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  width: 450px;
+}
+.sumry_box {
+  display: flex;
+  margin: 0 auto;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.btn_dash_admin {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  margin-top: 20px;
+  background-color: gray;
+  border: 2px solid gray;
+}
+.btn_print {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 20px;
+  background-color: gray;
+  border: 2px solid gray;
+}
+.btnset {
+  display: flex;
+  justify-content: space-between;
+}
+.serch_inpt {
+  padding: 5px 10px;
+  width: 90%;
+  margin: 5px 0;
+  border-radius: 3px;
+  font-size: 15px;
+  border: 1px solid gray;
+}
+.lftbtn {
+  margin-left: 45px;
+}

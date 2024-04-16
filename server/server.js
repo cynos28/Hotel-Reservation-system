@@ -58,6 +58,11 @@ app.use("/api/users/:userId/cards", cardRoute); // payment-Isha
 app.use("/api/bookings/:bookingId/payments", paymentRoute);
 app.use("/api/payments", paymentRoute);
 
+//BookingRoute//Nilan
+const bookingRouter = require("./routes/BookingRoute.js");
+
+app.use("/bookings", bookingRouter);
+
 
 app.get("/", (req, res) => {
   res.send("Home Page");
