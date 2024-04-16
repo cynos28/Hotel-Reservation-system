@@ -10,13 +10,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #A14545; /* Color of the scrollbar handle */
+  background: #03c9876e; /* Color of the scrollbar handle */
   border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #A14545; /* Color of the scrollbar handle on hover */
+  background: #03c9876e; /* Color of the scrollbar handle on hover */
 }
 
 .rate_home_container {
@@ -27,6 +27,7 @@
   align-items: center;
   width: 100%;
   gap: 30px;
+  
 }
 
 .rate_home_left_box {
@@ -46,7 +47,7 @@
 }
 
 .q_box_img_rate {
-  border: 10px solid #A14545;
+  border: 10px solid #03c9876e;
   border-radius: 30px;
   width: 100%;
 }
@@ -58,7 +59,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-transform: capitalize;
   margin: 0 0 20px 0;
-  border: 1px solid #A14545;
+  border: 1px solid #03c9876e;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -81,10 +82,11 @@
 .colum_two_revi,
 .colum_thre_revi {
   flex: 1;
+  font-size: 20px;
 }
 
 .colum_two_revi {
-  border: 1px solid #A14545;
+  border: 1px solid #03c9876e;
   height: 11px;
   border-radius: 5px;
   margin: 0 55px 0 0;
@@ -93,19 +95,19 @@
   width: 80%;
   border-radius: 4px;
   height: 10px;
-  background-color: #A14545;
+  background-color: #03c9876e;
 }
 .colum_two_revi_sub_two {
   width: 70%;
   border-radius: 4px;
   height: 10px;
-  background-color: #A14545;
+  background-color: #03c9876e;
 }
 .colum_two_revi_sub_thre {
   width: 90%;
   border-radius: 4px;
   height: 10px;
-  background-color: #A14545;
+  background-color: #03c9876e;
 }
 .profile_icon {
   width: 50px;
@@ -114,7 +116,7 @@
   width: 550px;
   text-transform: capitalize;
   margin-top: 25px;
-  border: 1px solid #A14545;
+  border: 1px solid #03c9876e;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -128,8 +130,8 @@
   font-weight: 500;
 }
 .show_all_btn {
-  background-color: #A14545;
-  border: 2px solid #f1211a;
+  background-color: #03c9876e;
+  border: 2px solid #03c9876e;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -143,8 +145,8 @@
 }
 .show_all_btn:hover {
   background-color: white;
-  border: 2px solid #A14545;
-  color: #A14545;
+  border: 2px solid #03c9876e;
+  color: #03c9876e;
 }
 .btn_container_rate {
   display: flex;
@@ -152,8 +154,8 @@
   margin: 25px 25px 0 25px;
 }
 .updtbtn {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
+  background-color: #03c9876e;
+  border: 2px solid #03c9876e;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -165,8 +167,8 @@
   padding: 4px 10px;
 }
 .dltbtn {
-  background-color: #A14545;
-  border: 2px solid #A14545;
+  background-color: #03c9876e;
+  border: 2px solid #03c9876e;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -178,7 +180,8 @@
   padding: 4px 10px;
 }
 .rate-us {
-  color: #A14545;
+  color: #03c9876e;
+  
 }
 
 .rate_star_box{

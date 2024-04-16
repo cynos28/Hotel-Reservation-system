@@ -35,7 +35,7 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #A14545;
+  border: 1px solid #03c9876e;
   border-radius: 10px;
  
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
@@ -75,14 +75,14 @@
 }
 .rate_text_area {
   resize: none;
-  height: 80px;
+  height: 180px;
 }
 .rate-us {
-  color: #A14545;
+  color: #03c9876e;
 }
 .rate-add-btn {
-  background-color: #A14545;
-  border: 2px solid #A14545;
+  background-color: #03c9876e;
+  border: 2px solid #03c9876e;
   font-family: roboto;
   color: white;
   font-family: "Roboto", sans-serif;
@@ -102,16 +102,16 @@
 
 .rate-add-btn:hover {
   background-color: white;
-  color: #A14545;
+  color: #03c9876e;
 }
 
 .button_ad_review {
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
-  background-color: #A14545;
+  background-color: #03c9876e;
   color: #fff;
-  border: 2px solid #f1211a;
+  border: 2px solid #03c9876e;
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
@@ -120,8 +120,8 @@
 }
 .button_ad_review:hover {
   background-color: white;
-  color: #A14545;
-  border: 2px solid #A14545;
+  color: #03c9876e;
+  border: 2px solid #03c9876e;
   border-radius: 10px;
 }
 .main_btn_topic {
@@ -135,7 +135,7 @@
   margin: 8px 0;
   font-size: 18px;
   color: black;
-  border: 2px solid #A14545;
+  border: 2px solid #03c9876e;
   border-radius: 10px;
   padding: 4px 2px;
 }
@@ -238,7 +238,7 @@
   padding: 20px 12px;
   background-color: rgba(167, 196, 210, var(--tw-bg-opacity));
   width: 400px;
-  border: 2px solid #A14545;
+  border: 2px solid #03c9876e;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: auto;
@@ -260,7 +260,7 @@
   width: 450px;
   text-transform: capitalize;
   margin-top: 25px;
-  border: 1px solid #A14545;
+  border: 1px solid #03c9876e;
   border-radius: 3px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -272,7 +272,7 @@
 }
 .serch_inpt {
   width: 100%;
-  border: 2px solid #A14545;
+  border: 2px solid #03c9876e;
   font-size: 16px;
   padding: 4px 10px;
   border-radius: 3px;
@@ -285,8 +285,8 @@
   margin: 20px auto 0 auto;
 }
 .search_btn {
-  background-color: #A14545;
-  border: 2px solid #A14545;
+  background-color: #03c9876e;
+  border: 2px solid #03c9876e;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -297,6 +297,6 @@
 }
 .search_btn:hover {
   background-color: white;
-  border: 2px solid #A14545;
-  color: #A14545;
+  border: 2px solid #03c9876e;
+  color: #03c9876e;
 }

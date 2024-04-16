@@ -1,10 +1,13 @@
 import React from "react";
 import user from "../Add-Rates/img/user_logo.png";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 function Rates(props) {
   const { _id, date , name, ratestar, comment } = props.rate;
 
   return (
     <div>
+      
       <div>
         <div>
           <div className="details_box_displya">
@@ -87,6 +90,7 @@ function Rates(props) {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

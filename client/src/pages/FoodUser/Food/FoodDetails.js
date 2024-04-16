@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
-import"./foodDetails.css";
+import "./foodDetails.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 
 const FoodDetails = () => {
   const { id } = useParams();
@@ -35,6 +37,9 @@ const FoodDetails = () => {
 
   return (
     <div>
+       <Header/>
+    <div>
+     
       <div className="tem_open">
         <div>
           <h3 className="itemname">{name}</h3>
@@ -63,6 +68,9 @@ const FoodDetails = () => {
           </div>
         </div>
       </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 };
