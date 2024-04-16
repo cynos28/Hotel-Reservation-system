@@ -28,7 +28,7 @@ const Food = ({ food, onDelete }) => {
       </td>
       <td className="admin_tbl_td">{name}</td>
       <td className="admin_tbl_td">{time} minutes</td>
-      <td className="admin_tbl_td">${price}</td>
+      <td className="admin_tbl_td">Rs {price}.00</td>
       <td className="admin_tbl_td">{tag}</td>
       <td className="admin_tbl_td">
         <button className="dltbtn" onClick={handleDelete}>

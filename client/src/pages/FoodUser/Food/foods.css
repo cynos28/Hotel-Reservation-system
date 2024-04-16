@@ -26,10 +26,18 @@
     font-size: 24px;
     cursor: pointer;
   }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   
   /* Search Input and Button */
-  .pdn_itmdetil {
+  .pdn_itmdetil { 
     margin-top: 20px;
+    align-content: center;
   }
   
   .pdn_itmdetil input[type="text"] {
@@ -49,6 +57,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-bottom: 20px;
   }
   
   .updtbtn:hover {

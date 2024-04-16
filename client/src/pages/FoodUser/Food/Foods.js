@@ -81,7 +81,7 @@ const Foods = () => {
     <div>
       <Header />
       <div className="pdn_itmdetil">
-      <div>
+      <div className="search"> 
         <input
           type="text"
           placeholder="Search..."
