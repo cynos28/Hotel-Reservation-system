@@ -67,7 +67,6 @@ import AddRate from "./pages/Review/Add-Rates/AddRate.js";
 import FindReview from "./pages/Review/FindReview/FindReview.js";
 import RateDetails from "./pages/Review/RateDetails/RateDetails.js";
 import UpdateReview from "./pages/Review/UpdateReview/UpdateReview.js";
-
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -187,6 +186,7 @@ function App() {
             {/* Admin-Food Adding */}
             <Route exact path="/add-food" element={<AddFood />} />
             <Route exact path="/admin-foods" element={<FoodTable />} />
+
 
             {/* User-Food Display,Order */}
             <Route exact path="/foods" element={<Foods />} />

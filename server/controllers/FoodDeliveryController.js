@@ -14,7 +14,7 @@ const getAllDeliveries = async (req, res, next) => {
 };
 
 const addDelivery = async (req, res, next) => {
-  const { name, phone, time, date, address, location } = req.body;
+  const { name, phone, time, date, address} = req.body;
 
   let dili;
 
@@ -25,7 +25,6 @@ const addDelivery = async (req, res, next) => {
       time,
       date,
       address,
-      location,
     });
     await dili.save();
   } catch (err) {

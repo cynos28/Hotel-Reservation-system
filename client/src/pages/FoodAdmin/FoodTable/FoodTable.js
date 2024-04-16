@@ -77,6 +77,7 @@ const Foods = () => {
     setFoods(filtered);
     setNoResults(filtered.length === 0);
   };
+
   /*PDF Function */
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
@@ -84,6 +85,7 @@ const Foods = () => {
     DocumentTitle: " Details Report",
     onafterprint: () => alert(" Details Report Successfully Download !"),
   });
+  
   return (
     <div>
       <h1 className="cart-header">Food Items List</h1>

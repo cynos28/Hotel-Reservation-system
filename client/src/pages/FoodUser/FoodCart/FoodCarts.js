@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 
 const Carts = () => {
   const [carts, setCarts] = useState([]);
@@ -44,11 +46,12 @@ const Carts = () => {
   };
 
   return (
+    <div><Header/>
     <div className="card_ful_cart">
       <h2 className="carts-header">Cart Details</h2>
       <div className="button-container">
         <button
-          onClick={() => (window.location.href = "/food")}
+          onClick={() => (window.location.href = "/foods")}
           className="add-new-button"
         >
           Add New
@@ -110,6 +113,8 @@ const Carts = () => {
           )}
         </div>
       )}
+    </div>
+      <Footer/>
     </div>
   );
 };

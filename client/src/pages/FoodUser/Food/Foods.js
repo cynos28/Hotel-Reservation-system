@@ -96,7 +96,7 @@ const Foods = () => {
         <div className="tags_container">
           <button
             className="filterbtn"
-            onClick={() => (window.location.href = "/food")}
+            onClick={() => (window.location.href = "/foods")}
           >
             all
           </button>
