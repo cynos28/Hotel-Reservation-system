@@ -41,7 +41,7 @@ function AddRate() {
   };
 
   const sendRequest = async () => {
-    await axios.post("http://localhost:8080/rates", {
+    await axios.post("http://localhost:3001/rates", {
       date: inputs.date,
       name: inputs.name,
       gmail: inputs.gmail,
