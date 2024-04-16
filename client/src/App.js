@@ -198,7 +198,7 @@ function App() {
 
            {/* Add review charuka*/} 
            <Route path="/allrate" element={<RateDetails />} />
-          <Route path="/addrate" element={<AddRate />} />
+          <Route path="/rates" element={<AddRate />} />
           <Route path="/findrate" element={<FindReview />} />
           <Route path="/updatereview/:id" element = {<UpdateReview/>}/>
 
