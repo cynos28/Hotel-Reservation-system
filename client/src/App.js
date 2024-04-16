@@ -63,7 +63,7 @@ import AddPayment from "./pages/Payments/AddPayment";
 import CardDetails from "./pages/Payments/CardDetails";
 import PaymentSummary from "./pages/Payments/PaymentSummary";
 
-
+import AddRate from "./pages/Review/Add-Rates/AddRate.js";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -192,6 +192,7 @@ function App() {
           <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
           <Route path="/update-cart/:id" element={<FoodEditCartItem />} /> 
 
+          <Route path="/addrate" element={<AddRate/>} /> 
 
           </Routes>
         </GoogleOAuthProvider>
