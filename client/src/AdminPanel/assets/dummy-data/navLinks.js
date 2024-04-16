@@ -45,7 +45,7 @@ const navLinks = [
     display: "Add Foods",
   },
   {
-    path: "/add-food",
+    path: "/allrate",
     icon: "ri-star-half-line",
     display: "Reviews",
   },
