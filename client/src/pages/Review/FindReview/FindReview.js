@@ -56,8 +56,9 @@ function FindReview() {
   };
 
   return (
+    
     <div className="rateee_full_box">
-      <Header/>
+      
       <div className="">
         <h1 className="rate-topic">
           Your <span className="rate-us"> Reviews</span>{" "}
@@ -200,7 +201,6 @@ function FindReview() {
           ))}
         </div>
       </div>
-      <Footer/>
     </div>
   );
 }
