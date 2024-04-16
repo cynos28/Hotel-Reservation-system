@@ -1,79 +1,106 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const  ReservationRoutes = require ('./routes/ReservationRoutes')
+const Booking = require("../models/BookingModel");
 
+const getAllBookings = async (req, res, next) => {
+  let bookings;
+  try {
+    bookings= await Booking.find();
+  } catch (err) {
+    console.log(err);
+  }
 
-const app = express();
-const cors = require('cors');
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json());
+  if (!bookings|| bookings.length === 0) {
+    return res.status(404).json({ message: "No Bookings found" });
+  }
+  return res.status(200).json({ bookings });
+};
 
+const getBookingById = async (req, res, next) => {
+  const id = req.params.id;
+  let booking;
+  try {
+    booking = await Booking.findById(id);
+  } catch (err) {
+    console.log(err);
+  }
+  if (!booking) {
+    return res.status(404).json({ message: "Booking not found" });
+  }
+  return res.status(200).json({ booking});
+};
 
-require("./db/connection");
-const booking = require("./Models/UserDetails") ;
-const { reset } = require('nodemon');
+const addBooking = async (req, res, next) => {
+  const { name, email, address, city, code, phone, adults, kids, room, request } = req.body;
+  let newBooking;
+  try {
+    newBooking = new Booking({
+      name,
+      email,
+      address,
+      city,
+      code,
+      phone,
+      adults,
+      kids,
+      room,
+      request,
+    });
+    await newBooking.save();
+  } catch (err) {
+    console.log(err);
+  }
 
+  if (!newBooking) {
+    return res.status(500).json({ message: "Unable to add Booking" });
+  }
+  return res.status(201).json({ booking: newBooking});
+};
 
-//route
+const updateBooking = async (req, res, next) => {
+  const id = req.params.id;
+  const { name, email, address, city, code, phone, adults, kids, room, request } = req.body;
+  let bookingToUpdate;
+  try {
+    bookingToUpdate = await Booking.findById(id);
+    if (!bookingToUpdate) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+    bookingToUpdate.name = name;
+    bookingToUpdate.email = email;
+    bookingToUpdate.address = address;
+    bookingToUpdate.city = city;
+    bookingToUpdate.code = code;
+    bookingToUpdate.phone = phone;
+    bookingToUpdate.adults = adults;
+    bookingToUpdate.kids = kids;
+    bookingToUpdate.room = room;
+    bookingToUpdate.request = request;
+    await bookingToUpdate.save();
+  } catch (err) {
+    console.log(err);
+  }
 
+  if (!bookingToUpdate) {
+    return res.status(500).json({ message: "Unable to update Booking" });
+  }
+  return res.status(200).json({ booking: bookingToUpdate });
+};
 
+const deleteBooking = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const booking = await Booking.findByIdAndDelete(id);
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+    res.status(200).json({ message: "Booking deleted successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
-
-//create data -- save to mongoDB
-const  createbooking = async(req,res)=>{
-    let Booking = new booking (req.body);
-    let result = await Booking.save();
-    res.send(result);
-
-}
-
-//Get All Data
-const getAll = async (req,res)=>{
-    let result = await booking.find({})
-    res.json({success : true , data : result})
-
-}
-
-//Get unique id
-const getone = async(req,res,)=>{
-    const id = req.params.id
-    booking.findById({_id:id})
-    .then(post => res.json(post))
-    .catch(err => console.log(err));
-}
-    
-
-//update task
-
-const updatebooking = async(req,res)=>{
-    const id = req.params.id;
-    booking.findByIdAndUpdate({_id:id},{
-        name:req.body.name,
-        NIC : req.body.NIC,
-        email : req.body.email,
-        phonenumber : req.body.phonenumber,
-        country: req.body.country,
-        adults:req.body.adults,
-        kids:req.body.kids,
-    }).then(booking=>res.json(booking))
-    .catch(err => res.json(err))
-}
-
-
-//delete data  ​http://localhost:4000/delete
-const Deletebooking = async(req,res)=>{
-    const id = req.params.id;
-    console.log(id)
-    let result = await booking.deleteOne({_id:id})
-    res.send({success: true,  message:"Data Deleted  Successfull",data : result})
-}
- 
-app.listen(4000);
-
-module.exports ={
-    createbooking ,getAll,getone ,updatebooking,Deletebooking 
-}
-
-
+exports.getAllBookings = getAllBookings;
+exports.addBooking = addBooking;
+exports.getBookingById = getBookingById;
+exports.updateBooking = updateBooking;
+exports.deleteBooking = deleteBooking;

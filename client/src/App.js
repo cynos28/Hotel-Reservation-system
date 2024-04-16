@@ -68,10 +68,13 @@ import FindReview from "./pages/Review/FindReview/FindReview.js";
 import RateDetails from "./pages/Review/RateDetails/RateDetails.js";
 import UpdateReview from "./pages/Review/UpdateReview/UpdateReview.js";
 
-//Nilan Pages
-import BookingPage from './pages/booking/BookingPage.js';
-import Reservations from './pages/booking/Reservations.js';
-import UpdateDetails from './pages/booking/UpdateDetails.js';
+//BookingUser
+import AddBooking from "./components/BookingUser/AddBooking/AddBooking.js";
+import MyBooking from "./components/BookingUser/Booking/MyBooking.js";
+          
+//BookingAdmin
+import Booking from "./components/BookingAdmin/Booking/Booking/Bookings.js";
+import UpdateBooking from "./components/BookingAdmin/Booking/Booking/UpdateBooking.js";
 
 axios.defaults.withCredentials = true;
 
@@ -206,6 +209,16 @@ function App() {
           <Route path="/rates" element={<AddRate />} />
           <Route path="/findrate" element={<FindReview />} />
           <Route path="/updatereview/:id" element = {<UpdateReview/>}/>
+
+
+
+          {/* BookingUser Route */}
+          <Route exact path="/booking" element={<AddBooking />} />
+          <Route exact path="/my-booking/:id" element={<MyBooking />} />
+
+            {/* Admin Routes */}
+          <Route exact path="/view-booking" element={<Booking />} />
+          <Route exact path="/update-room/:id" element={<UpdateBooking />} />
 
           </Routes>
         </GoogleOAuthProvider>
