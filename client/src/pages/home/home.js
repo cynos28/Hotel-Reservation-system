@@ -44,11 +44,7 @@ function home() {
         </div>
 
       </section>
-      <section>
-         
-          {/* <Rates /> */}
-
-      </section>
+     
 
     </div>
 
