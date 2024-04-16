@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -7,12 +7,17 @@ import "./EventTable.css"; // Import custom CSS
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import { Trash, PencilSquare } from "react-bootstrap-icons"; // Import Bootstrap Icons
+import { useReactToPrint } from "react-to-print";
 
-const EventTable = () => {
+
+// Wrap the component with React.forwardRef to enable forwarding of ref
+const EventTable = React.forwardRef((props, ref) => {
+  // State variables
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("");
 
+  // Fetch data from API on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +32,7 @@ const EventTable = () => {
     fetchData();
   }, []);
 
+  // Function to delete a room/event
   const deleteRoom = async (eventId) => {
     try {
       const response = await axios.delete(
@@ -36,7 +42,7 @@ const EventTable = () => {
         prevEvents.filter((event) => event._id !== eventId)
       );
 
-      // Show SweetAlert upon successful deletion
+      // Show success message upon successful deletion
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -52,12 +58,30 @@ const EventTable = () => {
     }
   };
 
+  // Filter events based on search term and filter value
   const filteredEvents = events.filter(
     (event) =>
       event.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filterValue === "" || event.cap > parseInt(filterValue))
   );
 
+  /* PDF Function */
+  // Create a ref to the printable content
+  const ComponentsRef = useRef();
+  // Define the function to handle printing
+  const handlePrint = useReactToPrint({
+    content: () => ComponentsRef.current, // Specify the content to print
+    DocumentTitle: "Event Details Report", // Specify the document title
+    onAfterPrint: () => Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Event Report Downloaded Successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    }) // Callback after printing
+  });
+
+  // JSX
   return (
     <div>
       <TopNav />
@@ -68,12 +92,19 @@ const EventTable = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by room name"
+            placeholder=" Search By Event Name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <table style={{ marginLeft: "100px" }}>
+
+        {/* Button to trigger printing */}
+        <button onClick={handlePrint} className="generate-event-button">
+          Download Report
+        </button>
+
+        {/* Table to display event data */}
+        <table style={{ marginLeft: "100px" }} ref={ComponentsRef}>
           <thead>
             <tr>
               <th scope="col" style={{ width: "100px" }}>
@@ -144,19 +175,21 @@ const EventTable = () => {
                     to={`/EventTable/EditEvent/${event._id}`}
                     className="btn btn-outline-primary"
                   >
-                    <PencilSquare /><br/> Edit
+                    <PencilSquare />
+                    <br /> Edit
                   </Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {/* Link to add a new event */}
         <Link to={"/addEvent"} className="add-Event-button">
           Add Event
         </Link>
       </div>
     </div>
   );
-};
+});
 
 export default EventTable;
