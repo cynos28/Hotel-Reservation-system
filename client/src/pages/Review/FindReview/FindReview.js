@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import user from "../Add-Rates/img/user_logo.png";
 import "./find.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 function FindReview() {
   const [gmail, setGmail] = useState("");
   const [rates, setRates] = useState([]);
@@ -16,7 +18,7 @@ function FindReview() {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `http://localhost:8080/rates?gmail=${gmail}`
+        `http://localhost:3001/rates?gmail=${gmail}`
       );
       console.log("Response:", response.data); // Log the response for debugging
 
@@ -43,7 +45,7 @@ function FindReview() {
 
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:8080/rates/${rateId}`);
+        await axios.delete(`http://localhost:3001/rates/${rateId}`);
         window.alert("rates details deleted successfully!");
         window.location.reload();
       } catch (error) {
@@ -55,6 +57,7 @@ function FindReview() {
 
   return (
     <div className="rateee_full_box">
+      <Header/>
       <div className="">
         <h1 className="rate-topic">
           Your <span className="rate-us"> Reviews</span>{" "}
@@ -197,6 +200,7 @@ function FindReview() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

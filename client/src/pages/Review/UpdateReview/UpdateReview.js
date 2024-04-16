@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useParams } from "react-router";
 import "../RateDetails/rate.css";
+import Footer from "../../../components/footer/Footer";
 
 function UpdateReview() {
   const [inputs, setInputs] = useState({});
@@ -12,7 +13,7 @@ function UpdateReview() {
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
-        .get(`http://localhost:8080/rates/${id}`)
+        .get(`http://localhost:3001/rates/${id}`)
         .then((res) => res.data)
         .then((data) => setInputs(data.rate));
     };
@@ -21,7 +22,7 @@ function UpdateReview() {
 
   const sendRequest = async () => {
     try {
-      await axios.put(`http://localhost:8080/rates/${id}`, {
+      await axios.put(`http://localhost:3001/rates/${id}`, {
         date: String(inputs.date),
         name: String(inputs.name),
         gmail: String(inputs.gmail),
@@ -53,6 +54,7 @@ function UpdateReview() {
 
   return (
     <div>
+      <Headers/>
       <div className="rate_f_box">
         <div>
           <h1 className="rate-topic">
@@ -173,6 +175,7 @@ function UpdateReview() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

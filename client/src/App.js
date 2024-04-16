@@ -64,6 +64,10 @@ import CardDetails from "./pages/Payments/CardDetails";
 import PaymentSummary from "./pages/Payments/PaymentSummary";
 
 import AddRate from "./pages/Review/Add-Rates/AddRate.js";
+import FindReview from "./pages/Review/FindReview/FindReview.js";
+import RateDetails from "./pages/Review/RateDetails/RateDetails.js";
+import UpdateReview from "./pages/Review/UpdateReview/UpdateReview.js";
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -185,14 +189,18 @@ function App() {
             <Route exact path="/admin-foods" element={<FoodTable />} />
 
             {/* User-Food Display,Order */}
-            <Route exact path="/food" element={<Foods />} />
+            <Route exact path="/foods" element={<Foods />} />
             <Route exact path="/food-details/:id" element={<FoodDetails />} />
             <Route exact path="/add-to-cart" element={<AddToCart />} />
             <Route exact path="/view-cart" element={<FoodCarts />} />
             <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
             <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
 
-            <Route path="/addrate" element={<AddRate />} />
+           {/* Add review charuka*/} 
+           <Route path="/allrate" element={<RateDetails />} />
+          <Route path="/rates" element={<AddRate />} />
+          <Route path="/findrate" element={<FindReview />} />
+          <Route path="/updatereview/:id" element = {<UpdateReview/>}/>
 
           </Routes>
         </GoogleOAuthProvider>

@@ -44,7 +44,6 @@ function AddDelivery() {
       <h2 className="cart-header">Add New Delivery</h2>
       <form className="cart-form" onSubmit={handleSubmit}>
         <label className="cart-label">Name:</label>
-        <br></br>
         <input
           className="cart-input"
           type="text"
@@ -54,8 +53,8 @@ function AddDelivery() {
           required
         />
         <br></br>
-        <label className="cart-label">Phone:</label>
         <br></br>
+        <label className="cart-label">Phone:</label>
         <input
           className="cart-input"
           type="text"
@@ -65,8 +64,8 @@ function AddDelivery() {
           required
         />
         <br></br>
-        <label className="cart-label">Time:</label>
         <br></br>
+        <label className="cart-label">Time:</label>
         <input
           className="cart-input"
           type="time"
@@ -76,9 +75,8 @@ function AddDelivery() {
           required
         />
         <br></br>
-        <label className="cart-label">Date:</label>
-
         <br></br>
+        <label className="cart-label">Date:</label>
         <input
           className="cart-input"
           type="date"
@@ -88,9 +86,9 @@ function AddDelivery() {
           required
         />
         <br />
+        <br></br>
         <label className="cart-label">Address:</label>
 
-        <br></br>
         <input
           className="cart-input"
           type="text"
@@ -100,9 +98,9 @@ function AddDelivery() {
           required
         />
         <br />
+        <br></br>
         <label className="cart-label">Location:</label>
 
-        <br></br>
         <input
           className="cart-input"
           type="text"
@@ -112,6 +110,7 @@ function AddDelivery() {
           required
         />
         <br />
+        <br></br>
         <button type="submit" className="viewbtn">
           Add Address
         </button>

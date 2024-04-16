@@ -4,6 +4,7 @@ import Footer from '../../components/footer/Footer'
 import "../home/home.css"
 import HeroImage from "../../assets/hero.jpg"
 import { Link } from 'react-router-dom';
+import Rates from '../Review/RateDetails/Rates'
 
 
 
@@ -43,6 +44,7 @@ function home() {
         </div>
 
       </section>
+     
 
     </div>
 
