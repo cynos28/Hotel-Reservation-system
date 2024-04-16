@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoMdCart } from "react-icons/io";
-import "../user.css";
+import "./foods.css";
 
 const Food = ({ food }) => {
   const { _id, name, image, time, price, tag } = food;

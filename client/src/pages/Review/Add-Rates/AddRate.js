@@ -256,12 +256,13 @@ function AddRate() {
           Show All Reviews
         </button>
 
-        {/*Data Insert Part Start */}
+        {/*Data Insert Start */}
         <div className="rate_f_box">
           <div>
+            
             <h1 className="rate-topic">
               Have You Been to Our{" "}
-              <span className="rate-us">Restaurant better ?</span>{" "}
+              <span className="rate-us">Hotel better ?</span>{" "}
             </h1>
             <div className="rate-full-box">
               <div>
@@ -375,7 +376,7 @@ function AddRate() {
             </div>
           </div>
         </div>
-        {/*Data Insert Part End */}
+        {/*Data Insert End */}
       </div>
     </div>
   );

@@ -10,25 +10,6 @@
   background-position: center; /* Center the background image */
 }
 
-::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgb(210, 209, 209); /* Color of the track */
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #65a4da; /* Color of the scrollbar handle */
-  border-radius: 8px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #65a4da; /*Color of the scrollbar handle on hover */
-}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -51,7 +32,7 @@ input[type="number"] {
   background-color: rgba(255, 255, 255, 0.7);
   width: 500px;
   font-family: "Roboto", sans-serif;
-  border: 2px solid #65a4da;
+  border: 2px solid #26b59b;
   border-radius: 5px;
   padding: 100px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -68,7 +49,7 @@ input[type="number"] {
 }
 .add_card_input {
   width: 100%;
-  border: 1.8px solid #65a3da91;
+  border: 1.8px solid #26b59b;
   font-size: 18px;
   border-radius: 2px;
   margin: 10px 0;
@@ -78,40 +59,19 @@ input[type="number"] {
   font-size: 20px;
   font-weight: bold;
   margin: 0px 0 20px 0;
-  color: #023765;
+  color: #006342dd;
 }
-/* .save_btn {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 20px;
-  justify-content: center;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: capitalize;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 4px 10px;
-  margin-bottom: 0px;
-}
-.save_btn {
-  background-color: white;
-  border: 2px solid #65a4da;
-  color: #65a4da;
-} */
 .card_save_btn {
   width: 100%;
-  background: linear-gradient(45deg, #25b12e6e, rgb(20, 155, 76));
+  background: linear-gradient(45deg, #26b59b, rgb(4, 146, 84));
   margin-top: 20px;
   padding: 10px;
   font-size: 20px;
+  font-weight: bold;
   color: #ffffff;
   cursor: pointer;
   transition: 0.2s linear;
+  box-shadow: #26b59b;
 }
 .card_save_btn:hover {
   letter-spacing: 2px;
