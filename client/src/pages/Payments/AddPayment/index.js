@@ -105,8 +105,8 @@ function AddPayment() {
       <Header />
       <div className="payment_container">
         <div className="pay_now_box">
-          <h1 className="main_book_topic">
-            Booking <span className="sub_book_topic">Now..!</span>
+          <h1 className="main_pay_topic">
+            Booking <span className="sub_pay_topic">Now..!</span>
           </h1>
           <form className="payment_form_pay" onSubmit={handleSubmit}>
             <div className="payment_form_pay_box">
