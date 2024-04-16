@@ -35,6 +35,7 @@ const AddStock = () => {
   };
 
   return (
+  
     <div className="cart-container">
       <h2 className="cart-header">Add New Food Item</h2>
       <form className="cart-form" onSubmit={handleSubmit}>
@@ -105,6 +106,7 @@ const AddStock = () => {
           </select>
         </div>
         <br></br>
+        
         {error && <p className="food-error-message">{error}</p>}
         <button className="viewbtn" type="submit">
           Add New Food

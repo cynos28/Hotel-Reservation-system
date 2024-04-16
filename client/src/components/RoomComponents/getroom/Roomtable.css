@@ -24,7 +24,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #031852;
+    border: 2px solid #031852;
     padding: 8px;
     text-align: left;
     font-size: 14px;
@@ -33,7 +33,7 @@ th, td {
 }
 
 th {
-    background-color: #031852;
+    background-color: #015258;
     font-size: 15px;
     font-weight: bold;
     color: #d2e3f0;
