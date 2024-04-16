@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import user from "../Add-Rates/img/user_logo.png";
 import "./find.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 function FindReview() {
   const [gmail, setGmail] = useState("");
   const [rates, setRates] = useState([]);
@@ -54,7 +56,9 @@ function FindReview() {
   };
 
   return (
+    
     <div className="rateee_full_box">
+      
       <div className="">
         <h1 className="rate-topic">
           Your <span className="rate-us"> Reviews</span>{" "}

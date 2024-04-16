@@ -3,7 +3,10 @@ import axios from "axios";
 import Rateing from "./Rates";
 import { useReactToPrint } from "react-to-print";
 import "./rate.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 const URL = "http://localhost:3001/rates";
+
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
@@ -36,6 +39,9 @@ function RateDetails() {
     });
   return (
     <div>
+  
+
+   
       <br></br> <br></br>
       <h1 className="rate-topic">
         Review & <span className="rate-us"> Ratings</span>
@@ -105,6 +111,7 @@ function RateDetails() {
           </div>
         )}
       </div>
+   
     </div>
   );
 }
