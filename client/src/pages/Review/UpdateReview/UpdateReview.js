@@ -12,7 +12,7 @@ function UpdateReview() {
   useEffect(() => {
     const fetchHandler = async () => {
       await axios
-        .get(`http://localhost:8080/rates/${id}`)
+        .get(`http://localhost:3001/rates/${id}`)
         .then((res) => res.data)
         .then((data) => setInputs(data.rate));
     };
@@ -21,7 +21,7 @@ function UpdateReview() {
 
   const sendRequest = async () => {
     try {
-      await axios.put(`http://localhost:8080/rates/${id}`, {
+      await axios.put(`http://localhost:3001/rates/${id}`, {
         date: String(inputs.date),
         name: String(inputs.name),
         gmail: String(inputs.gmail),
