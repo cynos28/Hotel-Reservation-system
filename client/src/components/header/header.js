@@ -1,5 +1,6 @@
 import React from 'react';
 import "./header.css";
+import "./dropdown.css";
 import { FaHotel } from "react-icons/fa6";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
@@ -30,16 +31,24 @@ function Header() {
                     <FaHotel size={35} color='#17D7A0' /> <span>The Heritage</span>
                 </div>
 
-                
+
                 <ul className="home-links">
-                    
-                <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Home</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/getroom" > <span>Rooms</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/events" > <span>Events</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Services</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/Gallery" > <span>Gallery</span> </Link></div>
-                <div style={{ marginTop: "-10px" }}> <Link to="/contactUs" > <span>Contact Us</span> </Link></div>
-                
+
+                    <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Home</span> </Link></div>
+                    <div style={{ marginTop: "-10px" }}> <Link to="/getroom" > <span>Rooms</span> </Link></div>
+                    <div style={{ marginTop: "-10px" }}> <Link to="/events" > <span>Events</span> </Link></div>
+
+                    <div class="paste-button">
+                        <button class="button">Services </button>
+                        <div class="dropdown-content">
+                            <a id="top" href="/food">Foods</a>
+                            <a id="middle" href="/events">Events</a>
+                            <a id="bottom" href="/extrafacilities">Extra Facilities</a>
+                        </div>
+                    </div>
+                    <div style={{ marginTop: "-10px" }}> <Link to="/Gallery" > <span>Gallery</span> </Link></div>
+                    <div style={{ marginTop: "-10px" }}> <Link to="/contactUs" > <span>Contact Us</span> </Link></div>
+
                     <ShowOnLogout>
                         <li>
                             <Link to="/login" >
