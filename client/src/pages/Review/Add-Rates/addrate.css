@@ -119,7 +119,7 @@
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  background-image: url('C:\Users\KZONE USER\Downloads\Reviews\Reviews\frontend\src\Components\Rates\Add-Rates\img\answer_boximage.PNG');
+  background-image: url('./img/boximage.jpg');
   opacity: 0.8;
 
 }
