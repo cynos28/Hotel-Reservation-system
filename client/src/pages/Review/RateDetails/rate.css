@@ -71,7 +71,7 @@
   margin-bottom: 25px;
   text-align: center;
   text-transform: capitalize;
-  color: #333;
+  color: bisque;
 }
 .rate_text_area {
   resize: none;
@@ -142,6 +142,7 @@
 .add_form_label {
   font-weight: 600;
   font-size: 18px;
+  color: #DACBA5;
 }
 .rate {
   float: right;

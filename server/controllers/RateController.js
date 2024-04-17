@@ -42,7 +42,7 @@ const getById = async (req, res, next) => {
   let rate;
 
   try {
-    rate = await Rate.findById(id);
+    rate = await Rate.findById(id);//call
   } catch (err) {
     console.log(err);
   }
