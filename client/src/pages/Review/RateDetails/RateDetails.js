@@ -40,10 +40,10 @@ function RateDetails() {
   return (
     <div>
   
+  <Header/>
 
    
       <br></br> <br></br>
-      <Header/>
       <h1 className="rate-topic">
       
         Review & <span className="rate-us"> Ratings</span>
