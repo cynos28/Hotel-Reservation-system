@@ -7,8 +7,13 @@ import Vehical from "./img/taxxi.jpg";
 import Day from "./img/six.jpg";
 import Specitiol from "./img/five.jpg";
 import Pet from "./img/for.jpg";
+import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 function Category() {
   return (
+    <>
+     <Header />
+    
     <div className="backimg1">
       <div>
         <h1 className="topic_extra">
@@ -91,12 +96,14 @@ function Category() {
       </div>
       <button
         className="centerbtn_extra"
-        onClick={() => (window.location.href = "/booking")}
+        onClick={() => (window.location.href = "/bookingsextras")}
       >
         Book Now
       </button>
       <br /> <br />
     </div>
+    <Footer />
+    </>
   );
 }
 

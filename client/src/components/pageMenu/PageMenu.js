@@ -17,7 +17,7 @@ function PageMenu() {
       </NavLink>
     </li>
     <li>
-      <NavLink to="/Bookings"  >
+      <NavLink to="/Booking"  >
         Bookings
       </NavLink>
     </li>
