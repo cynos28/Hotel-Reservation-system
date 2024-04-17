@@ -14,23 +14,19 @@ const navLinks = [
     icon: "ri-user-3-fill",
     display: "Users",
   },
-  {
-    path: "/getroom",
-    icon: "ri-building-4-fill",
-    display: "Current Rooms",
-  },
+
   {
     path: "/roomtable",
     icon: "ri-building-4-fill",
     display: "Room Info",
   },
- {
+  {
     path: "/EventTable",
     icon: "ri-calendar-event-line",
     display: "Events",
   },
   {
-    path: "",
+    path: "/payments",
     icon: "ri-bank-card-fill",
     display: "Payments",
   },
@@ -59,8 +55,6 @@ const navLinks = [
     icon: "ri-billiards-line",
     display: "Extra Facilities",
   },
-  
-
 ];
 
 export default navLinks;
