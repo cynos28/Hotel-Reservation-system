@@ -5,6 +5,8 @@ import "../RateDetails/rate.css";
 import "./addrate.css";
 import Question from "./img/Freq1.PNG";
 import user from "./img/user_logo.png";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 function AddRate() {
   /*Insert Part Start*/
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ function AddRate() {
 
   return (
     <div>
+      <Header/>
       <div className="rate_home_container">
         <div className="first_box_set_rate_home">
           <div className="rate_home_left_box">
@@ -93,7 +96,7 @@ function AddRate() {
           </div>
         </div>
         <div>
-        <h1 className="main_topi_qa_new">Reviews ★ 5.0</h1>
+        <h1 className="main_topi_qa_new">Reviews ★ 4.7</h1>
           <div className="first_box_set_rate_home">
             <div className="rate_home_left_box">
               <div class="revi_row_rate">
@@ -378,6 +381,7 @@ function AddRate() {
         </div>
         {/*Data Insert End */}
       </div>
+      <Footer/>
     </div>
   );
 }

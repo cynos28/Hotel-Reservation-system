@@ -1,20 +1,21 @@
 /* EventTable.css */
 
 /* Table container styles */
-.EventTableContainer {
+.kaveeshaCss .EventTableContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 260px; /* Adjust based on the width of your sidebar */
     margin-top: 70px; /* Adjust to make sure it's below the top nav bar */
+
 }
 
 /* Event table styles */
-.EventTableContainer .EventTable {
+.kaveeshaCss .EventTableContainer .EventTable {
     margin-top: 20px; /* Adjust top margin as needed */
 }
 
-.EventTableContainer table {
+.kaveeshaCss .EventTableContainer table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 80%;

@@ -61,9 +61,10 @@ const EventTable = React.forwardRef((props, ref) => {
   // Filter events based on search term and filter value
   const filteredEvents = events.filter(
     (event) =>
-      event.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filterValue === "" || event.cap > parseInt(filterValue))
+      (event.etype.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       event.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+  
 
   /* PDF Function */
   // Create a ref to the printable content
@@ -83,7 +84,7 @@ const EventTable = React.forwardRef((props, ref) => {
 
   // JSX
   return (
-    <div>
+    <div className="kaveeshaCss">
       <TopNav />
       <Sidebar />
 
@@ -107,44 +108,44 @@ const EventTable = React.forwardRef((props, ref) => {
         <table style={{ marginLeft: "100px" }} ref={ComponentsRef}>
           <thead>
             <tr>
-              <th scope="col" style={{ width: "100px" }}>
+              <th scope="col" style={{ width: "100px",backgroundColor: "#041852" }}>
                 UserID
               </th>
-              <th scope="col" style={{ width: "140px" }}>
+              <th scope="col" style={{ width: "140px",backgroundColor: "#041852" }}>
                 Event Name
               </th>
-              <th scope="col" style={{ width: "40px" }}>
+              <th scope="col" style={{ width: "40px",backgroundColor: "#041852" }}>
                 Capacity
               </th>
-              <th scope="col" style={{ width: "120px" }}>
+              <th scope="col" style={{ width: "120px",backgroundColor: "#041852" }}>
                 Date
               </th>
-              <th scope="col" style={{ width: "140px" }}>
+              <th scope="col" style={{ width: "140px",backgroundColor: "#041852" }}>
                 Event Type
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Venue
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Status
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Start Time
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 End Time
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Cost
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Description
               </th>
-              <th scope="col" style={{ width: "200px" }}>
+              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
                 Reason
               </th>
 
-              <th scope="col" className="col1">
+              <th scope="col" className="col1"style={{backgroundColor: "#041852"}}>
                 Action
               </th>
             </tr>
