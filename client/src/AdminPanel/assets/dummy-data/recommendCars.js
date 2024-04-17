@@ -5,7 +5,7 @@ import car3 from "../images/romantic-hotel-suites-dubai-royal-penthouse-bedroom.
 const recommendCars = [
   {
     id: "01",
-    carName: "Mini Cooper",
+    carName: "Deluxe Room",
     rentPrice: 32,
     retweet: "132",
     imgUrl: car1,
@@ -13,7 +13,7 @@ const recommendCars = [
   },
   {
     id: "02",
-    carName: "Porsche 911 Carrera",
+    carName: "Luxury",
     rentPrice: 28,
     retweet: "130",
     imgUrl: car2,
@@ -21,7 +21,7 @@ const recommendCars = [
   },
   {
     id: "03",
-    carName: "Porsche 911 Carrera",
+    carName: "Suite",
     rentPrice: 28,
     retweet: "130",
     imgUrl: car3,
