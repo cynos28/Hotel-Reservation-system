@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import './foodtable.css';
 import { useReactToPrint } from "react-to-print";
+import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
+import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;
 
@@ -88,6 +90,8 @@ const Foods = () => {
   
   return (
     <div>
+        <TopNav />
+      <Sidebar />
       <h1 className="cart-header">Food Items List</h1>
       {alertMessage && <div style={{ color: "red" }}>{alertMessage}</div>}
       <div className="tbldetsil">

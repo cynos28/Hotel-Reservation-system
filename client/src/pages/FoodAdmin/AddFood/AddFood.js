@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './addfood..css';
+import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
+import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 
 const AddStock = () => {
   const history = useNavigate();
@@ -36,7 +38,15 @@ const AddStock = () => {
 
   return (
   
+
+
     <div className="cart-container">
+
+<TopNav /> 
+      <Sidebar />
+   
+
+
       <h2 className="cart-header">Add New Food Item</h2>
       <form className="cart-form" onSubmit={handleSubmit}>
         <div>
