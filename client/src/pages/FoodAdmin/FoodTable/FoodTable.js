@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import './foodtable.css';
 import { useReactToPrint } from "react-to-print";
+import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
+import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;
 
@@ -28,7 +30,7 @@ const Food = ({ food, onDelete }) => {
       </td>
       <td className="admin_tbl_td">{name}</td>
       <td className="admin_tbl_td">{time} minutes</td>
-      <td className="admin_tbl_td">${price}</td>
+      <td className="admin_tbl_td">Rs {price}.00</td>
       <td className="admin_tbl_td">{tag}</td>
       <td className="admin_tbl_td">
         <button className="dltbtn" onClick={handleDelete}>
@@ -77,6 +79,7 @@ const Foods = () => {
     setFoods(filtered);
     setNoResults(filtered.length === 0);
   };
+
   /*PDF Function */
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
@@ -84,8 +87,11 @@ const Foods = () => {
     DocumentTitle: " Details Report",
     onafterprint: () => alert(" Details Report Successfully Download !"),
   });
+  
   return (
     <div>
+        <TopNav />
+      <Sidebar />
       <h1 className="cart-header">Food Items List</h1>
       {alertMessage && <div style={{ color: "red" }}>{alertMessage}</div>}
       <div className="tbldetsil">

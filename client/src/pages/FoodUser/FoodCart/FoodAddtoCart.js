@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../user.css";
+import Footer from "../../../components/footer/Footer";
+import Header from "../../../components/header/header";
+
 const AddToCart = () => {
   const history = useNavigate();
   const location = useLocation();
@@ -12,7 +15,7 @@ const AddToCart = () => {
     price: "",
     tag: "",
     qty: 1,
-    total: "",
+    total: "", // Default total value
   });
   const [error, setError] = useState("");
 
@@ -26,6 +29,7 @@ const AddToCart = () => {
         time,
         price,
         tag,
+        total: price, // Set default total value to be the price of one item
       });
     }
   }, [location.state.food]);
@@ -45,38 +49,41 @@ const AddToCart = () => {
       }));
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting form...");
     try {
       await axios.post("http://localhost:3001/carts/", item);
       alert("Item added to cart successfully.");
-      history("/view-cart");
+      history("/view-cart"); // corrected usage of history
     } catch (error) {
-      alert("Error adding item to cart:", error);
+      console.error("Error adding item to cart:", error); // log error for debugging
+      setError("Error adding item to cart."); // set error message
     }
   };
 
   return (
+    <div><Header/>
     <div className="cart-container">
-      <h2 className="cart-header">Add to Cart <span className="subname"> {item.name}</span></h2>
+      <h2 className="cart-header">Add to Cart <span className="sub_name"> {item.name}</span></h2>
       <form className="cart-form" onSubmit={handleSubmit}>
         <div>
           <label className="cart-label">Name:</label>
-          <br></br>
+          <br />
           <input
             className="cart-input"
             type="text"
             name="name"
             value={item.name}
             onChange={handleChange}
-            
+            readOnly
           />
         </div>
 
         <div>
           <label className="cart-label">Price:</label>
-          <br></br>
+          <br />
           <input
             className="cart-input"
             type="number"
@@ -89,7 +96,7 @@ const AddToCart = () => {
 
         <div>
           <label className="cart-label">Quantity:</label>
-          <br></br>
+          <br />
           <input
             className="cart-input"
             type="number"
@@ -102,7 +109,7 @@ const AddToCart = () => {
         </div>
         <div>
           <label className="cart-label">Total:</label>
-          <br></br>
+          <br />
           <input
             className="cart-input"
             type="text"
@@ -111,12 +118,14 @@ const AddToCart = () => {
             readOnly
           />
         </div>
-        <br></br>
+        <br />
         {error && <p className="cart-error-message">{error}</p>}
-        <button className="viewbtn"type="submit">
+        <button className="view_btn" type="submit">
           Add to Cart
         </button>
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 };
