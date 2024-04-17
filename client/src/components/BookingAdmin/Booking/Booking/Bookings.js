@@ -3,6 +3,8 @@ import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import "../Admin.css";
+import TopNav from "../../../../AdminPanel/AdminComponents/TopNav/TopNav";
+import Sidebar from "../../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 const Booking = ({ booking, onDelete }) => {
   const {
     _id,
@@ -35,6 +37,8 @@ const Booking = ({ booking, onDelete }) => {
   };
 
   return (
+
+    
     <tr>
       <td className="admin_tbl_td">{name}</td>
       <td className="admin_tbl_td">{email}</td>
@@ -110,6 +114,9 @@ const Bookings = () => {
   };
   return (
     <div>
+
+<TopNav />
+      <Sidebar />
       <div className="tbl_main">
         <div className="btnset">
           <button className="btn_print" onClick={handlePrint}>

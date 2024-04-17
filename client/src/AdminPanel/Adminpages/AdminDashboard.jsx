@@ -75,10 +75,10 @@ const AdminDash = () => {
               <h3 className="stats__title">Room Type Distribution</h3>
               <MileChart />
             </div>
-           {/* <div className="stats">
-              <h3 className="stats__title">Maxcount Analysis</h3>
+            <div className="stats">
+              <h3 className="stats__title"></h3>
               <CarStatsChart />
-            </div>*/ }
+            </div>
           </div>
           <div className="recommend__cars-wrapper">
             {recommendCarsData.map((item) => (

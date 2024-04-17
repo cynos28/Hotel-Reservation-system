@@ -50,9 +50,14 @@ const navLinks = [
     display: "Reviews",
   },
   {
-    path: "/add-food",
-    icon: "ri-star-half-line",
-    display: "Reviews",
+    path: "/view-booking",
+    icon: "ri-building-4-fill",
+    display: "All Bookings",
+  },
+  {
+    path: "/",
+    icon: "ri-billiards-line",
+    display: "Extra Facilities",
   },
   
 
