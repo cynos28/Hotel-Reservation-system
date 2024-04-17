@@ -20,7 +20,9 @@ function AdminDash() {
   useEffect(() => {
     fetchHandler().then((data) => setExtra(data.extra));
   }, []);
+
   /*PDF Function */
+
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
@@ -29,10 +31,12 @@ function AdminDash() {
   });
 
   /*Search Function */
+
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
 
-  //search
+  //Create search
+
   const handleSearch = () => {
     fetchHandler().then((data) => {
       const filtered = data.extra.filter((extra) =>
@@ -44,7 +48,9 @@ function AdminDash() {
       setNoResults(filtered.length === 0);
     });
   };
+
   /*Delete Code */
+
   const deleteHandler = async (_id) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this Details?"
