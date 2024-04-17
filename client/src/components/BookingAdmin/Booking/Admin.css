@@ -1,0 +1,66 @@
+/* Hide scrollbar track */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: gray; /* Color of the scrollbar handle on hover */
+}
+
+.table_details_admin {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.table_details_admin .admin_tbl_th,
+.table_details_admin .admin_tbl_td {
+  border: 2px solid gray;
+  padding: 8px;
+}
+
+.table_details_admin .admin_tbl_th {
+  background-color: gray;
+  color: white;
+  font-size: 18px;
+}
+.boktopic {
+  margin: 25px 0;
+  text-align: center;
+}
+.tbl_main {
+  padding: 0 2%;
+}
+
+.dltbtn {
+  font-size: 15px;
+  padding: 3px 8px;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 2px solid red;
+  background-color: red;
+  margin-left: 15px;
+}
+.updt {
+  font-size: 15px;
+  text-decoration: none;
+  padding: 3px 8px;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 2px solid gray;
+  background-color: gray;
+  margin-left: 15px;
+}
