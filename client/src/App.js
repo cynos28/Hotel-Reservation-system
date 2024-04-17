@@ -202,6 +202,7 @@ function App() {
             <Route exact path="/add-food" element={<AddFood />} />
             <Route exact path="/admin-foods" element={<FoodTable />} />
 
+
             {/* User-Food Display,Order */}
             <Route exact path="/foods" element={<Foods />} />
             <Route exact path="/food-details/:id" element={<FoodDetails />} />

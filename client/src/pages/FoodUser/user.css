@@ -48,10 +48,10 @@
   .detail_p {
     font-size: 20px;
   }
-  .viewbtn {
-    background-color: #65a4da;
+  .view_btn {
+    background-color: #03c9876e;
     color: white;
-    border: 2px solid #65a4da;
+    border: 2px solid #03c9876e;
     font-size: 20px;
     cursor: pointer;
     border-radius: 3px;
@@ -63,9 +63,14 @@
     justify-content: center;
     margin: 0 auto 10px auto;
     text-transform: capitalize;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
-  .btnLink {
+
+  .view_btn:hover{
+    color:  #03c9876e;
+    background-color: #ffffff6e
+  }
+
+  .btn_Link {
     text-decoration: none;
   }
   .tem_open {
@@ -124,8 +129,8 @@
     margin: 5px 0;
     padding: 3px 10px;
   }
-  .subname {
-    color: #65a4da;
+  .sub_name {
+    color: #03c9876e;
   }
   .cart_detail_box {
     display: flex;
@@ -177,10 +182,11 @@
     background-color: #ffffff;
     border: 2px solid #65a4da;
     color: #65a4da;
+    align-items: center;
   }
-  .filterbtn {
-    background-color: #65a4da;
-    border: 2px solid #65a4da;
+  .filter_btn {
+    background-color: #03c9876e;
+    border: 2px solid #03c9876e;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -190,29 +196,43 @@
     cursor: pointer;
     padding: 4px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-content: center;
   }
-  .filterbtn:hover {
+  .filter_btn:hover {
     background-color: #ffffff;
-    border: 2px solid #65a4da;
-    color: #65a4da;
+    border: 2px solid #03c9876e;
+    color:#0f632f6e;
   }
-  .dltbtn {
-    background-color: #f10a0a;
+  .dlt_btn {
     border: 2px solid #f10a0a;
-    color: white;
     font-weight: bold;
     font-size: 20px;
     margin-top: 10px;
-  
+    color: #f10a0a;
     border-radius: 4px;
     cursor: pointer;
     padding: 4px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  .dltbtn:hover {
-    background-color: #ffffff;
+  .dlt_btn:hover {
+    background-color: #ff0000;
     border: 2px solid #f10a0a;
-    color: #f10a0a;
+    color: #ffffff;
+
+  }
+
+  .edit_btnx{
+    align-content: center;
+    color: white;
+    padding: 4px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    padding: 4px 20px;
+    cursor: pointer;
+    padding: 4px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .carts-header {
@@ -221,9 +241,9 @@
     margin-top: 10px;
   }
   
-  .add-new-button {
-    background-color: #65a4da;
-    border: 2px solid #65a4da;
+  .add-new-buttn {
+    background-color: #03c9876e;
+    border: 2px solid #03c9876e;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -233,6 +253,12 @@
     text-decoration: none;
     padding: 4px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  .add-new-buttn:hover{
+    color: #03c9876e;
+    background-color: #ffffff6e;
+
   }
   .tot_topic {
     text-align: center;
