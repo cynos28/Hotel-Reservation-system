@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import "../RateDetails/rate.css";
 import Footer from "../../../components/footer/Footer";
+import Header from "../../../components/header/header"
 
 function UpdateReview() {
   const [inputs, setInputs] = useState({});
@@ -54,7 +55,7 @@ function UpdateReview() {
 
   return (
     <div>
-      <Headers/>
+      <Header />
       <div className="rate_f_box">
         <div>
           <h1 className="rate-topic">
