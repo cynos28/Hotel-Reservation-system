@@ -47,12 +47,13 @@ const Carts = () => {
 
   return (
     <div><Header/>
+    <div>
     <div className="card_ful_cart">
       <h2 className="carts-header">Cart Details</h2>
       <div className="button-container">
         <button
           onClick={() => (window.location.href = "/foods")}
-          className="add-new-button"
+          className="add-new-buttn"
         >
           Add New
         </button>
@@ -78,17 +79,17 @@ const Carts = () => {
 
                     <div>
                       <h3 className="itmname">{cart.name}</h3>
-                      <p className="itmprice">Price: ${cart.price}</p>
+                      <p className="itmprice">Price: Rs {cart.price}.00</p>
                       <p className="itmprice">Quantity: {cart.qty}</p>
                       <p className="itmprice tot">Total: ${cart.total}</p>
                     </div>
-                    <div className="btn_action_cart">
+                    <div className="edit_btnx">
                       <Link to={`/update-cart/${cart._id}`}>
                         <button className="updtbtn">Edit</button>
                       </Link>
                       <br></br>
                       <button
-                        className="dltbtn"
+                        className="dlt_btn"
                         onClick={() => handleRemoveFromCart(cart._id)}
                       >
                         Delete
@@ -105,7 +106,7 @@ const Carts = () => {
               </div>
               <button
                 onClick={() => (window.location.href = "/add-delivery")}
-                className="add-new-button"
+                className="add-new-buttn"
               >
                 Checkout
               </button>
@@ -113,8 +114,11 @@ const Carts = () => {
           )}
         </div>
       )}
+      
     </div>
-      <Footer/>
+      
+    </div>
+    <Footer/>
     </div>
   );
 };

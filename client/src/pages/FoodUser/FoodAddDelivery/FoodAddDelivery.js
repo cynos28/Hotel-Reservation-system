@@ -104,11 +104,15 @@ function AddDelivery() {
         />
         <br />
         <br></br>
-        <button type="submit" className="viewbtn">
-          Go to Payment
-        </button>
+        <Link to="/add-payment">
+            <button className="viewbtn" type="submit">
+             Go to Payment
+            </button>
+        </Link>
       </form>
       
+
+
     </div>
     <Footer/>
     </div>

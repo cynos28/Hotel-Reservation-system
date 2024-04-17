@@ -29,8 +29,8 @@ const Food = ({ food }) => {
             {tag}
           </p>
         </div>
-        <Link className="btnLink" to={`/food-details/${_id}`}>
-          <button className="viewbtn">View</button>
+        <Link className="btn_Link" to={`/food-details/${_id}`}>
+          <button className="view_btn">View</button>
         </Link>
       </div>
     </div>
@@ -95,14 +95,14 @@ const Foods = () => {
       </div>
         <div className="tags_container">
           <button
-            className="filterbtn"
+            className="filter_btn"
             onClick={() => (window.location.href = "/foods")}
           >
             all
           </button>
           {tags.map((tag) => (
             <button
-              className="filterbtn"
+              className="filter_btn"
               key={tag}
               onClick={() => handleTagFilter(tag)}
             >

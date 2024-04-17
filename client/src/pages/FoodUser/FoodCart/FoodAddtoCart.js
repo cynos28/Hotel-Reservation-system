@@ -66,7 +66,7 @@ const AddToCart = () => {
   return (
     <div><Header/>
     <div className="cart-container">
-      <h2 className="cart-header">Add to Cart <span className="subname"> {item.name}</span></h2>
+      <h2 className="cart-header">Add to Cart <span className="sub_name"> {item.name}</span></h2>
       <form className="cart-form" onSubmit={handleSubmit}>
         <div>
           <label className="cart-label">Name:</label>
@@ -120,7 +120,7 @@ const AddToCart = () => {
         </div>
         <br />
         {error && <p className="cart-error-message">{error}</p>}
-        <button className="viewbtn" type="submit">
+        <button className="view_btn" type="submit">
           Add to Cart
         </button>
       </form>
