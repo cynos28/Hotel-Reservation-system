@@ -21,6 +21,8 @@
 
 .rate_home_container {
   padding: 50px 9.5%;
+  background-image: url("../Add-Rates/img/backimg.jpg");
+
 }
 .first_box_set_rate_home {
   display: flex;
@@ -33,17 +35,19 @@
 .rate_home_left_box {
   flex:1;
   width: 50%;
-  
+  color: bisque;
 }
 
 .rate_home_right_box {
   flex: 1;
   width: 50%;
+  color: bisque;
 }
 
 .main_topi_qa_new {
   margin-top: 25px;
   text-transform: capitalize;
+  color: bisque;
 }
 
 .q_box_img_rate {
@@ -54,6 +58,7 @@
 .main_topi_qa {
   margin: 0 0 15px 0;
   text-transform: capitalize;
+  color: bisque;
 }
 .answerbox {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+
 const UpdateBooking = () => {
   const { id } = useParams(); // Get the ID parameter from the URL
   const navigate = useNavigate();
@@ -54,11 +55,14 @@ const UpdateBooking = () => {
 
   return (
     <div>
+      <div>
+        
+      </div>
      <div className="booking-container">
         <form className="booking_form" onSubmit={handleSubmit}>
           <div>
             <div className="imgbox">
-              <p className="nameimg">Img</p>
+              
             </div>
           </div>
           <div className="form_box">
@@ -194,6 +198,7 @@ const UpdateBooking = () => {
           </div>
         </form>
       </div>
+      
     </div>
   );
 };
