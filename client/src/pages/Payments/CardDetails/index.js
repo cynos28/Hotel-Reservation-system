@@ -143,6 +143,7 @@ function CardDetail() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

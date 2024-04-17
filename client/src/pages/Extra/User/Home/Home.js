@@ -1,8 +1,11 @@
 import React from "react";
 import "../../Extra.css";
+import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 function Home() {
   return (
     <div>
+      <Header />
       <div className="extra_home">
         <div className="topicset">
           <h1 className="bok_topic">Book Your Extra Facility Now..!</h1>
@@ -26,6 +29,7 @@ function Home() {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

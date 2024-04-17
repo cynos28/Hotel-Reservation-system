@@ -24,7 +24,7 @@
   display: flex;
   font-family: "Roboto", sans-serif;
 }
-.bk_book_sum{
+.bk_book_sum {
   background-image: url(./User/Summery/img/subbk.jpg);
   align-items: center;
   padding: 0;
@@ -34,7 +34,7 @@
   display: flex;
   font-family: "Roboto", sans-serif;
 }
-.ful_extr{
+.ful_extr {
   margin: 0 auto;
   align-items: center;
 }
@@ -158,7 +158,7 @@
   color: #65a4da;
 }
 .cat_box_extra {
-  width: 350px;
+  width: 300px;
   height: 380px;
   padding: 15px;
   cursor: pointer;
@@ -240,7 +240,7 @@
   margin-top: 25px;
   justify-content: center;
 }
-.form_box_extra_new{
+.form_box_extra_new {
   display: flex;
   align-items: center;
   margin-top: 25px;
@@ -278,9 +278,11 @@
 }
 .table_details_admin {
   border-collapse: collapse;
-  width: 100%;
+  width: 110%;
   text-align: center;
   text-transform: capitalize;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .table_details_admin .admin_tbl_th,

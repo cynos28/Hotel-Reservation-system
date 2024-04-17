@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+//import Footer from "../../../../components/footer/Footer";
+import Header from "../../../../components/header/header";
 
 function BookValidation() {
   const [extra, setExtra] = useState([]);
@@ -49,6 +51,7 @@ function BookValidation() {
   };
   return (
     <div>
+         <Header />
       <div className="form_box_extra">
         <form className="form_extra" onSubmit={handleSubmit}>
           <label className="form_lable_extra" htmlFor="gmail">
@@ -116,6 +119,7 @@ function BookValidation() {
           ))}
         </table>
       </div>
+     
     </div>
   );
 }

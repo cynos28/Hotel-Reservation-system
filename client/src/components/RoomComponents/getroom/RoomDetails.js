@@ -5,6 +5,8 @@ import { Row, Col, Button,Divider } from "antd"; // Import Row and Col from antd
 import "./RoomDetails.css";
 import Header from '../../header/header.js';
 import Footer from '../../footer/Footer.js';
+import { Link } from 'react-router-dom';
+
 
 
 const RoomDetails = () => {
@@ -64,7 +66,9 @@ const RoomDetails = () => {
     <li><strong>• Room Description:</strong> {room.roomDescription}</li>
   </ul>
 </div>
-<Button className='RoomDetbutton'>Book Now</Button>
+<Link to="/booking">
+  <Button className='RoomDetbutton'>Book Now</Button>
+</Link>
 
 
     </div>

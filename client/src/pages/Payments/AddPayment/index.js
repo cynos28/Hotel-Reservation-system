@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { BACKEND_URL } from "../../../constants";
 import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 import axios from "axios";
 import bookimg from "./img/bkbokinfrom.png";
 import { useSelector } from "react-redux";
@@ -262,6 +263,7 @@ function AddPayment() {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

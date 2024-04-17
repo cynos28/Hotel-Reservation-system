@@ -26,19 +26,16 @@ import RoomTable from "./components/RoomComponents/getroom/Roomtable";
 import Edit from "./components/RoomComponents/updateroom/Edit";
 import RoomDetails from "./components/RoomComponents/getroom/RoomDetails.js";
 
-
 import AddEvent from "./components/eventTable/addEvent/EventAdd.js"; //kaveesha's
 
-import AddFood from "./pages/FoodAdmin/AddFood/AddFood.js"
+import AddFood from "./pages/FoodAdmin/AddFood/AddFood.js";
 import FoodTable from "./pages/FoodAdmin/FoodTable/FoodTable.js";
-import Foods from "./pages/FoodUser/Food/Foods.js"
-import FoodDetails from "./pages/FoodUser/Food/FoodDetails.js"
-import AddToCart from "./pages/FoodUser/FoodCart/FoodAddtoCart.js"
-import FoodCarts from "./pages/FoodUser/FoodCart/FoodCarts.js"
-import FoodAddDelivery from "./pages/FoodUser/FoodAddDelivery/FoodAddDelivery.js"
-import FoodEditCartItem from "./pages/FoodUser/FoodCart/FoodEditCatrItem.js"
-import Updatefoodscreen from "./components/Updatefoodscreen.js";
-
+import Foods from "./pages/FoodUser/Food/Foods.js";
+import FoodDetails from "./pages/FoodUser/Food/FoodDetails.js";
+import AddToCart from "./pages/FoodUser/FoodCart/FoodAddtoCart.js";
+import FoodCarts from "./pages/FoodUser/FoodCart/FoodCarts.js";
+import FoodAddDelivery from "./pages/FoodUser/FoodAddDelivery/FoodAddDelivery.js";
+import FoodEditCartItem from "./pages/FoodUser/FoodCart/FoodEditCatrItem.js";
 
 import AdminDash from "./AdminPanel/Adminpages/AdminDashboard";
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
@@ -74,7 +71,7 @@ import AddBooking from "./components/BookingUser/AddBooking/AddBooking.js";
 import MyBooking from "./components/BookingUser/Booking/MyBooking.js";
 
 //BookingAdmin
-import Booking from "./components/BookingAdmin/Booking/Booking/Bookings.js";
+import Bookings from "./components/BookingAdmin/Booking/Booking/Bookings.js";
 import UpdateBooking from "./components/BookingAdmin/Booking/Booking/UpdateBooking.js";
 //dilshan
 import AdminDashExtra from "./pages/Extra/Admin/AdminDash";
@@ -83,7 +80,7 @@ import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
 import Category from "./pages/Extra/User/Category/Category";
 import Summary from "./pages/Extra/User/Summery/Summery";
 import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
-
+import Booking from "./pages/Extra/User/Booking/Booking.js";
 
 axios.defaults.withCredentials = true;
 
@@ -101,7 +98,6 @@ function App() {
 
   return (
     <div>
-
       <BrowserRouter>
         <ToastContainer />
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -178,12 +174,11 @@ function App() {
             <Route path="/roomtable" element={<RoomTable />} />
             <Route exact path="/room-details/:id" element={<RoomDetails />} />
 
-
             <Route path="/edit/:id" element={<Edit />} />
             {/* Add the missing closing parenthesis */}
 
             {/* Payments related pages */}
-            <Route path="/dashboard/payments" element={<AdminPayment />} />
+            <Route path="/payments" element={<AdminPayment />} />
             <Route
               path="/add-payment/summary/:paymentId"
               element={<PaymentSummary />}
@@ -195,7 +190,8 @@ function App() {
 
             {/* This path should be updated as bookings/:bookingId/add-payment */}
 
-            <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
+            <Route path="/edit/:id" element={<Edit />} />
+            {/* Add the missing closing parenthesis */}
 
             {/* Food Ordering Kavish*/}
 
@@ -203,7 +199,6 @@ function App() {
             <Route exact path="/add-food" element={<AddFood />} />
             <Route exact path="/admin-foods" element={<FoodTable />} />
             <Route exact path= "/admin-food-update/:id" element={<Updatefoodscreen/>} />
-
 
             {/* User-Food Display,Order */}
             <Route exact path="/foods" element={<Foods />} />
@@ -213,41 +208,31 @@ function App() {
             <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
             <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
 
-
-
-
-            
-
             {/* Add review charuka*/}
             <Route path="/allrate" element={<RateDetails />} />
             <Route path="/rates" element={<AddRate />} />
             <Route path="/findrate" element={<FindReview />} />
             <Route path="/updatereview/:id" element={<UpdateReview />} />
 
-
-
             {/* BookingUser Route */}
             <Route exact path="/booking" element={<AddBooking />} />
             <Route exact path="/my-booking/:id" element={<MyBooking />} />
 
-
             {/* Admin Routes */}
-            <Route exact path="/view-booking" element={<Booking />} />
+            <Route exact path="/view-booking" element={<Bookings />} />
             <Route exact path="/update-room/:id" element={<UpdateBooking />} />
 
             {/**dilshan */}
 
             {/*User */}
             <Route path="/extrahome" element={<ExtraHome />} />
-            <Route path="/booking" element={<Booking />} />
+            <Route path="/bookingsextras" element={<Booking />} />
             <Route path="/bookingvalidate" element={<BookValidate />} />
             <Route path="/category" element={<Category />} />
             <Route path="/summary/extraid/:extraid" element={<Summary />} />
             <Route path="/updatebook/:id" element={<UpdateBookingExt />} />
             {/*Admin */}
             <Route path="/admindsh" element={<AdminDashExtra />} />
-
-
           </Routes>
         </GoogleOAuthProvider>
       </BrowserRouter>
