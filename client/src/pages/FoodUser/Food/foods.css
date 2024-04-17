@@ -1,0 +1,125 @@
+/* user.css */
+
+/* Navbar */
+.usernavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1b4850;
+    color: white;
+  }
+  
+  .usernavbar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .usernavbar button:hover {
+    text-decoration: underline;
+  }
+  
+  .cart_icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Search Input and Button */
+  .pdn_itmdetil {
+    margin-top: 20px;
+  }
+  
+  .pdn_itmdetil input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .updtbtn {
+    padding: 10px 20px;
+    background-color: #1b4850;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .updtbtn:hover {
+    background-color: #0f3038;
+  }
+  
+  /* Tags Container */
+  .tags_container {
+    margin-top: 20px;
+  }
+  
+  .filterbtn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #1b4850;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .filterbtn:hover {
+    background-color: #0f3038;
+  }
+  
+  /* Food Card */
+  .card_container_cart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .card_ittem_card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .img_item_cart {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .item_name {
+    margin-top: 15px;
+    color: #1b4850;
+    font-size: 20px;
+  }
+  
+  .item_con {
+    margin-top: 15px;
+  }
+  
+  .detail_p {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .tags_container {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .filterbtn {
+      margin-right: 0;
+    }
+  }
+  

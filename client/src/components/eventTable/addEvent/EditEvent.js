@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import "./EventAdd.css"; // Import CSS file
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "./EditEvent.css"; // Import CSS file
 import axios from "axios";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
-import toast from 'react-hot-toast';
-import Swal from 'sweetalert2'; // Import SweetAlert library
-
+import toast from "react-hot-toast";
+import Swal from "sweetalert2"; // Import SweetAlert library
 
 const EditEvent = () => {
   const { id } = useParams();
@@ -17,7 +16,7 @@ const EditEvent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-            `http://localhost:3001/api/event/${id}`
+          `http://localhost:3001/api/event/${id}`
         );
         setEventData(response.data);
         console.log(response.data);
@@ -37,18 +36,17 @@ const EditEvent = () => {
         eventData
       );
       console.log(response);
-      toast.success(response.data.msg, { position: 'top-right' });
+      toast.success(response.data.msg, { position: "top-right" });
 
       // Display SweetAlert after successful update
       Swal.fire({
-        icon: 'success',
-        title: 'Event Updated Successfully',
+        icon: "success",
+        title: "Event Updated Successfully",
         showConfirmButton: false,
         timer: 1500,
       });
 
-      navigate('/EventTable');
-      
+      navigate("/EventTable");
     } catch (error) {
       console.error("Error adding category:", error);
     }
@@ -94,16 +92,21 @@ const EditEvent = () => {
         )}
 
         <label htmlFor="venue">Venue:</label>
-        <input
-          type="text"
+        <select
           name="venue"
           id="venue"
-          value={eventData.venue}
-          onChange={(e) =>
-            setEventData({ ...eventData, venue: e.target.value })
-          }
+          onChange={(e) => setVenue(e.target.value)}
           className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
-        />
+        >
+          <option>---- SELECT ----</option>
+          <option value="Forevermore Grand Hall">Forevermore Grand Hall</option>
+          <option value="Golden Glade Banquet Hall">
+            Golden Glade Banquet Hall
+          </option>
+          <option value="Enchanted Gardens Wedding Hall">
+            Enchanted Gardens Wedding Hall
+          </option>
+        </select>
 
         <label htmlFor="startTime">Start Time:</label>
         <input
@@ -154,10 +157,26 @@ const EditEvent = () => {
         >
           <option>---- SELECT ----</option>
           <option value="Pending">Pending</option>
-          <option value="Approve">Approve</option>
-          <option value="Decline">Decline</option>
+          <option value="Approved">Approved</option>
+          <option value="Declined">Declined</option>
         </select>
 
+        <label htmlFor="reason">Reason:</label>
+        <input
+          type="text"
+          name="reason"
+          id="reason"
+          value={eventData.reason}
+          onChange={(e) =>
+            setEventData({ ...eventData, reason: e.target.value })
+          }
+          placeholder="Enter the reason"
+          className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
+        />      
+
+        
+        
+        
         <button
           onClick={handleUpload}
           className="rounded-[7px] w-[300px] p-[6px] text-[#fff] bg-[#c33636] mt-[0] mb-[20px]"

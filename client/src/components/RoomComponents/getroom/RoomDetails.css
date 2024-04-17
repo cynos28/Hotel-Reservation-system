@@ -1,0 +1,92 @@
+/* styles.css */
+.roomimg2 {
+    max-width: 100%; /* Set the maximum width of the image */
+    border-radius:     90px; /* Add border-radius for rounded corners */
+    box-shadow: 0 20px 40px rgba(188, 12, 12, 0.1); /* Add a box shadow for a subtle effect */
+    margin-top: 125px;
+
+  }
+  .roomimgDetails {
+
+    font-size: 20px; /* Example font size */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add padding */
+    margin-top: 2030px; /* Add margin at the top */
+  }
+
+  .RoomDetailscontainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 200px;
+  }
+  
+ 
+
+
+
+  .RoomDetailscontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+   
+  }
+  
+  .roomDetailsCard {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    border-radius: 90px;
+    box-shadow: 0 10px 18px #017872;
+    background-color:00b4d8;
+    border: #2a5a8f;
+  }
+  
+  .roomDetailsCard p {
+    margin-bottom: 10px;
+  }
+  
+
+  .room-info-heading {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2rem;
+    text-align: center; /* Center the text horizontally */
+    font-size: 2.5rem; /* Adjust the font size */
+    color: hwb(225 0% 56%); /* Change the text color */
+    margin-bottom: 15px; /* Add some bottom margin for spacing */
+    font-weight: bold;
+  }
+
+
+  .room-details ul {
+    list-style-type: circle; /* Use disc bullets */
+    padding-left: 20px; /* Add some padding to the left */
+  }
+  
+  .room-details li {
+    margin-bottom: 10px; /* Add margin between each detail */
+  }
+
+  .RoomDetailsContainer {
+
+    background-color: azure; /* Light gray background */
+
+
+  }
+  
+  .RoomDetbutton {
+    background-color: #062a50; /* Set background color */
+    color: rgb(242, 243, 255); /* Set text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+    font-size: 10px; /* Set font size */
+    font-weight: bold;
+    margin-left: 180px;
+  }
+  
+  .RoomDetbutton:hover {
+    background-color: #ef9d9d; /* Change background color on hover */
+  }
+  

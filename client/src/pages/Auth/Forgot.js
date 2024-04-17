@@ -3,31 +3,40 @@ import Styles from '../Auth/auth.module.css'
 import Card from '../../components/card/Card'
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/Footer'
-
+import { validateEmail } from "../../redux/features/auth/authService";
+import { forgotPassword, RESET } from "../../redux/features/auth/authSlice";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from 'react-router-dom'
 import PasswordInput from '../../components/passwordInput/PasswordInput';
 
-function Forgot() {
+const Forgot = () => {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    const { isLoading } = useSelector((state) => state.auth);
 
-        // Use the functional form of state update to ensure the latest state is used
-        if (name === 'email') {
-            setEmail((prevEmail) => value);
-        } else if (name === 'password') {
-            setPassword((prevPassword) => value);
-        }
+   
+  const forgot = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      return toast.error("Please enter an email");
     }
-    const loginUser = () => {
-        console.log('Logging in...', { email, password });
+
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+
+    const userData = {
+      email,
     };
-    return (
 
-
+    await dispatch(forgotPassword(userData));
+    await dispatch(RESET(userData));
+  };
+  return (
         <>  <Header />
             <div className={`container ${Styles.auth}`}>
 
@@ -35,9 +44,9 @@ function Forgot() {
                     <p className="title">Forgot Password</p>
 
 
-                    <form className="form" onSubmit={loginUser}>
+                    <form className="form" onSubmit={forgot}>
 
-                        <input type="email" className="input" placeholder="Email" name="email" required value={email} onChange={handleInputChange} />
+                        <input type="email" className="input" placeholder="Email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                         {/*<input type="password" className="input" placeholder="Password" name='password' required value={password} onChange={handleInputChange} /> */}
                     
                         <button type='submit' className="form-btn">Send an email</button>

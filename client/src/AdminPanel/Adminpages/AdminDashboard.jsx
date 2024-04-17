@@ -34,19 +34,19 @@ const AdminDash = () => {
   };
 
   const tripObj = {
-    title: "Daily Trips",
+    title: "",
     totalNumber: 1697,
     icon: "ri-steering-2-line",
   };
 
   const clientObj = {
-    title: "Clients Annually",
+    title: "",
     totalNumber: "85k",
     icon: "ri-user-line",
   };
 
   const distanceObj = {
-    title: "Kilometers Daily",
+    title: "",
     totalNumber: 2167,
     icon: "ri-timer-flash-line",
   };
@@ -66,19 +66,19 @@ const AdminDash = () => {
           <div className="dashboard__cards">
           
             <SingleCard item={carObj} />
-            <SingleCard item={tripObj} />
+           {/* <SingleCard item={tripObj} />
             <SingleCard item={clientObj} />
-            <SingleCard item={distanceObj} />
+            <SingleCard item={distanceObj} />*/ }
           </div>
           <div className="statics">
             <div className="stats">
               <h3 className="stats__title">Room Type Distribution</h3>
               <MileChart />
             </div>
-            <div className="stats">
+           {/* <div className="stats">
               <h3 className="stats__title">Maxcount Analysis</h3>
               <CarStatsChart />
-            </div>
+            </div>*/ }
           </div>
           <div className="recommend__cars-wrapper">
             {recommendCarsData.map((item) => (

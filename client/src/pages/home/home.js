@@ -4,6 +4,7 @@ import Footer from '../../components/footer/Footer'
 import "../home/home.css"
 import HeroImage from "../../assets/hero.jpg"
 import { Link } from 'react-router-dom';
+import Rates from '../Review/RateDetails/Rates'
 
 
 
@@ -13,6 +14,7 @@ function home() {
 
       <section className='hero'>
         <div className="hero-text">
+          
           <h1>Your Stay, Our Passion – Where Comfort Meets Luxury!</h1>
 
           <p>
@@ -42,10 +44,11 @@ function home() {
         </div>
 
       </section>
+     
 
     </div>
 
   )
 }
 
-export default home
+export default home;

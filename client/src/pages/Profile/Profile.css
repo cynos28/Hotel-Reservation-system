@@ -34,6 +34,13 @@
       text-align: center;
     }
   }
+
+  .btnflexs{
+
+    display: flex;
+    justify-content: space-between; /* This will distribute the buttons evenly */
+    align-items: center;
+  }
   form {
     label {
       display: block;
