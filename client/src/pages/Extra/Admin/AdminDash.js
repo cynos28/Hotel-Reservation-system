@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
+import "./adminT.css";
 
 const URL = "http://localhost:3001/extra";
 
@@ -31,6 +32,7 @@ function AdminDash() {
   const [searchQuery, setSearchQuery] = useState("");
   const [noResults, setNoResults] = useState(false);
 
+  //search
   const handleSearch = () => {
     fetchHandler().then((data) => {
       const filtered = data.extra.filter((extra) =>
@@ -61,88 +63,89 @@ function AdminDash() {
   };
   return (
     <div>
-
-<TopNav />
+      <TopNav />
       <Sidebar />
+      <div className="contAd">
+        <div className="btn_set">
+          <button className="booknow_btn" onClick={handlePrint}>
+            Generate Report
+          </button>
+          <div>
+            <tr>
+              <td className="">
+                <input
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  type="text"
+                  name="search"
+                  className="serch_inpt"
+                  placeholder="Search Here..."
+                ></input>
+              </td>
 
-      <div className="btn_set">
-        <button className="booknow_btn" onClick={handlePrint}>
-          Generate Report
-        </button>
-        <div>
-          <tr>
-            <td className="">
-              <input
-                onChange={(e) => setSearchQuery(e.target.value)}
-                type="text"
-                name="search"
-                className="serch_inpt"
-                placeholder="Search Here..."
-              ></input>
-            </td>
-
-            <td>
-              <button onClick={handleSearch} className="booknow_btn">
-                Search
-              </button>
-            </td>
-          </tr>
-        </div>
-      </div>
-      <div className="bok_box_admin" ref={ComponentsRef}>
-        <h1 className="topic_extra">
-          Customers Booking<span className="sub_topic_extra"> Details..!</span>
-        </h1>
-        <br></br>
-        <table className="table_details_admin">
-          <thead>
-            <tr className="admin_tbl_tr">
-              <th className="admin_tbl_th">name</th>
-              <th className="admin_tbl_th">gmail</th>
-              <th className="admin_tbl_th">phone</th>
-              <th className="admin_tbl_th">Facility</th>
-              <th className="admin_tbl_th">Total</th>
-              <th className="admin_tbl_th">Actions</th>
+              <td>
+                <button onClick={handleSearch} className="booknow_btn">
+                  Search
+                </button>
+              </td>
             </tr>
-          </thead>
-          {noResults ? (
-            <div>
-              <br></br>
-              <h1 className="con_topic">
-                No <span className="clo_us"> Found</span>{" "}
-              </h1>
-            </div>
-          ) : (
-            <tbody>
-              {extra.map((item, index) => (
-                <tr className="admin_tbl_tr" key={index}>
-                  <td className="admin_tbl_td">{item.name}</td>
-                  <td className="admin_tbl_td">{item.gmail}</td>
-                  <td className="admin_tbl_td">{item.phone}</td>
-                  <td className="admin_tbl_td">
-                    {item.gym === "true" && <span>Gym</span>}
-                    {item.pool === "true" && <span>Pool</span>}
-                    {item.bar === "true" && <span>Bar</span>}
-                    {item.spa === "true" && <span>Spa</span>}
-                    {item.vehicle === "true" && <span>Vehicle</span>}
-                    {item.dayplan === "true" && <span>Day Plan</span>}
-                    {item.specialday === "true" && <span>Special Day</span>}
-                    {item.petfriend === "true" && <span>Pet Friend</span>}
-                  </td>
-                  <td className="admin_tbl_td">Rs.{item.total}.00</td>
-                  <td className="admin_tbl_td">
-                    <button
-                      className="btn_dash_admin_dlt"
-                      onClick={() => deleteHandler(item._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          )}
-        </table>
+          </div>
+        </div>
+        <div className="bok_box_admin" ref={ComponentsRef}>
+          <h1 className="topic_extra">
+            Customers Booking
+            <span className="sub_topic_extra"> Details..!</span>
+          </h1>
+          <br></br>
+          <table className="table_details_admin">
+            <thead>
+              <tr className="admin_tbl_tr">
+                <th className="admin_tbl_th">name</th>
+                <th className="admin_tbl_th">gmail</th>
+                <th className="admin_tbl_th">phone</th>
+                <th className="admin_tbl_th">Facility</th>
+                <th className="admin_tbl_th">Total</th>
+                <th className="admin_tbl_th">Actions</th>
+              </tr>
+            </thead>
+            {noResults ? (
+              <div>
+                <br></br>
+                <h1 className="con_topic">
+                  No <span className="clo_us"> Found</span>{" "}
+                </h1>
+              </div>
+            ) : (
+              <tbody>
+                {extra.map((item, index) => (
+                  <tr className="admin_tbl_tr" key={index}>
+                    <td className="admin_tbl_td">{item.name}</td>
+                    <td className="admin_tbl_td">{item.gmail}</td>
+                    <td className="admin_tbl_td">{item.phone}</td>
+                    <td className="admin_tbl_td">
+                      {item.gym === "true" && <span>Gym</span>}
+                      {item.pool === "true" && <span>Pool</span>}
+                      {item.bar === "true" && <span>Bar</span>}
+                      {item.spa === "true" && <span>Spa</span>}
+                      {item.vehicle === "true" && <span>Vehicle</span>}
+                      {item.dayplan === "true" && <span>Day Plan</span>}
+                      {item.specialday === "true" && <span>Special Day</span>}
+                      {item.petfriend === "true" && <span>Pet Friend</span>}
+                    </td>
+                    <td className="admin_tbl_td">Rs.{item.total}.00</td>
+                    <td className="admin_tbl_td">
+                      <button
+                        className="btn_dash_admin_dlt"
+                        onClick={() => deleteHandler(item._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
+          </table>
+        </div>
       </div>
     </div>
   );

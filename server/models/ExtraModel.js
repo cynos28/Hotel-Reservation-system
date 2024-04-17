@@ -1,6 +1,8 @@
-const mongoose = require("mongoose"); //kalin wage mongoos add karanna
+//Data type for create data base
 
-const Schema = mongoose.Schema; //schema set karanna
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
 
 const ExtraSchema = new Schema({
   name: {
@@ -42,7 +44,7 @@ const ExtraSchema = new Schema({
   },
 
   total: {
-    type: String, //type   
+    type: String, //type
     required: true,
   },
   extraid: {
@@ -51,4 +53,4 @@ const ExtraSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Extra", ExtraSchema); //schema eka send karanna
+module.exports = mongoose.model("Extra", ExtraSchema);
