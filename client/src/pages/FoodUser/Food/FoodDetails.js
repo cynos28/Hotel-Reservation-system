@@ -62,7 +62,7 @@ const FoodDetails = () => {
                 <br></br>
                 {tag}
               </p>
-              <div className="container"  onClick={handleAddToCart}>
+              <div className="containerf"  onClick={handleAddToCart}>
                    <button className="view_btn">
                      Add to Cart
                   </button>

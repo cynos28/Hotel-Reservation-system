@@ -53,7 +53,7 @@ const Carts = () => {
       <div className="button-container">
         <button
           onClick={() => (window.location.href = "/foods")}
-          className="add-new-buttn"
+          className="add-new-bu"
         >
           Add New
         </button>
@@ -106,7 +106,7 @@ const Carts = () => {
               </div>
               <button
                 onClick={() => (window.location.href = "/add-delivery")}
-                className="add-new-buttn"
+                className="add-new-bu"
               >
                 Checkout
               </button>
