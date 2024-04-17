@@ -1,20 +1,19 @@
 .table_details_admin {
   border-collapse: collapse;
-  width: 40%;
+  width: 50%;
   text-align: center;
   text-transform: capitalize;
-  margin-left: 150px;
+  margin-left: 130px;
 }
 
 .table_details_admin .admin_tbl_th,
 .table_details_admin .admin_tbl_td {
   border: 2px solid #1b4850;
   padding: 8px;
-  width: 20px;
 }
 
 .table_details_admin .admin_tbl_th {
-  background-color: #1b4850;
+  background-color: #03c9876e;
   color: white;
   font-size: 18px;
 }

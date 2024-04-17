@@ -36,6 +36,7 @@ import AddToCart from "./pages/FoodUser/FoodCart/FoodAddtoCart.js";
 import FoodCarts from "./pages/FoodUser/FoodCart/FoodCarts.js";
 import FoodAddDelivery from "./pages/FoodUser/FoodAddDelivery/FoodAddDelivery.js";
 import FoodEditCartItem from "./pages/FoodUser/FoodCart/FoodEditCatrItem.js";
+import Updatefoodscreen from "./components/Updatefoodscreen.js"
 
 import AdminDash from "./AdminPanel/Adminpages/AdminDashboard";
 import AdminLayout from "./AdminPanel/AdminComponents/AdminLayout/AdminLayout";
@@ -198,6 +199,7 @@ function App() {
             {/* Admin-Food Adding */}
             <Route exact path="/add-food" element={<AddFood />} />
             <Route exact path="/admin-foods" element={<FoodTable />} />
+            <Route exact path= "/admin-food-update/:id" element={<Updatefoodscreen/>} />
 
             {/* User-Food Display,Order */}
             <Route exact path="/foods" element={<Foods />} />

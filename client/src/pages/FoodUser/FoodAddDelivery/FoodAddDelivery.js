@@ -42,7 +42,7 @@ function AddDelivery() {
   };
 
   return (
-    <div>
+    <div className="back">
       <Header/>
     <div 
     className="cart-container">
