@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
+import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 
 const URL = "http://localhost:3001/extra";
 
@@ -59,6 +61,10 @@ function AdminDash() {
   };
   return (
     <div>
+
+<TopNav />
+      <Sidebar />
+
       <div className="btn_set">
         <button className="booknow_btn" onClick={handlePrint}>
           Generate Report
