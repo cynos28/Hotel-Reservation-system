@@ -4,6 +4,7 @@ import './foodtable.css';
 import { useReactToPrint } from "react-to-print";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
+import { Link } from "react-router-dom";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;
 
