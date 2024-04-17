@@ -168,12 +168,6 @@ function AddCard() {
                 <button className="card_save_btn" type="submit">
                   {isUpdateOperation ? "Update" : "Save"}
                 </button>
-                {/* Temp button add */}
-                <Link to="/add-payment">
-                  <button className="temp_btn" type="submit">
-                    Temp Add payment
-                  </button>
-                </Link>
               </>
             )}
           </form>
