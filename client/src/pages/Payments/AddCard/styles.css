@@ -62,16 +62,21 @@ input[type="number"] {
   color: #006342dd;
 }
 .card_save_btn {
-  width: 100%;
-  background: linear-gradient(45deg, #26b59b, rgb(4, 146, 84));
-  margin-top: 20px;
-  padding: 10px;
+  background-color: #019365c7;
+  border: 2px solid #26b59b;
+  color: white;
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  justify-content: center;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.2s linear;
-  box-shadow: #26b59b;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
 }
 .card_save_btn:hover {
   letter-spacing: 2px;
