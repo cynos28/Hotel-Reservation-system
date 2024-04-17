@@ -43,7 +43,9 @@ function RateDetails() {
 
    
       <br></br> <br></br>
+      <Header/>
       <h1 className="rate-topic">
+      
         Review & <span className="rate-us"> Ratings</span>
       </h1>
       <div className="main_container_reiew">
@@ -111,7 +113,7 @@ function RateDetails() {
           </div>
         )}
       </div>
-   
+      <Footer/>
     </div>
   );
 }
