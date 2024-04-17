@@ -15,8 +15,6 @@ const ExtraRoute = require("./routes/ExtraRoute.js"); //Dilshan
 const userRoute = require("./routes/userRoute.js"); //shehan's route
 const errorHandler = require("./middleware/middleware.js");
 const route = require("./routes/roomRoute.js");
-const eventRouter = require("./routes/eventRoute.js"); //Kaveesha's route import
-
 const RateRoute = require("./Routes/RateRoute.js"); //Charuka's route import
 
 const dotenv = require("dotenv");

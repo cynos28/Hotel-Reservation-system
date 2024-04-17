@@ -1,6 +1,4 @@
-
 import React, { Component, useEffect } from "react";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/home/home";
@@ -73,19 +71,17 @@ import UpdateReview from "./pages/Review/UpdateReview/UpdateReview.js";
 //BookingUser
 import AddBooking from "./components/BookingUser/AddBooking/AddBooking.js";
 import MyBooking from "./components/BookingUser/Booking/MyBooking.js";
-          
+
 //BookingAdmin
 import Booking from "./components/BookingAdmin/Booking/Booking/Bookings.js";
 import UpdateBooking from "./components/BookingAdmin/Booking/Booking/UpdateBooking.js";
-
 //dilshan
 import AdminDashExtra from "./pages/Extra/Admin/AdminDash";
 import ExtraHome from "./pages/Extra/User/Home/Home";
-import Booking from "./pages/Extra/User/Booking/Booking";
 import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
 import Category from "./pages/Extra/User/Category/Category";
 import Summary from "./pages/Extra/User/Summery/Summery";
-import UpdateBooking from "./pages/Extra/User/UpdateBooking/UpdateBooking";
+import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
 
 
 axios.defaults.withCredentials = true;
@@ -104,6 +100,7 @@ function App() {
 
   return (
     <div>
+
       <BrowserRouter>
         <ToastContainer />
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -199,8 +196,6 @@ function App() {
 
             <Route path="/edit/:id" element={<Edit />} />{/* Add the missing closing parenthesis */}
 
-
-
             {/* Food Ordering Kavish*/}
 
             {/* Admin-Food Adding */}
@@ -215,37 +210,35 @@ function App() {
             <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
             <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
 
-           {/* Add review charuka*/} 
-           <Route path="/allrate" element={<RateDetails />} />
-          <Route path="/rates" element={<AddRate />} />
-          <Route path="/findrate" element={<FindReview />} />
-          <Route path="/updatereview/:id" element = {<UpdateReview/>}/>
+            {/* Add review charuka*/}
+            <Route path="/allrate" element={<RateDetails />} />
+            <Route path="/rates" element={<AddRate />} />
+            <Route path="/findrate" element={<FindReview />} />
+            <Route path="/updatereview/:id" element={<UpdateReview />} />
 
 
 
-          {/* BookingUser Route */}
-          <Route exact path="/booking" element={<AddBooking />} />
-          <Route exact path="/my-booking/:id" element={<MyBooking />} />
+            {/* BookingUser Route */}
+            <Route exact path="/booking" element={<AddBooking />} />
+            <Route exact path="/my-booking/:id" element={<MyBooking />} />
+
 
             {/* Admin Routes */}
-          <Route exact path="/view-booking" element={<Booking />} />
-          <Route exact path="/update-room/:id" element={<UpdateBooking />} />
-            
-            
+            <Route exact path="/view-booking" element={<Booking />} />
+            <Route exact path="/update-room/:id" element={<UpdateBooking />} />
+
             {/**dilshan */}
 
- {/*User */}
- <Route path="/extrahome" element={<ExtraHome />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/bookingvalidate" element={<BookValidate />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/summary/extraid/:extraid" element={<Summary />} />
-          <Route path="/updatebook/:id" element={<UpdateBooking />} />
-          {/*Admin */}
-          <Route path="/admindsh" element={<AdminDashExtra/>} />
+            {/*User */}
+            <Route path="/extrahome" element={<ExtraHome />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/bookingvalidate" element={<BookValidate />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/summary/extraid/:extraid" element={<Summary />} />
+            <Route path="/updatebook/:id" element={<UpdateBookingExt />} />
+            {/*Admin */}
+            <Route path="/admindsh" element={<AdminDashExtra />} />
 
-
-        </Routes>
 
           </Routes>
         </GoogleOAuthProvider>
