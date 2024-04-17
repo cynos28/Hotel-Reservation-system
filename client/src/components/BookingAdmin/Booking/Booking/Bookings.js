@@ -3,15 +3,8 @@ import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import "../Admin.css";
-
 import TopNav from "../../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
-  
-
-
-
-
-
 
 const Booking = ({ booking, onDelete }) => {
   const {
@@ -45,11 +38,7 @@ const Booking = ({ booking, onDelete }) => {
   };
 
   return (
-
-    
-
     <tr>
-      
       <td className="admin_tbl_td">{name}</td>
       <td className="admin_tbl_td">{email}</td>
       <td className="admin_tbl_td">{address}</td>
@@ -98,7 +87,9 @@ const Bookings = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3001/bookings/${id}`);
-      setBookings((prevBookings) => prevBookings.filter((booking) => booking._id !== id));
+      setBookings((prevBookings) =>
+        prevBookings.filter((booking) => booking._id !== id)
+      );
       alert("Booking deleted successfully.");
     } catch (error) {
       // Handle error and provide feedback to the user
@@ -124,8 +115,7 @@ const Bookings = () => {
   };
   return (
     <div>
-
-<TopNav />
+      <TopNav />
       <Sidebar />
       <div className="tbl_main">
         <div className="btnset">
@@ -181,7 +171,11 @@ const Bookings = () => {
             ) : (
               <tbody>
                 {bookings.map((booking) => (
-                  <Booking key={booking._id} booking={booking} onDelete={handleDelete} />
+                  <Booking
+                    key={booking._id}
+                    booking={booking}
+                    onDelete={handleDelete}
+                  />
                 ))}
               </tbody>
             )}

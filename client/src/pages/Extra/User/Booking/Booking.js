@@ -151,6 +151,7 @@ function Booking() {
                 onChange={handleChange}
                 type="text"
                 //Phone number Validators
+
                 pattern="\d{10}"
                 name="phone"
               />
