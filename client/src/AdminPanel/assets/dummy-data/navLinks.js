@@ -14,23 +14,19 @@ const navLinks = [
     icon: "ri-user-3-fill",
     display: "Users",
   },
-  {
-    path: "/getroom",
-    icon: "ri-building-4-fill",
-    display: "Current Rooms",
-  },
+
   {
     path: "/roomtable",
     icon: "ri-building-4-fill",
     display: "Room Info",
   },
- {
+  {
     path: "/EventTable",
     icon: "ri-calendar-event-line",
     display: "Events",
   },
   {
-    path: "",
+    path: "/payments",
     icon: "ri-bank-card-fill",
     display: "Payments",
   },
@@ -50,12 +46,15 @@ const navLinks = [
     display: "Reviews",
   },
   {
-    path: "/add-food",
-    icon: "ri-star-half-line",
-    display: "Reviews",
+    path: "/view-booking",
+    icon: "ri-building-4-fill",
+    display: "All Bookings",
   },
-  
-
+  {
+    path: "/admindsh",
+    icon: "ri-billiards-line",
+    display: "Extra Facilities",
+  },
 ];
 
 export default navLinks;

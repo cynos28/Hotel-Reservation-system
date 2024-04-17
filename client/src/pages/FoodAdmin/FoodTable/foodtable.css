@@ -1,8 +1,9 @@
 .table_details_admin {
     border-collapse: collapse;
-    width: 100%;
+    width: 50%;
     text-align: center;
     text-transform: capitalize;
+    margin-left: 130px;
   }
   
   .table_details_admin .admin_tbl_th,
@@ -12,7 +13,7 @@
   }
   
   .table_details_admin .admin_tbl_th {
-    background-color: #1b4850;
+    background-color: #03c9876e;
     color: white;
     font-size: 18px;
   }
@@ -31,5 +32,6 @@
     display: flex;
     margin-bottom: 25px;
     justify-content: space-between;
+    margin-left: 130px;
   }
   

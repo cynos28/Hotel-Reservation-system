@@ -30,7 +30,7 @@ function RateDetails() {
       setNoResults(filteredRate.length === 0);
     });
   };
-    /*PDF Function */
+    /*PDF */
     const ComponentsRef = useRef();
     const handlePrint = useReactToPrint({
       content: () => ComponentsRef.current,
@@ -40,10 +40,10 @@ function RateDetails() {
   return (
     <div>
   
+  <Header/>
 
    
       <br></br> <br></br>
-      <Header/>
       <h1 className="rate-topic">
       
         Review & <span className="rate-us"> Ratings</span>
@@ -55,7 +55,7 @@ function RateDetails() {
             <button
               type="button"
               className="button_ad_review"
-              onClick={() => (window.location.href = "/")}
+              onClick={() => (window.location.href = "/rates")}
             >
               Add Review
             </button>

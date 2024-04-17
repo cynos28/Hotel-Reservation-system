@@ -23,10 +23,6 @@ const deliverySchema = new Schema({
     type: String,
     required: false,
   },
-  location: {
-    type: String,
-    required: false,
-  },
 });
 
 module.exports = mongoose.model("Delivery", deliverySchema);

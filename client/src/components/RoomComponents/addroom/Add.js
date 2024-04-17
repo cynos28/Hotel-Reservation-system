@@ -37,7 +37,7 @@ const AddRoom = () => {
   const fileChangeHandler = (e) => {
     setRoom({ ...room, image: e.target.files[0] });
   };
-
+//Form Validation for Room Name
   const validateName = (name) => {
     const nameRegex = /^[A-Za-z\s]+$/;
     if (!name.trim() || !nameRegex.test(name)) {
@@ -46,7 +46,7 @@ const AddRoom = () => {
     }
     return true;
   };
-
+//form validation for Rent per night
   const validateRent = (rent) => {
     const rentRegex = /^\d+$/;
     if (!rent.trim() || !rentRegex.test(rent)) {

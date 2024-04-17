@@ -3,17 +3,8 @@
     const path = require('path');
 
 
-    // Multer setup for file upload
-   /* const storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-        cb(null, "public/rooms"); // Save files to the "public/rooms" directory
-        },
-        filename: function (req, file, cb) {
-        // Set unique file name using original name and current timestamp
-        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
-        }
-    });*/
-
+ 
+//File Uploads
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
           cb(null, "public/rooms");

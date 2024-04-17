@@ -42,27 +42,32 @@ const FoodDetails = () => {
      
       <div className="tem_open">
         <div>
-          <h3 className="itemname">{name}</h3>
+          
           <div className="item_card_details">
+            
             <div>
-              <img src={image} alt={name} className="itm_img_view" />
-              <p className="itemdetal_view">
+            <h3 className="item_name">{name}</h3>
+              <img src={image} alt={name} className="itme_img_view" />
+              <p className="item_detal_view">
                 <b>Preparation Time</b>
                 <br></br>
                 {time} minutes
               </p>
-              <p className="itemdetal_view">
+              <p className="item_detal_view">
                 <b>Price</b>
                 <br></br> Rs {price}.00
               </p>
-              <p className="itemdetal_view">
+              <p className="item_detal_view">
                 <b>Tag</b>
                 <br></br>
                 {tag}
               </p>
-              <button className="viewbtn" onClick={handleAddToCart}>
-                Add to Cart
-              </button>
+              <div className="containerf"  onClick={handleAddToCart}>
+                   <button className="view_btn">
+                     Add to Cart
+                  </button>
+            </div>
+
               {cartMessage && <div>{cartMessage}</div>}
             </div>
           </div>
