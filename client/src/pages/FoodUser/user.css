@@ -167,8 +167,8 @@
   }
   
   .updtbtn {
-    background-color: #65a4da;
-    border: 2px solid #65a4da;
+    background-color: #03c9876e;
+    border: 2px solid #03c9876e;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -241,7 +241,7 @@
     margin-top: 10px;
   }
   
-  .add-new-buttn {
+  .add-new-bu {
     background-color: #03c9876e;
     border: 2px solid #03c9876e;
     color: white;
@@ -255,11 +255,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
   }
-  .add-new-buttn:hover{
+
+  .add-new-bu:hover{
     color: #03c9876e;
     background-color: #ffffff6e;
 
   }
+
+  .add{
+    align-items: center;
+  }
+
   .tot_topic {
     text-align: center;
     font-size: 30px;

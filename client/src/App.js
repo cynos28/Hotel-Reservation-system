@@ -211,6 +211,11 @@ function App() {
             <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
             <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
 
+
+
+
+            
+
             {/* Add review charuka*/}
             <Route path="/allrate" element={<RateDetails />} />
             <Route path="/rates" element={<AddRate />} />

@@ -51,7 +51,7 @@ function AddDelivery() {
         <label className="cart-label">Name:</label>
         <input
           className="cart-input"
-          type="text"
+          type="text"                                                                            
           name="name"
           value={inputs.name}
           onChange={handleChange}
@@ -104,15 +104,11 @@ function AddDelivery() {
         />
         <br />
         <br></br>
-        <Link to="/add-payment">
-            <button className="viewbtn" type="submit">
-             Go to Payment
-            </button>
-        </Link>
+        <button type="submit" className="viewbtn">
+          Go to Payment
+        </button>
       </form>
       
-
-
     </div>
     <Footer/>
     </div>
