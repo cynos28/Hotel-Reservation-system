@@ -14,11 +14,7 @@ const navLinks = [
     icon: "ri-user-3-fill",
     display: "Users",
   },
-  {
-    path: "/getroom",
-    icon: "ri-building-4-fill",
-    display: "Current Rooms",
-  },
+
   {
     path: "/roomtable",
     icon: "ri-building-4-fill",
