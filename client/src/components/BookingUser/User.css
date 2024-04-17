@@ -4,10 +4,26 @@
   font-family: "Roboto", sans-serif;
 }
 
+.booking-container{
+  display: flex;
+  background-image: url('../../../public/images/hotel3.jpg');
+  
+}
+.mybooking{
+  opacity: 0.9;
+  background-color: rgb(255, 255, 255);
+  
+  
+}
+
+
+
+
 .booking_form {
   width: 750px;
   border-radius: 8px;
-
+  opacity: 0.8;
+  background-color: rgb(252, 252, 252);
   padding: 25px;
   border: 2px solid white;
   margin: 50px auto;
@@ -51,12 +67,12 @@
   color: white;
   font-weight: bold;
   font-size: 20px;
-  width: 100%;
-  background-color: gray;
-  border: 2px solid gray;
+  width: 80%;
+  background-color: rgb(65, 219, 183);
+  border: 2px solid rgb(65, 219, 183);
 }
 .imgbox {
-  height: 200px;
+  height: 180px;
   width: 250px;
   margin: 20px auto;
   border-radius: 5px;
@@ -74,6 +90,7 @@
 .bock_topic {
   text-align: center;
   margin: 0 0 15px 0;
+  
 }
 .sum_detail {
   text-transform: capitalize;
@@ -81,6 +98,7 @@
   font-size: 20px;
 }
 .box_sum {
+  background-color: rgb(108, 246, 206);
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   padding: 25px;
@@ -92,6 +110,7 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
+  
 }
 .btn_dash_admin {
   border-radius: 5px;
@@ -100,10 +119,11 @@
   color: white;
   font-weight: bold;
   font-size: 20px;
-  width: 100%;
+  width: 50%;
+  margin: center;
   margin-top: 20px;
-  background-color: gray;
-  border: 2px solid gray;
+  background-color: rgb(39, 14, 231);
+  border: 2px solid rgb(97, 227, 194);
 }
 .btn_print {
   border-radius: 5px;
