@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { useParams } from "react-router-dom";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 
 const MyBooking = () => {
   const { id } = useParams(); // Get the ID parameter from the URL
@@ -10,6 +12,7 @@ const MyBooking = () => {
   const [error, setError] = useState("");
   /*PDF Function */
   const ComponentsRef = useRef();
+
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
     DocumentTitle: " Details Report",
@@ -39,8 +42,10 @@ const MyBooking = () => {
   }
 
   return (
-    <div>
-      <div ref={ComponentsRef} className="sumry_box">
+    <div className="mybooking">
+      <div><Header/></div>
+      <div ref={ComponentsRef} className="sumry_box" >
+        
         <div className="box_sum">
           <h1 className="bock_topic">My Booking Details</h1>
           <p className="sum_detail">
@@ -78,6 +83,7 @@ const MyBooking = () => {
           </button>
         </div>
       </div>
+      <div><Footer/></div>
     </div>
   );
 };

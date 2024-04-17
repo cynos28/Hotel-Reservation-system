@@ -10,10 +10,17 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: gray; /* Color of the scrollbar handle */
+  background: gray;
+}
+.btn_print{
+
+  background-color: rgb(65, 219, 183);
+  border: 2px solid rgb(65, 219, 183);
+
+
+
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: gray; /* Color of the scrollbar handle on hover */
 }

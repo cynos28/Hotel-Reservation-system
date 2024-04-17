@@ -76,6 +76,7 @@ const Events = () => {
                   <h3>{event.name}</h3>
                   <p>Date: {formatDate(event.date)}</p>
                   <p>Venue: {event.venue}</p>
+                  <p>Description: {event.description}</p>
                 </div>
               ))}
           </div>
