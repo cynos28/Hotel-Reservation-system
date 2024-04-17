@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router";
 
 import { BACKEND_URL } from "../../../constants";
 import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
 import axios from "axios";
 import { useSelector } from "react-redux"; /*** */
 import { Link } from "react-router-dom";
@@ -173,6 +174,7 @@ function AddCard() {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
