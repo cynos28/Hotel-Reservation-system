@@ -55,7 +55,7 @@ const navLinks = [
     display: "All Bookings",
   },
   {
-    path: "/",
+    path: "/admindsh",
     icon: "ri-billiards-line",
     display: "Extra Facilities",
   },
