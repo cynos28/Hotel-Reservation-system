@@ -55,6 +55,8 @@ const GetRoom = () => {
     return sortedRooms;
   };
 
+//Search room Controller
+
   const filterRoomsBySearch = (filteredRooms) => {
     if (!searchQuery) {
       return filteredRooms;
@@ -75,6 +77,8 @@ const GetRoom = () => {
     <div>
       <Header />
       <div className="sorting-bar-container">
+
+        {/*Sorting According to Price */}
   <div className="sorting-dropdown-container">
     <Select className="sorting-dropdown" defaultValue="rentPerNightAscending" onChange={handleSortChange}>
       <Option value="rentPerNightAscending">Rent Per Night (Low to High)</Option>
@@ -91,7 +95,7 @@ const GetRoom = () => {
     />
     <button className="search-button">Search</button>
   </div>
-
+{/*Sorting Room Type*/}
   <div className="sorting-dropdown-container">
     <Select className="sorting-dropdown" defaultValue="" onChange={handleRoomTypeFilterChange}>
       <Option value="">All Room Types</Option>
