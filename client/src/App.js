@@ -1,4 +1,6 @@
+
 import React, { Component, useEffect } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/home/home";
@@ -76,6 +78,16 @@ import MyBooking from "./components/BookingUser/Booking/MyBooking.js";
 import Booking from "./components/BookingAdmin/Booking/Booking/Bookings.js";
 import UpdateBooking from "./components/BookingAdmin/Booking/Booking/UpdateBooking.js";
 
+//dilshan
+import AdminDashExtra from "./pages/Extra/Admin/AdminDash";
+import ExtraHome from "./pages/Extra/User/Home/Home";
+import Booking from "./pages/Extra/User/Booking/Booking";
+import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
+import Category from "./pages/Extra/User/Category/Category";
+import Summary from "./pages/Extra/User/Summery/Summery";
+import UpdateBooking from "./pages/Extra/User/UpdateBooking/UpdateBooking";
+
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -92,7 +104,6 @@ function App() {
 
   return (
     <div>
-
       <BrowserRouter>
         <ToastContainer />
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
@@ -219,6 +230,22 @@ function App() {
             {/* Admin Routes */}
           <Route exact path="/view-booking" element={<Booking />} />
           <Route exact path="/update-room/:id" element={<UpdateBooking />} />
+            
+            
+            {/**dilshan */}
+
+ {/*User */}
+ <Route path="/extrahome" element={<ExtraHome />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/bookingvalidate" element={<BookValidate />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/summary/extraid/:extraid" element={<Summary />} />
+          <Route path="/updatebook/:id" element={<UpdateBooking />} />
+          {/*Admin */}
+          <Route path="/admindsh" element={<AdminDashExtra/>} />
+
+
+        </Routes>
 
           </Routes>
         </GoogleOAuthProvider>
