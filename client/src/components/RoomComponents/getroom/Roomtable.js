@@ -59,7 +59,7 @@ const RoomTable = () => {
 
     const filteredRooms = handleSearch();
 
-    /* PDF Function */
+    /* PDF Generate Function */
     const ComponentsRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => ComponentsRef.current,
