@@ -278,9 +278,11 @@
 }
 .table_details_admin {
   border-collapse: collapse;
-  width: 100%;
+  width: 110%;
   text-align: center;
   text-transform: capitalize;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .table_details_admin .admin_tbl_th,
