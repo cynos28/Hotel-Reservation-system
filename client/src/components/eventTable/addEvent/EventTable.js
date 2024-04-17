@@ -61,9 +61,10 @@ const EventTable = React.forwardRef((props, ref) => {
   // Filter events based on search term and filter value
   const filteredEvents = events.filter(
     (event) =>
-      event.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filterValue === "" || event.cap > parseInt(filterValue))
+      (event.etype.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       event.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+  
 
   /* PDF Function */
   // Create a ref to the printable content
