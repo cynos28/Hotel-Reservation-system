@@ -4,6 +4,7 @@ import './foodtable.css';
 import { useReactToPrint } from "react-to-print";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
+import { Link } from "react-router-dom";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;
 
@@ -23,6 +24,8 @@ const Food = ({ food, onDelete }) => {
     }
   };
 
+
+
   return (
     <tr>
       <td className="admin_tbl_td">
@@ -36,6 +39,9 @@ const Food = ({ food, onDelete }) => {
         <button className="dltbtn" onClick={handleDelete}>
           Delete
         </button>
+       <Link to={`/admin-food-update/${_id}`}><button className="dltbtn">
+          Update
+        </button></Link>
       </td>
     </tr>
   );
