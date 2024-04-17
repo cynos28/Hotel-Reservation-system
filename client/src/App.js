@@ -73,7 +73,7 @@ import AddBooking from "./components/BookingUser/AddBooking/AddBooking.js";
 import MyBooking from "./components/BookingUser/Booking/MyBooking.js";
 
 //BookingAdmin
-import Booking from "./components/BookingAdmin/Booking/Booking/Bookings.js";
+import Bookings from "./components/BookingAdmin/Booking/Booking/Bookings.js";
 import UpdateBooking from "./components/BookingAdmin/Booking/Booking/UpdateBooking.js";
 //dilshan
 import AdminDashExtra from "./pages/Extra/Admin/AdminDash";
@@ -82,6 +82,7 @@ import BookValidate from "./pages/Extra/User/BookingDetails/BookValidation";
 import Category from "./pages/Extra/User/Category/Category";
 import Summary from "./pages/Extra/User/Summery/Summery";
 import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
+import Booking from "./pages/Extra/User/Booking/Booking.js";
 
 
 axios.defaults.withCredentials = true;
@@ -224,14 +225,14 @@ function App() {
 
 
             {/* Admin Routes */}
-            <Route exact path="/view-booking" element={<Booking />} />
+            <Route exact path="/view-booking" element={<Bookings />} />
             <Route exact path="/update-room/:id" element={<UpdateBooking />} />
 
             {/**dilshan */}
 
             {/*User */}
             <Route path="/extrahome" element={<ExtraHome />} />
-            <Route path="/booking" element={<Booking />} />
+            <Route path="/bookingsextras" element={<Booking />} />
             <Route path="/bookingvalidate" element={<BookValidate />} />
             <Route path="/category" element={<Category />} />
             <Route path="/summary/extraid/:extraid" element={<Summary />} />

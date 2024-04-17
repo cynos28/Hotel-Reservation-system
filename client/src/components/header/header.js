@@ -36,14 +36,14 @@ function Header() {
 
                     <div style={{ marginTop: "-10px" }}> <Link to="/" > <span>Home</span> </Link></div>
                     <div style={{ marginTop: "-10px" }}> <Link to="/getroom" > <span>Rooms</span> </Link></div>
-                    <div style={{ marginTop: "-10px" }}> <Link to="/events" > <span>Events</span> </Link></div>
+                    {/* <div style={{ marginTop: "-10px" }}> <Link to="/events" > <span>Events</span> </Link></div> */}
 
                     <div class="paste-button">
                         <button class="button">Services </button>
                         <div class="dropdown-content">
                             <a id="top" href="/foods">Foods</a>
                             <a id="middle" href="/events">Events</a>
-                            <a id="bottom" href="/extrafacilities">Extra Facilities</a>
+                            <a id="bottom" href="/extrahome">Extra Facilities</a>
                         </div>
                     </div>
                     <div style={{ marginTop: "-10px" }}> <Link to="/Gallery" > <span>Gallery</span> </Link></div>

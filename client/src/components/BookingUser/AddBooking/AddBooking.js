@@ -40,6 +40,7 @@ const AddBooking = () => {
 
   return (
     <div>
+      
       <div className="booking-container">
         <form className="booking_form" onSubmit={handleSubmit}>
           <div>

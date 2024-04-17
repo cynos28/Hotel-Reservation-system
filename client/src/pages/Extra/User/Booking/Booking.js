@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import back from "./img/bk.jpg";
+import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 const priceMap = {
   gym: 250,
   pool: 2550,
@@ -87,6 +89,8 @@ function Booking() {
   };
 
   return (
+    <> 
+     <Header />
     <div className="bk_book">
       <div className="ful_extr">
         <h1 className="topic_extra">
@@ -258,6 +262,8 @@ function Booking() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 
