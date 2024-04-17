@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../User.css";
+import Header from "../../../components/header/header";
+import Footer from "../../../components/footer/Footer";
+
+
 const AddBooking = () => {
   const history = useNavigate();
   const [inputs, setInputs] = useState({
@@ -39,13 +43,17 @@ const AddBooking = () => {
   };
 
   return (
-    <div>
-      
-      <div className="booking-container">
+    
+    <div className="picture">
+      <div>
+      <Header/>
+
+      </div>
+      <div className="booking-container" >
         <form className="booking_form" onSubmit={handleSubmit}>
           <div>
-            <div className="imgbox">
-              <p className="nameimg">Img</p>
+            <div className="imgbox"  >
+            <img src="./images/hotelimage1.jpg" alt="Hotel Heritage" ></img>
             </div>
           </div>
           <div className="form_box">
@@ -180,6 +188,9 @@ const AddBooking = () => {
             </div>
           </div>
         </form>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

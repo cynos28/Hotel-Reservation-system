@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./foodAddDelivery.css";
+import Footer from "../../../components/footer/Footer";
+import Header from "../../../components/header/header";
 
 function AddDelivery() {
   const navigate = useNavigate(); // Changed variable name to navigate
@@ -40,8 +42,11 @@ function AddDelivery() {
   };
 
   return (
-    <div className="cart-container">
-      <h2 className="cart-header">Add New Delivery</h2>
+    <div>
+      <Header/>
+    <div 
+    className="cart-container">
+      <h2 className="cart-header">Add Delivery Details</h2>
       <form className="cart-form" onSubmit={handleSubmit}>
         <label className="cart-label">Name:</label>
         <input
@@ -99,22 +104,17 @@ function AddDelivery() {
         />
         <br />
         <br></br>
-        <label className="cart-label">Location:</label>
-
-        <input
-          className="cart-input"
-          type="text"
-          name="location"
-          value={inputs.location}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <br></br>
-        <button type="submit" className="viewbtn">
-          Add Address
-        </button>
+        <Link to="/add-payment">
+            <button className="viewbtn" type="submit">
+             Go to Payment
+            </button>
+        </Link>
       </form>
+      
+
+
+    </div>
+    <Footer/>
     </div>
   );
 }
