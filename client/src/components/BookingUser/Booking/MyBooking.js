@@ -10,6 +10,9 @@ const MyBooking = () => {
   const [bookingData, setBookingData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const[nights,setNights] = useState();
+  const[payment,setPayment] = useState();
+
   /*PDF Function */
   const ComponentsRef = useRef();
 
@@ -75,9 +78,14 @@ const MyBooking = () => {
           <p className="sum_detail">
             <b>Room Type:</b> {bookingData.room}
           </p>
+          
           <p className="sum_detail">
             <b>Special Requests:</b> {bookingData.request}
           </p>
+          <p className="sum_detail">
+            <b>Payment:</b> $ {bookingData && bookingData.payment}
+          </p>
+
           <button className="btn_dash_admin" onClick={handlePrint}>
             Download Detail
           </button>

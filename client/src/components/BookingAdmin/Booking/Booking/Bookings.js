@@ -18,7 +18,9 @@ const Booking = ({ booking, onDelete }) => {
     adults,
     kids,
     room: roomType,
+    nights,
     request,
+    payment,
   } = booking;
 
   const handleDelete = async () => {
@@ -37,6 +39,9 @@ const Booking = ({ booking, onDelete }) => {
     }
   };
 
+  
+ 
+
   return (
     <tr>
       <td className="admin_tbl_td">{name}</td>
@@ -48,7 +53,10 @@ const Booking = ({ booking, onDelete }) => {
       <td className="admin_tbl_td">{adults}</td>
       <td className="admin_tbl_td">{kids}</td>
       <td className="admin_tbl_td">{roomType}</td>
+      <td className="admin_tbl_td">{nights}</td>
+      <td className="admin_tbl_td">${payment}</td>
       <td className="admin_tbl_td">{request}</td>
+     
       <td className="admin_tbl_td">
         <Link className="updt" to={`/update-room/${_id}`}>
           Update
@@ -157,7 +165,9 @@ const Bookings = () => {
                 <th className="admin_tbl_th">Adults</th>
                 <th className="admin_tbl_th">Kids</th>
                 <th className="admin_tbl_th">Room Type</th>
+                <th className="admin_tbl_th">Number of Nights</th>
                 <th className="admin_tbl_th">Special Request</th>
+                <th className="admin_tbl_th">Payment</th>
                 <th className="admin_tbl_th">Action</th>
               </tr>
             </thead>

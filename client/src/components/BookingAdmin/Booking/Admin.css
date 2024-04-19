@@ -18,6 +18,7 @@
   border: 2px solid rgb(65, 219, 183);
 }
 
+
 ::-webkit-scrollbar-thumb:hover {
   background: gray; /* Color of the scrollbar handle on hover */
 }
@@ -30,6 +31,8 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20%;
+  margin-right: 20%;
+  margin-left: 20%;
 }
 
 .table_details_admin .admin_tbl_th,
