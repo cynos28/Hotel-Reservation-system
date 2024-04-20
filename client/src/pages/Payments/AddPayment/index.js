@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { BACKEND_URL } from "../../../constants";
-import Header from "../../../components/header/header";
 import Footer from "../../../components/footer/Footer";
+import Header from "../../../components/header/header";
 import axios from "axios";
 import bookimg from "./img/bkbokinfrom.png";
 import { useSelector } from "react-redux";
@@ -18,6 +18,7 @@ function AddPayment() {
   // const { bookingId } = useParams();
 
   const { user } = useSelector((state) => state.auth);
+  const { type, total } = useSelector((state) => state.payment);
 
   const userId = user?._id; // get the user id from the logged in user
   const bookingId = "100"; // get the booking id from the url params
@@ -35,8 +36,8 @@ function AddPayment() {
     //TODO: Get booking details by bookingId
     setBookingState({
       id: bookingId,
-      type: "Hotel Booking",
-      amount: "5000",
+      type: type,
+      amount: total,
     });
   };
 
