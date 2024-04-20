@@ -419,6 +419,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isLoggedIn = false;
+        state.user = initialState.user;
         toast.success(action.payload);
       })
       .addCase(logout.rejected, (state, action) => {
