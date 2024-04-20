@@ -55,8 +55,9 @@ const Carts = () => {
     }
   };
 
+  // fetch food payment details
   const onNavigateToDelivery = () => {
-    if (!userId) {
+    if (userId) {
       dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
     }
     navigate("/add-delivery");
