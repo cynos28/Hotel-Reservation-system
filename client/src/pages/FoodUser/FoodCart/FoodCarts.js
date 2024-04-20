@@ -55,7 +55,7 @@ const Carts = () => {
     }
   };
 
-  // fetch food payment details
+  // add payment details to Redux
   const onNavigateToDelivery = () => {
     if (userId) {
       dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
