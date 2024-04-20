@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,  useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../User.css";
@@ -6,7 +6,9 @@ import Header from "../../../components/header/header";
 import Footer from "../../../components/footer/Footer";
 
 
+
 const AddBooking = () => {
+  const [payment, setPayment] = useState(0);
   const history = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
@@ -18,15 +20,38 @@ const AddBooking = () => {
     adults: 0,
     kids: 0,
     room: "",
+    nights:"",
+    
     request: "",
+    payment:0,
+    
+    
   });
   const [error, setError] = useState("");
+  
+
+  useEffect(() => {
+    const calculatePayment = () => {
+      const nightlyRate = 1500; 
+      const totalPayment = nightlyRate * parseInt(inputs.nights);
+      setPayment(totalPayment);
+
+      
+      setInputs(prevState => ({
+        ...prevState,
+        payment: totalPayment
+      }));
+    };
+
+    calculatePayment();
+  }, [inputs.nights]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((prevState) => ({
       ...prevState,
       [name]: value,
+      
     }));
   };
 
@@ -41,6 +66,7 @@ const AddBooking = () => {
       // Handle error and provide feedback to the user
     }
   };
+  
 
   return (
     
@@ -172,6 +198,18 @@ const AddBooking = () => {
                 />
               </div>
               <div>
+                <label className="booking-label">Number of Nights:</label>
+                <br />
+                <input
+                  className="booking-input"
+                  type="nights"
+                  name="nights"
+                  value={inputs.nights}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
                 <label className="booking-label">Special Requests:</label>
                 <br />
                 <textarea
@@ -181,6 +219,20 @@ const AddBooking = () => {
                   onChange={handleChange}
                 ></textarea>
               </div>
+              <div>
+            <label className="booking-label">Payment Amount:</label>
+            <br />
+            <input
+              className="booking-input"
+              
+              type="text"
+              name="payment"
+              value={inputs.payment} 
+              onChange={handleChange}
+              
+              
+            />
+          </div>
               <br></br>
               <button className="bookbtn" type="submit">
                 Submit

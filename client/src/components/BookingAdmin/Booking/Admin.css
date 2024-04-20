@@ -12,20 +12,18 @@
 ::-webkit-scrollbar-thumb {
   background: gray;
 }
-.btn_print{
+.btn_print {
   margin-left: 17%;
   background-color: rgb(65, 219, 183);
   border: 2px solid rgb(65, 219, 183);
-
-
-
 }
+
 
 ::-webkit-scrollbar-thumb:hover {
   background: gray; /* Color of the scrollbar handle on hover */
 }
-.imgbox{
-  background-image: url('../../../../public/images/hotelimage1.jpg');
+.imgbox {
+  background-image: url("../../../../public/images/hotelimage1.jpg");
 }
 
 .table_details_admin {
@@ -33,6 +31,8 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20%;
+  margin-right: 20%;
+  margin-left: 20%;
 }
 
 .table_details_admin .admin_tbl_th,
@@ -51,10 +51,9 @@
   text-align: center;
 }
 .tbl_main {
-  padding: 9%;
-  
+  padding: 18%;
 }
-.lftbtn{
+.lftbtn {
   margin-right: 20%;
 }
 

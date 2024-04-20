@@ -3,21 +3,18 @@ const User = require("../models/userModel");
 const Token = require("../models/tokenModel");
 const bcrypt = require("bcryptjs");
 const { generateToken, hashToken } = require("../utils");
-var parser = require('ua-parser-js');
+var parser = require("ua-parser-js");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendEmail");
-const crypto = require('crypto');
-const Cryptr = require('cryptr');
+const crypto = require("crypto");
+const Cryptr = require("cryptr");
 const { OAuth2Client } = require("google-auth-library");
 
 const cryptr = new Cryptr(process.env.CRYPT_KEY);
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-
-
 //Register User
 const registerUser = asyncHandler(async (req, res) => {
-
   // res.send("Register User");
   const { name, email, password } = req.body;
 
@@ -45,9 +42,8 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    userAgent: [parser(req.headers['user-agent']).ua],
+    userAgent: [parser(req.headers["user-agent"]).ua],
   });
-
 
   // GenerateToken
   const token = generateToken(user._id);
@@ -65,7 +61,15 @@ const registerUser = asyncHandler(async (req, res) => {
     const { _id, name, email, phone, bio, photo, role, isVerified } = user;
 
     res.status(201).json({
-      _id, name, email, phone, bio, photo, role, isVerified, token
+      _id,
+      name,
+      email,
+      phone,
+      bio,
+      photo,
+      role,
+      isVerified,
+      token,
     });
   } else {
     res.status(400);
@@ -97,22 +101,19 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 
-
   // Trigger 2FA validation
   const ua = parser(req.headers["user-agent"]);
   const thisUserAgent = ua.ua;
   console.log(thisUserAgent);
-  const allowedAgent = user.userAgent.includes(thisUserAgent)
+  const allowedAgent = user.userAgent.includes(thisUserAgent);
 
   if (!allowedAgent) {
-
     //Generate 6 digit code
     const loginCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(loginCode)
+    console.log(loginCode);
 
     //Encrypt login code before saving to DB
-    const EncryptedLoginCode = cryptr.encrypt(loginCode.toString())
-
+    const EncryptedLoginCode = cryptr.encrypt(loginCode.toString());
 
     // Delete token if it exists
     let userToken = await Token.findOne({ userId: user._id });
@@ -120,21 +121,18 @@ const loginUser = asyncHandler(async (req, res) => {
       await userToken.deleteOne();
     }
 
-
-    //Save Token to DB  
+    //Save Token to DB
 
     await new Token({
       userId: user._id,
       loginToken: EncryptedLoginCode,
       createdAt: Date.now(),
-      expiredAt: Date.now() + 3600 * 60 //1hr
-
+      expiredAt: Date.now() + 3600 * 60, //1hr
     }).save();
 
-    res.status(400)
+    res.status(400);
     throw new Error("New Browser Detected ");
   }
-
 
   // GenerateToken
   const token = generateToken(user._id);
@@ -152,14 +150,21 @@ const loginUser = asyncHandler(async (req, res) => {
     const { _id, name, email, phone, bio, photo, role, isVerified } = user;
 
     res.status(200).json({
-      _id, name, email, phone, bio, photo, role, isVerified, token
+      _id,
+      name,
+      email,
+      phone,
+      bio,
+      photo,
+      role,
+      isVerified,
+      token,
     });
   } else {
     res.status(500);
     return res.json({ error: "Something went wrong, try again." });
   }
 });
-
 
 // Send login code to user's email
 const sendLoginCode = asyncHandler(async (req, res) => {
@@ -193,7 +198,15 @@ const sendLoginCode = asyncHandler(async (req, res) => {
   const name = user.name;
 
   try {
-    await sendEmail(subject, sendTo, sentFrom, replyTo, template, name, loginCode);
+    await sendEmail(
+      subject,
+      sendTo,
+      sentFrom,
+      replyTo,
+      template,
+      name,
+      loginCode
+    );
     res.status(200).json({ message: "Access code sent to your email" });
   } catch (error) {
     console.error(error);
@@ -214,25 +227,25 @@ const loginWithCode = asyncHandler(async (req, res) => {
   // Find the user's login token
   const userToken = await Token.findOne({
     userId: user._id,
-    expiredAt: { $gt: Date.now() }
+    expiredAt: { $gt: Date.now() },
   });
 
   if (!userToken) {
-    return res.status(404).json({ error: "Invalid or expired token. Please login again." });
+    return res
+      .status(404)
+      .json({ error: "Invalid or expired token. Please login again." });
   }
 
   // Decrypt the login code from the token
   const decryptedLoginCode = cryptr.decrypt(userToken.loginToken);
 
   if (loginCode !== decryptedLoginCode) {
-    return res.status(404).json({ error: "Incorrect login code. Please try again." });
+    return res
+      .status(404)
+      .json({ error: "Incorrect login code. Please try again." });
   }
 
-
-
   res.status(200).json({ message: "Login successful" });
-
-
 
   // Register user agent
   const ua = parser(req.headers["user-agent"]);
@@ -268,8 +281,6 @@ const loginWithCode = asyncHandler(async (req, res) => {
   });
 });
 
-
-
 const sendVerificationEmail = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -293,28 +304,27 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(verificationToken);
 
-  //Hash token and save  
+  //Hash token and save
   const hashedToken = hashToken(verificationToken);
   await new Token({
     userId: user._id,
     verificationToken: hashedToken,
     createdAt: Date.now(),
-    expiredAt: Date.now() + 3600 * 60 //1hr
-
+    expiredAt: Date.now() + 3600 * 60, //1hr
   }).save();
 
   //Construct Verification URL
-  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`
+  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
 
   //Send  Verification email
 
-  const subject = "Verify Your Account - PrimeLodge"
-  const send_to = user.email
-  const sent_from = process.env.EMAIL_USER
-  const reply_to = "noreply@primelodge.com"
-  const template = "verifyEmail"
-  const name = user.name
-  const link = verificationUrl
+  const subject = "Verify Your Account - The Heritage";
+  const send_to = user.email;
+  const sent_from = process.env.EMAIL_USER;
+  const reply_to = "noreply@primelodge.com";
+  const template = "verifyEmail";
+  const name = user.name;
+  const link = verificationUrl;
 
   try {
     await sendEmail(
@@ -331,44 +341,38 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     console.error(error); // Log the error
     res.status(500).json({ error: "Email not sent, please try again" });
   }
-
-
 });
 
 //Verify User
 const verifyUser = asyncHandler(async (req, res) => {
-  const { verificationToken } = req.params
+  const { verificationToken } = req.params;
 
-  const hashedToken = hashToken(verificationToken)
+  const hashedToken = hashToken(verificationToken);
 
   const userToken = await Token.findOne({
     verificationToken: hashedToken,
-    expiredAt: { $gt: Date.now() }
-  })
+    expiredAt: { $gt: Date.now() },
+  });
 
   if (!userToken) {
     res.status(404);
     throw new Error("Invalid or Expires Token ");
-
   }
 
   //Find USer
-  const user = await User.findOne({ _id: userToken.userId })
+  const user = await User.findOne({ _id: userToken.userId });
 
   if (user.isVerified) {
     res.status(400);
     throw new Error("User is already Verified ");
-
   }
   //Now Verify User
   user.isVerified = true;
   await user.save();
 
-
   res.status(200).json({
-    message: "Account Verification Successful"
-  })
-
+    message: "Account Verification Successful",
+  });
 });
 
 //LogOut user
@@ -381,11 +385,9 @@ const logoutUser = asyncHandler(async (req, res) => {
     secure: true,
   });
   res.status(200).json({
-    message: "Successfully logged out"
+    message: "Successfully logged out",
   });
 });
-
-
 
 // Get User
 const getUser = async (req, res, next) => {
@@ -395,13 +397,13 @@ const getUser = async (req, res, next) => {
     if (user) {
       const userData = {
         _id: user._id,
-        userName: user.name,  // Rename 'name' to avoid conflict
+        userName: user.name, // Rename 'name' to avoid conflict
         userEmail: user.email, // Rename 'email' to avoid conflict
         userPhone: user.phone,
         userBio: user.bio,
         userPhoto: user.photo,
         userRole: user.role,
-        isVerified: user.isVerified
+        isVerified: user.isVerified,
       };
 
       res.status(200).json(userData);
@@ -429,7 +431,6 @@ const updateUser = asyncHandler(async (req, res) => {
     user.bio = req.body.bio || bio;
     user.photo = req.body.photo || photo;
 
-
     // Save the updated user
     const updatedUser = await user.save();
 
@@ -441,7 +442,7 @@ const updateUser = asyncHandler(async (req, res) => {
       bio: updatedUser.bio,
       photo: updatedUser.photo,
       role: updatedUser.role,
-      isVerified: updatedUser.isVerified
+      isVerified: updatedUser.isVerified,
     });
   } else {
     res.status(404);
@@ -474,18 +475,12 @@ const loginStatus = asyncHandler(async (req, res) => {
 
 //Send Automated Email
 const sendAutomatedEmail = asyncHandler(async (req, res) => {
-  const { subject,
-    send_to,
-    reply_to,
-    template, url } = req.body;
+  const { subject, send_to, reply_to, template, url } = req.body;
 
-  if (!subject || !send_to || !reply_to || !template
-  ) {
+  if (!subject || !send_to || !reply_to || !template) {
     res.status(500);
     throw new Error("Missing Email Parameter");
-
   }
-
 
   //Get User
   const user = await User.findOne({ email: send_to });
@@ -513,12 +508,10 @@ const sendAutomatedEmail = asyncHandler(async (req, res) => {
     console.error(error); // Log the error
     res.status(500).json({ error: "Email not sent, please try again" });
   }
-
 });
 
 //Forgot password
 const forgotPassword = asyncHandler(async (req, res) => {
-
   const { email } = req.body;
   const user = await User.findOne({ email });
 
@@ -536,20 +529,19 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const resetToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(resetToken);
 
-  //Hash token and save  
+  //Hash token and save
   const hashedToken = hashToken(resetToken);
   await new Token({
     userId: user._id,
     resetToken: hashedToken,
     createdAt: Date.now(),
-    expiredAt: Date.now() + 3600 * 60 //1hr
-
+    expiredAt: Date.now() + 3600 * 60, //1hr
   }).save();
 
   //Construct Reset URL
-  const resetUrl = `${process.env.FRONTEND_URL}/reset/${resetToken}`
+  const resetUrl = `${process.env.FRONTEND_URL}/reset/${resetToken}`;
 
-  //Send  Verification email 
+  //Send  Verification email
   const subject = "Password Reset Request - PrimeLodge";
   const send_to = user.email;
   const sent_from = process.env.EMAIL_USER;
@@ -557,7 +549,6 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const template = "forgotPassword";
   const name = user.name;
   const link = resetUrl;
-
 
   try {
     await sendEmail(
@@ -574,10 +565,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
     console.error(error); // Log the error
     res.status(500).json({ error: "Email not sent, please try again" });
   }
-
-
 });
-
 
 // Reset password
 const resetPassword = asyncHandler(async (req, res) => {
@@ -587,11 +575,10 @@ const resetPassword = asyncHandler(async (req, res) => {
 
     // Hash the reset token
 
-
     // Find user token
     const userToken = await Token.findOne({
       resetToken: hashedToken,
-      expiredAt: { $gt: Date.now() }
+      expiredAt: { $gt: Date.now() },
     });
 
     if (!userToken) {
@@ -607,19 +594,19 @@ const resetPassword = asyncHandler(async (req, res) => {
       return;
     }
 
-
     // Reset password using bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
     user.password = hashedPassword;
     await user.save();
 
-    res.status(200).json({ message: "Password reset successful, please login" });
+    res
+      .status(200)
+      .json({ message: "Password reset successful, please login" });
   } catch (error) {
     console.error("Error in resetPassword:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
-
-})
+});
 
 // Delete User
 const deleteUser = asyncHandler(async (req, res) => {
@@ -668,11 +655,10 @@ const upgradeUser = asyncHandler(async (req, res) => {
 
 //Change Password
 const changePassword = asyncHandler(async (req, res) => {
-  const { oldPassword, password } = req.body
-  const user = await User.findById(req.user._id)
+  const { oldPassword, password } = req.body;
+  const user = await User.findById(req.user._id);
 
   if (!user) {
-
     res.status(404);
     throw new Error("User not found");
   }
@@ -682,19 +668,20 @@ const changePassword = asyncHandler(async (req, res) => {
     throw new error("Please enter old and new password");
   }
   //Check if Old password is correct
-  const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password)
+  const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
 
   //Save new Password
   if (user && passwordIsCorrect) {
-    user.password = password
+    user.password = password;
     await user.save();
 
-    res.status(200).json({ message: "Password change Successfully, please re-login!" });
+    res
+      .status(200)
+      .json({ message: "Password change Successfully, please re-login!" });
   } else {
     res.status(400).json({ message: "Old password is incorrect!" });
   }
-}
-);
+});
 
 //Google Login
 const loginWithGoogle = asyncHandler(async (req, res) => {
@@ -803,5 +790,4 @@ module.exports = {
   getUsers,
   upgradeUser,
   loginWithGoogle,
-
 };

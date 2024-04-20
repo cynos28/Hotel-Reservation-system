@@ -29,7 +29,7 @@ const getBookingById = async (req, res, next) => {
 };
 
 const addBooking = async (req, res, next) => {
-  const { name, email, address, city, code, phone, adults, kids, room, request } = req.body;
+  const { name, email, address, city, code, phone, adults, kids, room,nights, request,payment} = req.body;
   let newBooking;
   try {
     newBooking = new Booking({
@@ -42,7 +42,10 @@ const addBooking = async (req, res, next) => {
       adults,
       kids,
       room,
+      nights,
       request,
+      payment ,
+      
     });
     await newBooking.save();
   } catch (err) {
@@ -57,7 +60,7 @@ const addBooking = async (req, res, next) => {
 
 const updateBooking = async (req, res, next) => {
   const id = req.params.id;
-  const { name, email, address, city, code, phone, adults, kids, room, request } = req.body;
+  const { name, email, address, city, code, phone, adults, kids, room,nights, request,payment } = req.body;
   let bookingToUpdate;
   try {
     bookingToUpdate = await Booking.findById(id);
@@ -73,7 +76,9 @@ const updateBooking = async (req, res, next) => {
     bookingToUpdate.adults = adults;
     bookingToUpdate.kids = kids;
     bookingToUpdate.room = room;
+    bookingToUpdate.nights = nights;
     bookingToUpdate.request = request;
+    bookingToUpdate.payment = payment;
     await bookingToUpdate.save();
   } catch (err) {
     console.log(err);
