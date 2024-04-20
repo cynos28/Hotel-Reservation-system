@@ -113,6 +113,9 @@ function Booking() {
               <br />
               <label className="form_lable_extra">Full Name</label>
               <br />
+
+              {/* frontend validate */}
+
               <input
                 className="form_input_extra"
                 required
@@ -124,6 +127,9 @@ function Booking() {
               <br />
               <label className="form_lable_extra">Gmail</label>
               <br />
+
+              {/* frontend validate */}
+
               <input
                 className="form_input_extra"
                 required
@@ -135,6 +141,9 @@ function Booking() {
               <br />
               <label className="form_lable_extra">Phone</label>
               <br />
+
+              {/* frontend validate */}
+
               <input
                 className="form_input_extra"
                 required
@@ -142,6 +151,7 @@ function Booking() {
                 onChange={handleChange}
                 type="text"
                 //Phone number Validators
+
                 pattern="\d{10}"
                 name="phone"
               />

@@ -3,15 +3,8 @@ import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import "../Admin.css";
-
 import TopNav from "../../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
-  
-
-
-
-
-
 
 const Booking = ({ booking, onDelete }) => {
   const {
@@ -25,7 +18,9 @@ const Booking = ({ booking, onDelete }) => {
     adults,
     kids,
     room: roomType,
+    nights,
     request,
+    payment,
   } = booking;
 
   const handleDelete = async () => {
@@ -44,12 +39,11 @@ const Booking = ({ booking, onDelete }) => {
     }
   };
 
+  
+ 
+
   return (
-
-    
-
     <tr>
-      
       <td className="admin_tbl_td">{name}</td>
       <td className="admin_tbl_td">{email}</td>
       <td className="admin_tbl_td">{address}</td>
@@ -59,7 +53,10 @@ const Booking = ({ booking, onDelete }) => {
       <td className="admin_tbl_td">{adults}</td>
       <td className="admin_tbl_td">{kids}</td>
       <td className="admin_tbl_td">{roomType}</td>
+      <td className="admin_tbl_td">{nights}</td>
+      <td className="admin_tbl_td">${payment}</td>
       <td className="admin_tbl_td">{request}</td>
+     
       <td className="admin_tbl_td">
         <Link className="updt" to={`/update-room/${_id}`}>
           Update
@@ -98,7 +95,9 @@ const Bookings = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3001/bookings/${id}`);
-      setBookings((prevBookings) => prevBookings.filter((booking) => booking._id !== id));
+      setBookings((prevBookings) =>
+        prevBookings.filter((booking) => booking._id !== id)
+      );
       alert("Booking deleted successfully.");
     } catch (error) {
       // Handle error and provide feedback to the user
@@ -124,8 +123,7 @@ const Bookings = () => {
   };
   return (
     <div>
-
-<TopNav />
+      <TopNav />
       <Sidebar />
       <div className="tbl_main">
         <div className="btnset">
@@ -167,7 +165,9 @@ const Bookings = () => {
                 <th className="admin_tbl_th">Adults</th>
                 <th className="admin_tbl_th">Kids</th>
                 <th className="admin_tbl_th">Room Type</th>
+                <th className="admin_tbl_th">Number of Nights</th>
                 <th className="admin_tbl_th">Special Request</th>
+                <th className="admin_tbl_th">Payment</th>
                 <th className="admin_tbl_th">Action</th>
               </tr>
             </thead>
@@ -181,7 +181,11 @@ const Bookings = () => {
             ) : (
               <tbody>
                 {bookings.map((booking) => (
-                  <Booking key={booking._id} booking={booking} onDelete={handleDelete} />
+                  <Booking
+                    key={booking._id}
+                    booking={booking}
+                    onDelete={handleDelete}
+                  />
                 ))}
               </tbody>
             )}

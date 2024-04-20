@@ -1,37 +1,36 @@
 .table_details_admin {
-    border-collapse: collapse;
-    width: 50%;
-    text-align: center;
-    text-transform: capitalize;
-    margin-left: 130px;
-  }
-  
-  .table_details_admin .admin_tbl_th,
-  .table_details_admin .admin_tbl_td {
-    border: 2px solid #1b4850;
-    padding: 8px;
-  }
-  
-  .table_details_admin .admin_tbl_th {
-    background-color: #03c9876e;
-    color: white;
-    font-size: 18px;
-  }
-  
-  .img_admin_tbl {
-    width: 150px;
-    height: 150px;
-    padding: 0;
-    border-radius: 5px;
-    margin: 0;
-  }
-  .tbldetsil {
-    padding: 50px 10%;
-  }
-  .search_pdf_div {
-    display: flex;
-    margin-bottom: 25px;
-    justify-content: space-between;
-    margin-left: 130px;
-  }
-  
+  border-collapse: collapse;
+  width: 50%;
+  text-align: center;
+  text-transform: capitalize;
+  margin-left: 130px;
+}
+
+.table_details_admin .admin_tbl_th,
+.table_details_admin .admin_tbl_td {
+  border: 2px solid #1b4850;
+  padding: 8px;
+}
+
+.table_details_admin .admin_tbl_th {
+  background-color: #03c9876e;
+  color: white;
+  font-size: 18px;
+}
+
+.img_admin_tbl {
+  width: 150px;
+  height: 150px;
+  padding: 0;
+  border-radius: 5px;
+  margin: 0;
+}
+.tbldetsil {
+  padding: 50px 10%;
+}
+.search_pdf_div {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  margin-left: 130px;
+}

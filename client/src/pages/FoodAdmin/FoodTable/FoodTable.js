@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import './foodtable.css';
+import "./foodtable.css";
 import { useReactToPrint } from "react-to-print";
-import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
-import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import { Link } from "react-router-dom";
 const Food = ({ food, onDelete }) => {
   const { _id, name, image, time, price, tag } = food;
@@ -24,8 +22,6 @@ const Food = ({ food, onDelete }) => {
     }
   };
 
-
-
   return (
     <tr>
       <td className="admin_tbl_td">
@@ -39,9 +35,9 @@ const Food = ({ food, onDelete }) => {
         <button className="dltbtn" onClick={handleDelete}>
           Delete
         </button>
-       <Link to={`/admin-food-update/${_id}`}><button className="dltbtn">
-          Update
-        </button></Link>
+        <Link to={`/admin-food-update/${_id}`}>
+          <button className="dltbtn">Update</button>
+        </Link>
       </td>
     </tr>
   );
@@ -93,11 +89,9 @@ const Foods = () => {
     DocumentTitle: " Details Report",
     onafterprint: () => alert(" Details Report Successfully Download !"),
   });
-  
+
   return (
     <div>
-        <TopNav />
-      <Sidebar />
       <h1 className="cart-header">Food Items List</h1>
       {alertMessage && <div style={{ color: "red" }}>{alertMessage}</div>}
       <div className="tbldetsil">
