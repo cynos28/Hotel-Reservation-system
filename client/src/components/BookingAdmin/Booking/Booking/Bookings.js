@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
-import {Bar}  from 'react-chart.js'
+
 import "../Admin.css";
 import TopNav from "../../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
