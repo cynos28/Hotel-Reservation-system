@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import "./foodAddDelivery.css";
+
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/header";
+import axios from "axios";
 
 function AddDelivery() {
   const navigate = useNavigate(); // Changed variable name to navigate
@@ -41,76 +43,82 @@ function AddDelivery() {
     });
   };
 
+  const onNavigateToPayment = () => {
+    navigate("/add-payment");
+  };
+
   return (
     <div className="back">
-      <Header/>
-    <div 
-    className="cart-container">
-      <h2 className="cart-header">Add Delivery Details</h2>
-      <form className="cart-form" onSubmit={handleSubmit}>
-        <label className="cart-label">Name:</label>
-        <input
-          className="cart-input"
-          type="text"                                                                            
-          name="name"
-          value={inputs.name}
-          onChange={handleChange}
-          required
-        />
-        <br></br>
-        <br></br>
-        <label className="cart-label">Phone:</label>
-        <input
-          className="cart-input"
-          type="text"
-          name="phone"
-          value={inputs.phone}
-          onChange={handleChange}
-          required
-        />
-        <br></br>
-        <br></br>
-        <label className="cart-label">Time:</label>
-        <input
-          className="cart-input"
-          type="time"
-          name="time"
-          value={inputs.time}
-          onChange={handleChange}
-          required
-        />
-        <br></br>
-        <br></br>
-        <label className="cart-label">Date:</label>
-        <input
-          className="cart-input"
-          type="date"
-          name="date"
-          value={inputs.date}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <br></br>
-        <label className="cart-label">Address:</label>
+      <Header />
+      <div className="cart-container">
+        <h2 className="cart-header">Add Delivery Details</h2>
+        <form className="cart-form" onSubmit={handleSubmit}>
+          <label className="cart-label">Name:</label>
+          <input
+            className="cart-input"
+            type="text"
+            name="name"
+            value={inputs.name}
+            onChange={handleChange}
+            required
+          />
+          <br></br>
+          <br></br>
+          <label className="cart-label">Phone:</label>
+          <input
+            className="cart-input"
+            type="text"
+            name="phone"
+            value={inputs.phone}
+            onChange={handleChange}
+            required
+          />
+          <br></br>
+          <br></br>
+          <label className="cart-label">Time:</label>
+          <input
+            className="cart-input"
+            type="time"
+            name="time"
+            value={inputs.time}
+            onChange={handleChange}
+            required
+          />
+          <br></br>
+          <br></br>
+          <label className="cart-label">Date:</label>
+          <input
+            className="cart-input"
+            type="date"
+            name="date"
+            value={inputs.date}
+            onChange={handleChange}
+            required
+          />
+          <br />
+          <br></br>
+          <label className="cart-label">Address:</label>
 
-        <input
-          className="cart-input"
-          type="text"
-          name="address"
-          value={inputs.address}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <br></br>
-        <button type="submit" className="viewbtn">
-          Go to Payment
-        </button>
-      </form>
-      
-    </div>
-    <Footer/>
+          <input
+            className="cart-input"
+            type="text"
+            name="address"
+            value={inputs.address}
+            onChange={handleChange}
+            required
+          />
+          <br />
+          <br></br>
+          <button
+            type="submit"
+            className="viewbtn"
+            onClick={onNavigateToPayment}
+          >
+            Go to Payment
+          </button>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 }
