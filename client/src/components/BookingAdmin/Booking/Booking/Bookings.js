@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
+import {Bar}  from 'react-chart.js'
 import "../Admin.css";
 import TopNav from "../../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
@@ -121,6 +122,7 @@ const Bookings = () => {
       setError("Error searching bookings.");
     }
   };
+  
   return (
     <div>
       <TopNav />
@@ -166,8 +168,8 @@ const Bookings = () => {
                 <th className="admin_tbl_th">Kids</th>
                 <th className="admin_tbl_th">Room Type</th>
                 <th className="admin_tbl_th">Number of Nights</th>
-                <th className="admin_tbl_th">Special Request</th>
                 <th className="admin_tbl_th">Payment</th>
+                <th className="admin_tbl_th">Special Requests</th>
                 <th className="admin_tbl_th">Action</th>
               </tr>
             </thead>
@@ -192,6 +194,8 @@ const Bookings = () => {
           </table>
         </div>
       </div>
+
+
     </div>
   );
 };

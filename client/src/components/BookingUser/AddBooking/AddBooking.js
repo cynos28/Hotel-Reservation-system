@@ -27,8 +27,20 @@ const AddBooking = () => {
     
     
   });
-  const [error, setError] = useState("");
+  //useEffect(()=>{
+   // fetchuserdata();
+  //})
   
+ {/* const fetchuserdata = async()=>{
+    try{
+      const response = await axios.get("");
+      setInputs(response.data.booking);
+
+    }catch (error) {
+      console.error("Error fetching room data:", error);
+      // Handle error and provide feedback to the user
+    }
+  };*/}
 
   useEffect(() => {
     const calculatePayment = () => {
@@ -234,6 +246,7 @@ const AddBooking = () => {
             />
           </div>
               <br></br>
+              
               <button className="bookbtn" type="submit">
                 Submit
               </button>
