@@ -1,27 +1,21 @@
 import "./style.css";
 
+import { BACKEND_URL, PAYMENT_TYPES } from "../../../constants";
 import React, { useEffect, useRef, useState } from "react";
 
-import { BACKEND_URL } from "../../../constants";
-import axios from "axios";
-import { useReactToPrint } from "react-to-print";
 import Sidebar from "../../AdminComponents/Sidebar/Sidebar";
 import TopNav from "../../AdminComponents/TopNav/TopNav";
-
-const ROOM_PAYMENT_TYPE = "Hotel Booking";
-const BAR_PAYMENT_TYPE = "Bar Booking";
-const FOOD_PAYMENT_TYPE = "Food";
-const POOL_PAYMENT_TYPE = "Pool";
+import axios from "axios";
+import { useReactToPrint } from "react-to-print";
 
 function AdminDash() {
-  const [noResults, setNoResults] = useState(false);
-
   const [roomPaymentState, setRoomPaymentState] = useState({
     isLoading: false,
     payments: [],
   });
-  const [selectedBookingType, setSelectedBookingType] =
-    useState(ROOM_PAYMENT_TYPE);
+  const [selectedBookingType, setSelectedBookingType] = useState(
+    PAYMENT_TYPES.ROOM
+  );
   const [roomSearchText, setRoomSearchText] = useState("");
 
   const onFetchPaymentsByBookingType = async () => {
@@ -72,7 +66,6 @@ function AdminDash() {
   });
 
   return (
-    
     <div className="admin_full">
       <Sidebar />
       <TopNav />
@@ -93,10 +86,10 @@ function AdminDash() {
                 name="type"
               >
                 <option value="">Select Booking Type</option>
-                <option value={ROOM_PAYMENT_TYPE}>{"Room"}</option>
-                <option value={BAR_PAYMENT_TYPE}>{"Bar"}</option>
-                <option value={POOL_PAYMENT_TYPE}>{"Pool"}</option>
-                <option value={FOOD_PAYMENT_TYPE}>{"Food"}</option>
+                <option value={PAYMENT_TYPES.ROOM}>{"Room"}</option>
+                <option value={PAYMENT_TYPES.BAR}>{"Bar"}</option>
+                <option value={PAYMENT_TYPES.POOL}>{"Pool"}</option>
+                <option value={PAYMENT_TYPES.FOOD}>{"Food"}</option>
               </select>
               <div className="search_box">
                 <input
