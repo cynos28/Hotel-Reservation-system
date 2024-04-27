@@ -209,31 +209,7 @@
   padding: 4px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.dltbtn:hover {
-  background-color: #ffffff;
-  border: 2px solid #f10a0a;
-  color: #f10a0a;
-}
 
-.carts-header {
-  text-align: center;
-  font-size: 40px;
-  margin-top: 10px;
-}
-
-.add-new-button {
-  background-color: #65a4da;
-  border: 2px solid #65a4da;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 4px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 .tot_topic {
   text-align: center;
   font-size: 30px;
