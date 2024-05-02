@@ -101,39 +101,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 
-  // Trigger 2FA validation
-  const ua = parser(req.headers["user-agent"]);
-  const thisUserAgent = ua.ua;
-  console.log(thisUserAgent);
-  const allowedAgent = user.userAgent.includes(thisUserAgent);
-
-  if (!allowedAgent) {
-    //Generate 6 digit code
-    const loginCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(loginCode);
-
-    //Encrypt login code before saving to DB
-    const EncryptedLoginCode = cryptr.encrypt(loginCode.toString());
-
-    // Delete token if it exists
-    let userToken = await Token.findOne({ userId: user._id });
-    if (userToken) {
-      await userToken.deleteOne();
-    }
-
-    //Save Token to DB
-
-    await new Token({
-      userId: user._id,
-      loginToken: EncryptedLoginCode,
-      createdAt: Date.now(),
-      expiredAt: Date.now() + 3600 * 60, //1hr
-    }).save();
-
-    res.status(400);
-    throw new Error("New Browser Detected ");
-  }
-
   // GenerateToken
   const token = generateToken(user._id);
 
@@ -165,6 +132,7 @@ const loginUser = asyncHandler(async (req, res) => {
     return res.json({ error: "Something went wrong, try again." });
   }
 });
+
 
 // Send login code to user's email
 const sendLoginCode = asyncHandler(async (req, res) => {
