@@ -13,11 +13,7 @@ const useRedirectLoggedOutUser = (path) => {
     dispatch(getLoginStatus());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isError) {
-      toast.error("An error occurred while checking login status: " + message);
-    }
-  }, [isError, message]);
+  
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {

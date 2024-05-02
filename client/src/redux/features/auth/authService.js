@@ -155,7 +155,7 @@ const getUsers = async () => {
 
 const deleteUser = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/users/${id}`); // Corrected URL construction
+    const response = await axios.delete(`${API_URL}/${id}`);
     return response.data.message;
   } catch (error) {
     throw error.response.data.message;
