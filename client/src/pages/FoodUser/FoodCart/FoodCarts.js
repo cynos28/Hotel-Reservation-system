@@ -100,7 +100,7 @@ const Carts = () => {
                           <h3 className="itmname">{cart.name}</h3>
                           <p className="itmprice">Price: Rs {cart.price}.00</p>
                           <p className="itmprice">Quantity: {cart.qty}</p>
-                          <p className="itmprice tot">Total: ${cart.total}</p>
+                          <p className="itmprice tot">Total: Rs {cart.total}.00</p>
                         </div>
                         <div className="edit_btnx">
                           <Link to={`/update-cart/${cart._id}`}>
