@@ -56,12 +56,13 @@ const Carts = () => {
   };
 
   // add payment details to Redux
-  const onNavigateToDelivery = () => {
-    if (userId) {
-      dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
-    }
+// add payment details to Redux
+const onNavigateToDelivery = () => {
+  if (userId) {
+    dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
     navigate("/add-delivery");
-  };
+  }
+};
 
   return (
     <div>
