@@ -1,10 +1,25 @@
 import React from "react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import navLinks from "../../assets/dummy-data/navLinks";
 import "./sidebar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RESET ,logout} from "../../../redux/features/auth/authSlice";
+
+
 
 const Sidebar = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
+
+  const logoutUser = async () => {
+    dispatch(RESET());
+    dispatch(logout());
+    navigate("/login"); // Navigate to login page after logout
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -37,9 +52,14 @@ const Sidebar = () => {
         </div>
 
         <div className="sidebar__bottom">
-          <span>
-            <i class="ri-logout-circle-r-line"></i> Logout
-          </span>
+
+        <li>
+            <button onClick={logoutUser} className="button-logout">
+              <span>
+                <i className="ri-logout-circle-r-line"></i> Logout
+              </span>
+            </button>
+          </li>
         </div>
       </div>
     </div>

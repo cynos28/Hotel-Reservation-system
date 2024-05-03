@@ -36,7 +36,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message, isError, twoFactor } =
+  const { isLoading, isLoggedIn, isSuccess, message, isError, twoFactor, user } =
     useSelector((state) => state.auth);
 
   const loginUser = async (e) => {
@@ -53,8 +53,15 @@ function Login() {
   };
 
   useEffect(() => {
-    if (isSuccess && isLoggedIn) {
-      navigate("/profile");
+    if (isSuccess && isLoggedIn && user) {
+      // Check if the user is an admin
+      const isAdmin = user.role === "admin";
+
+      if (isAdmin) {
+        navigate("/dashboard");
+      } else {
+        navigate("/profile");
+      }
     }
 
     if (isError && twoFactor) {
@@ -63,7 +70,7 @@ function Login() {
     }
 
     dispatch(RESET());
-  }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor, email]);
+  }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFactor, email, user]);
 
   const googleLogin = async (credentialResponse) => {
     console.log(credentialResponse);
