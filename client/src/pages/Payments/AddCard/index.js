@@ -9,6 +9,8 @@ import Footer from "../../../components/footer/Footer";
 import axios from "axios";
 import { useSelector } from "react-redux"; /*** */
 import { Link } from "react-router-dom";
+import cardLogoImg from "./img/visaimg.png";
+import cardChipImg from "./img/chipimg.jpg";
 
 function AddCard() {
   const navigate = useNavigate();
@@ -172,6 +174,29 @@ function AddCard() {
               </>
             )}
           </form>
+        </div>
+        <div className="card_preview">
+          <div className="card">
+            <div className="card__inner">
+              <div className="card__front">
+                <div className="card__logo">
+                  <img src={cardLogoImg} alt="Card Logo" />
+                </div>
+                <div className="card__chip">
+                  <img src={cardChipImg} alt="Card Chip" />
+                </div>
+                <p className="card__text">{inputs.cardNo}</p>
+                <p className="card__text">Cardholder Name: {inputs.cardName}</p>
+                <p className="card__text">Exp Date: {inputs.expDate}</p>
+              </div>
+              <div className="card__back">
+                <div className="card__cvv">
+                  <p className="card__text">CVV</p>
+                  <p className="card__cvv-value">{inputs.cvv}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

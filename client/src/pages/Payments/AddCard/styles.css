@@ -5,9 +5,9 @@
   min-height: 100vh;
   background-color: #f3f4f6;
   background-image: url("./img/bg2.png");
-  background-size: cover; /* Zoom out the image to fit within the container */
-  background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-  background-position: center; /* Center the background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 input::-webkit-outer-spin-button,
@@ -81,4 +81,72 @@ input[type="number"] {
 .card_save_btn:hover {
   letter-spacing: 2px;
   opacity: 0.8;
+}
+.card_preview {
+  margin-top: 20px;
+  width: 450px;
+  height: 230px; /* Adjust height to match card size*/
+  /* position: relative; */
+  z-index: 1;
+}
+
+.card {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+.card:hover .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card__front {
+  background-color: #f3f4f6;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  padding: 20px; /* Add padding for inner content */
+}
+
+.card__back {
+  background-color: #0b65ff;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__text {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.card__logo img {
+  width: 100px; /* Adjust width as needed */
+  /* height: auto; */
+}
+.card__chip img {
+  width: 50px; /* Adjust chip width */
+  /* height: auto;  */
+  position: absolute;
+  bottom: 20px; /* Adjust vertical position */
+  right: 20px; /* Adjust horizontal position */
 }
