@@ -1,50 +1,68 @@
 import "./foodAddDelivery.css";
-
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/header";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function AddDelivery() {
-  const navigate = useNavigate(); // Changed variable name to navigate
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     phone: "",
     time: "",
     date: "",
     address: "",
-    location: "",
   });
+
+  const { user } = useSelector((state) => state.auth);
+  const totalAmount = useSelector((state) => state.payment.totalAmount);
+
+  useEffect(() => {
+    if (user) {
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        name: user.name,
+        phone: user.phone,
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
+    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if any field is empty
+    if (
+      !inputs.name ||
+      !inputs.phone ||
+      !inputs.time ||
+      !inputs.date ||
+      !inputs.address
+    ) {
+      window.alert("Please fill in all fields");
+      return;
+    }
+
     console.log(inputs);
     await sendRequest();
-    window.alert("added successfully!");
-    window.location.reload();
+    window.alert("Added successfully!");
+    navigate("/add-payment");
   };
+
   const sendRequest = async () => {
     await axios.post("http://localhost:3001/deliveries", {
       name: inputs.name,
       phone: inputs.phone,
       time: inputs.time,
       date: inputs.date,
-      address: inputs.address,
-      location: inputs.location,
+      address: inputs.address
     });
-  };
-
-  const onNavigateToPayment = () => {
-    navigate("/add-payment");
   };
 
   return (
@@ -59,7 +77,7 @@ function AddDelivery() {
             type="text"
             name="name"
             value={inputs.name}
-            onChange={handleChange}
+            readOnly
             required
           />
           <br></br>
@@ -98,7 +116,6 @@ function AddDelivery() {
           <br />
           <br></br>
           <label className="cart-label">Address:</label>
-
           <input
             className="cart-input"
             type="text"
@@ -109,11 +126,12 @@ function AddDelivery() {
           />
           <br />
           <br></br>
-          <button
-            type="submit"
-            className="viewbtn"
-            onClick={onNavigateToPayment}
-          >
+          <div className="total-amount-container">
+            <label className="cart-label">Total Amount:</label>
+            <span>{totalAmount}</span>
+          </div>
+          <br />
+          <button type="submit" className="viewbtn">
             Go to Payment
           </button>
         </form>
