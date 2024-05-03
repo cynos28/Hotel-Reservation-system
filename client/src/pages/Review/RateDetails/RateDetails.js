@@ -44,11 +44,12 @@ function RateDetails() {
 
    
       <br></br> <br></br>
+  
+      <div className="main_container_reiew">
       <h1 className="rate-topic">
       
-        Review & <span className="rate-us"> Ratings</span>
-      </h1>
-      <div className="main_container_reiew">
+      Review & <span className="rate-us"> Ratings</span>
+    </h1>
         <div className="main_btn_topic">
           <div className="main_btn_topic">
             {" "}
