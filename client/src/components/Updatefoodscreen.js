@@ -37,6 +37,7 @@ function Updatefoodscreen() {
           
         } catch (error) {
           setAlertMessage("Error fetching food items."); // Display error message to the user
+
         }
       };
 
@@ -69,6 +70,7 @@ function Updatefoodscreen() {
             
             console.log(error);
             setAlertMessage("Error updating food items."); 
+
           
 
         }

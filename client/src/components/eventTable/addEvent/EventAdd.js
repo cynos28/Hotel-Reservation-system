@@ -9,7 +9,7 @@ import Swal from "sweetalert2"; // Import SweetAlert library
 
 const AddEvent = () => {
   const navigate = useNavigate();
-  const [userId, setuserID] = useState("User_123");
+  const [userId, setuserID] = useState("Admin1234");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState("");

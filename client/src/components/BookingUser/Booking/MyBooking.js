@@ -89,7 +89,7 @@ const MyBooking = () => {
           <button className="btn_dash_admin" onClick={handlePrint}>
             Download Detail
           </button>
-        </div>
+          <button className="paybutton"><a href="/card-details">Pay Now </a> </button>       </div>
       </div>
       <div><Footer/></div>
     </div>

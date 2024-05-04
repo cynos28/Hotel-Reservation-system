@@ -38,11 +38,13 @@ const UserList = () => {
   }, [dispatch]);
 
   const removeUser = async (id) => {
+    console.log(id);
     await dispatch(deleteUser(id));
     dispatch(getUsers());
   };
 
   const confirmDelete = (id) => {
+    console.log(id);
     confirmAlert({
       title: "Delete This User",
       message: "Are you sure to do delete this user?",
@@ -145,7 +147,7 @@ const UserList = () => {
                               <FaTrashAlt
                                 size={20}
                                 color="red"
-                                onClick={() => confirmDelete(_id)}
+                                onClick={() => confirmDelete(user._id)}
                               />
                             </span>
                           </td>

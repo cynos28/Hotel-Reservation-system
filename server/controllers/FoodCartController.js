@@ -33,24 +33,35 @@ const getCartById = async (req, res, next) => {
 
 const addCart = async (req, res, next) => {
   const { name, image, time, price, tag, qty, total } = req.body;
-  let cart;
+
   try {
-    cart = new Cart({
-      name,
-      image,
-      time,
-      price,
-      tag,
-      qty,
-      total,
-    });
-    await cart.save();
+    // Check if the item already exists in the cart
+    let existingCart = await Cart.findOne({ name });
+
+    if (existingCart) {
+      // If the item exists, update the quantity and total
+      existingCart.qty += Number(qty);
+      existingCart.total = existingCart.qty * existingCart.price;
+      const updatedCart = await existingCart.save();
+      return res.status(200).json({ cart: updatedCart });
+    } else {
+      // If the item doesn't exist, create a new cart item
+      const newCart = new Cart({
+        name,
+        image,
+        time,
+        price,
+        tag,
+        qty: Number(qty),
+        total: Number(qty) * price,
+      });
+      await newCart.save();
+      return res.status(201).json({ cart: newCart });
+    }
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Internal server error" });
   }
-
-  return res.status(201).json({ cart });
 };
 
 const updateCart = async (req, res, next) => {
