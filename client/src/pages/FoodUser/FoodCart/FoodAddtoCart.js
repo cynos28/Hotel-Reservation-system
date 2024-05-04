@@ -69,6 +69,7 @@ const AddToCart = () => {
       alert("Item added to cart successfully.");
       history("/view-cart");
     } catch (error) {
+
       console.error("Error adding item to cart:", error);
       setError("Error adding item to cart.");
     }
