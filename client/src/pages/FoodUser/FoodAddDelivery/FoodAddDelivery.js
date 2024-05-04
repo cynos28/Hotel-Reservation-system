@@ -125,11 +125,6 @@ function AddDelivery() {
             required
           />
           <br />
-          <br></br>
-          <div className="total-amount-container">
-            <label className="cart-label">Total Amount:</label>
-            <span>{totalAmount}</span>
-          </div>
           <br />
           <button type="submit" className="viewbtn">
             Go to Payment

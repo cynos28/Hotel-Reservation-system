@@ -23,8 +23,9 @@ const Carts = () => {
   useEffect(() => {
     const fetchCarts = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/carts/");
-        setCarts(response.data.carts);
+        const response = await axios.get(`http://localhost:3001/carts?email=${user.email}`);
+        const filteredCarts = response.data.carts.filter((cart) => cart.email === user.email);
+        setCarts(filteredCarts);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching carts:", error);
@@ -33,8 +34,10 @@ const Carts = () => {
       }
     };
 
-    fetchCarts();
-  }, []);
+    if (user && user.email) {
+      fetchCarts();
+    }
+  }, [user]);
 
   useEffect(() => {
     let total = 0;
@@ -56,13 +59,15 @@ const Carts = () => {
   };
 
   // add payment details to Redux
-// add payment details to Redux
-const onNavigateToDelivery = () => {
-  if (userId) {
-    dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
-    navigate("/add-delivery");
-  }
-};
+  const onNavigateToDelivery = () => {
+    if (userId) {
+      dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
+      navigate("/add-delivery");
+    } else {
+      alert("Please login to continue");
+      navigate("/login");
+    }
+  };
 
   return (
     <div>
@@ -139,3 +144,4 @@ const onNavigateToDelivery = () => {
 };
 
 export default Carts;
+ 
