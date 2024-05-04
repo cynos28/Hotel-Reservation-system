@@ -1,5 +1,7 @@
 const Booking = require("../models/BookingModel");
 
+
+
 const getAllBookings = async (req, res, next) => {
   let bookings;
   try {
@@ -29,6 +31,8 @@ const getBookingById = async (req, res, next) => {
 };
 
 const addBooking = async (req, res, next) => {
+ 
+ 
   const { name, email, address, city, code, phone, adults, kids, room,nights, request,payment} = req.body;
   let newBooking;
   try {

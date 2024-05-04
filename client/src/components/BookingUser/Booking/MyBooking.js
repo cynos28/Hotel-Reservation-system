@@ -50,7 +50,8 @@ const MyBooking = () => {
       <div ref={ComponentsRef} className="sumry_box" >
         
         <div className="box_sum">
-          <h1 className="bock_topic">My Booking Details</h1>
+          <h1 className="bock_topic">{bookingData.name} </h1>
+          <h3 className="bock_topic">Thanks For Your Reservation !</h3>
           <p className="sum_detail">
             <b>Name:</b> {bookingData.name}
           </p>
