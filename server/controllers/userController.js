@@ -498,6 +498,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   console.log(resetToken);
 
   //Hash token and save
+  
   const hashedToken = hashToken(resetToken);
   await new Token({
     userId: user._id,
@@ -507,7 +508,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   }).save();
 
   //Construct Reset URL
-  const resetUrl = `${process.env.FRONTEND_URL}/reset/${resetToken}`;
+  const resetUrl = `${process.env.FRONTEND_URL}/resetPassword/${resetToken}`;
 
   //Send  Verification email
   const subject = "Password Reset Request - PrimeLodge";
@@ -542,7 +543,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
 
     // Hash the reset token
-
+    const hashedToken = hashToken(resetToken);
     // Find user token
     const userToken = await Token.findOne({
       resetToken: hashedToken,

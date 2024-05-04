@@ -117,7 +117,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/reset/:resetToken" element={<Reset />} />
+            <Route path="/resetPassword/:resetToken" element={<Reset />} />
             <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
             <Route
               path="/profile"
