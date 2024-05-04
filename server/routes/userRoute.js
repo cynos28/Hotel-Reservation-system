@@ -43,7 +43,7 @@ router.post("/sendAutomatedEmail", protect, sendAutomatedEmail);
 router.post("/sendVerificationEmail",protect, sendVerificationEmail); 
 router.patch("/verifyUser/:verificationToken", verifyUser); 
 router.post("/forgotPassword", forgotPassword); 
-router.patch("/reset/:resetToken", resetPassword); 
+router.patch("/resetPassword/:resetToken", resetPassword);
 router.patch("/changePassword",protect, changePassword); 
 
 router.post("/sendLoginCode/:email",sendLoginCode); 
