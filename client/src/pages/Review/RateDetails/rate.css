@@ -30,6 +30,7 @@
 
 .main_container_reiew {
   padding: 50px 12%;
+  background-image: url(./img/backimg.jpg);
 }
 .rate-full-box {
   max-width: 500px;
@@ -40,7 +41,7 @@
  
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  background-image: url(./img/boximage.jpg);
+  
 }
 
 .rate-full-box-form {
@@ -72,13 +73,18 @@
   text-align: center;
   text-transform: capitalize;
   color: bisque;
+  font-weight: bold;
 }
 .rate_text_area {
   resize: none;
   height: 180px;
+  background-image: url(./img/THHGF_Logo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .rate-us {
   color: #03c9876e;
+  font-weight: bold;
 }
 .rate-add-btn {
   background-color: #03c9876e;
@@ -142,7 +148,8 @@
 .add_form_label {
   font-weight: 600;
   font-size: 18px;
-  color: #DACBA5;
+  color: #194F2C;
+  
 }
 .rate {
   float: right;

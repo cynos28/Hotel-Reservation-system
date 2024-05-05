@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/Footer";
+
 import "../home/home.css";
 import HeroImage from "../../assets/hero.jpg";
 import { Link } from "react-router-dom";
 import Rates from "../Review/RateDetails/Rates";
 import aboutImage from "../../assets/about-us-img.jpg";
+import BasicExample from "./homePageCard";
 
 function home() {
   return (
@@ -44,7 +46,10 @@ function home() {
         </div>
         <div className="hero-image">
           <img src={HeroImage} alt="Hero Image" />
-        </div>
+
+        </div>  
+        
+
       </section>
       {/* <section className="about-us-section">
         <div className="about-us-text">
@@ -61,7 +66,17 @@ function home() {
           <img src={aboutImage} alt="About Us Image" />
         </div>
       </section> */}
+
+  
+  
+
+    
+
+<BasicExample />
+
     </div>
+
+
   );
 }
 

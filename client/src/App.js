@@ -83,6 +83,7 @@ import Summary from "./pages/Extra/User/Summery/Summery";
 import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
 import Booking from "./pages/Extra/User/Booking/Booking.js";
 
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -117,7 +118,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot" element={<Forgot />} />
-            <Route path="/reset/:resetToken" element={<Reset />} />
+            <Route path="/resetPassword/:resetToken" element={<Reset />} />
             <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
             <Route
               path="/profile"
@@ -208,6 +209,7 @@ function App() {
             <Route exact path="/view-cart" element={<FoodCarts />} />
             <Route exact path="/add-delivery" element={<FoodAddDelivery />} />
             <Route path="/update-cart/:id" element={<FoodEditCartItem />} />
+
 
             {/* Add review charuka*/}
             <Route path="/allrate" element={<RateDetails />} />

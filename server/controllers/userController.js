@@ -101,39 +101,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 
-  // Trigger 2FA validation
-  const ua = parser(req.headers["user-agent"]);
-  const thisUserAgent = ua.ua;
-  console.log(thisUserAgent);
-  const allowedAgent = user.userAgent.includes(thisUserAgent);
-
-  if (!allowedAgent) {
-    //Generate 6 digit code
-    const loginCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(loginCode);
-
-    //Encrypt login code before saving to DB
-    const EncryptedLoginCode = cryptr.encrypt(loginCode.toString());
-
-    // Delete token if it exists
-    let userToken = await Token.findOne({ userId: user._id });
-    if (userToken) {
-      await userToken.deleteOne();
-    }
-
-    //Save Token to DB
-
-    await new Token({
-      userId: user._id,
-      loginToken: EncryptedLoginCode,
-      createdAt: Date.now(),
-      expiredAt: Date.now() + 3600 * 60, //1hr
-    }).save();
-
-    res.status(400);
-    throw new Error("New Browser Detected ");
-  }
-
   // GenerateToken
   const token = generateToken(user._id);
 
@@ -165,6 +132,7 @@ const loginUser = asyncHandler(async (req, res) => {
     return res.json({ error: "Something went wrong, try again." });
   }
 });
+
 
 // Send login code to user's email
 const sendLoginCode = asyncHandler(async (req, res) => {
@@ -530,6 +498,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   console.log(resetToken);
 
   //Hash token and save
+  
   const hashedToken = hashToken(resetToken);
   await new Token({
     userId: user._id,
@@ -539,7 +508,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   }).save();
 
   //Construct Reset URL
-  const resetUrl = `${process.env.FRONTEND_URL}/reset/${resetToken}`;
+  const resetUrl = `${process.env.FRONTEND_URL}/resetPassword/${resetToken}`;
 
   //Send  Verification email
   const subject = "Password Reset Request - PrimeLodge";
@@ -574,7 +543,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
 
     // Hash the reset token
-
+    const hashedToken = hashToken(resetToken);
     // Find user token
     const userToken = await Token.findOne({
       resetToken: hashedToken,
@@ -610,18 +579,21 @@ const resetPassword = asyncHandler(async (req, res) => {
 
 // Delete User
 const deleteUser = asyncHandler(async (req, res) => {
-  const user = User.findById(req.params.id);
+  const id = req.params.id;
 
-  if (!user) {
-    res.status(404);
-    throw new Error("User not found");
+  try {
+      
+      await User.findByIdAndDelete(id);
+      return res.status(200).json({status : "User is deleted"});
+
+  } catch (error) {
+      
+      return res.status(400).json({status : "Error with delete user", message : error});
+
   }
-
-  await user.remove();
-  res.status(200).json({
-    message: "User deleted successfully",
-  });
 });
+
+
 
 // Get Users
 const getUsers = asyncHandler(async (req, res) => {

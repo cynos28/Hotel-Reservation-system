@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // Import useSelector from react-redux
 import "../user.css";
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/header";
@@ -8,6 +9,11 @@ import Header from "../../../components/header/header";
 const AddToCart = () => {
   const history = useNavigate();
   const location = useLocation();
+  
+  // Get the user's email from the Redux state
+  const { user } = useSelector((state) => state.auth);
+  const userEmail = user?.email;
+
   const [item, setItem] = useState({
     name: "",
     image: "",
@@ -15,11 +21,15 @@ const AddToCart = () => {
     price: "",
     tag: "",
     qty: 1,
-    total: "", // Default total value
+    total: "",// Default total value
+    email : userEmail
   });
   const [error, setError] = useState("");
 
+
   useEffect(() => {
+
+    console.log(userEmail)
     if (location.state && location.state.food) {
       const { name, image, time, price, tag } = location.state.food;
       setItem({
@@ -30,6 +40,7 @@ const AddToCart = () => {
         price,
         tag,
         total: price, // Set default total value to be the price of one item
+        email :userEmail 
       });
     }
   }, [location.state.food]);
@@ -40,7 +51,6 @@ const AddToCart = () => {
       ...prevState,
       [name]: value,
     }));
-
     if (name === "qty" || name === "price") {
       const totalPrice = parseFloat(value) * parseFloat(item.price);
       setItem((prevState) => ({
@@ -54,12 +64,14 @@ const AddToCart = () => {
     e.preventDefault();
     console.log("Submitting form...");
     try {
-      await axios.post("http://localhost:3001/carts/", item);
+      // Include the userEmail when sending the cart item data to the backend
+      await axios.post("http://localhost:3001/carts/", { ...item, userEmail });
       alert("Item added to cart successfully.");
-      history("/view-cart"); // corrected usage of history
+      history("/view-cart");
     } catch (error) {
-      console.error("Error adding item to cart:", error); // log error for debugging
-      setError("Error adding item to cart."); // set error message
+
+      console.error("Error adding item to cart:", error);
+      setError("Error adding item to cart.");
     }
   };
 

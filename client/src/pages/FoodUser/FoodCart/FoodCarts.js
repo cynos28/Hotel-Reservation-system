@@ -23,8 +23,9 @@ const Carts = () => {
   useEffect(() => {
     const fetchCarts = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/carts/");
-        setCarts(response.data.carts);
+        const response = await axios.get(`http://localhost:3001/carts?email=${user.email}`);
+        const filteredCarts = response.data.carts.filter((cart) => cart.email === user.email);
+        setCarts(filteredCarts);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching carts:", error);
@@ -33,8 +34,10 @@ const Carts = () => {
       }
     };
 
-    fetchCarts();
-  }, []);
+    if (user && user.email) {
+      fetchCarts();
+    }
+  }, [user]);
 
   useEffect(() => {
     let total = 0;
@@ -59,8 +62,11 @@ const Carts = () => {
   const onNavigateToDelivery = () => {
     if (userId) {
       dispatch(addPayment({ type: PAYMENT_TYPES.FOOD, total: totalAmount }));
+      navigate("/add-delivery");
+    } else {
+      alert("Please login to continue");
+      navigate("/login");
     }
-    navigate("/add-delivery");
   };
 
   return (
@@ -100,7 +106,7 @@ const Carts = () => {
                           <h3 className="itmname">{cart.name}</h3>
                           <p className="itmprice">Price: Rs {cart.price}.00</p>
                           <p className="itmprice">Quantity: {cart.qty}</p>
-                          <p className="itmprice tot">Total: ${cart.total}</p>
+                          <p className="itmprice tot">Total: Rs {cart.total}.00</p>
                         </div>
                         <div className="edit_btnx">
                           <Link to={`/update-cart/${cart._id}`}>
@@ -138,3 +144,4 @@ const Carts = () => {
 };
 
 export default Carts;
+ 

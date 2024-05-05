@@ -24,7 +24,7 @@ export const shortenText = (text, n) => {
     return shoretenedText;
   }
   return text;
-};
+}; 
 
 function Profile() {
   const dispatch = useDispatch();
