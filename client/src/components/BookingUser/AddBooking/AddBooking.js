@@ -2,6 +2,7 @@ import React, { useState,  useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../User.css";
+import { useSelector } from "react-redux";
 import Header from "../../../components/header/header";
 import Footer from "../../../components/footer/Footer";
 
@@ -10,54 +11,62 @@ import Footer from "../../../components/footer/Footer";
 const AddBooking = () => {
   const [payment, setPayment] = useState(0);
   const history = useNavigate();
+  const user = useSelector((state) => state.auth.user);
   const [inputs, setInputs] = useState({
-    name: "",
-    email: "",
+    name: user?.name || "", 
+    email: user?.email || "", 
+    phone: user?.phone || "",
     address: "",
     city: "",
     code: "",
-    phone: "",
+    
     adults: 0,
     kids: 0,
     room: "",
     nights:"",
-    
+    phone:"",
     request: "",
     payment:0,
     
     
   });
-  //useEffect(()=>{
-   // fetchuserdata();
-  //})
+  useEffect(()=>{
   
- {/* const fetchuserdata = async()=>{
-    try{
-      const response = await axios.get("");
-      setInputs(response.data.booking);
+  })
+  
 
-    }catch (error) {
-      console.error("Error fetching room data:", error);
-      // Handle error and provide feedback to the user
-    }
-  };*/}
+
+  
 
   useEffect(() => {
     const calculatePayment = () => {
-      const nightlyRate = 1500; 
+      let nightlyRate = 0;
+      
+      switch (inputs.room) {
+        case "Family Room":
+        case "Suite":
+          nightlyRate = 30000;
+          break;
+        case "Deluxe Room":
+          nightlyRate = 31000;
+          break;
+        default:
+          nightlyRate = 0; 
+          break;
+      }
+      
       const totalPayment = nightlyRate * parseInt(inputs.nights);
       setPayment(totalPayment);
-
-      
+  
       setInputs(prevState => ({
         ...prevState,
         payment: totalPayment
       }));
     };
-
+  
     calculatePayment();
-  }, [inputs.nights]);
-
+  }, [inputs.nights, inputs.room]);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((prevState) => ({
@@ -198,17 +207,22 @@ const AddBooking = () => {
                 />
               </div>
               <div>
-                <label className="booking-label">Room Type:</label>
-                <br />
-                <input
-                  className="booking-input"
-                  type="text"
-                  name="room"
-                  value={inputs.room}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+             <label className="booking-label">Room Type:</label>
+              <br />
+              <select
+                 className="booking-input"
+               name="room"
+              value={inputs.room}
+            onChange={handleChange}
+              required
+                >
+               <option value="">Select Room Type</option>
+              <option value="Family Room">Family Room</option>
+                <option value="Suite">Suite</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+              </select>
+                </div>
+
               <div>
                 <label className="booking-label">Number of Nights:</label>
                 <br />
@@ -232,7 +246,7 @@ const AddBooking = () => {
                 ></textarea>
               </div>
               <div>
-            <label className="booking-label">Payment Amount:</label>
+            <label className="booking-label">Payment Amount: $ </label>
             <br />
             <input
               className="booking-input"
