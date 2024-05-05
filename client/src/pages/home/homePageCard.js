@@ -97,7 +97,7 @@ function BasicExample() {
             <Card.Body>
               <Card.Title style={cardTitleStyle}>Leisure and Entertainment Services</Card.Title>
               <Card.Text>
-                Leisure and entertainment services in a hotel reservation system cater to guests seeking relaxation and recreation during their stay. Spa and wellness centers offer a range of rejuvenating treatments and activities aimed at promoting physical and mental well-being. Fitness centers equipped with state-of-the-art equipment provide guests with the opportunity to maintain their fitness routine while traveling.
+                Leisure and entertainment services in a hotel reservation system cater to guests seeking relaxation and recreation during their stay. Spa and wellness centers offer a range of rejuvenating treatments and activities aimed at promoting physical and mental well-being. Fitness centers equipped with state-of-the-art .
               </Card.Text>
         
             </Card.Body>
