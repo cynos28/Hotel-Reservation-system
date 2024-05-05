@@ -72,8 +72,7 @@ function home() {
 
     
 
-<div><BasicExample/></div>
-
+<BasicExample />
 
     </div>
 
