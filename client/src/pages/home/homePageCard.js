@@ -12,57 +12,73 @@ function BasicExample() {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: '40px 0',
   };
 
   const titleStyle = {
-    marginBottom: '20px',
-    fontSize: '36px',
-    color: '#000066',
+    marginBottom: '40px',
+    fontSize: '48px',
+    color: '#333',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontStyle: 'italic',
+    fontFamily: 'Georgia, serif',
   };
 
   const cardContainerStyle = {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    maxWidth: '1200px',
   };
 
   const cardStyle = {
-    width: '30rem',
-    marginBottom: '20px',
+    width: '350px',
+    margin: '20px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    borderRadius: '10px',
+    overflow: 'hidden',
   };
 
   const cardImageStyle = {
-    height: '285px',
+    height: '250px',
     objectFit: 'cover',
   };
 
   const cardTitleStyle = {
     fontSize: '24px',
     fontWeight: 'bold',
-    color: '#000099',
+    color: '#333',
     marginBottom: '10px',
+    padding: '10px',
+    backgroundColor: '#f2f2f2',
+    textAlign: 'center',
+  };
+
+  const cardTextStyle = {
+    padding: '10px',
+    textAlign: 'justify',
+    lineHeight: '1.5',
+    color: '#666',
   };
 
   return (
-    <div style={containerStyle}>
-      <h2 style={titleStyle}>Our Services</h2>
-      <div style={cardContainerStyle}>
-        <div style={cardStyle}>
-          <Card>
-            <Card.Img variant="top" src={Card1Image} style={cardImageStyle} />
-            <Card.Body>
-              <Card.Title style={cardTitleStyle}>Accommodation Services</Card.Title>
-              <Card.Text>
-                Accommodation services in a hotel reservation system encompass a range of room options tailored to meet the diverse needs and preferences of guests. From standard rooms to luxurious suites, guests have access to a variety of accommodations designed to provide comfort and convenience during their stay.
-              </Card.Text>
-     
-            </Card.Body>
-          </Card>
-        </div>
+    <div>
+      <section>
+        <div style={containerStyle}>
+          <h2 style={titleStyle}>Our Services</h2>
+          <div style={cardContainerStyle}>
+            <div style={cardStyle}>
+              <Card>
+                <Card.Img variant="top" src={Card1Image} style={cardImageStyle} />
+                <Card.Body>
+                  <Card.Title style={cardTitleStyle}>Accommodation Services</Card.Title>
+                  <Card.Text style={cardTextStyle}>
+                    Accommodation services in a hotel reservation system encompass a range of room options tailored to meet the diverse needs and preferences of guests. From standard rooms to luxurious suites, guests have access to a variety of accommodations designed to provide comfort and convenience during their stay.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
         <div style={cardStyle}>
           <Card>
             <Card.Img variant="top" src={Card2Image} style={cardImageStyle} />
@@ -112,6 +128,8 @@ function BasicExample() {
           </Card>
         </div>
       </div>
+    </div>
+    </section>
     </div>
   );
 }
