@@ -6,6 +6,8 @@ import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2"; // Import SweetAlert library
+import { useSelector } from "react-redux";
+
 
 const AddEvent = () => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const AddEvent = () => {
   const [capacity, setCapacity] = useState("");
   const [venue, setVenue] = useState("");
   const [eType, setEtype] = useState("Public");
-  const [eventStatus, setEventStatus] = useState("Pending");
+  const [eventStatus, setEventStatus] = useState("Approved");
   const [desc, setDesc] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endingTime, setEndingTime] = useState("");
