@@ -10,10 +10,13 @@ import dance from "./eventPhotos/dance.jpg";
 import GetT from "./eventPhotos/GetT.jpg";
 import party1 from "./eventPhotos/party1.jpg";
 import wedding1 from "./eventPhotos/wedding1.jpg";
+import "./modal.css"
 
 // Define component
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [viewEvents, setEventData] = useState([])
+  const [viewEvents1, setEventData1] = useState([])
 
   useEffect(() => {
     axios
@@ -26,6 +29,8 @@ const Events = () => {
         console.error("Error fetching events:", error);
       });
   }, []);
+
+  console.log(viewEvents)
 
   // Define image map
   const imageMap = {
@@ -56,10 +61,63 @@ const Events = () => {
     }
   };
 
+  const viewItem = async (id) => {
+    
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/event/${id}`
+      );
+      setEventData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching event data:", error);
+    }
+  };
+
+  const viewItem1 = async (id) => {
+    
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/event/${id}`
+      );
+      setEventData1(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching event data:", error);
+    }
+  };
+
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
+  const [modal1, setModal1] = useState(false);
+
+  const toggleModal1 = () => {
+    setModal1(!modal1);
+  };
+
+  if (modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
   // Render component
   return (
     <div>
       <Header />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
       <div className="events-page">
         <div className="public-events">
           <h2 className="to1">Public Events</h2>
@@ -67,7 +125,8 @@ const Events = () => {
             {events
               .filter((event) => event.etype === "Public")
               .map((event) => (
-                <div key={event._id} className="event-card">
+               
+                <div key={event._id} className="event-card" onClick={() => { toggleModal(), viewItem(event._id) }}>
                   <img
                     src={"http://localhost:3001/events/" + event.image}
                     alt={event.image}
@@ -76,10 +135,34 @@ const Events = () => {
                   <h3>{event.name}</h3>
                   <p>Date: {formatDate(event.date)}</p>
                   <p>Venue: {event.venue}</p>
-                  <p>Description: {event.description}</p>
+                  <p>Capacity: {event.cap}</p>
                 </div>
+              
               ))}
           </div>
+          {modal && (
+            <div className="modal">
+              <div onClick={toggleModal} className="overlay"></div>
+              <div className="modal-content">
+              
+                    <div>
+                <h4>{viewEvents.name}</h4>
+                <img
+                        src={"http://localhost:3001/events/" + viewEvents.image}
+                        alt={viewEvents.image}
+                        className="event-image1"
+                      />
+                </div>
+                <p>Date: {formatDate(viewEvents.date)}</p>
+                <p>Venue: {viewEvents.venue}</p>
+                  <p>Description: {viewEvents.description}</p>
+                <button className="close-modal" onClick={toggleModal}>
+                <i class="fa fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+           )}
+
         </div>
 
         <div className="personal-events">
@@ -90,7 +173,7 @@ const Events = () => {
             {events
               .filter((event) => event.etype === "Personal")
               .map((event) => (
-                <div key={event._id} className="event-card">
+                <div key={event._id} className="event-card" onClick={() => { toggleModal1(), viewItem1(event._id) }}>
                   <img
                     src={imageMap[event.photo]}
                     alt={event.name}
@@ -111,6 +194,40 @@ const Events = () => {
                 </div>
               ))}
           </div>
+          {modal1 && (
+            <div className="modal">
+              <div onClick={toggleModal1} className="overlay"></div>
+              <div className="modal-content">
+              
+                    <div>
+                <h4>{viewEvents1.name}</h4>
+                <img
+                        src={imageMap[viewEvents1.photo]}
+                        alt={viewEvents1.image}
+                        className="event-image1"
+                      />
+                </div>
+                <p>Date: 
+                {formatDate(viewEvents1.date)}</p>
+                <p>Venue: {viewEvents1.venue}</p>
+                  <p>Date: {formatDate(viewEvents1.date)}</p>
+                  <p>Capacity: {viewEvents1.cap}</p>
+                  <p>Status:</p>
+                  <div
+                    className="status-box"
+                    style={{ backgroundColor: getStatusColor(viewEvents1.estatus) }}
+                  >
+                    <p>{viewEvents1.estatus}</p>
+                  </div>
+                  {viewEvents1.estatus === "Declined" && (
+                    <p style={{ color: "red" }}>Reason: {viewEvents1.reason}</p>
+                  )}
+                <button className="close-modal" onClick={toggleModal1}>
+                <i class="fa fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+           )}
         </div>
       </div>
       <Footer />
