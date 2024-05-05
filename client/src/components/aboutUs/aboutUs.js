@@ -7,6 +7,7 @@ import Image4 from './images/image4.jpg';
 
 const AboutUs = () => {
   return (
+    <div className='aboutus-body'>
     <div className="about-us-container">
       <div className="about-us-header">
         <h2 className="about-us-title">Welcome to the Heritage Grand</h2>
@@ -26,15 +27,24 @@ const AboutUs = () => {
         </p>
         <div className="about-us-stats">
           <div className="about-us-stat">
-            <h4 className="about-us-stat-number">21564</h4>
+            <div className="about-us-stat-icon">
+              <i className="fas fa-smile"></i>
+            </div>
+            <h4 className="about-us-stat-number">164</h4>
             <p className="about-us-stat-label">Happy Clients</p>
           </div>
           <div className="about-us-stat">
-            <h4 className="about-us-stat-number">12600</h4>
+            <div className="about-us-stat-icon">
+              <i className="fas fa-calendar-check"></i>
+            </div>
+            <h4 className="about-us-stat-number">600</h4>
             <p className="about-us-stat-label">Events Done</p>
           </div>
           <div className="about-us-stat">
-            <h4 className="about-us-stat-number">14</h4>
+            <div className="about-us-stat-icon">
+              <i className="fas fa-history"></i>
+            </div>
+            <h4 className="about-us-stat-number">3</h4>
             <p className="about-us-stat-label">Years of Experienced</p>
           </div>
         </div>
@@ -53,6 +63,7 @@ const AboutUs = () => {
           <img src={Image4} alt="About Us" className="about-us-image" />
         </div>
       </div>
+    </div>
     </div>
   );
 };
