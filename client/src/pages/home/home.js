@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Rates from "../Review/RateDetails/Rates";
 import aboutImage from "../../assets/about-us-img.jpg";
 import BasicExample from "./homePageCard";
+import OurPartners from "./homePage/partnerLogo";
 
 function home() {
   return (
@@ -73,6 +74,7 @@ function home() {
     
 
 <BasicExample />
+<OurPartners />
 
     </div>
 
