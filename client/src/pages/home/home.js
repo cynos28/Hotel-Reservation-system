@@ -72,7 +72,8 @@ function home() {
 
     
 
-<BasicExample />
+<div><BasicExample/></div>
+
 
     </div>
 
