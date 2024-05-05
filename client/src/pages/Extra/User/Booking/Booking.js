@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux"; // Import the useSelector hook
 import back from "./img/bk.jpg";
 import Header from "../../../../components/header/header";
 import Footer from "../../../../components/footer/Footer";
+
 const priceMap = {
   gym: 2500,
   pool: 3000,
@@ -19,10 +21,12 @@ const priceMap = {
 function Booking() {
   const navigate = useNavigate();
   const { _id } = useParams();
+  const user = useSelector((state) => state.auth.user); // Get user data from Redux store
+
   const [inputs, setInputs] = useState({
-    name: "",
-    gmail: "",
-    phone: "",
+    name: user?.name || "", // Pre-fill name with user data
+    gmail: user?.email || "", // Pre-fill email with user data
+    phone: user?.phone || "", // Pre-fill phone with user data
     gym: false,
     pool: false,
     bar: false,
@@ -34,6 +38,7 @@ function Booking() {
     total: 0,
     extraid: "",
   });
+
   useEffect(() => {
     // Generate the extraid when the component mounts
     const generatedId = "EX" + Math.floor(100000 + Math.random() * 900000);
@@ -42,6 +47,8 @@ function Booking() {
       extraid: generatedId,
     }));
   }, []);
+
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
