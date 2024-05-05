@@ -33,7 +33,7 @@ const EventTable = React.forwardRef((props, ref) => {
   }, []);
 
   // Function to delete a room/event
-  const deleteRoom = async (eventId) => {
+  const deleteEvent = async (eventId) => {
     try {
       const response = await axios.delete(
         `http://localhost:3001/api/event/${eventId}`
@@ -168,7 +168,7 @@ const EventTable = React.forwardRef((props, ref) => {
                 <td className="actionButtons">
                   <button
                     className="btn btn-outline-danger"
-                    onClick={() => deleteRoom(event._id)}
+                    onClick={() => deleteEvent(event._id)}
                   >
                     <Trash /> Delete
                   </button>
