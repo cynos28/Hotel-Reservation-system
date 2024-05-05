@@ -1,12 +1,12 @@
 .aboutus-body{
-    background-color: #EEE7DA;
+    background-color: #FAF1E6;
 }
 
 .about-us-container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 40px;
-    background-color: #EEE7DA;
+    background-color: #FAF1E6;
     font-family: 'Montserrat', sans-serif;
   }
   
@@ -50,7 +50,7 @@
   .about-us-stat {
     text-align: center;
     margin: 0 20px;
-    background-color: #E1F0DA;
+    background-color: #EFFCEF;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);

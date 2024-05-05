@@ -64,7 +64,7 @@ function BasicExample() {
 
   return (
     <div>
-      <section>
+     
         <div style={containerStyle}>
           <h2 style={titleStyle}>Our Services</h2>
           <div style={cardContainerStyle}>
@@ -129,7 +129,7 @@ function BasicExample() {
         </div>
       </div>
     </div>
-    </section>
+    
     </div>
   );
 }
