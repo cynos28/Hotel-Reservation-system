@@ -102,7 +102,7 @@ function AddCard() {
       <Header />
       <div className="card_container">
         <div className="card_box">
-          <h1 className="main_topic">
+          <h1 className="card_main_topic">
             {isUpdateOperation ? "Update Card" : "Add Card"}
           </h1>
           <form
@@ -186,12 +186,11 @@ function AddCard() {
                   <img src={cardChipImg} alt="Card Chip" />
                 </div>
                 <p className="card__text">{inputs.cardNo}</p>
-                <p className="card__text">Cardholder Name: {inputs.cardName}</p>
-                <p className="card__text">Exp Date: {inputs.expDate}</p>
+                <p className="card__text">{inputs.cardName}</p>
+                <p className="card__text">{inputs.expDate}</p>
               </div>
               <div className="card__back">
                 <div className="card__cvv">
-                  <p className="card__text">CVV</p>
                   <p className="card__cvv-value">{inputs.cvv}</p>
                 </div>
               </div>

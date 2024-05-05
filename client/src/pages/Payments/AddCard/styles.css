@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: #f3f4f6;
-  background-image: url("./img/bg2.png");
+  background-image: url("./img/bg2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -18,10 +18,11 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-.main_topic {
+.card_main_topic {
   text-align: center;
   font-size: 30px;
-  color: #ffffff;
+  color: #f6f9f8;
+  font-weight: bold;
 }
 .card_box {
   width: 100%;
@@ -44,7 +45,6 @@ input[type="number"] {
   font-size: 18px;
 }
 .card_form_box {
-  /*white box*/
   display: flex;
 }
 .add_card_input {
@@ -85,8 +85,9 @@ input[type="number"] {
 .card_preview {
   margin-top: 20px;
   width: 450px;
-  height: 230px; /* Adjust height to match card size*/
-  /* position: relative; */
+  height: 230px;
+  right: 150px;
+  position: relative;
   z-index: 1;
 }
 
@@ -94,6 +95,7 @@ input[type="number"] {
   perspective: 1000px;
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
 .card__inner {
@@ -117,36 +119,48 @@ input[type="number"] {
 }
 
 .card__front {
-  background-color: #f3f4f6;
-  /* display: flex;
-  flex-direction: column;
+  background-color: #26b59b;
   justify-content: center;
-  align-items: center; */
-  border-radius: 10px; /* Add border-radius for rounded corners */
-  padding: 20px; /* Add padding for inner content */
+  align-items: center;
+  padding: 10px;
 }
 
 .card__back {
-  background-color: #0b65ff;
-  color: white;
+  background-color: #26b59b;
   transform: rotateY(180deg);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.card__cvv {
+  position: absolute;
+  bottom: 90px;
+  right: 55px;
+  background-color: white;
+  padding: 5px 100px; /* Add padding for the rectangular box */
+  border: 1px solid #000000; /* Add border for the box */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+}
 .card__text {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin: 0px;
+  top: 110px;
+  left: 10px;
+  position: relative;
 }
 .card__logo img {
-  width: 100px; /* Adjust width as needed */
-  /* height: auto; */
+  width: 150px;
+  height: 80px;
 }
-.card__chip img {
-  width: 50px; /* Adjust chip width */
-  /* height: auto;  */
+.card__logo {
   position: absolute;
-  bottom: 20px; /* Adjust vertical position */
-  right: 20px; /* Adjust horizontal position */
+  top: 20px;
+  right: 5px;
+}
+
+.card__chip img {
+  width: 50px;
+  position: absolute;
+  top: 60px;
+  left: 20px;
 }
