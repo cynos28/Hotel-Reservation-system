@@ -74,7 +74,7 @@ const GetRoom = () => {
   const filteredRooms = filterRoomsBySearch(filterRoomsByType(sortRooms()));
 
   return (
-    <div>
+    <div className='mainthing'>
       <Header />
       <div className="sorting-bar-container">
 
