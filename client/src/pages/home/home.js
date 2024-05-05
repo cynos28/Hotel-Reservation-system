@@ -51,7 +51,7 @@ function home() {
         
 
       </section>
-      {/* <section className="about-us-section">
+      <section className="about-us-section">
         <div className="about-us-text">
           <h2>Welcome to the Hotel Heritage... </h2>
           <p>
@@ -65,7 +65,7 @@ function home() {
         <div className="aboutImg">
           <img src={aboutImage} alt="About Us Image" />
         </div>
-      </section> */}
+      </section>
 
   
   
