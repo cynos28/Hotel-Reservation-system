@@ -133,8 +133,6 @@ const updatePersonalEvent = () => {
         />          
 
         
-        
-        
         <button
           onClick={handleUpload}
           className="rounded-[7px] w-[300px] p-[6px] text-[#fff] bg-[#c33636] mt-[0] mb-[20px]"

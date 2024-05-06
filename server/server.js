@@ -5,9 +5,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-
-
-
 const eventRouter = require("./routes/eventRoute.js"); //Kaveesha's route import
 const taskroute = require("./routes/taskRoute.js");
 const ExtraRoute = require("./routes/ExtraRoute.js"); //Dilshan
@@ -26,6 +23,7 @@ const deliveryRouter = require("./routes/FoodDeliveryRoute.js"); //Kavish's rout
 
 const paymentRoute = require("./routes/paymentRoute.js"); // payment route-Isha
 const cardRoute = require("./routes/cardRoute.js");
+const paymentOTPRoute = require("./routes/paymentOTPRoute.js");
 
 dotenv.config();
 
@@ -37,9 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-
 app.use(express.static("public"));
-
 
 app.use(
   cors({
@@ -48,11 +44,9 @@ app.use(
   })
 );
 
-
 // Routes
 app.use("/api/users", userRoute);
 app.use("/api", route);
-
 
 app.use("/extra", ExtraRoute); //Dilshan
 
@@ -68,12 +62,12 @@ app.use("/deliveries", deliveryRouter); // kavish's
 app.use("/api/users/:userId/cards", cardRoute); // payment-Isha
 app.use("/api/bookings/:bookingId/payments", paymentRoute);
 app.use("/api/payments", paymentRoute);
+app.use("/api/payments/otp", paymentOTPRoute);
 
 //BookingRoute//Nilan
 const bookingRouter = require("./routes/BookingRoute.js");
 
 app.use("/bookings", bookingRouter);
-
 
 app.get("/", (req, res) => {
   res.send("Home Page");
