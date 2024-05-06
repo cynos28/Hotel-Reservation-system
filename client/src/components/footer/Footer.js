@@ -17,7 +17,7 @@ function Footer() {
   <div class="footer__addr">
     <h1 class="footer__logo_title">
 
-      The Hritage
+      The Heritage
     </h1>
   
 <br/>

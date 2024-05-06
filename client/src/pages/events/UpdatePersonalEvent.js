@@ -4,6 +4,8 @@ import "./EditEvent.css"; // Import CSS file
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2"; // Import SweetAlert library
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/Footer";
 
 const updatePersonalEvent = () => {
   const { id } = useParams();
@@ -52,6 +54,7 @@ const updatePersonalEvent = () => {
 
   return (
     <div>
+    <Header />
       <div className="AdminEvent-container">
         <label htmlFor="name">Event Name:</label>
         <input
@@ -181,6 +184,7 @@ const updatePersonalEvent = () => {
           Submit
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
