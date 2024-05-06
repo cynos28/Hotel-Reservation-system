@@ -95,7 +95,7 @@ const EditEvent = () => {
         <select
           name="venue"
           id="venue"
-          onChange={(e) => setVenue(e.target.value)}
+          onChange={(e) => setEventData({ ...eventData, venue: e.target.value })}
           className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
         >
           <option>---- SELECT ----</option>

@@ -8,7 +8,8 @@ import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import { Trash, PencilSquare } from "react-bootstrap-icons"; // Import Bootstrap Icons
 import { useReactToPrint } from "react-to-print";
-
+import PDFFile from "./Ereport";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 // Wrap the component with React.forwardRef to enable forwarding of ref
 const EventTable = React.forwardRef((props, ref) => {
@@ -61,10 +62,9 @@ const EventTable = React.forwardRef((props, ref) => {
   // Filter events based on search term and filter value
   const filteredEvents = events.filter(
     (event) =>
-      (event.etype.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       event.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      event.etype.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      event.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
 
   /* PDF Function */
   // Create a ref to the printable content
@@ -73,13 +73,14 @@ const EventTable = React.forwardRef((props, ref) => {
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current, // Specify the content to print
     DocumentTitle: "Event Details Report", // Specify the document title
-    onAfterPrint: () => Swal.fire({
-      icon: "success",
-      title: "Success",
-      text: "Event Report Downloaded Successfully!",
-      showConfirmButton: false,
-      timer: 1500,
-    }) // Callback after printing
+    onAfterPrint: () =>
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Event Report Downloaded Successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      }), // Callback after printing
   });
 
   // JSX
@@ -89,6 +90,21 @@ const EventTable = React.forwardRef((props, ref) => {
       <Sidebar />
 
       <div className="EventTableContainer">
+        <PDFDownloadLink
+          className="reportpart"
+          document={<PDFFile items={events} />}
+          fileName="Event_table.pdf"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button className="bg-BrownLi rounded-md p-[7px] font-bold text-[14px]">
+                Preparing...
+              </button>
+            ) : (
+              <button className="reportpart2">Monthly Report</button>
+            )
+          }
+        </PDFDownloadLink>
         <div className="EventTable"></div>
         <div className="search-container">
           <input
@@ -101,51 +117,91 @@ const EventTable = React.forwardRef((props, ref) => {
 
         {/* Button to trigger printing */}
         <button onClick={handlePrint} className="generate-event-button">
-          Download Report
+          Download Table
         </button>
 
         {/* Table to display event data */}
         <table style={{ marginLeft: "100px" }} ref={ComponentsRef}>
           <thead>
             <tr>
-              <th scope="col" style={{ width: "100px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "100px", backgroundColor: "#041852" }}
+              >
                 UserID
               </th>
-              <th scope="col" style={{ width: "140px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "140px", backgroundColor: "#041852" }}
+              >
                 Event Name
               </th>
-              <th scope="col" style={{ width: "40px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "40px", backgroundColor: "#041852" }}
+              >
                 Capacity
               </th>
-              <th scope="col" style={{ width: "120px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "120px", backgroundColor: "#041852" }}
+              >
                 Date
               </th>
-              <th scope="col" style={{ width: "140px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "140px", backgroundColor: "#041852" }}
+              >
                 Event Type
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Venue
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Status
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Start Time
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 End Time
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Cost
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Description
               </th>
-              <th scope="col" style={{ width: "200px",backgroundColor: "#041852" }}>
+              <th
+                scope="col"
+                style={{ width: "200px", backgroundColor: "#041852" }}
+              >
                 Reason
               </th>
 
-              <th scope="col" className="col1"style={{backgroundColor: "#041852"}}>
+              <th
+                scope="col"
+                className="col1"
+                style={{ backgroundColor: "#041852" }}
+              >
                 Action
               </th>
             </tr>
