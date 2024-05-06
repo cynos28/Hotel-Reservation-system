@@ -82,7 +82,7 @@ import Category from "./pages/Extra/User/Category/Category";
 import Summary from "./pages/Extra/User/Summery/Summery";
 import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
 import Booking from "./pages/Extra/User/Booking/Booking.js";
-
+import UpdatePersonalEvent from "./pages/events/UpdatePersonalEvent.js"
 
 axios.defaults.withCredentials = true;
 
@@ -164,6 +164,8 @@ function App() {
             <Route path="/addEvent" element={<AddEvent />} />
             <Route path="/EventTable" element={<EventTable />} />
             <Route path="/EventTable/EditEvent/:id" element={<EditEvent />} />
+            <Route path="/updateEvent/:id" element={<UpdatePersonalEvent />} />
+
 
             {/* events */}
             <Route path="/events" element={<Events />} />
