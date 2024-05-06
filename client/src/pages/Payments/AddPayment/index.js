@@ -15,8 +15,6 @@ function AddPayment() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // const { bookingId } = useParams();
-
   const { user } = useSelector((state) => state.auth);
   const { type, total } = useSelector((state) => state.payment);
 
@@ -101,6 +99,9 @@ function AddPayment() {
   const onNavigateToAddCard = () => {
     navigate(`/add-card`);
   };
+  const handleVerifyOTP = () => {};
+
+  const handleResendOTP = () => {};
 
   return (
     <div>
@@ -151,6 +152,29 @@ function AddPayment() {
                   title="Please enter a 10-digit phone number"
                 />
                 <br />
+                <label className="payment_lable">OTP</label>
+                <br />
+                <input
+                  className="payment_input"
+                  type="text"
+                  name="otp"
+                  maxLength={6}
+                />
+                <br />
+                <button
+                  className="resend_otp_btn"
+                  type="button"
+                  onClick={handleResendOTP}
+                >
+                  Resend OTP
+                </button>
+                <button
+                  className="verify_otp_btn"
+                  type="button"
+                  onClick={handleVerifyOTP}
+                >
+                  Verify OTP
+                </button>
               </div>
               <div className="payment_form_pay_left">
                 <h4 className="card_topic">Booking Details..</h4>
