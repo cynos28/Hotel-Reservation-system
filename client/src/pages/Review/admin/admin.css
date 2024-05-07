@@ -1,0 +1,29 @@
+.ratingmar{
+    margin-right: -150px;
+}
+
+.tbl_data {
+    padding: 25px 20%;
+  }
+  .table_details_admin {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  
+  .table_details_admin .admin_tbl_th,
+  .table_details_admin .admin_tbl_td {
+    border: 2px solid #65a4da;
+    padding: 8px;
+  }
+  
+  .table_details_admin .admin_tbl_th {
+    background-color: #65a4da;
+    color: white;
+    font-size: 18px;
+  }
+  .topic_rate{
+    text-align: center;
+    margin: 20px 0;
+  }

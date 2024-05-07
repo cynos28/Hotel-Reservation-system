@@ -260,7 +260,7 @@ function AddPayment() {
                         <option value="">Select Your Card</option>
                         {userCards.map((card) => (
                           <option key={card._id} value={card._id}>
-                            <div>{card.cardName}</div>
+                            <div>{card.cardName}: </div>
                             <div>{card.cardNo}</div>
                           </option>
                         ))}
@@ -284,9 +284,8 @@ function AddPayment() {
                           disabled
                           required
                           id="crdNo"
-                          type="number"
+                          type="text"
                           name="cardno"
-                          maxLength={18}
                         />
                         <br />
                         <label className="payment_lable">Cardholder Name</label>
