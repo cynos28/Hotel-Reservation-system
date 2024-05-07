@@ -8,7 +8,6 @@ import Footer from "../../../components/footer/Footer";
 
 const Food = ({ food }) => {
   const { _id, name, image, time, price, tag } = food;
-
   return (
     <div>
       <div className="card_ittem_card">
@@ -25,8 +24,7 @@ const Food = ({ food }) => {
           </p>
           <p className="detail_p">
             <b>Tag</b>
-            <br />
-            {tag}
+            <br /> {tag}
           </p>
         </div>
         <Link className="btn_Link" to={`/food-details/${_id}`}>
@@ -48,6 +46,7 @@ const Foods = () => {
       try {
         const response = await axios.get("http://localhost:3001/foods");
         setFoods(response.data.foods);
+        setFilteredFoods(response.data.foods); // Set filtered foods to all foods initially
         // Extract tags from foods
         const allTags = response.data.foods.map((food) => food.tag);
         // Remove duplicate tags
@@ -58,45 +57,46 @@ const Foods = () => {
         setAlertMessage("Error fetching food items.");
       }
     };
-
     fetchFoods();
   }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [noResults, setNoResults] = useState(false);
+
   const handleTagFilter = (selectedTag) => {
     const filtered = foods.filter((food) => food.tag === selectedTag);
     setFilteredFoods(filtered);
   };
-  const handleSearch = () => {
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
     const filtered = foods.filter((food) =>
-      Object.values(food).some((field) =>
-        field.toString().toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      food.name.toLowerCase().includes(query)
     );
-    setFoods(filtered);
-    setNoResults(filtered.length === 0);
+    setFilteredFoods(filtered);
   };
+
   return (
     <div>
       <Header />
       <div className="pdn_itmdetil">
-      <div className="search"> 
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          className="serch"
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button onClick={handleSearch} className="updtbtn">
-          Search
-        </button>
-      </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search Your Food Here.."
+            value={searchQuery}
+            className="serch"
+            onChange={handleSearch}
+          />
+          <Link to="/view-cart">
+            <img src="/images/cart.png" alt="Cart" className="cart-icon" />
+          </Link>
+        </div>
         <div className="tags_container">
           <button
             className="filter_btn"
-            onClick={() => (window.location.href = "/foods")}
+            onClick={() => setFilteredFoods(foods)}
           >
             all
           </button>
@@ -116,7 +116,7 @@ const Foods = () => {
             : foods.map((food) => <Food key={food._id} food={food} />)}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

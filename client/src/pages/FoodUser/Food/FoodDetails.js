@@ -46,7 +46,7 @@ const FoodDetails = () => {
           <div className="item_card_details">
             
             <div>
-            <h3 className="item_name">{name}</h3>
+            <p className="ite_name">{name}</p>
               <img src={image} alt={name} className="itme_img_view" />
               <p className="item_detal_view">
                 <b>Preparation Time</b>

@@ -4,9 +4,7 @@
     justify-content: center;
     align-items: center;
     margin: 100px 0;
-    background-image: url(./img/backimg.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
+    
   }
 .rate_full_box_form{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
