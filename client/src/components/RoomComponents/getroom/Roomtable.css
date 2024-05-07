@@ -100,21 +100,27 @@ th {
 }
 
 /* Add Room button style */
-.generate-room-button {
+.generate-room-button1 {
     display: block;
     width: fit-content;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
-    background-color: #007854;
-    color: #fff;
+    background-color: #0c0047;
+    color: #0a0db6;
     text-decoration: none;
-    margin-left: 900px;
+    margin-left: 885px;
     font-weight: bold;
+}
+
+.generate-room-button1:hover {
+    background-color: #00a2ff; /* Change background color on hover */
+    color: #701111; /* Change text color on hover */
 }
 
 .generate-room-button {
     opacity: 0.8;
 }
+
 
 
   .search-input:focus {

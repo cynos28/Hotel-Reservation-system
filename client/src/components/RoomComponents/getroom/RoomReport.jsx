@@ -1,6 +1,7 @@
 import React from "react";
 import { Page, Text, Document, StyleSheet, View, Font } from "@react-pdf/renderer";
 
+
 Font.register({
     family: 'Spirax',
     fonts: [
@@ -128,6 +129,8 @@ const RoomReport = ({ items }) => {
             {itemChunks.map((items, index) => (
                 <Page key={index} size="A4" orientation="landscape" style={styles.page}>
                     <Text style={styles.logo}>Hotel Heritage</Text>
+                    <Image src={hotelLogo} style={styles.logoImage} />
+
                     <Text style={styles.report}>Monthly Report</Text>
                     <Text style={styles.period}>For the period ended {new Date().toLocaleDateString()}</Text>
                     <Text style={styles.title}>Rooms Table</Text>
