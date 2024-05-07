@@ -56,6 +56,8 @@ function FindReview() {
   };
 
   return (
+    <>
+    <Header />  
     
    
     <div className="rateee_full_box">
@@ -203,6 +205,8 @@ function FindReview() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 
