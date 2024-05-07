@@ -134,3 +134,57 @@ input[type="number"] {
   width: 100%;
   height: 175px;
 }
+
+.payment_input[type="text"][name="otp"] {
+  width: 200px;
+  font-size: 14px;
+}
+.verify_otp_btn {
+  background-color: #019365c7;
+  border: 2px solid #26b59b;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+  margin-left: 10px;
+}
+.verify_otp_btn:hover {
+  background-color: white;
+  border: 2px solid #26b59b;
+  color: #015a1cd9;
+}
+
+.resend_otp_btn {
+  background-color: #eb5c40dd;
+  border: 2px solid #26b59b;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px;
+}
+.resend_otp_btn:hover {
+  background-color: white;
+  border: 2px solid #26b59b;
+  color: #015a1cd9;
+}
+.verify_otp_btn,
+.resend_otp_btn {
+  font-size: 14px;
+  padding: 4px 8px;
+}
