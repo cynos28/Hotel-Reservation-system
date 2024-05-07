@@ -8,6 +8,8 @@ import TopNav from '../../../AdminPanel/AdminComponents/TopNav/TopNav';
 import Sidebar from '../../../AdminPanel/AdminComponents/Sidebar/Sidebar';
 import { Trash, PencilSquare } from 'react-bootstrap-icons'; // Import Bootstrap Icons
 import { useReactToPrint } from "react-to-print";
+import PDFFile from "./RoomReport"; // Import PDF component
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const RoomTable = () => {
     const [rooms, setRooms] = useState([]);
@@ -85,9 +87,22 @@ const RoomTable = () => {
                         <button className="search-button" onClick={handleSearch}>Search</button>
                       
                     </div>
-                    <button onClick={handlePrint} className="generate-room-button">
-                            Generate Report
-                        </button>
+                    {/* Button to generate PDF */}
+                    <PDFDownloadLink
+                        className="generate-room-button1"
+                        document={<PDFFile items={filteredRooms} />}
+                        fileName="Room_Details_Report.pdf"
+                    >
+                        {({ loading }) =>
+                            loading ? (
+                                <button className="bg-BrownLi rounded-md p-[7px] font-bold text-[14px]">
+                                    Preparing...
+                                </button>
+                            ) : (
+                                <button className="generate-room-button">Generate Monthly Report</button>
+                            )
+                        }
+                    </PDFDownloadLink>
 
                     <table>
                         <thead>
