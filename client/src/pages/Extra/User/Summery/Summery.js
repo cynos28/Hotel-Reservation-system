@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addPayment } from "../../../../redux/features/payment/paymentSlice";
+import { PAYMENT_TYPES } from "../../../../constants";
 
 function Summary() {
   const { extraid } = useParams();
   const [booking, setBooking] = useState(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+  const userId = user?._id; // get the user id from the logged in user
 
   useEffect(() => {
     const fetchPaymentDetails = async () => {
@@ -20,6 +29,17 @@ function Summary() {
 
     fetchPaymentDetails();
   }, [extraid]); // Depend on "id" instead of "payid"
+
+  // add payment details to Redux
+  const onNavigateToPayment = () => {
+    if (userId) {
+      dispatch(addPayment({ type: PAYMENT_TYPES.EXTRA, total: booking.total }));
+      navigate("/add-payment");
+    } else {
+      alert("Please login to continue");
+      navigate("/login");
+    }
+  };
 
   if (!booking) {
     return <div>Loading...</div>;
@@ -58,10 +78,7 @@ function Summary() {
           <button className="booknow_btn" onClick={() => window.print()}>
             Download
           </button>
-          <button
-            onClick={() => (window.location.href = "/add-Payment")}
-            className="booknow_btn"
-          >
+          <button onClick={onNavigateToPayment} className="booknow_btn">
             Pay
           </button>
           <button

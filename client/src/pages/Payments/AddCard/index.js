@@ -96,6 +96,27 @@ function AddCard() {
       window.alert("Card is not updated!");
     }
   };
+  const onChangeCardNo = (e) => {
+    // Remove non-digit characters from the input
+    const input = e.target.value.replace(/\D/g, "");
+
+    if (input.length <= 16) {
+      // Add dashes at appropriate positions
+      let formattedInput = "";
+      for (let i = 0; i < input.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+          formattedInput += "-";
+        }
+        formattedInput += input[i];
+      }
+
+      // Update the state
+      setInputs((prevState) => ({
+        ...prevState,
+        [e.target.name]: formattedInput,
+      }));
+    }
+  };
 
   return (
     <div>
@@ -135,12 +156,12 @@ function AddCard() {
                     <input
                       className="add_card_input"
                       value={inputs.cardNo}
-                      onChange={handleChange}
+                      onChange={onChangeCardNo}
                       required
                       id="crdNo"
-                      type="number"
+                      type="text"
                       name="cardNo"
-                      maxLength={18}
+                      // maxLength={20}
                     />
                     <br />
                     <label className="card_lable">Exp Date</label>
