@@ -6,8 +6,6 @@ import TopNav from "../../../AdminPanel/AdminComponents/TopNav/TopNav";
 import Sidebar from "../../../AdminPanel/AdminComponents/Sidebar/Sidebar";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2"; // Import SweetAlert library
-import { useSelector } from "react-redux";
-
 
 const AddEvent = () => {
   const navigate = useNavigate();

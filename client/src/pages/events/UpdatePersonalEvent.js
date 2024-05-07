@@ -4,6 +4,8 @@ import "./EditEvent.css"; // Import CSS file
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2"; // Import SweetAlert library
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/Footer";
 
 const updatePersonalEvent = () => {
   const { id } = useParams();
@@ -26,9 +28,10 @@ const updatePersonalEvent = () => {
     fetchData();
   }, [id]);
 
-  // send files to the server // learn from my other video
+  // send files to the server // 
   const handleUpload = async (e) => {
     try {
+      
       const response = await axios.patch(
         `http://localhost:3001/api/event/${id}`,
         eventData
@@ -44,7 +47,7 @@ const updatePersonalEvent = () => {
         timer: 1500,
       });
 
-      navigate("/EventTable");
+      navigate("/events");
     } catch (error) {
       console.error("Error adding category:", error);
     }
@@ -52,6 +55,7 @@ const updatePersonalEvent = () => {
 
   return (
     <div>
+    <Header />
       <div className="AdminEvent-container">
         <label htmlFor="name">Event Name:</label>
         <input
@@ -91,7 +95,7 @@ const updatePersonalEvent = () => {
         <select
           name="venue"
           id="venue"
-          onChange={(e) => setVenue(e.target.value)}
+          onChange={(e) => setEventData({ ...eventData, venue: e.target.value })}
           className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
         >
           <option>---- SELECT ----</option>
@@ -126,52 +130,8 @@ const updatePersonalEvent = () => {
             setEventData({ ...eventData, eTime: e.target.value })
           }
           className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
-        />
+        />          
 
-        <label htmlFor="desc">Description:</label>
-        <input
-          type="text"
-          name="desc"
-          id="desc"
-          value={eventData.description}
-          onChange={(e) =>
-            setEventData({ ...eventData, description: e.target.value })
-          }
-          placeholder="Enter the Description"
-          className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
-        />
-
-        <label htmlFor="eventStatus">Status:</label>
-        <select
-          name="eventStatus"
-          id="eventStatus"
-          value={eventData.estatus}
-          onChange={(e) =>
-            setEventData({ ...eventData, estatus: e.target.value })
-          }
-          className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
-        >
-          <option>---- SELECT ----</option>
-          <option value="Pending">Pending</option>
-          <option value="Approved">Approved</option>
-          <option value="Declined">Declined</option>
-        </select>
-
-        <label htmlFor="reason">Reason:</label>
-        <input
-          type="text"
-          name="reason"
-          id="reason"
-          value={eventData.reason}
-          onChange={(e) =>
-            setEventData({ ...eventData, reason: e.target.value })
-          }
-          placeholder="Enter the reason"
-          className="border-none pl-[10px] p-y-[40px] text-[12pt] mb-[3px] mt-[10px] rounded-[10px] bg-[rgba(255, 255, 255, 0.6)] h-[40px] w-[320px] hover:bg-[rgb(255,255,255)] transition-duration-70ms"
-        />      
-
-        
-        
         
         <button
           onClick={handleUpload}
@@ -181,6 +141,7 @@ const updatePersonalEvent = () => {
           Submit
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
