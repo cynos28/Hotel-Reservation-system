@@ -1,13 +1,14 @@
-/* addfood.css */
 
 .cart-container {
   width: 80%;
-  margin: 0 auto;
-  padding: 90px;
+  height: 5%;
+  margin-top: 80px;
+  margin-left: 300px;
+  padding: 30px;
   background-color: #f7f7f7;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-right: 23px;
+  align-content: center;
 }
 
 .cart-header {
