@@ -185,9 +185,9 @@ const Events = () => {
                     className="event-image1"
                   />
                 </div>
-                <p>Date: {formatDate(viewEvents.date)}</p>
-                <p>Venue: {viewEvents.venue}</p>
-                <p>Description: {viewEvents.description}</p>
+                <p>Date: {formatDate(viewEvents.date)}</p><br/>
+                <p>Venue: {viewEvents.venue}</p><br/>
+                <p>Description: {viewEvents.description}</p><br/>
                 <button className="close-modal" onClick={toggleModal}>
                   <i class="fa fa-xmark"></i>
                 </button>
