@@ -138,8 +138,9 @@ const Carts = () => {
           )}
         </div>
       </div>
-      <Footer />
+      
     </div>
+    
   );
 };
 

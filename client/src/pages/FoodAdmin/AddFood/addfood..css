@@ -63,3 +63,20 @@
 .viewbtn:hover {
   background-color: #0f3038;
 }
+
+.cart-fo {
+  width: 500px;
+  border: 2px solid teal;
+  margin-left: 330px;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cart-he {
+  text-align: center;
+  margin-right: 40px;
+  text-transform: capitalize;
+  font-size: 35px;
+  margin-bottom: 20px;
+}

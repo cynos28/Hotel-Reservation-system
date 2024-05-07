@@ -107,7 +107,6 @@
   .cart-form {
     width: 500px;
     border: 2px solid teal;
-    margin: 10px auto;
     padding: 25px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -283,3 +282,15 @@
     padding: 20px 12%;
   }
   
+
+  .cart-head {
+    text-transform: capitalize;
+    font-size: 35px;
+    font-weight: bold;
+    margin-right: 275px;
+}
+.cart-contai{
+  margin-left: 525px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
