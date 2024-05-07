@@ -49,15 +49,17 @@ function RateAdmin() {
     <div className="tbl_data">
      
     
+      
+      
       <div ref={ComponentsRef}>
-      <button type="button" className="button_ad_review" onClick={handlePrint}>
+      <h1 className="topic_rate">
+        <br />
+          Customers Rating<span className="sub_topic_rate"> Details..!</span>
+        </h1>
+        <button type="button" className="button_ad_review" onClick={handlePrint}>
         Generate Report
       </button>
-      <h1 className="topic_rate">
-          Customers Rating<span className="sub_topic_rate"> Details..!</span><span><button type="button" className="button_ad_review" onClick={handlePrint}>
-        Generate Report
-      </button></span>
-        </h1>
+      <div ref={ComponentsRef}>
         <table className="table_details_admin">
           <thead>
             <tr className="admin_tbl_tr">
@@ -171,6 +173,7 @@ function RateAdmin() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
     </div>
