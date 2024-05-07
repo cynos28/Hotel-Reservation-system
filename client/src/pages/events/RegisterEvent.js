@@ -5,12 +5,14 @@ import Footer from "../../components/footer/Footer";
 import "./RegisterEvent.css"; // Import CSS file
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 import Swal from "sweetalert2"; // Import SweetAlert library
 
 const RegisterEvent = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
   const [formData, setFormData] = useState({
-    userId: "user_1234",
+    userId: user?._id,
     name: "",
     capacity: "",
     date: "",
@@ -21,6 +23,7 @@ const RegisterEvent = () => {
     endingTime: "",
     estimatedCost: 0,
   });
+
 
   const [recommendationMessage, setRecommendationMessage] = useState("");
   const [formErrors, setFormErrors] = useState({}); // State to track form errors
@@ -103,7 +106,7 @@ const RegisterEvent = () => {
     }
 
     const eventData = {
-      userId: "user_1234",
+      userId: formData.userId,
       name: formData.name,
       cap: formData.capacity,
       date: formData.date,

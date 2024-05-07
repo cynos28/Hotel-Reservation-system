@@ -75,7 +75,7 @@
     justify-content: center;
     margin-bottom: 20px;
     margin-top: 20px;
-    background-color: #019065 ;
+    background-color: #E4FDFD ;
     margin-right: 2px;
     margin-left: 10px;
     width: 184vh;
@@ -99,10 +99,9 @@
     justify-content: center;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+    background-color: #E4FDFD ;
     
         
-
-
   }
   
 
@@ -229,4 +228,8 @@
   
   .room-det li {
     margin-bottom: 3px; /* Add margin between each detail */
+  }
+
+  .mainthing{
+    background-color: #E4FDFD ;
   }
