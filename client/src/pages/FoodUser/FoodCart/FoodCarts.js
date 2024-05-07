@@ -74,7 +74,7 @@ const Carts = () => {
       <Header />
       <div>
         <div className="card_ful_cart">
-          <h2 className="carts-header">Cart Details</h2>
+          <h2 className="carts-header">Food Cart</h2>
           <div className="button-container">
             <button
               onClick={() => (window.location.href = "/foods")}
@@ -110,7 +110,7 @@ const Carts = () => {
                         </div>
                         <div className="edit_btnx">
                           <Link to={`/update-cart/${cart._id}`}>
-                            <button className="updtbtn">Edit</button>
+                            <button className="updtbtn1">Edit</button>
                           </Link>
                           <br></br>
                           <button
@@ -138,8 +138,9 @@ const Carts = () => {
           )}
         </div>
       </div>
-      <Footer />
+      
     </div>
+    
   );
 };
 

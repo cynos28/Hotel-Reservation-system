@@ -87,8 +87,7 @@ function AdminDash() {
               >
                 <option value="">Select Booking Type</option>
                 <option value={PAYMENT_TYPES.ROOM}>{"Room"}</option>
-                <option value={PAYMENT_TYPES.BAR}>{"Bar"}</option>
-                <option value={PAYMENT_TYPES.POOL}>{"Pool"}</option>
+                <option value={PAYMENT_TYPES.EXTRA}>{"Extra"}</option>
                 <option value={PAYMENT_TYPES.FOOD}>{"Food"}</option>
               </select>
               <div className="search_box">
@@ -99,9 +98,6 @@ function AdminDash() {
                   className="serch_ipt"
                   placeholder="Search Here.."
                 />
-                {/* <button onClick={handleSearch} className="serchbtn">
-                  Search
-                </button> */}
               </div>
               <button onClick={handlePrint} className="serchbtn">
                 Download Report

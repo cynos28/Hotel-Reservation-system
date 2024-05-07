@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import Rates from "../Review/RateDetails/Rates";
 import aboutImage from "../../assets/about-us-img.jpg";
 import BasicExample from "./homePageCard";
+
+import Newsletter from "./NewsLetter"
+
 import OurPartners from "./homePage/partnerLogo";
 import ImageGallery from "./homePage/Gallery/imageGallery";
 import AboutUs from "../../components/aboutUs/aboutUs";
@@ -79,11 +82,17 @@ function home() {
 
 
 
+
+<BasicExample />
+
+
       <BasicExample />
       <OurPartners />
       <ImageGallery />
       <OurHappyClients />
       <Faq />
+            <Newsletter/>
+
 
     </div>
 
