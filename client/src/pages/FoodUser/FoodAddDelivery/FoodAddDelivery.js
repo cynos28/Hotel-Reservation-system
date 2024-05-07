@@ -15,7 +15,6 @@ function AddDelivery() {
     date: "",
     address: "",
   });
-
   const { user } = useSelector((state) => state.auth);
   const totalAmount = useSelector((state) => state.payment.totalAmount);
 
@@ -36,19 +35,11 @@ function AddDelivery() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Check if any field is empty
-    if (
-      !inputs.name ||
-      !inputs.phone ||
-      !inputs.time ||
-      !inputs.date ||
-      !inputs.address
-    ) {
+    if (!inputs.name || !inputs.phone || !inputs.time || !inputs.date || !inputs.address) {
       window.alert("Please fill in all fields");
       return;
     }
-
     console.log(inputs);
     await sendRequest();
     window.alert("Added successfully!");
@@ -61,16 +52,18 @@ function AddDelivery() {
       phone: inputs.phone,
       time: inputs.time,
       date: inputs.date,
-      address: inputs.address
+      address: inputs.address,
     });
   };
+
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <div className="back">
       <Header />
       <div className="cart-container">
         <h2 className="cart-header">Add Delivery Details</h2>
-        <form className="cart-form" onSubmit={handleSubmit}>
+        <form className="cart-for" onSubmit={handleSubmit}>
           <label className="cart-label">Name:</label>
           <input
             className="cart-input"
@@ -111,6 +104,7 @@ function AddDelivery() {
             name="date"
             value={inputs.date}
             onChange={handleChange}
+            min={today}
             required
           />
           <br />

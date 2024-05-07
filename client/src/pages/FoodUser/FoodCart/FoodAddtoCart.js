@@ -78,8 +78,8 @@ const AddToCart = () => {
 
   return (
     <div><Header/>
-    <div className="cart-container">
-      <h2 className="cart-header">Add to Cart <span className="sub_name"> {item.name}</span></h2>
+    <div className="cart-contai">
+      <p className="cart-head">Add to Cart <span className="sub_name"> {item.name}</span></p>
       <form className="cart-form" onSubmit={handleSubmit}>
         <div>
           <label className="cart-label">Name:</label>

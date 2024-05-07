@@ -43,12 +43,12 @@ const AddStock = () => {
     <div className="cart-container">
 
 <TopNav /> 
-      <Sidebar />
+<Sidebar />
    
 
 
-      <h2 className="cart-header">Add New Food Item</h2>
-      <form className="cart-form" onSubmit={handleSubmit}>
+      <h2 className="cart-he">Add New Food Item</h2>
+      <form className="cart-fo" onSubmit={handleSubmit}>
         <div>
           <label className="cart-label">Name:</label>
           <input
