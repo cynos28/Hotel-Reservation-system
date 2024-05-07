@@ -69,7 +69,8 @@ const AddToCart = () => {
       alert("Item added to cart successfully.");
       history("/view-cart");
     } catch (error) {
-
+      history("/login");
+      alert("You need to log first");
       console.error("Error adding item to cart:", error);
       setError("Error adding item to cart.");
     }
@@ -82,7 +83,7 @@ const AddToCart = () => {
       <form className="cart-form" onSubmit={handleSubmit}>
         <div>
           <label className="cart-label">Name:</label>
-          <br />
+
           <input
             className="cart-input"
             type="text"
@@ -92,10 +93,10 @@ const AddToCart = () => {
             readOnly
           />
         </div>
-
+        <br />
         <div>
           <label className="cart-label">Price:</label>
-          <br />
+
           <input
             className="cart-input"
             type="number"
@@ -105,10 +106,10 @@ const AddToCart = () => {
             readOnly
           />
         </div>
-
+        <br />
         <div>
           <label className="cart-label">Quantity:</label>
-          <br />
+
           <input
             className="cart-input"
             type="number"
@@ -119,9 +120,11 @@ const AddToCart = () => {
             required
           />
         </div>
+       
         <div>
+        <br />
           <label className="cart-label">Total:</label>
-          <br />
+          
           <input
             className="cart-input"
             type="text"
@@ -130,6 +133,8 @@ const AddToCart = () => {
             readOnly
           />
         </div>
+        <br />
+
         <br />
         {error && <p className="cart-error-message">{error}</p>}
         <button className="view_btn" type="submit">
