@@ -9,6 +9,8 @@ import Footer from "../../../components/footer/Footer";
 import axios from "axios";
 import { useSelector } from "react-redux"; /*** */
 import { Link } from "react-router-dom";
+import cardLogoImg from "./img/visaimg.png";
+import cardChipImg from "./img/chipimg.jpg";
 
 function AddCard() {
   const navigate = useNavigate();
@@ -94,13 +96,34 @@ function AddCard() {
       window.alert("Card is not updated!");
     }
   };
+  const onChangeCardNo = (e) => {
+    // Remove non-digit characters from the input
+    const input = e.target.value.replace(/\D/g, "");
+
+    if (input.length <= 16) {
+      // Add dashes at appropriate positions
+      let formattedInput = "";
+      for (let i = 0; i < input.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+          formattedInput += "-";
+        }
+        formattedInput += input[i];
+      }
+
+      // Update the state
+      setInputs((prevState) => ({
+        ...prevState,
+        [e.target.name]: formattedInput,
+      }));
+    }
+  };
 
   return (
     <div>
       <Header />
       <div className="card_container">
         <div className="card_box">
-          <h1 className="main_topic">
+          <h1 className="card_main_topic">
             {isUpdateOperation ? "Update Card" : "Add Card"}
           </h1>
           <form
@@ -133,12 +156,12 @@ function AddCard() {
                     <input
                       className="add_card_input"
                       value={inputs.cardNo}
-                      onChange={handleChange}
+                      onChange={onChangeCardNo}
                       required
                       id="crdNo"
-                      type="number"
+                      type="text"
                       name="cardNo"
-                      maxLength={18}
+                      // maxLength={20}
                     />
                     <br />
                     <label className="card_lable">Exp Date</label>
@@ -172,6 +195,28 @@ function AddCard() {
               </>
             )}
           </form>
+        </div>
+        <div className="card_preview">
+          <div className="card">
+            <div className="card__inner">
+              <div className="card__front">
+                <div className="card__logo">
+                  <img src={cardLogoImg} alt="Card Logo" />
+                </div>
+                <div className="card__chip">
+                  <img src={cardChipImg} alt="Card Chip" />
+                </div>
+                <p className="card__text">{inputs.cardNo}</p>
+                <p className="card__text">{inputs.cardName}</p>
+                <p className="card__text">{inputs.expDate}</p>
+              </div>
+              <div className="card__back">
+                <div className="card__cvv">
+                  <p className="card__cvv-value">{inputs.cvv}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

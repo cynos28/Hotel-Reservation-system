@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import TopNav from '../AdminPanel/AdminComponents/TopNav/TopNav';
+import Sidebar from '../AdminPanel/AdminComponents/Sidebar/Sidebar';
 
 
 function Updatefoodscreen() {
@@ -77,9 +78,17 @@ function Updatefoodscreen() {
 
     }
   return (
+
+    
+
+    
     <div className="cart-container">
+
+<TopNav /> 
+<Sidebar />
+      
     <h2 className="cart-header">Update Food Item</h2>
-    <form className="cart-form" onSubmit={handleUpdate}>
+    <form className="cart-forma" onSubmit={handleUpdate}>
       <div>
         <label className="cart-label">Name:</label>
         <input

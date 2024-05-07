@@ -8,7 +8,15 @@ import { Link } from "react-router-dom";
 import Rates from "../Review/RateDetails/Rates";
 import aboutImage from "../../assets/about-us-img.jpg";
 import BasicExample from "./homePageCard";
+
 import Newsletter from "./NewsLetter"
+
+import OurPartners from "./homePage/partnerLogo";
+import ImageGallery from "./homePage/Gallery/imageGallery";
+import AboutUs from "../../components/aboutUs/aboutUs";
+import Faq from "../../components/Faq/Faq";
+import TestimonialSlider from "../../components/ratingComp/ratingComp";
+import OurHappyClients from "../../components/ratingComp/ratingComp";
 
 function home() {
   return (
@@ -48,12 +56,12 @@ function home() {
         <div className="hero-image">
           <img src={HeroImage} alt="Hero Image" />
 
-        </div>  
-        
+        </div>
+
 
       </section>
-      {/* <section className="about-us-section">
-        <div className="about-us-text">
+      <section >
+        {/* <div className="about-us-text">
           <h2>Welcome to the Hotel Heritage... </h2>
           <p>
             We are more than just a place to stay. We are a community of
@@ -65,16 +73,26 @@ function home() {
         </div>
         <div className="aboutImg">
           <img src={aboutImage} alt="About Us Image" />
-        </div>
-      </section> */}
+        </div> */}
+        <AboutUs />
+      </section>
 
-  
-  
 
-    
+
+
+
+
 
 <BasicExample />
-<Newsletter/>
+
+
+      <BasicExample />
+      <OurPartners />
+      <ImageGallery />
+      <OurHappyClients />
+      <Faq />
+            <Newsletter/>
+
 
     </div>
 

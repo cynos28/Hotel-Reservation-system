@@ -97,18 +97,13 @@
 
 /* Book Event Button */
 .book-event-button {
-  position: absolute;
-  transform: translateY(-120%);
-  bottom: 100px;
-  right:100px;
+  margin-right: 110px;
   background-color: #03c9876e;
   color: rgb(0, 0, 0);
   padding: 20px ;
   border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
-  margin-top: 100px;
-  margin-bottom: -30px;
   width: 150px;
   height: 60px;
   text-align: center;
@@ -117,4 +112,32 @@
 
 .book-event-button:hover {
   background-color: #25b12e6e;
+  /* background-color: #03c9876e; */
+}
+
+.personalevent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.EventUpdatebtn{
+  margin-top: 10px;
+  background-color: #292f89;
+    color: #fff;
+    text-decoration: none;
+    width: 100px;
+    height: 45px;
+    border-radius: 20px;
+}
+
+.EventDeleteBtn{
+  margin-top: 10px;
+  background-color: #aa1120;
+    color: #fff;
+    border: none;
+    width: 100px;
+    height: 45px;
+    margin-left: 140px;
+    border-radius: 20px;
 }

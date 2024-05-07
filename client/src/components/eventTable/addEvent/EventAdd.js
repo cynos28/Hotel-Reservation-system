@@ -15,7 +15,7 @@ const AddEvent = () => {
   const [capacity, setCapacity] = useState("");
   const [venue, setVenue] = useState("");
   const [eType, setEtype] = useState("Public");
-  const [eventStatus, setEventStatus] = useState("Pending");
+  const [eventStatus, setEventStatus] = useState("Approved");
   const [desc, setDesc] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endingTime, setEndingTime] = useState("");
