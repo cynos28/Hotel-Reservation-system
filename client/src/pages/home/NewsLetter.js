@@ -16,7 +16,7 @@ function NewsLetter() {
   return (
     <div className="newsletter-wrapper">
       <div className="newsletter-container">
-      <h3>        Subscribe to our Newsletter</h3>
+      <h4>  NewsLetter </h4>
         <form onSubmit={handleSubmit}>
         
           <input
@@ -25,8 +25,10 @@ function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
-          <button type="submit">Subscribe</button>
+            
+            />
+            <button type="submit">Subscribe</button>
+          
         </form>
       </div>
     </div>
