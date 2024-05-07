@@ -11,6 +11,9 @@ import BasicExample from "./homePageCard";
 import OurPartners from "./homePage/partnerLogo";
 import ImageGallery from "./homePage/Gallery/imageGallery";
 import AboutUs from "../../components/aboutUs/aboutUs";
+import Faq from "../../components/Faq/Faq";
+import TestimonialSlider from "../../components/ratingComp/ratingComp";
+import OurHappyClients from "../../components/ratingComp/ratingComp";
 
 function home() {
   return (
@@ -50,8 +53,8 @@ function home() {
         <div className="hero-image">
           <img src={HeroImage} alt="Hero Image" />
 
-        </div>  
-        
+        </div>
+
 
       </section>
       <section >
@@ -71,14 +74,16 @@ function home() {
         <AboutUs />
       </section>
 
-  
-  
 
-    
 
-<BasicExample />
-<OurPartners />
-<ImageGallery />
+
+
+
+      <BasicExample />
+      <OurPartners />
+      <ImageGallery />
+      <OurHappyClients />
+      <Faq />
 
     </div>
 

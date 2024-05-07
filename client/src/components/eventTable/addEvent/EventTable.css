@@ -135,5 +135,21 @@
     border-color: #007bff;
   }
   
+  .reportpart{
+    background-color: darkblue; /* Set the background color to blue */
+    color: white; /* Set the text color to white */
+    border: none; /* Remove border */
+    border-radius: 25px; /* Set border radius for curved corners */
+    padding: 10px 20px; /* Add padding for better appearance */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    margin-left: -1000px;
+    position: absolute;    
+    margin-top: 102px;
+  }
 
-  
+  .reportpart2{
+    background-color: darkblue;
+    color: white;
+    border: none;
+    
+ }
