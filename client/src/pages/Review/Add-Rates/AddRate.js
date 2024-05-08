@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import "../RateDetails/rate.css";
@@ -7,13 +7,16 @@ import Question from "./img/Freq1.PNG";
 import user from "./img/user_logo.png";
 import Header from "../../../components/header/header";
 import Footer from "../../../components/footer/Footer";
+import { useSelector } from "react-redux";
+
 function AddRate() {
-  /*Insert Part Start*/
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user); 
+
   const [inputs, setInputs] = useState({
     date: "",
-    name: "",
-    gmail: "",
+    name: user?.name || "", // Pre-fill with user's name
+    gmail: user?.email || "", // Pre-fill with user's email
     ratestar: "",
     comment: "",
   });
@@ -31,7 +34,7 @@ function AddRate() {
     e.preventDefault();
     console.log(inputs);
 
-    // Convert ratestar value to an integer before sending the request
+    
     const ratestarInt = parseInt(inputs.ratestar);
 
     await sendRequest({
@@ -41,7 +44,6 @@ function AddRate() {
     window.alert("Submit successfully!");
     navigate("/allrate");
   };
-
   const sendRequest = async () => {
     await axios.post("http://localhost:3001/rates", {
       date: inputs.date,
@@ -51,6 +53,19 @@ function AddRate() {
       comment: inputs.comment,
     });
   };
+
+  useEffect(() => {
+    // Fetch user data when component mounts
+    // Assuming you have a function to fetch user data from Redux
+    // dispatch(getUser());
+    // For now, we'll use a dummy implementation
+    setInputs((prevState) => ({
+      ...prevState,
+      name: user?.name || "",
+      gmail: user?.email || "",
+    }));
+  }, [user]);
+
   /*Insert Part End*/
 
   return (
