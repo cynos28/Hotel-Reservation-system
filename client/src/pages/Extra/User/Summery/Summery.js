@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addPayment } from "../../../../redux/features/payment/paymentSlice";
 import { PAYMENT_TYPES } from "../../../../constants";
+import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 
 function Summary() {
   const { extraid } = useParams();
@@ -46,49 +48,53 @@ function Summary() {
   }
 
   return (
-    <div className="bk_book_sum">
-      <div className="summry_div">
-        <div className="summry_div_box">
-          <h2 className="sum_topic_extra">Summary</h2>
-          <p className="sum_detil_extra">
-            <b>Booking ID:</b> {booking.extraid}
-          </p>
-          <p className="sum_detil_extra">
-            <b>Name:</b> {booking.name}
-          </p>
-          <p className="sum_detil_extra">
-            <b>Gmail: </b>
-            {booking.gmail}
-          </p>
-          <p className="sum_detil_extra">
-            <b>Your Facility:</b> {booking.gym === "true" && <span>Gym</span>}
-            {booking.pool === "true" && <span>Pool</span>}
-            {booking.bar === "true" && <span>Bar</span>}
-            {booking.spa === "true" && <span>Spa</span>}
-            {booking.vehicle === "true" && <span>Vehicle</span>}
-            {booking.dayplan === "true" && <span>Day Plan</span>}
-            {booking.specialday === "true" && <span>Special Day</span>}
-            {booking.petfriend === "true" && <span>Pet Friend</span>}
-          </p>
-          <p className="sum_detil_extra tot">
-            <b>Total:</b>
-            Rs.{booking.total}.00
-          </p>
-          {/* Add more booking details as needed */}
-          <button className="booknow_btn" onClick={() => window.print()}>
-            Download
-          </button>
-          <button onClick={onNavigateToPayment} className="booknow_btn">
-            Pay
-          </button>
-          <button
-            className="booknow_btn"
-            onClick={() => (window.location.href = "/bookingvalidate")}
-          >
-            My Booking
-          </button>
+    <div>
+      <Header />
+      <div className="bk_book_sum">
+        <div className="summry_div">
+          <div className="summry_div_box">
+            <h2 className="sum_topic_extra">Summary</h2>
+            <p className="sum_detil_extra">
+              <b>Booking ID:</b> {booking.extraid}
+            </p>
+            <p className="sum_detil_extra">
+              <b>Name:</b> {booking.name}
+            </p>
+            <p className="sum_detil_extra">
+              <b>Gmail: </b>
+              {booking.gmail}
+            </p>
+            <p className="sum_detil_extra">
+              <b>Your Facility:</b> {booking.gym === "true" && <span>Gym</span>}
+              {booking.pool === "true" && <span>Pool</span>}
+              {booking.bar === "true" && <span>Bar</span>}
+              {booking.spa === "true" && <span>Spa</span>}
+              {booking.vehicle === "true" && <span>Vehicle</span>}
+              {booking.dayplan === "true" && <span>Day Plan</span>}
+              {booking.specialday === "true" && <span>Special Day</span>}
+              {booking.petfriend === "true" && <span>Pet Friend</span>}
+            </p>
+            <p className="sum_detil_extra tot">
+              <b>Total:</b>
+              Rs.{booking.total}.00
+            </p>
+            {/* Add more booking details as needed */}
+            <button className="booknow_btn" onClick={() => window.print()}>
+              Download
+            </button>
+            <button onClick={onNavigateToPayment} className="booknow_btn">
+              Pay
+            </button>
+            <button
+              className="booknow_btn"
+              onClick={() => (window.location.href = "/bookingvalidate")}
+            >
+              My Booking
+            </button>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

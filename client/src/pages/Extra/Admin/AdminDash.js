@@ -71,7 +71,7 @@ function AdminDash() {
     <div>
       <TopNav />
       <Sidebar />
-      <div className="contAd">
+      <div className="contAd newpdb">
         <div className="btn_set">
           <button className="booknow_btn" onClick={handlePrint}>
             Generate Report

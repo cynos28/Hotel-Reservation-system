@@ -14,7 +14,7 @@ const ExtraSchema = new Schema({
     required: true,
   },
   phone: {
-    type: String, //type
+    type: Number, //type
     required: true,
   },
 
