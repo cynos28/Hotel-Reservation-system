@@ -99,7 +99,7 @@ const RoomTable = () => {
                                     Preparing...
                                 </button>
                             ) : (
-                                <button className="generate-room-button">Generate Monthly Report</button>
+                                <button className="generate-room-button">Generate Room Report</button>
                             )
                         }
                     </PDFDownloadLink>
@@ -136,6 +136,7 @@ const RoomTable = () => {
                                         <Link to={'/edit/' + room._id} className="btn btn-outline-primary">
                                             <PencilSquare /><br/> Edit
                                         </Link>
+                                      
                                     </td>
                                 </tr>
                             ))}
