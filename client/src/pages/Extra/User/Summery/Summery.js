@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPayment } from "../../../../redux/features/payment/paymentSlice";
 import { PAYMENT_TYPES } from "../../../../constants";
 import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 
 function Summary() {
   const { extraid } = useParams();
