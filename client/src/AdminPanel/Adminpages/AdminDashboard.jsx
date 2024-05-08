@@ -8,7 +8,9 @@ import CarStatsChart from "../charts/CarStatsChart";
 import RecommendCarCard from "../AdminComponents/UI/RecommendCarCard";
 import Sidebar from '../AdminComponents/Sidebar/Sidebar';
 import TopNav from '../AdminComponents/TopNav/TopNav';
-import recommendCarsData from "../assets/dummy-data/recommendCars";
+import { useDispatch, useSelector } from "react-redux";
+import recommendCarsData from "../assets/dummy-data/recommendrooms";
+
 
 const AdminDash = () => {
   const [rooms, setRooms] = useState([]);
@@ -27,70 +29,86 @@ const AdminDash = () => {
     fetchData();
   }, []);
 
-  const carObj = {
-    title: "Total Rooms",  // Updated title
-    totalNumber: rooms.length,  // Display the total number of rooms
-    icon: "ri-hotel-fill",
-  };
+  const UserStats = () => {
+    const dispatch = useDispatch();
+    const { users } = useSelector((state) => state.auth);
 
-  const tripObj = {
-    title: "",
-    //totalNumber: 1697,
-  //  icon: "ri-steering-2-line",
-  };
+    useEffect(() => {
+      // dispatch(CALC_VERIFIED_USER()); // Dispatch the action directly
+      //dispatch(CALC_SUSPENDED_USER()); // Dispatch the action directly
+    }, [dispatch, users]);
 
-  const clientObj = {
-    title: "",
-    //totalNumber: "85k",
-    //icon: "ri-user-line",
-  };
+    const { verifiedUsers, suspendedUsers } = useSelector(
+      (state) => state.auth
+    );
+    const unverifiedUsers = users.length - verifiedUsers;
 
-  const distanceObj = {
-    title: "",
-  //  totalNumber: 2167,
-    //icon: "ri-timer-flash-line",
-  };
+    const carObj = {
+      title: "Total Rooms",
+      totalNumber: rooms.length,
+      icon: "ri-hotel-fill",
+    };
 
-  return (
+    const tripObj = {
+      title: "Total Users",
+      totalNumber: users.length,
+      icon: "ri-user-2-line", // Added icon for tripObj
+    };
 
-    <div className="layout">
-      <Sidebar />
-      <div className="main__layout">
-        <TopNav />
+    const clientObj = {
+      title: "Total Clients",
+      totalNumber: "85k",
+      icon: "ri-user-line",
+    };
 
-    <div>
-      <div className="dashboard">
-     
-        <div className="dashboard__wrapper">
-        
-          <div className="dashboard__cards">
-          
-            <SingleCard item={carObj} />
-            <SingleCard item={tripObj} />
-            <SingleCard item={clientObj} />
-            <SingleCard item={distanceObj} />
-          </div>
-          <div className="statics">
-            <div className="stats">
-              <h3 className="stats__title">Room Type Distribution</h3>
-              <MileChart />
+    const distanceObj = {
+      title: "Total",
+      totalNumber: 2167,
+      icon: "ri-timer-flash-line",
+    };
+
+    return (
+      <div className="layout">
+        <Sidebar />
+        <div className="main__layout">
+          <TopNav />
+
+          <div>
+            <div className="dashboard">
+
+              <div className="dashboard__wrapper">
+
+                <div className="dashboard__cards">
+
+                  <SingleCard item={carObj} />
+                  <SingleCard item={tripObj} />
+                  <SingleCard item={clientObj} />
+                  <SingleCard item={distanceObj} />
+                </div>
+                <div className="statics">
+                  <div className="stats">
+                    <h3 className="stats__title">Room Type Distribution</h3>
+                    <MileChart />
+                  </div>
+                  <div className="stats">
+                    <h3 className="stats__title">Car Stats</h3>
+                    <CarStatsChart />
+                  </div>
+                </div>
+                <div className="recommend__cars-wrapper">
+                  {recommendCarsData.map((item) => (
+                    <RecommendCarCard item={item} key={item.id} />
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="stats">
-              <h3 className="stats__title"></h3>
-              <CarStatsChart />
-            </div>
-          </div>
-          <div className="recommend__cars-wrapper">
-            {recommendCarsData.map((item) => (
-              <RecommendCarCard item={item} key={item.id} />
-            ))}
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
-  );
+    );
+  };
+
+  return <UserStats />;
 };
 
 export default AdminDash;

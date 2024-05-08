@@ -83,6 +83,7 @@ import Summary from "./pages/Extra/User/Summery/Summery";
 import UpdateBookingExt from "./pages/Extra/User/UpdateBooking/UpdateBooking";
 import Booking from "./pages/Extra/User/Booking/Booking.js";
 import UpdatePersonalEvent from "./pages/events/UpdatePersonalEvent.js"
+import RateAdmin from "./pages/Review/admin/RateAdmin.js";
 
 axios.defaults.withCredentials = true;
 
@@ -218,6 +219,7 @@ function App() {
             <Route path="/rates" element={<AddRate />} />
             <Route path="/findrate" element={<FindReview />} />
             <Route path="/updatereview/:id" element={<UpdateReview />} />
+            <Route path="/adminrate" element={<RateAdmin />} />
 
             {/* BookingUser Route */}
             <Route exact path="/booking" element={<AddBooking />} />

@@ -1,6 +1,6 @@
-import car1 from "../images/romantic-hotel-suites-dubai-royal-penthouse-bedroom.png";
-import car2 from "../images/romantic-hotel-suites-dubai-royal-penthouse-bedroom.png";
-import car3 from "../images/romantic-hotel-suites-dubai-royal-penthouse-bedroom.png";
+import room1 from "../images/RecRoom3.jpg";
+import room2 from "../images/RecRoom2.jpg";
+import room3 from "../images/RecRoom1.jpg";
 
 const recommendCars = [
   {
@@ -8,7 +8,7 @@ const recommendCars = [
     carName: "Deluxe Room",
     rentPrice: 32,
     retweet: "132",
-    imgUrl: car1,
+    imgUrl: room1,
     percentage: "74",
   },
   {
@@ -16,7 +16,7 @@ const recommendCars = [
     carName: "Luxury",
     rentPrice: 28,
     retweet: "130",
-    imgUrl: car2,
+    imgUrl: room2,
     percentage: "74",
   },
   {
@@ -24,7 +24,7 @@ const recommendCars = [
     carName: "Suite",
     rentPrice: 28,
     retweet: "130",
-    imgUrl: car3,
+    imgUrl: room3,
     percentage: "74",
   },
 ];
