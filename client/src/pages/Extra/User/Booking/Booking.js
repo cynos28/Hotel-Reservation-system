@@ -48,7 +48,6 @@ function Booking() {
     }));
   }, []);
 
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -156,11 +155,15 @@ function Booking() {
                 required
                 value={inputs.phone}
                 onChange={handleChange}
-                type="text"
+                
+                
                 //Phone number Validators
-
+                type="text"
                 pattern="\d{10}"
                 name="phone"
+                
+
+                
               />
               <br />
               <label className="form_lable_extra">Select Your Facility</label>
@@ -174,7 +177,7 @@ function Booking() {
                 checked={inputs.gym}
               />
               <label className="form_lable_extra" htmlFor="gym">
-                Gym
+                Gym Session for one day Rs.2500
               </label>
               <br />
               <input
@@ -186,7 +189,7 @@ function Booking() {
                 checked={inputs.pool}
               />
               <label className="form_lable_extra" htmlFor="pool">
-                Pool
+                Swimming Pool for one day Rs.3000
               </label>
               <br />
               <input
@@ -198,7 +201,7 @@ function Booking() {
                 checked={inputs.bar}
               />
               <label className="form_lable_extra" htmlFor="bar">
-                Bar
+                Bar services for one day Rs.5200
               </label>
               <br />
               <input
@@ -210,7 +213,7 @@ function Booking() {
                 checked={inputs.spa}
               />
               <label className="form_lable_extra" htmlFor="spa">
-                Spa
+                Spa services for one day Rs.4500
               </label>
               <br />
               <input
@@ -222,7 +225,7 @@ function Booking() {
                 checked={inputs.vehicle}
               />
               <label className="form_lable_extra" htmlFor="vehicle">
-                vehicle
+                vehicle services for one day Rs.7000
               </label>
               <br />
               <input
@@ -234,7 +237,7 @@ function Booking() {
                 checked={inputs.dayplan}
               />
               <label className="form_lable_extra" htmlFor="dayplan">
-                Day Plan
+                Day Plan with manager Rs.1500
               </label>
               <br />
               <input
@@ -246,7 +249,7 @@ function Booking() {
                 checked={inputs.specialday}
               />
               <label className="form_lable_extra" htmlFor="specialday">
-                Special Day
+                Special Day Planing Rs.1500
               </label>
               <br />
               <input
@@ -258,7 +261,7 @@ function Booking() {
                 checked={inputs.petfriend}
               />
               <label className="form_lable_extra" htmlFor="petfriend">
-                Pet Friend
+                Pet Friend for one day Rs.2000
               </label>
               <br />
               <label className="form_lable_extra">Total</label>
