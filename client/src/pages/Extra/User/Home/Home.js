@@ -12,18 +12,11 @@ function Home() {
           <p className="bok_topic_para">
             "Experience unparalleled luxury and convenience with our extra
             facility bookings. Book now and elevate your stay to new heights!
-            
-            People think being famous is so glamorous,
-            but half the time you’re in a strange hotel room living out of a suitcase.
-            
-            Chilling out on the bed in your hotel room watching television, 
-            while wearing your own pajamas, is sometimes the best part of a vacation.
-            Withnature all around, you will also love the luxury we offer
-            
-            I’ve spent the last year and a half going through a very public separation, 
-            hiding in hotel lobbies.
-            Sunsets are one thing in life that won’t wait.
-            You're allowed to be a little shellfish when you're on vacay"
+            People think being famous is so glamorous, but half the time you’re
+            in a strange hotel room living out of a suitcase. Chilling out on
+            the bed in your hotel room watching television, while wearing your
+            own pajamas, is sometimes the best part of a vacation. Withnature
+            all around, you will also love the luxury we offer"
           </p>
         </div>
         <div className="btnset_extr">
