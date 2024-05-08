@@ -141,3 +141,21 @@
     margin-left: 140px;
     border-radius: 20px;
 }
+
+.event-card h3,
+.event-card p {
+  font-weight: bold;
+}
+
+/* Make text bold in event cards */
+.event-card h3,
+.event-card p,
+.event-card h4 {
+  font-weight: bold;
+}
+
+/* Make text bold in modal content */
+.modal-content h4,
+.modal-content p {
+  font-weight: bold;
+}
