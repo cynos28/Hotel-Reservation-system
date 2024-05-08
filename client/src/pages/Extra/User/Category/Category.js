@@ -17,7 +17,7 @@ function Category() {
       <div className="backimg1">
         <div>
           <h1 className="topic_extra">
-            Our Extra<span className="sub_topic_extra"> Fasciitis!!</span>
+            Our Extra<span className="sub_topic_extra"> Faciitis!!</span>
           </h1>
           <div className="fullbox_set_cat">
             <div className="cat_box_extra">
