@@ -55,10 +55,7 @@ function AddRate() {
   };
 
   useEffect(() => {
-    // Fetch user data when component mounts
-    // Assuming you have a function to fetch user data from Redux
-    // dispatch(getUser());
-    // For now, we'll use a dummy implementation
+    // Fetch user data 
     setInputs((prevState) => ({
       ...prevState,
       name: user?.name || "",
@@ -274,7 +271,7 @@ function AddRate() {
           Show All Reviews
         </button>
 
-        {/*Data Insert Start */}
+        {/*Data Insert */}
         <div className="rate_f_box">
           <div>
             

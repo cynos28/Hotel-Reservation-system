@@ -77,7 +77,7 @@ const EventTable = React.forwardRef((props, ref) => {
       Swal.fire({
         icon: "success",
         title: "Success",
-        text: "Event Report Downloaded Successfully!",
+        text: "Event Table Downloaded Successfully!",
         showConfirmButton: false,
         timer: 1500,
       }), // Callback after printing

@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-//import Footer from "../../../../components/footer/Footer";
+import Footer from "../../../../components/footer/Footer";
 import Header from "../../../../components/header/header";
 
 function BookValidation() {
   const [extra, setExtra] = useState([]);
-  const [gmail, setGmail] = useState("");
+  const [extraid, setExtraID] = useState("");
   const handleChange = (e) => {
-    setGmail(e.target.value);
+    setExtraID(e.target.value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       //Check Gmail first
       const response = await axios.get(
-        `http://localhost:3001/extra?gmail=${gmail}`
+        `http://localhost:3001/extra?extraid=${extraid}`
       );
       console.log("Response:", response.data);
       const relevantCard = response.data.extra.filter(
-        (extra) => extra.gmail === gmail
+        (extra) => extra.extraid === extraid
       );
       //Display Related Card
       setExtra(relevantCard);
 
       if (relevantCard.length === 0) {
-        alert("No  found,Plase enter valid Gmail address");
+        alert("No  found,Plase enter valid id ");
       }
     } catch (error) {
       console.error("Error fetching ratings:", error);
@@ -51,19 +51,19 @@ function BookValidation() {
   };
   return (
     <div>
-         <Header />
+      <Header />
       <div className="form_box_extra">
         <form className="form_extra" onSubmit={handleSubmit}>
           <label className="form_lable_extra" htmlFor="gmail">
-            Enter Your Gmail
+            Enter Your Booking ID
           </label>
           <br></br>
           <input
             className="form_input_extra"
-            type="email"
-            id="gmail"
-            name="gmail"
-            value={gmail}
+            type="text"
+            id="extraid"
+            name="extraid"
+            value={extraid}
             onChange={handleChange}
             required
           />
@@ -79,6 +79,7 @@ function BookValidation() {
             <tr className="tble_card_details_tr">
               <th className="admin_tbl_th">Name</th>
               <th className="admin_tbl_th">Gmail</th>
+              <th className="admin_tbl_th">Booking ID</th>
               <th className="admin_tbl_th">Phone</th>
               <th className="admin_tbl_th">Facility</th>
               <th className="admin_tbl_th">Total</th>
@@ -90,6 +91,7 @@ function BookValidation() {
               <tr key={index}>
                 <td className="admin_tbl_td">{extra.name}</td>
                 <td className="admin_tbl_td">{extra.gmail}</td>
+                <td className="admin_tbl_td">{extra.extraid}</td>
                 <td className="admin_tbl_td">{extra.phone}</td>
                 <td className="admin_tbl_td">
                   {extra.gym === "true" && <span>Gym</span>}
@@ -119,7 +121,7 @@ function BookValidation() {
           ))}
         </table>
       </div>
-     
+      <Footer />
     </div>
   );
 }
