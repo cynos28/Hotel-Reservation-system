@@ -15,6 +15,7 @@
     border-radius: 3px;
     cursor: pointer;
     width: 450px;
+    margin-left: 500px;
 }
 .rate_full_box_label{
    font-weight: bold;
