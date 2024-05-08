@@ -51,10 +51,10 @@ function BookValidation() {
   };
   return (
     <div>
-         <Header />
+      <Header />
       <div className="form_box_extra">
         <form className="form_extra" onSubmit={handleSubmit}>
-        <label className="form_lable_extra" htmlFor="gmail">
+          <label className="form_lable_extra" htmlFor="gmail">
             Enter Your Booking ID
           </label>
           <br></br>
@@ -66,7 +66,6 @@ function BookValidation() {
             value={extraid}
             onChange={handleChange}
             required
-          
           />
           <br></br>
           <button className="centerbtn_extra" type="submit">
@@ -122,7 +121,7 @@ function BookValidation() {
           ))}
         </table>
       </div>
-     
+      <Footer />
     </div>
   );
 }
