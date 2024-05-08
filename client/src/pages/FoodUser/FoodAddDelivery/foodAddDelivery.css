@@ -101,14 +101,14 @@
 }
 .cart-header {
   text-align: center;
-  margin: 20px 0;
+  margin-right: 215px;
   text-transform: capitalize;
   font-size: 35px;
 }
 .cart-form {
   width: 500px;
   border: 2px solid teal;
-  margin: 10px auto;
+  margin-right: 450px;
   padding: 25px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -257,4 +257,22 @@
 
 .pdn_itmdetil {
   padding: 20px 12%;
+}
+
+
+.cart-for{
+  width: 500px;
+  border: 2px solid teal;
+  margin-left: 210px;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.cart-forma {
+  width: 500px;
+  border: 2px solid teal;
+  margin-left: 235px;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

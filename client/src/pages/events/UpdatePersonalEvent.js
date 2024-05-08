@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "./EditEvent.css"; // Import CSS file
+import "./UpdatePersonalEvent.css"; // Import CSS file
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2"; // Import SweetAlert library
@@ -9,7 +9,9 @@ import Footer from "../../components/footer/Footer";
 
 const updatePersonalEvent = () => {
   const { id } = useParams();
-  const [eventData, setEventData] = useState({});
+  const [eventData, setEventData] = useState({
+    estatus: "",
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const updatePersonalEvent = () => {
   // send files to the server // 
   const handleUpload = async (e) => {
     try {
-      
+      eventData.estatus = "Pending"
       const response = await axios.patch(
         `http://localhost:3001/api/event/${id}`,
         eventData

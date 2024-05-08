@@ -15,11 +15,11 @@ const AddBooking = () => {
   const [inputs, setInputs] = useState({
     name: user?.name || "", 
     email: user?.email || "", 
-    phone: user?.phone || "",
+   
     address: "",
     city: "",
     code: "",
-    
+    phone:"",
     adults: 0,
     kids: 0,
     room: "",
