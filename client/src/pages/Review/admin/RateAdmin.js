@@ -16,7 +16,7 @@ function RateAdmin() {
     fetchHandler().then((data) => setRates(data.rate));
   }, []);
 
-  /*PDF Function */
+  /*PDF */
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
@@ -64,8 +64,8 @@ function RateAdmin() {
           <thead>
             <tr className="admin_tbl_tr">
               <th className="admin_tbl_th">Name</th>
-              <th className="admin_tbl_th">Date</th>
-              <th className="admin_tbl_th">Rating</th>
+              <th className="admin_tbl_th"style={{width:"150px"}}>Date</th>
+              <th className="admin_tbl_th" style={{width:"240px"}}>Rating</th>
               <th className="admin_tbl_th">Comment</th>
               <th className="admin_tbl_th">Actions</th>
             </tr>
