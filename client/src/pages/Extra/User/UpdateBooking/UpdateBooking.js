@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import axios from "axios";
+import Header from "../../../../components/header/header";
+import Footer from "../../../../components/footer/Footer";
 
 function UpdateBooking() {
   const [inputs, setInputs] = useState({});
@@ -61,81 +63,86 @@ function UpdateBooking() {
   };
   return (
     <div>
-      <h1 className="topic_extra">
-        Update Your Booking<span className="sub_topic_extra"> Details..!</span>
-      </h1>
-      <div className="form_box_extra">
-        <form className="form_extra" onSubmit={handleSubmit}>
-          <label className="form_lable_extra">Full Name</label>
-          <br />
-          <input
-            className="form_input_extra"
-            required
-            value={inputs.name}
-            onChange={handleChange}
-            type="text"
-            name="name"
-          />
-          <br />
-          <label className="form_lable_extra">Gmail</label>
-          <br />
-          <input
-            className="form_input_extra"
-            required
-            value={inputs.gmail}
-            onChange={handleChange}
-            type="email"
-            name="gmail"
-          />
-          <br />
-          <label className="form_lable_extra">Phone</label>
-          <br />
-          <input
-            className="form_input_extra"
-            required
-            value={inputs.phone}
-            onChange={handleChange}
-            type="text"
-            name="phone"
-          />
-          <br />
-          <label className="form_lable_extra">Your Facility</label>
-          <br></br>
-          {inputs.gym === "true" && (
-            <span className="form_lable_extra_updt">Gym</span>
-          )}
-          {inputs.pool === "true" && (
-            <span className="form_lable_extra_updt">Pool</span>
-          )}
-          {inputs.bar === "true" && (
-            <span className="form_lable_extra_updt">Bar</span>
-          )}
-          {inputs.spa === "true" && (
-            <span className="form_lable_extra_updt">Spa</span>
-          )}
-          {inputs.vehicle === "true" && (
-            <span className="form_lable_extra_updt">Vehicle</span>
-          )}
-          {inputs.dayplan === "true" && (
-            <span className="form_lable_extra_updt">Day Plan</span>
-          )}
-          {inputs.specialday === "true" && (
-            <span className="form_lable_extra_updt">Special Day</span>
-          )}
-          {inputs.petfriend === "true" && (
-            <span className="form_lable_extra_updt">Pet Friend</span>
-          )}
-          <br></br>
-          <p className="sum_detil_extra tot">
-            <b>Total:</b>
-            Rs.{inputs.total}.00
-          </p>
+      <Header />
+      <div>
+        <h1 className="topic_extra">
+          Update Your Booking
+          <span className="sub_topic_extra"> Details..!</span>
+        </h1>
+        <div className="form_box_extra">
+          <form className="form_extra" onSubmit={handleSubmit}>
+            <label className="form_lable_extra">Full Name</label>
+            <br />
+            <input
+              className="form_input_extra"
+              required
+              value={inputs.name}
+              onChange={handleChange}
+              type="text"
+              name="name"
+            />
+            <br />
+            <label className="form_lable_extra">Gmail</label>
+            <br />
+            <input
+              className="form_input_extra"
+              required
+              value={inputs.gmail}
+              onChange={handleChange}
+              type="email"
+              name="gmail"
+            />
+            <br />
+            <label className="form_lable_extra">Phone</label>
+            <br />
+            <input
+              className="form_input_extra"
+              required
+              value={inputs.phone}
+              onChange={handleChange}
+              type="phone"
+              name="phone"
+            />
+            <br />
+            <label className="form_lable_extra">Your Facility</label>
+            <br></br>
+            {inputs.gym === "true" && (
+              <span className="form_lable_extra_updt">Gym</span>
+            )}
+            {inputs.pool === "true" && (
+              <span className="form_lable_extra_updt">Pool</span>
+            )}
+            {inputs.bar === "true" && (
+              <span className="form_lable_extra_updt">Bar</span>
+            )}
+            {inputs.spa === "true" && (
+              <span className="form_lable_extra_updt">Spa</span>
+            )}
+            {inputs.vehicle === "true" && (
+              <span className="form_lable_extra_updt">Vehicle</span>
+            )}
+            {inputs.dayplan === "true" && (
+              <span className="form_lable_extra_updt">Day Plan</span>
+            )}
+            {inputs.specialday === "true" && (
+              <span className="form_lable_extra_updt">Special Day</span>
+            )}
+            {inputs.petfriend === "true" && (
+              <span className="form_lable_extra_updt">Pet Friend</span>
+            )}
+            <br></br>
+            <p className="sum_detil_extra tot">
+              <b>Total:</b>
+              Rs.{inputs.total}.00
+            </p>
 
-          <button className="centerbtn_extra" type="submit">
-            Update
-          </button>
-        </form>
+            <button className="centerbtn_extra" type="submit">
+              Update
+            </button>
+          </form>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }
