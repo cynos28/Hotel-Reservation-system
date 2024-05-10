@@ -106,7 +106,7 @@ const Events = () => {
     setModal1(!modal1);
   };
 
-  if (modal) {
+  if (modal1) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
@@ -136,6 +136,15 @@ const Events = () => {
       console.log(error);
       toast.error("Error deleting event");
     }
+  };
+
+  // Function to calculate hours between two times
+  const calculateHours = (startTime, endTime) => {
+    const start = new Date(`01/01/2022 ${startTime}`);
+    const end = new Date(`01/01/2022 ${endTime}`);
+    const diff = end - start;
+    const hours = diff / 1000 / 60 / 60; // Convert milliseconds to hours
+    return hours;
   };
 
   // Render component
@@ -196,9 +205,6 @@ const Events = () => {
           )}
         </div>
 
-
-
-
         <div className="personal-events">
           <div className="personalevent">
             <h2 className="to1">Personal Events</h2>
@@ -227,6 +233,9 @@ const Events = () => {
                   />
                   <h4>{event.name}</h4>
                   <p>Date: {formatDate(event.date)}</p>
+                  <p hidden>StartTime: {event.sTime}</p>
+                  <p hidden>EndTime: {event.eTime}</p>
+                  <p>Hours: {calculateHours(event.sTime, event.eTime)}</p> {/* Display hours between start and end time */}
                   <p>Status:</p>
                   <div
                     className="status-box"

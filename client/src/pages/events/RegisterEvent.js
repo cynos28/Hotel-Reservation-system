@@ -24,9 +24,9 @@ const RegisterEvent = () => {
     estimatedCost: 0,
   });
 
-
   const [recommendationMessage, setRecommendationMessage] = useState("");
   const [formErrors, setFormErrors] = useState({}); // State to track form errors
+  const [dateError, setDateError] = useState(""); // State to track date error
 
   const validateForm = () => {
     let valid = true;
@@ -35,12 +35,24 @@ const RegisterEvent = () => {
     // Check if all fields are filled
     for (const key in formData) {
       if (formData[key] === "") {
-        errors[key] = "Please ";
+        errors[key] = "Please fill the field";
         valid = false;
       }
     }
 
     setFormErrors(errors);
+
+    if (formData.date !== "") {
+      const selectedDate = new Date(formData.date);
+      const currentDate = new Date();
+      if (selectedDate < currentDate) {
+        setDateError("Please select a future date.");
+        valid = false;
+      } else {
+        setDateError("");
+      }
+    }
+
     return valid;
   };
 
@@ -160,7 +172,7 @@ const RegisterEvent = () => {
           </select>
           {formErrors.name && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.name}fill the Name
+              {formErrors.name}
             </p>
           )}
 
@@ -176,7 +188,7 @@ const RegisterEvent = () => {
           />
           {formErrors.capacity && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.capacity}Enter the Capacity
+              {formErrors.capacity}
             </p>
           )}
           <p className="recommendation-message" style={{ color: "#03c987e6" }}>{recommendationMessage}</p>
@@ -194,7 +206,12 @@ const RegisterEvent = () => {
           />
           {formErrors.date && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.date}Enter the Date
+              {formErrors.date}
+            </p>
+          )}
+          {dateError && (
+            <p className="error-message" style={{ color: "red" }}>
+              {dateError}
             </p>
           )}
 
@@ -218,7 +235,7 @@ const RegisterEvent = () => {
           </select>
           {formErrors.venue && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.venue}Select the Venue
+              {formErrors.venue}
             </p>
           )}
 
@@ -233,7 +250,7 @@ const RegisterEvent = () => {
           />
           {formErrors.startTime && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.startTime}Enter the Stating Time
+              {formErrors.startTime}
             </p>
           )}
 
@@ -248,7 +265,7 @@ const RegisterEvent = () => {
           />
           {formErrors.endingTime && (
             <p className="error-message" style={{ color: "red" }}>
-              {formErrors.endingTime}Enter the Ending Time
+              {formErrors.endingTime}
             </p>
           )}
 
